@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'CX', __FILE__ );
+define( 'CXP', __FILE__ );
 
 /**
  * Main class for the plugin
