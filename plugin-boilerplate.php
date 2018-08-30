@@ -10,7 +10,7 @@ Text Domain: wpp-plugin
 Domain Path: /languages
 */
 
-namespace WPpeople\MyPlugin;
+namespace codexpert\MyPlugin;
 use \codexpert\Survey as Survey;
 use \codexpert\License as License;
 

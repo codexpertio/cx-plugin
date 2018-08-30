@@ -3,7 +3,7 @@
  * All settings facing functions
  */
 
-namespace WPpeople\MyPlugin;
+namespace codexpert\MyPlugin;
 
 use \WeDevs_Settings_API;
 

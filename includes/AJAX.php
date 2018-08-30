@@ -3,7 +3,7 @@
  * All AJAX facing functions
  */
 
-namespace WPpeople\MyPlugin;
+namespace codexpert\MyPlugin;
 
 /**
  * if accessed directly, exit.

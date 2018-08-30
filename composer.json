@@ -1,5 +1,5 @@
 {
-    "name": "WPpeople/MyPlugin",
+    "name": "codexpert/MyPlugin",
     "authors": [
         {
             "name": "Nazmul Ahsan",
@@ -12,7 +12,7 @@
         },
     "autoload": {
     	"psr-4": {
-    		"WPpeople\\MyPlugin\\" : "includes/",
+    		"codexpert\\MyPlugin\\" : "includes/",
             "codexpert\\" : "codexpert/"
     	}
     }
