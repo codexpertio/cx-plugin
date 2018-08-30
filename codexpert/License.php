@@ -41,11 +41,23 @@ class License {
 	}
 
 	public function hooks() {
+		register_activation_hook( $this->file, array( $this, 'activation' ) );
+		register_deactivation_hook( $this->file, array( $this, 'deactivation' ) );
+		add_action( "daily_event_{$this->basename}", array( $this, 'check' ) );
 		add_filter( 'plugin_action_links_' . $this->basedir, array( $this, 'inline_form' ) );
 		add_action( 'admin_head', array( $this, 'head' ) );
 		add_action( "wp_ajax_license-activator-{$this->basename}", array( $this, 'verify' ) );
-		add_action( 'admin_init', array( $this, 'check' ) );
 		add_action( 'admin_notices', array( $this, 'admin_notice' ) );
+	}
+
+	public function activation() {
+	    if ( !wp_next_scheduled ( "daily_event_{$this->basename}" ) ) {
+			wp_schedule_event( time(), 'daily', "daily_event_{$this->basename}" );
+	    }
+	}
+
+	public function deactivation() {
+		wp_clear_scheduled_hook( "daily_event_{$this->basename}" );
 	}
 
 	public function head() {
