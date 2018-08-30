@@ -2,7 +2,7 @@
 /*
 Plugin Name: MyPlugin
 Description: Plugin boilerplate
-Plugin URI: https://wppeople.net
+Plugin URI: https://codexpert.io
 Author: Nazmul Ahsan
 Author URI: https://nazmulahsan.me
 Version: 1.0
