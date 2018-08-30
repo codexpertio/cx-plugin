@@ -50,7 +50,7 @@ class Update {
 			return false;
 	 
 		// do nothing if it is not our plugin	
-		if( $this->plugin_slug === $args->slug )
+		if( $this->plugin_slug !== $args->slug )
 			return false;
 	 
 		// trying to get from cache first
