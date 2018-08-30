@@ -1,5 +1,5 @@
 {
-    "name": "codexpert/CXPlugin",
+    "name": "codexpert/CX_Plugin",
     "authors": [
         {
             "name": "Nazmul Ahsan",
@@ -12,7 +12,7 @@
         },
     "autoload": {
     	"psr-4": {
-    		"codexpert\\CXPlugin\\" : "includes/",
+    		"codexpert\\CX_Plugin\\" : "includes/",
             "codexpert\\" : "codexpert/"
     	}
     }

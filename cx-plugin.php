@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: CXPlugin
+Plugin Name: CX_Plugin
 Description: Plugin boilerplate
 Plugin URI: https://codexpert.io
 Author: Nazmul Ahsan
@@ -10,7 +10,7 @@ Text Domain: cx-plugin
 Domain Path: /languages
 */
 
-namespace codexpert\CXPlugin;
+namespace codexpert\CX_Plugin;
 use \codexpert\Survey as Survey;
 use \codexpert\License as License;
 use \codexpert\Update as Update;

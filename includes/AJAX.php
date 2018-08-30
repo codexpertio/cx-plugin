@@ -3,7 +3,7 @@
  * All AJAX facing functions
  */
 
-namespace codexpert\CXPlugin;
+namespace codexpert\CX_Plugin;
 
 /**
  * if accessed directly, exit.
