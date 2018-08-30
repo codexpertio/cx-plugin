@@ -163,7 +163,7 @@ class License {
 		// about to expire?
 		$expiry = get_option( "{$this->basename}-expiry" );
 		$day_left = round( ( $expiry - time() ) / DAY_IN_SECONDS );
-		if( $day_left <= 30 ) :
+		if( $expiry != '' && $day_left <= 30 ) :
 			printf( "
 			<div class='notice notice-error notice-cbpr' style='background: #ffaf48'>
 		        <p>The license for <strong>%s</strong> is about to expire in %d days! Please <a href='%s' target='_blank'>renew</a> to get uninterrupted service or <a href='%s' target='_blank'>cancel</a> if you don't want to renew it anymore!</p>

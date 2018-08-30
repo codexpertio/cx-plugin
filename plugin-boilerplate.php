@@ -102,7 +102,7 @@ class Plugin {
 	 * Internationalization
 	 */
 	public function i18n() {
-		load_plugin_textdomain( 'wpp-plugin', false, dirname( plugin_basename( CXP ) ) . '/languages/' );
+		load_plugin_textdomain( 'wpp-admin', false, dirname( plugin_basename( CXP ) ) . '/languages/' );
 	}
 
 	/**

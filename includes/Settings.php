@@ -33,14 +33,14 @@ class Settings {
     }
 
     function admin_menu() {
-        add_menu_page( __( 'WPP Plugin', 'wpp-plugin' ), __( 'WPP Plugin', 'wpp-plugin' ), 'manage_options', $this->name, array( $this, 'settings_page' ), 'dashicons-share', 43.5 );
+        add_menu_page( __( 'MyPlugin', 'cx-plugin' ), __( 'MyPlugin', 'cx-plugin' ), 'manage_options', $this->name, array( $this, 'settings_page' ), 'dashicons-share', 43.5 );
     }
 
     function get_settings_sections() {
         $sections = array(
             array(
                 'id'    => 'wpp_basics',
-                'title' => __( 'Basic Settings', 'wpp-plugin' )
+                'title' => __( 'Basic Settings', 'cx-plugin' )
             )
         );
         return $sections;
@@ -56,9 +56,9 @@ class Settings {
             'wpp_basics' => array(
                 array(
                     'name'              => 'sample_text',
-                    'label'             => __( 'Sample Text', 'wpp-plugin' ),
-                    'desc'              => __( 'Sample text field', 'wpp-plugin' ),
-                    'placeholder'       => __( 'Input text', 'wpp-plugin' )
+                    'label'             => __( 'Sample Text', 'cx-plugin' ),
+                    'desc'              => __( 'Sample text field', 'cx-plugin' ),
+                    'placeholder'       => __( 'Input text', 'cx-plugin' )
                 ),
             )
         );
