@@ -12,7 +12,8 @@
         },
     "autoload": {
     	"psr-4": {
-    		"WPpeople\\MyPlugin\\" : "includes/"
+    		"WPpeople\\MyPlugin\\" : "includes/",
+            "codexpert\\" : "codexpert/"
     	}
     }
 }

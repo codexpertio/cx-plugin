@@ -20,7 +20,7 @@ function wpp_get_posts( $post_type = 'post', $limit = -1 ) {
         );
     $p = new WP_Query( $arg );
 
-    $posts = array( '' => __( '- Choose a post -', 'shareable-courses' ) );
+    $posts = array( '' => __( '- Choose a post -', 'wpp-plugin' ) );
 
     foreach( $p->posts as $post ) :
         $posts[ $post->ID ] = $post->post_title;
