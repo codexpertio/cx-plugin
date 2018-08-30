@@ -49,7 +49,7 @@ class Plugin {
 		if( !function_exists( 'get_plugin_data' ) ) {
 		    require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 		}
-		$this->plugin = get_plugin_data( WPPP );
+		$this->plugin = get_plugin_data( CXP );
 
 		$this->slug = $this->plugin['TextDomain'];
 		$this->name = $this->plugin['Name'];
@@ -61,8 +61,8 @@ class Plugin {
 	 * Includes files
 	 */
 	public function includes(){
-		require_once dirname( WPPP ) . '/vendor/autoload.php';
-		require_once dirname( WPPP ) . '/includes/wpp-functions.php';
+		require_once dirname( CXP ) . '/vendor/autoload.php';
+		require_once dirname( CXP ) . '/includes/wpp-functions.php';
 	}
 
 	/**
@@ -91,10 +91,10 @@ class Plugin {
 		add_action( 'admin_init', array( $settings, 'admin_init' ) );
 
 		// survey hooks
-		$survey = ( isset( $survey ) && ! is_null( $survey ) ) ? $survey : new Survey( $this->slug, $this->name, WPPP, $this->server );
+		$survey = ( isset( $survey ) && ! is_null( $survey ) ) ? $survey : new Survey( $this->slug, $this->name, CXP, $this->server );
 
 		// license hooks
-		$license = ( isset( $license ) && ! is_null( $license ) ) ? $license : new License( WPPP, $this->server );
+		$license = ( isset( $license ) && ! is_null( $license ) ) ? $license : new License( CXP, $this->server );
 
 	}
 
@@ -102,7 +102,7 @@ class Plugin {
 	 * Internationalization
 	 */
 	public function i18n() {
-		load_plugin_textdomain( 'wpp-plugin', false, dirname( plugin_basename( WPPP ) ) . '/languages/' );
+		load_plugin_textdomain( 'wpp-plugin', false, dirname( plugin_basename( CXP ) ) . '/languages/' );
 	}
 
 	/**
