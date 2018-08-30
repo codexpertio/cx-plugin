@@ -123,6 +123,7 @@ class License {
                 echo '<strong style="color:#07811a">' . $license_data->message . '</strong>';
                 update_option( $this->basename, ( $_REQUEST['operation'] == 'deactivate_license' ) ? '' : $license_key );
 				update_option( "{$this->basename}-status", 'active' );
+				update_option( "{$this->basename}-expiry", strtotime( $license_data->expiry ) );
             }
             else{
                 echo '<strong style="color:#C8080E">' . $license_data->message . '</strong>';
@@ -158,14 +159,27 @@ class License {
 	}
 
 	public function admin_notice() {
-		$status = get_option( "{$this->basename}-status" );
-		if( !in_array( $status, array( 'expired', 'blocked' ) ) ) return;
 
-		printf( "
-		<div class='notice notice-error notice-cbpr' style='background: #ffaf48'>
-	        <p><strong>%s</strong> was {$status}!</p>
-	    </div>
-		", $this->plugin['Name'] );
+		// about to expire?
+		$expiry = get_option( "{$this->basename}-expiry" );
+		$day_left = round( ( $expiry - time() ) / DAY_IN_SECONDS );
+		if( $day_left <= 30 ) :
+			printf( "
+			<div class='notice notice-error notice-cbpr' style='background: #ffaf48'>
+		        <p>The license for <strong>%s</strong> is about to expire in %d days! Please <a href='%s' target='_blank'>renew</a> to get uninterrupted service or <a href='%s' target='_blank'>cancel</a> if you don't want to renew it anymore!</p>
+		    </div>
+			", $this->plugin['Name'], $day_left, $this->license_server, $this->license_server );
+		endif;
+
+		// expired or blocked?
+		$status = get_option( "{$this->basename}-status" );
+		if( in_array( $status, array( 'expired', 'blocked' ) ) ) :
+			printf( "
+			<div class='notice notice-error notice-cbpr' style='background: #ffaf48'>
+		        <p><strong>%s</strong> was {$status}!</p>
+		    </div>
+			", $this->plugin['Name'] );
+		endif;
 	}
 
 	public function _is_active() {
