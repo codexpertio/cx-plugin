@@ -46,7 +46,7 @@ endif;
 if( ! function_exists( 'wpp_get_template' ) ) :
 function wpp_get_template( $slug ) {
     ob_start();
-    include_once dirname( WPPP ) . "/templates/{$slug}.php";
+    include_once dirname( CXP ) . "/templates/{$slug}.php";
     $content = ob_get_clean();
     ob_flush();
     return $content;
