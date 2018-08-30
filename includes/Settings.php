@@ -3,7 +3,7 @@
  * All settings facing functions
  */
 
-namespace codexpert\MyPlugin;
+namespace codexpert\CXPlugin;
 
 use \WeDevs_Settings_API;
 
@@ -33,7 +33,7 @@ class Settings {
     }
 
     function admin_menu() {
-        add_menu_page( __( 'MyPlugin', 'cx-plugin' ), __( 'MyPlugin', 'cx-plugin' ), 'manage_options', $this->name, array( $this, 'settings_page' ), 'dashicons-share', 43.5 );
+        add_menu_page( __( 'CXPlugin', 'cx-plugin' ), __( 'CXPlugin', 'cx-plugin' ), 'manage_options', $this->name, array( $this, 'settings_page' ), 'dashicons-share', 43.5 );
     }
 
     function get_settings_sections() {

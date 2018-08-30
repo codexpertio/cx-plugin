@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: MyPlugin
+Plugin Name: CXPlugin
 Description: Plugin boilerplate
 Plugin URI: https://codexpert.io
 Author: Nazmul Ahsan
@@ -10,9 +10,10 @@ Text Domain: cx-plugin
 Domain Path: /languages
 */
 
-namespace codexpert\MyPlugin;
+namespace codexpert\CXPlugin;
 use \codexpert\Survey as Survey;
 use \codexpert\License as License;
+use \codexpert\Update as Update;
 
 /**
  * if accessed directly, exit.
@@ -95,6 +96,9 @@ class Plugin {
 
 		// license hooks
 		$license = ( isset( $license ) && ! is_null( $license ) ) ? $license : new License( CXP, $this->server );
+
+		// license hooks
+		$update = ( isset( $update ) && ! is_null( $update ) ) ? $update : new Update( $this->slug );
 
 	}
 

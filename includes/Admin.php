@@ -3,7 +3,7 @@
  * All admin facing functions
  */
 
-namespace codexpert\MyPlugin;
+namespace codexpert\CXPlugin;
 
 /**
  * if accessed directly, exit.
