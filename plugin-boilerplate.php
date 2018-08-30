@@ -6,7 +6,7 @@ Plugin URI: https://codexpert.io
 Author: Nazmul Ahsan
 Author URI: https://nazmulahsan.me
 Version: 1.0
-Text Domain: wpp-plugin
+Text Domain: cx-plugin
 Domain Path: /languages
 */
 
@@ -21,7 +21,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'WPPP', __FILE__ );
+define( 'CX', __FILE__ );
 
 /**
  * Main class for the plugin
