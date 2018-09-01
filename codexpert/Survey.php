@@ -180,16 +180,25 @@ class Survey {
 
 			$user_id = get_current_user_id();
 			$userdata = get_userdata( $user_id );
+
+			$all_plugins = get_plugins();
+			// $plugins_installed = array();
+			// foreach ( $all_plugins as $plugin => $data ) {
+			// 	$plugins_installed[] = $data['Name'];
+			// }
+			// wp_send_json( $plugins_installed );
 			$params = array(
-				'init'			=> 1,
-				'item'			=> $this->plugin_slug,
-				'siteurl'		=> get_option( 'siteurl' ),
-				'admin_email'	=> get_option( 'admin_email' ),
-				'first_name'	=> $userdata->first_name,
-				'last_name'		=> $userdata->last_name,
+				'init'					=> 1,
+				'item'					=> $this->plugin_slug,
+				'siteurl'				=> get_option( 'siteurl' ),
+				'admin_email'			=> get_option( 'admin_email' ),
+				'first_name'			=> $userdata->first_name,
+				'last_name'				=> $userdata->last_name,
+				'plugins_installed'		=> implode( ',', array_keys( $all_plugins ) ),
 			);
 
-			echo $endpoint = add_query_arg( $params, $endpoint );
+
+			$endpoint = add_query_arg( $params, $endpoint );
 			@file_get_contents( $endpoint );
 			update_option( "{$this->plugin_slug}_survey_agreed", 1 );
 		}
