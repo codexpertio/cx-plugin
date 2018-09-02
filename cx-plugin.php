@@ -11,9 +11,6 @@ Domain Path: /languages
 */
 
 namespace codexpert\CX_Plugin;
-use \codexpert\Remote\CX_Plugin\Survey as Survey;
-use \codexpert\Remote\CX_Plugin\License as License;
-use \codexpert\Remote\CX_Plugin\Update as Update;
 
 /**
  * if accessed directly, exit.
@@ -86,20 +83,16 @@ class Plugin {
 		// ajax hooks
 		$ajax = ( isset( $ajax ) && ! is_null( $ajax ) ) ? $ajax : new AJAX( $this->slug, $this->version );
 
-		// survey hooks
-		$survey = ( isset( $survey ) && ! is_null( $survey ) ) ? $survey : new Survey( $this->slug, $this->name, CXP, $this->server );
-
-		// license hooks
-		$license = ( isset( $license ) && ! is_null( $license ) ) ? $license : new License( CXP, $this->server );
-		add_action( 'wsa_form_bottom_cx-plugin_license', array( $license, 'license_tab' ), 10, 2 );
-
 		// settings hooks
 		$settings = ( isset( $settings ) && ! is_null( $settings ) ) ? $settings : new Settings( $this->slug, $this->version );
 		add_action( 'admin_menu', array( $settings, 'admin_menu' ) );
 		add_action( 'admin_init', array( $settings, 'admin_init' ) );
 
-		// license hooks
-		$update = ( isset( $update ) && ! is_null( $update ) ) ? $update : new Update( $this->slug );
+		
+		// Product related classes
+		$survey = ( isset( $survey ) && ! is_null( $survey ) ) ? $survey : new Remote\Survey( $this->slug, $this->name, CXP, $this->server );
+		$license = ( isset( $license ) && ! is_null( $license ) ) ? $license : new Remote\License( CXP, $this->server );
+		$update = ( isset( $update ) && ! is_null( $update ) ) ? $update : new Remote\Update( $this->slug );
 
 	}
 

@@ -4,7 +4,7 @@
  * All License facing functions
  */
 
-namespace codexpert\Remote\CX_Plugin;
+namespace codexpert\CX_Plugin\Remote;
 
 /**
  * if accessed directly, exit.
@@ -47,6 +47,7 @@ class License {
 		add_action( 'admin_head', array( $this, 'head' ) );
 		add_action( "wp_ajax_license-activator-{$this->basename}", array( $this, 'verify' ) );
 		add_action( 'admin_notices', array( $this, 'admin_notice' ) );
+		add_action( 'wsa_form_bottom_cx-plugin_license', array( $this, 'license_tab' ), 10, 2 );
 	}
 
 	public function activation() {

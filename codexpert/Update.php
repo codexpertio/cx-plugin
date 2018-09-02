@@ -4,7 +4,7 @@
  * All Update facing functions
  */
 
-namespace codexpert\Remote\CX_Plugin;
+namespace codexpert\CX_Plugin\Remote;
 
 /**
  * if accessed directly, exit.
