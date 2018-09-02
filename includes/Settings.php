@@ -16,9 +16,11 @@ class Settings {
 
     private $settings_api;
 
-    function __construct( $name, $version ) {
+    function __construct( $name, $version, $license ) {
         $this->name = $name;
         $this->version = $version;
+        $this->license = $license;
+        $this->file = $file;
         $this->settings_api = new WeDevs_Settings_API;
     }
 
@@ -39,9 +41,13 @@ class Settings {
     function get_settings_sections() {
         $sections = array(
             array(
-                'id'    => 'wpp_basics',
+                'id'    => 'cx-plugin_basics',
                 'title' => __( 'Basic Settings', 'cx-plugin' )
-            )
+            ),
+            array(
+                'id'    => 'cx-plugin_license',
+                'title' => __( 'License', 'cx-plugin' )
+            ),
         );
         return $sections;
     }
@@ -53,7 +59,7 @@ class Settings {
      */
     function get_settings_fields() {
         $settings_fields = array(
-            'wpp_basics' => array(
+            'cx-plugin_basics' => array(
                 array(
                     'name'              => 'sample_text',
                     'label'             => __( 'Sample Text', 'cx-plugin' ),
@@ -64,6 +70,10 @@ class Settings {
         );
 
         return $settings_fields;
+    }
+
+    public function license_tab( $form ) {
+        echo $this->license->activator_form( $this->license->basename );
     }
 
     public function settings_page() {

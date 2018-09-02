@@ -22,7 +22,7 @@
     ],
     "require": {
             "mukto90/mdc-meta-box": "dev-master",
-            "mukto90/cx-settings-api": "dev-master"
+            "tareq1988/wordpress-settings-api-class": "dev-master"
     },
     "autoload": {
     	"psr-4": {

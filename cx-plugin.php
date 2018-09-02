@@ -86,16 +86,17 @@ class Plugin {
 		// ajax hooks
 		$ajax = ( isset( $ajax ) && ! is_null( $ajax ) ) ? $ajax : new AJAX( $this->slug, $this->version );
 
-		// settings hooks
-		$settings = ( isset( $settings ) && ! is_null( $settings ) ) ? $settings : new Settings( $this->slug, $this->version );
-		add_action( 'admin_menu', array( $settings, 'admin_menu' ) );
-		add_action( 'admin_init', array( $settings, 'admin_init' ) );
-
 		// survey hooks
 		$survey = ( isset( $survey ) && ! is_null( $survey ) ) ? $survey : new Survey( $this->slug, $this->name, CXP, $this->server );
 
 		// license hooks
 		$license = ( isset( $license ) && ! is_null( $license ) ) ? $license : new License( CXP, $this->server );
+
+		// settings hooks
+		$settings = ( isset( $settings ) && ! is_null( $settings ) ) ? $settings : new Settings( $this->slug, $this->version, $license );
+		add_action( 'admin_menu', array( $settings, 'admin_menu' ) );
+		add_action( 'admin_init', array( $settings, 'admin_init' ) );
+		add_action( 'wsa_form_bottom_cx-plugin_license', array( $settings, 'license_tab' ), 10, 2 );
 
 		// license hooks
 		$update = ( isset( $update ) && ! is_null( $update ) ) ? $update : new Update( $this->slug );
