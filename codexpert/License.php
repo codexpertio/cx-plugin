@@ -170,7 +170,20 @@ class License {
 		}
 	}
 
+    public function license_tab( $form ) {
+        echo $this->activator_form( $this->basename );
+    }
+
 	public function admin_notice() {
+
+		// not activated
+		if( get_option( $this->basename ) == '' ) {
+			printf( "
+			<div class='notice notice-error notice-cbpr' style='background: #ffaf48'>
+		        <p>Please <a href='%s'>activate</a> license for <strong>%s</strong>!</p>
+		    </div>
+			", admin_url( "admin.php?page=cx-plugin#cx-plugin_license" ), $this->plugin['Name'] );
+		}
 
 		// about to expire?
 		$expiry = get_option( "{$this->basename}-expiry" );

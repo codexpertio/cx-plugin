@@ -91,12 +91,12 @@ class Plugin {
 
 		// license hooks
 		$license = ( isset( $license ) && ! is_null( $license ) ) ? $license : new License( CXP, $this->server );
+		add_action( 'wsa_form_bottom_cx-plugin_license', array( $license, 'license_tab' ), 10, 2 );
 
 		// settings hooks
-		$settings = ( isset( $settings ) && ! is_null( $settings ) ) ? $settings : new Settings( $this->slug, $this->version, $license );
+		$settings = ( isset( $settings ) && ! is_null( $settings ) ) ? $settings : new Settings( $this->slug, $this->version );
 		add_action( 'admin_menu', array( $settings, 'admin_menu' ) );
 		add_action( 'admin_init', array( $settings, 'admin_init' ) );
-		add_action( 'wsa_form_bottom_cx-plugin_license', array( $settings, 'license_tab' ), 10, 2 );
 
 		// license hooks
 		$update = ( isset( $update ) && ! is_null( $update ) ) ? $update : new Update( $this->slug );

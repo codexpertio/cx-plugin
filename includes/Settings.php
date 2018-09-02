@@ -16,7 +16,7 @@ class Settings {
 
     private $settings_api;
 
-    function __construct( $name, $version, $license ) {
+    function __construct( $name, $version ) {
         $this->name = $name;
         $this->version = $version;
         $this->license = $license;
@@ -70,10 +70,6 @@ class Settings {
         );
 
         return $settings_fields;
-    }
-
-    public function license_tab( $form ) {
-        echo $this->license->activator_form( $this->license->basename );
     }
 
     public function settings_page() {
