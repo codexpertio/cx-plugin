@@ -4,7 +4,7 @@
  * All License facing functions
  */
 
-namespace codexpert\CX_Plugin;
+namespace codexpert\Remote\CX_Plugin;
 
 /**
  * if accessed directly, exit.
@@ -18,7 +18,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage License
  * @author Nazmul Ahsan <n.mukto@gmail.com>
  */
-if( !class_exists( 'codexpert\License' ) ) :
 class License {
 	
 	public $plugin;
@@ -212,4 +211,3 @@ class License {
 	}
 
 }
-endif;

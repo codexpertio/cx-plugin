@@ -4,7 +4,7 @@
  * All Update facing functions
  */
 
-namespace codexpert\CX_Plugin;
+namespace codexpert\Remote\CX_Plugin;
 
 /**
  * if accessed directly, exit.
@@ -18,7 +18,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage Update
  * @author Nazmul Ahsan <n.mukto@gmail.com>
  */
-if( !class_exists( 'codexpert\Update' ) ) :
 class Update {
 	
 	public $plugin;
@@ -157,4 +156,3 @@ class Update {
 		}
 	}
 }
-endif;
