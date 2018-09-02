@@ -35,7 +35,7 @@ class Settings {
     }
 
     function admin_menu() {
-        add_menu_page( __( 'CX_Plugin', 'cx-plugin' ), __( 'CX_Plugin', 'cx-plugin' ), 'manage_options', $this->name, array( $this, 'settings_page' ), 'dashicons-share', 43.5 );
+        add_menu_page( __( 'CX_Plugin', 'cx-plugin' ), __( 'CX_Plugin', 'cx-plugin' ), 'manage_options', $this->name, array( $this, 'settings_page' ), 'dashicons-share', 43 );
     }
 
     function get_settings_sections() {
