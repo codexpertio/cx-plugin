@@ -22,8 +22,15 @@ class Update {
 	
 	public $plugin;
 
-	public function __construct( $plugin_slug, $server = 'http://codexpert.wp' ) {
-		$this->plugin_slug = $plugin_slug;
+	public function __construct( $file, $server = 'http://codexpert.wp' ) {
+
+		if( !function_exists('get_plugin_data') ){
+		    require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		}
+		$this->plugin 	= get_plugin_data( $file );
+		$this->plugin_slug = $this->plugin['TextDomain'];
+		$this->plugin_version = $this->plugin['Version'];
+
 		$this->server = $server;
 		$this->json_url = "{$server}/wp-content/premiums/{$this->plugin_slug}.json";
 
@@ -43,7 +50,7 @@ class Update {
 	 * $args stdClass Object ( [slug] => woocommerce [is_ssl] => [fields] => Array ( [banners] => 1 [reviews] => 1 [downloaded] => [active_installs] => 1 ) [per_page] => 24 [locale] => en_US )
 	 */	
 	public function plugin_info( $res, $action, $args ){
-	 
+	
 		// do nothing if this is not about getting plugin information
 		if( $action !== 'plugin_information' )
 			return false;
@@ -53,7 +60,7 @@ class Update {
 			return false;
 	 
 		// trying to get from cache first
-		if( false == $remote = get_transient( "cx_upgrade_{$this->plugin_slug}" ) ) {
+		if( false == $remote = get_transient( "cx-plugin_upgrade_{$this->plugin_slug}" ) ) {
 	 
 			// info.json is the file with the actual plugin information on your server
 			$remote = wp_remote_get( $this->json_url, array(
@@ -64,7 +71,7 @@ class Update {
 			);
 	 
 			if ( !is_wp_error( $remote ) && isset( $remote['response']['code'] ) && $remote['response']['code'] == 200 && !empty( $remote['body'] ) ) {
-				set_transient( "cx_upgrade_{$this->plugin_slug}", $remote, 10 ); // 12 hours cache
+				set_transient( "cx-plugin_upgrade_{$this->plugin_slug}", $remote, 10 ); // 12 hours cache
 			}
 	 
 		}
@@ -112,7 +119,7 @@ class Update {
 	        }
 	 
 		// trying to get from cache first
-		if( false == $remote = get_transient( "cx_upgrade_{$this->plugin_slug}" ) ) {
+		if( false == $remote = get_transient( "cx-plugin_upgrade_{$this->plugin_slug}" ) ) {
 	 
 			// info.json is the file with the actual plugin information on your server
 			$remote = wp_remote_get( $this->json_url, array(
@@ -123,7 +130,7 @@ class Update {
 			);
 	 
 			if ( !is_wp_error( $remote ) && isset( $remote['response']['code'] ) && $remote['response']['code'] == 200 && !empty( $remote['body'] ) ) {
-				set_transient( "cx_upgrade_{$this->plugin_slug}", $remote, 10 ); // 12 hours cache
+				set_transient( "cx-plugin_upgrade_{$this->plugin_slug}", $remote, 10 ); // 12 hours cache
 			}
 	 
 		}
@@ -131,7 +138,7 @@ class Update {
 		if( $remote ) {
 	 
 			$remote = json_decode( $remote['body'] );
-			if( $remote && version_compare( '1.0', $remote->version, '<' )
+			if( $remote && version_compare( $this->plugin_version, $remote->version, '<' )
 				&& version_compare($remote->requires, get_bloginfo('version'), '<' ) ) {
 					$res = new \stdClass();
 					$res->id = $this->plugin_slug;
@@ -153,7 +160,7 @@ class Update {
 
 	public function after_update( $upgrader_object, $options ) {
 		if ( $options['action'] == 'update' && $options['type'] === 'plugin' )  {
-			delete_transient( "cx_upgrade_{$this->plugin_slug}" );
+			delete_transient( "cx-plugin_upgrade_{$this->plugin_slug}" );
 		}
 	}
 }

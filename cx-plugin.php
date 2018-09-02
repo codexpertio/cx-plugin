@@ -92,7 +92,7 @@ class Plugin {
 		// Product related classes
 		$survey = ( isset( $survey ) && ! is_null( $survey ) ) ? $survey : new Remote\Survey( $this->slug, $this->name, CXP, $this->server );
 		$license = ( isset( $license ) && ! is_null( $license ) ) ? $license : new Remote\License( CXP, $this->server );
-		$update = ( isset( $update ) && ! is_null( $update ) ) ? $update : new Remote\Update( $this->slug );
+		$update = ( isset( $update ) && ! is_null( $update ) ) ? $update : new Remote\Update( CXP, $this->server );
 
 	}
 
