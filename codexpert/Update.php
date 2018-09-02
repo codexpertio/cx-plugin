@@ -134,8 +134,9 @@ class Update {
 			if( $remote && version_compare( '1.0', $remote->version, '<' )
 				&& version_compare($remote->requires, get_bloginfo('version'), '<' ) ) {
 					$res = new \stdClass();
+					$res->id = $this->plugin_slug;
 					$res->slug = $this->plugin_slug;
-					$res->plugin = "{$this->plugin_slug}.php";
+					$res->plugin = "{$this->plugin_slug}/{$this->plugin_slug}.php";
 					$res->new_version = $remote->version;
 					$res->tested = $remote->tested;
 					$res->package = $remote->download_url;
