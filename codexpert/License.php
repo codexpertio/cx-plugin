@@ -4,7 +4,7 @@
  * All License facing functions
  */
 
-namespace codexpert;
+namespace codexpert\CX_Plugin;
 
 /**
  * if accessed directly, exit.

@@ -11,9 +11,6 @@ Domain Path: /languages
 */
 
 namespace codexpert\CX_Plugin;
-use \codexpert\Survey as Survey;
-use \codexpert\License as License;
-use \codexpert\Update as Update;
 
 /**
  * if accessed directly, exit.
