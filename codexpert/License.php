@@ -22,11 +22,12 @@ class License {
 	
 	public $plugin;
 
-	public function __construct( $file, $server = 'http://codexpert.wp', $secret_key = '580cc082161006.41870101' ) {
+	public function __construct( $file, $server = 'http://codexpert.wp', $secret_key = '580cc082161006.41870101', $activator_path = 'cx-plugin#cx-plugin_license' ) {
 
 		$this->file 			= $file;
 		$this->license_server 	= $server;
 		$this->secret_key 		= $secret_key;
+		$this->activator_path 	= $activator_path;
 
 		$this->basedir 	= plugin_basename( $this->file );
 		$this->basename = str_replace( array( '/', '.' ), array( '-', '-' ), $this->basedir );
@@ -92,12 +93,13 @@ class License {
 		$key = $this->basename;
 		$links[] = '<a href="#" id="plugin_' . $key . '" class="cb-updater" data-plugin="' . $key . '">Update</a><span class="show-update-msg"></span>';
 		
-		$links[] = $this->activator_form( $key );
+		$links[] = $this->activator_form();
 
 		return $links;
 	}
 
-	public function activator_form( $key ) {
+	public function activator_form() {
+		$key = $this->basename;
 		$value = get_option( $key );
 		$html = "
 		<div id='div_{$key}' class='cx-activation-div'>
@@ -171,7 +173,7 @@ class License {
 	}
 
     public function license_tab( $form ) {
-        echo $this->activator_form( $this->basename );
+        echo $this->activator_form();
     }
 
 	public function admin_notice() {
@@ -182,7 +184,7 @@ class License {
 			<div class='notice notice-error notice-cbpr' style='background: #ffaf48'>
 		        <p>Please <a href='%s'>activate</a> license for <strong>%s</strong>!</p>
 		    </div>
-			", admin_url( "admin.php?page=cx-plugin#cx-plugin_license" ), $this->plugin['Name'] );
+			", admin_url( "admin.php?page={$this->activator_path}" ), $this->plugin['Name'] );
 		}
 
 		// about to expire?
