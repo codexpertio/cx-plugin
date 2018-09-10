@@ -80,10 +80,14 @@ class License {
 				    $.ajax({
 				        url: ajaxurl,
 				        type: 'POST',
+				        dataType: 'JSON',
 				        data: { 'action' : 'license-activator-<?php echo $this->basename; ?>', 'operation' : operation, 'plugin' : plugin, 'key' : key, 'product_ref' : '<?php echo $this->plugin['Name'];?>' },
 				        success:function(ret){
 				            dis.val(btn)
-				            $(".<?php echo $this->slug; ?>-message", par).html(ret)
+				            if(ret.status == 1) {
+				            	$('#license-notice-<?php echo $this->slug; ?>').hide()
+				            }
+				            $(".<?php echo $this->slug; ?>-message", par).html(ret.message)
 				        }
 				    })
 				})
@@ -131,22 +135,27 @@ class License {
             $query = esc_url_raw( add_query_arg( $api_params, $this->license_server ) );
             $response = wp_remote_get( $query, array( 'timeout' => 20, 'sslverify' => false ) );
 
+            $data = array();
+
             if ( is_wp_error( $response ) ){
-                echo "Unexpected Error! Please try again offr contact us.";
+            	$data['status'] = 0;
+                $data['message'] = "Unexpected Error! Please try again offr contact us.";
             }
 
             $license_data = json_decode( wp_remote_retrieve_body( $response ) );
             if( $license_data->result == 'success' ) {
-                echo '<strong style="color:#07811a">' . $license_data->message . '</strong>';
+            	$data['status'] = 1;
+                $data['message'] = '<strong style="color:#07811a">' . $license_data->message . '</strong>';
                 update_option( $this->basename, ( $_REQUEST['operation'] == 'deactivate_license' ) ? '' : $license_key );
 				update_option( "{$this->basename}-status", 'active' );
 				update_option( "{$this->basename}-expiry", strtotime( $license_data->expiry ) );
             }
             else{
-                echo '<strong style="color:#C8080E">' . $license_data->message . '</strong>';
+            	$data['status'] = 0;
+                $data['message'] = '<strong style="color:#C8080E">' . $license_data->message . '</strong>';
             }
 
-            wp_die();
+            wp_send_json( $data );
         }
 	}
 
@@ -184,7 +193,7 @@ class License {
 		// not activated
 		if( get_option( $this->basename ) == '' ) {
 			printf( "
-			<div class='notice notice-error notice-cbpr' style='background: #ffaf48'>
+			<div class='notice notice-error' id='license-notice-{$this->slug}' style='background: #ffaf48'>
 		        <p>Please <a href='%s'>activate</a> license for <strong>%s</strong>!</p>
 		    </div>
 			", admin_url( "{$this->activator_path}" ), $this->plugin['Name'] );
