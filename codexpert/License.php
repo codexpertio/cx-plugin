@@ -83,7 +83,7 @@ class License {
 				        data: { 'action' : 'license-activator-<?php echo $this->basename; ?>', 'operation' : operation, 'plugin' : plugin, 'key' : key, 'product_ref' : '<?php echo $this->plugin['Name'];?>' },
 				        success:function(ret){
 				            dis.val(btn)
-				            $(".{$this->slug}-message", par).html(ret)
+				            $(".<?php echo $this->slug; ?>-message", par).html(ret)
 				        }
 				    })
 				})
