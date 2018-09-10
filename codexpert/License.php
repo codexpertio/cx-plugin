@@ -22,7 +22,7 @@ class License {
 	
 	public $plugin;
 
-	public function __construct( $file, $server = 'http://codexpert.wp', $secret_key = '580cc082161006.41870101', $activator_path = '' ) {
+	public function __construct( $file, $server = 'http://codexpert.wp', $activator_path = '', $secret_key = '580cc082161006.41870101' ) {
 
 		$this->file 			= $file;
 		$this->license_server 	= $server;
@@ -35,7 +35,7 @@ class License {
 		$this->plugin 	= get_plugin_data( $this->file );
 		$this->slug 	= $this->plugin['TextDomain'];
 
-		$this->activator_path = $activator_path == '' ? "{$this->slug}#{$this->slug}_license" : $activator_path;
+		$this->activator_path = $activator_path == '' ? "admin.php?page={$this->slug}#{$this->slug}_license" : $activator_path;
 
 		$this->basedir 	= plugin_basename( $this->file );
 		$this->basename = str_replace( array( '/', '.' ), array( '-', '-' ), $this->basedir );
@@ -187,7 +187,7 @@ class License {
 			<div class='notice notice-error notice-cbpr' style='background: #ffaf48'>
 		        <p>Please <a href='%s'>activate</a> license for <strong>%s</strong>!</p>
 		    </div>
-			", admin_url( "admin.php?page={$this->activator_path}" ), $this->plugin['Name'] );
+			", admin_url( "{$this->activator_path}" ), $this->plugin['Name'] );
 		}
 
 		// about to expire?
