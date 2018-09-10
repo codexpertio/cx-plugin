@@ -4,7 +4,7 @@
  * All Update facing functions
  */
 
-namespace codexpert\CX_Plugin\Remote;
+namespace codexpert\Remote;
 
 /**
  * if accessed directly, exit.
@@ -39,7 +39,7 @@ class Update {
 
 	public function hooks() {
 		add_filter( 'plugins_api', array( $this, 'plugin_info' ), 20, 3 );
-		add_filter( 'site_transient_update_plugins', array( $this, 'push_update' ) );
+		add_filter( 'site_update_plugins', array( $this, 'push_update' ) );
 		add_action( 'upgrader_process_complete', array( $this, 'after_update' ), 10, 2 );
 	}
 
@@ -60,7 +60,7 @@ class Update {
 			return false;
 	 
 		// trying to get from cache first
-		if( false == $remote = get_transient( "cx-plugin_upgrade_{$this->plugin_slug}" ) ) {
+		if( false == $remote = get_transient( "_upgrade_{$this->plugin_slug}" ) ) {
 	 
 			// info.json is the file with the actual plugin information on your server
 			$remote = wp_remote_get( $this->json_url, array(
@@ -71,7 +71,7 @@ class Update {
 			);
 	 
 			if ( !is_wp_error( $remote ) && isset( $remote['response']['code'] ) && $remote['response']['code'] == 200 && !empty( $remote['body'] ) ) {
-				set_transient( "cx-plugin_upgrade_{$this->plugin_slug}", $remote, 10 ); // 12 hours cache
+				set_transient( "_upgrade_{$this->plugin_slug}", $remote, 10 ); // 12 hours cache
 			}
 	 
 		}
@@ -119,7 +119,7 @@ class Update {
 	        }
 	 
 		// trying to get from cache first
-		if( false == $remote = get_transient( "cx-plugin_upgrade_{$this->plugin_slug}" ) ) {
+		if( false == $remote = get_transient( "_upgrade_{$this->plugin_slug}" ) ) {
 	 
 			// info.json is the file with the actual plugin information on your server
 			$remote = wp_remote_get( $this->json_url, array(
@@ -130,7 +130,7 @@ class Update {
 			);
 	 
 			if ( !is_wp_error( $remote ) && isset( $remote['response']['code'] ) && $remote['response']['code'] == 200 && !empty( $remote['body'] ) ) {
-				set_transient( "cx-plugin_upgrade_{$this->plugin_slug}", $remote, 10 ); // 12 hours cache
+				set_transient( "_upgrade_{$this->plugin_slug}", $remote, 10 ); // 12 hours cache
 			}
 	 
 		}
@@ -160,7 +160,7 @@ class Update {
 
 	public function after_update( $upgrader_object, $options ) {
 		if ( $options['action'] == 'update' && $options['type'] === 'plugin' )  {
-			delete_transient( "cx-plugin_upgrade_{$this->plugin_slug}" );
+			delete_transient( "_upgrade_{$this->plugin_slug}" );
 		}
 	}
 }

@@ -27,7 +27,7 @@
     "autoload": {
     	"psr-4": {
     		"codexpert\\CX_Plugin\\" : "includes/",
-            "codexpert\\CX_Plugin\\Remote\\" : "codexpert/"
+            "codexpert\\Remote\\" : "codexpert/"
     	}
     }
 }

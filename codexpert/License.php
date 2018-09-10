@@ -4,7 +4,7 @@
  * All License facing functions
  */
 
-namespace codexpert\CX_Plugin\Remote;
+namespace codexpert\Remote;
 
 /**
  * if accessed directly, exit.
@@ -22,20 +22,23 @@ class License {
 	
 	public $plugin;
 
-	public function __construct( $file, $server = 'http://codexpert.wp', $secret_key = '580cc082161006.41870101', $activator_path = 'cx-plugin#cx-plugin_license' ) {
+	public function __construct( $file, $server = 'http://codexpert.wp', $secret_key = '580cc082161006.41870101', $activator_path = '' ) {
 
 		$this->file 			= $file;
 		$this->license_server 	= $server;
 		$this->secret_key 		= $secret_key;
-		$this->activator_path 	= $activator_path;
 
-		$this->basedir 	= plugin_basename( $this->file );
-		$this->basename = str_replace( array( '/', '.' ), array( '-', '-' ), $this->basedir );
 
 		if( !function_exists('get_plugin_data') ){
 		    require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 		}
 		$this->plugin 	= get_plugin_data( $this->file );
+		$this->slug 	= $this->plugin['TextDomain'];
+
+		$this->activator_path = $activator_path == '' ? "{$this->slug}#{$this->slug}_license" : $activator_path;
+
+		$this->basedir 	= plugin_basename( $this->file );
+		$this->basename = str_replace( array( '/', '.' ), array( '-', '-' ), $this->basedir );
 
 		$this->hooks();
 	}
@@ -48,7 +51,7 @@ class License {
 		add_action( 'admin_head', array( $this, 'head' ) );
 		add_action( "wp_ajax_license-activator-{$this->basename}", array( $this, 'verify' ) );
 		add_action( 'admin_notices', array( $this, 'admin_notice' ) );
-		add_action( 'wsa_form_bottom_cx-plugin_license', array( $this, 'license_tab' ) );
+		add_action( "wsa_form_bottom_{$this->slug}_license", array( $this, 'license_tab' ) );
 	}
 
 	public function activation() {
@@ -80,7 +83,7 @@ class License {
 				        data: { 'action' : 'license-activator-<?php echo $this->basename; ?>', 'operation' : operation, 'plugin' : plugin, 'key' : key, 'product_ref' : '<?php echo $this->plugin['Name'];?>' },
 				        success:function(ret){
 				            dis.val(btn)
-				            $('.cx-message', par).html(ret)
+				            $(".{$this->slug}-message", par).html(ret)
 				        }
 				    })
 				})
@@ -102,12 +105,12 @@ class License {
 		$key = $this->basename;
 		$value = get_option( $key );
 		$html = "
-		<div id='div_{$key}' class='cx-activation-div'>
+		<div id='div_{$key}' class='{$this->slug}-activation-div'>
 		    <input type='password' id='{$key}' name='{$key}' value='{$value}' class='key-field' placeholder='Input your license key' >
 	        <input type='hidden' name='plugin_key' value='{$key}' />
 	        <input type='button' name='activate_license' value='Activate' class='{$key}-btn button-primary' />
 	        <input type='button' name='deactivate_license' value='Deactivate' class='{$key}-btn button' />
-	        <span class='cx-message'></span>
+	        <span class='{$this->slug}-message'></span>
 		</div>
 		";
 

@@ -11,6 +11,9 @@ Domain Path: /languages
 */
 
 namespace codexpert\CX_Plugin;
+use codexpert\Remote\License;
+use codexpert\Remote\Survey;
+use codexpert\Remote\Update;
 
 /**
  * if accessed directly, exit.
@@ -90,9 +93,9 @@ class Plugin {
 
 		
 		// Product related classes
-		$survey = ( isset( $survey ) && ! is_null( $survey ) ) ? $survey : new Remote\Survey( $this->slug, $this->name, CXP, $this->server );
-		$license = ( isset( $license ) && ! is_null( $license ) ) ? $license : new Remote\License( CXP, $this->server );
-		$update = ( isset( $update ) && ! is_null( $update ) ) ? $update : new Remote\Update( CXP, $this->server );
+		$survey = ( isset( $survey ) && ! is_null( $survey ) ) ? $survey : new Survey( CXP, $this->server );
+		$license = ( isset( $license ) && ! is_null( $license ) ) ? $license : new License( CXP, $this->server );
+		$update = ( isset( $update ) && ! is_null( $update ) ) ? $update : new Update( CXP, $this->server );
 
 	}
 

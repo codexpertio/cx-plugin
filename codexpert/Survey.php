@@ -4,7 +4,7 @@
  * All survey facing functions
  */
 
-namespace codexpert\CX_Plugin\Remote;
+namespace codexpert\Remote;
 
 /**
  * if accessed directly, exit.
@@ -28,9 +28,15 @@ class Survey {
 	public $notice_message;
 	public $notice_button_text;
 
-	public function __construct( $plugin_slug, $plugin_name, $base_file, $server = 'http://codexpert.wp' ) {
-		$this->plugin_slug = $plugin_slug;
-		$this->plugin_name = $plugin_name;
+	public function __construct( $base_file, $server = 'http://codexpert.wp' ) {
+
+		if( !function_exists('get_plugin_data') ){
+		    require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		}
+		$this->plugin 	= get_plugin_data( $base_file );
+		$this->plugin_slug = $this->plugin['TextDomain'];
+
+		$this->plugin_name = $this->plugin['Name'];
 		$this->base_file = $base_file;
 		$this->api_baseurl = "{$server}/wp-json/codexpert-lead/v1.0/";
 		
