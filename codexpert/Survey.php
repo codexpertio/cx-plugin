@@ -40,8 +40,8 @@ class Survey {
 		$this->base_file = $base_file;
 		$this->api_baseurl = "{$server}/wp-json/codexpert-lead/v1.0/";
 		
-		$this->notice_heading = '<p><strong> ' . __( 'Help us improve your experience' ) . '</strong></p>';
-		$this->notice_message = '<span> ' . sprintf( __( 'We want to know what type of sites use our plugin. So that we can improve <strong>%s</strong> accordingly. Help us with your site URL and a few basic information. It doesn\'t include your password or any kind of sercret data. Would you like to help us?' ), $this->plugin_name ) . '</span>';
+		$this->notice_heading = '<h3>' . sprintf( __( 'Help us improve your experience of using \'%s\'' ), $this->plugin_name ) . '</h3>';
+		$this->notice_message = '<span> ' . sprintf( __( 'We want to know what type of sites use our plugin. So that we can improve <strong>%s</strong> accordingly. Help us with your site URL and a few basic information. It doesn\'t include your password or any sercret data. Would you like to help us?' ), $this->plugin_name ) . '</span>';
 		$this->notice_button_text = __( 'Okay. Don\'t bother me again!' );
 
 		self::hooks();

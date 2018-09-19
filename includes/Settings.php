@@ -16,15 +16,15 @@ class Settings {
 
     private $settings_api;
 
-    function __construct( $name, $version ) {
+    public function __construct( $name, $version ) {
         $this->name = $name;
         $this->version = $version;
-        $this->license = $license;
         $this->file = $file;
+        $this->settings_url = admin_url( "admin.php?page={$this->name}" );
         $this->settings_api = new WeDevs_Settings_API;
     }
 
-    function admin_init() {
+    public function admin_init() {
 
         //set the settings
         $this->settings_api->set_sections( $this->get_settings_sections() );
@@ -34,11 +34,11 @@ class Settings {
         $this->settings_api->admin_init();
     }
 
-    function admin_menu() {
+    public function admin_menu() {
         add_menu_page( __( 'CX_Plugin', 'cx-plugin' ), __( 'CX_Plugin', 'cx-plugin' ), 'manage_options', $this->name, array( $this, 'settings_page' ), 'dashicons-share', 43 );
     }
 
-    function get_settings_sections() {
+    public function get_settings_sections() {
         $sections = array(
             array(
                 'id'    => 'cx-plugin_basics',
@@ -57,7 +57,7 @@ class Settings {
      *
      * @return array settings fields
      */
-    function get_settings_fields() {
+    public function get_settings_fields() {
         $settings_fields = array(
             'cx-plugin_basics' => array(
                 array(
@@ -79,6 +79,12 @@ class Settings {
         $this->settings_api->show_forms();
 
         echo '</div>';
+    }
+
+    public function link( $links ) {
+        $links[] = "<a href='{$this->settings_url}'>Settings</a>";
+
+        return $links;
     }
 
 }

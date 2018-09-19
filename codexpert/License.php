@@ -96,7 +96,7 @@ class License {
 		<?php
 	}
 
-	function inline_form( $links ) {
+	public function inline_form( $links ) {
 		$key = $this->basename;
 		$links[] = '<a href="#" id="plugin_' . $key . '" class="cb-updater" data-plugin="' . $key . '">Update</a><span class="show-update-msg"></span>';
 		
@@ -139,7 +139,7 @@ class License {
 
             if ( is_wp_error( $response ) ){
             	$data['status'] = 0;
-                $data['message'] = "Unexpected Error! Please try again offr contact us.";
+                $data['message'] = "Unexpected Error! Please try again or contact us.";
             }
 
             $license_data = json_decode( wp_remote_retrieve_body( $response ) );
@@ -193,8 +193,8 @@ class License {
 		// not activated
 		if( get_option( $this->basename ) == '' ) {
 			printf( "
-			<div class='notice notice-error' id='license-notice-{$this->slug}' style='background: #ffaf48'>
-		        <p>Please <a href='%s'>activate</a> license for <strong>%s</strong>!</p>
+			<div class='notice notice-error' id='license-notice-{$this->slug}' style='background: #ffda71'>
+		        <p>Please <a href='%s'>activate</a> your license for <strong>%s</strong>! Sorry, but the plugin won't work without activation!</p>
 		    </div>
 			", admin_url( "{$this->activator_path}" ), $this->plugin['Name'] );
 		}

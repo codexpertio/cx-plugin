@@ -90,6 +90,7 @@ class Plugin {
 		$settings = ( isset( $settings ) && ! is_null( $settings ) ) ? $settings : new Settings( $this->slug, $this->version );
 		add_action( 'admin_menu', array( $settings, 'admin_menu' ) );
 		add_action( 'admin_init', array( $settings, 'admin_init' ) );
+		add_filter( 'plugin_action_links_' . plugin_basename( CXP ), array( $settings, 'link' ) );
 
 		
 		// Product related classes
@@ -103,7 +104,7 @@ class Plugin {
 	 * Internationalization
 	 */
 	public function i18n() {
-		load_plugin_textdomain( 'wpp-admin', false, dirname( plugin_basename( CXP ) ) . '/languages/' );
+		load_plugin_textdomain( 'cx-plugin', false, dirname( plugin_basename( CXP ) ) . '/languages/' );
 	}
 
 	/**
