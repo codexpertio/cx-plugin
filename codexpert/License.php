@@ -190,10 +190,12 @@ class License {
 
 	public function admin_notice() {
 
+		if( !current_user_can( 'manage_options' ) ) return;
+
 		// not activated
 		if( get_option( $this->basename ) == '' ) {
 			printf( "
-			<div class='notice notice-error' id='license-notice-{$this->slug}' style='background: #ffda71'>
+			<div class='notice notice-error' id='license-notice-{$this->slug}' style=''>
 		        <p>Please <a href='%s'>activate</a> your license for <strong>%s</strong>! Sorry, but the plugin won't work without activation!</p>
 		    </div>
 			", admin_url( "{$this->activator_path}" ), $this->plugin['Name'] );
@@ -204,7 +206,7 @@ class License {
 		$day_left = round( ( $expiry - time() ) / DAY_IN_SECONDS );
 		if( $expiry != '' && $day_left <= 30 ) :
 			printf( "
-			<div class='notice notice-error notice-cbpr' style='background: #ffaf48'>
+			<div class='notice notice-error notice-cbpr' style=''>
 		        <p>The license for <strong>%s</strong> is about to expire in %d days! Please <a href='%s' target='_blank'>renew</a> to get uninterrupted service or <a href='%s' target='_blank'>cancel</a> if you don't want to renew it anymore!</p>
 		    </div>
 			", $this->plugin['Name'], $day_left, $this->license_server, $this->license_server );
@@ -214,7 +216,7 @@ class License {
 		$status = get_option( "{$this->basename}-status" );
 		if( in_array( $status, array( 'expired', 'blocked' ) ) ) :
 			printf( "
-			<div class='notice notice-error notice-cbpr' style='background: #ffaf48'>
+			<div class='notice notice-error notice-cbpr' style=''>
 		        <p><strong>%s</strong> was {$status}!</p>
 		    </div>
 			", $this->plugin['Name'] );

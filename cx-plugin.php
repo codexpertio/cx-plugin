@@ -63,7 +63,7 @@ class Plugin {
 	 */
 	public function includes(){
 		require_once dirname( CXP ) . '/vendor/autoload.php';
-		require_once dirname( CXP ) . '/includes/wpp-functions.php';
+		require_once dirname( CXP ) . '/includes/functions.php';
 	}
 
 	/**
@@ -88,9 +88,7 @@ class Plugin {
 
 		// settings hooks
 		$settings = ( isset( $settings ) && ! is_null( $settings ) ) ? $settings : new Settings( $this->slug, $this->version );
-		add_action( 'admin_menu', array( $settings, 'admin_menu' ) );
-		add_action( 'admin_init', array( $settings, 'admin_init' ) );
-		add_filter( 'plugin_action_links_' . plugin_basename( CXP ), array( $settings, 'link' ) );
+		add_action( 'init', array( $settings, 'init' ) );
 
 		
 		// Product related classes

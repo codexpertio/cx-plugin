@@ -6,23 +6,8 @@
             "email": "n.mukto@gmail.com"
         }
     ],
-    "repositories": [
-        {
-            "type":"package",
-            "package": {
-              "name": "mukto90/cx-settings-api",
-              "version":"master",
-              "source": {
-                  "url": "https://github.com/mukto90/cx-settings-api.git",
-                  "type": "git",
-                  "reference":"master"
-                }
-            }
-        }
-    ],
     "require": {
-            "mukto90/mdc-meta-box": "dev-master",
-            "tareq1988/wordpress-settings-api-class": "dev-master"
+            "mukto90/cx-settings-api": "dev-master"
     },
     "autoload": {
     	"psr-4": {
