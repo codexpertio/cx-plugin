@@ -160,6 +160,8 @@ class Survey {
         if( get_option( "{$this->plugin_slug}_survey" ) != 1 ) :
         ?>
         <div class="notice notice-success is-dismissible <?php echo $this->plugin_slug; ?>-survey-notice survey-notice">
+
+        	<img style="float: left;height: 136px;" src="https://codexpert.io/resources/minion.png" />
             <div>
                 <?php echo $this->get_heading(); ?>
                 <?php echo $this->get_message(); ?>
