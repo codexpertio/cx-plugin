@@ -29,6 +29,8 @@ class Update {
 		}
 		require_once dirname( $file ) . '/codexpert/update/plugin-update-checker.php';
 
+		$this->plugin = get_plugin_data( $file );
+		
 		$this->plugin_slug = $this->plugin['TextDomain'];
 		$this->server = $server;
 
