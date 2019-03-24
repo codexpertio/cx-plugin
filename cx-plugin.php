@@ -36,10 +36,15 @@ class Plugin {
 	public $name;
 	public $version;
 	public $server;
+	public $required_php = '5.6';
+	public $required_wp = '4.0';
 
 	public function __construct() {
-		self::includes();
 		self::define();
+		
+		if( !$this->_compatible() ) return;
+
+		self::includes();
 		self::hooks();
 	}
 
@@ -56,6 +61,39 @@ class Plugin {
 		$this->name = $this->plugin['Name'];
 		$this->version = $this->plugin['Version'];
 		$this->server = 'http://codexpert.wp';
+	}
+
+	/**
+	 * Version compatibility
+	 */
+	public function _compatible() {
+		$_compatible = true;
+
+		if( version_compare( get_bloginfo( 'version' ), $this->required_wp, '<' ) ) {
+			add_action( 'admin_notices', function() {
+				echo "
+					<div class='notice notice-error'>
+						<p>" . sprintf( __( '<strong>%s</strong> requires <i>WordPress version %s</i> or higher. You have <i>version %s</i> installed.', 'cx-plugin' ), $this->name, $this->required_wp, get_bloginfo( 'version' ) ) . "</p>
+					</div>
+				";
+			} );
+
+			$_compatible = false;
+		}
+
+		if( version_compare( PHP_VERSION, $this->required_php, '<' ) ) {
+			add_action( 'admin_notices', function() {
+				echo "
+					<div class='notice notice-error'>
+						<p>" . sprintf( __( '<strong>%s</strong> requires <i>PHP version %s</i> or higher. You have <i>version %s</i> installed.', 'cx-plugin' ), $this->name, $this->required_php, PHP_VERSION ) . "</p>
+					</div>
+				";
+			} );
+
+			$_compatible = false;
+		}
+
+		return $_compatible;
 	}
 
 	/**
