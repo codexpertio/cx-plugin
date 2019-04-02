@@ -12,8 +12,8 @@ function pri( $data ) {
 }
 endif;
 
-if( ! function_exists( 'wpp_get_posts' ) ) :
-function wpp_get_posts( $post_type = 'post', $limit = -1 ) {
+if( ! function_exists( 'cx_get_posts' ) ) :
+function cx_get_posts( $post_type = 'post', $limit = -1 ) {
     $arg = array(
         'post_type'         => $post_type,
         'posts_per_page'    => $limit
@@ -26,12 +26,12 @@ function wpp_get_posts( $post_type = 'post', $limit = -1 ) {
         $posts[ $post->ID ] = $post->post_title;
     endforeach;
 
-    return apply_filters( 'wpp_get_posts', $posts, $post_type, $limit );
+    return apply_filters( 'cx_get_posts', $posts, $post_type, $limit );
 }
 endif;
 
-if( ! function_exists( 'wpp_get_option' ) ) :
-function wpp_get_option( $key, $section, $default = '' ) {
+if( ! function_exists( 'cx_get_option' ) ) :
+function cx_get_option( $key, $section, $default = '' ) {
 
     $options = get_option( $key );
 
@@ -43,8 +43,8 @@ function wpp_get_option( $key, $section, $default = '' ) {
 }
 endif;
 
-if( ! function_exists( 'wpp_get_template' ) ) :
-function wpp_get_template( $slug ) {
+if( ! function_exists( 'cx_get_template' ) ) :
+function cx_get_template( $slug ) {
     ob_start();
     include_once dirname( CXP ) . "/templates/{$slug}.php";
     $content = ob_get_clean();

@@ -31,9 +31,11 @@ class Front {
      * Enqueue JavaScripts and stylesheets
      */
     public function enqueue_scripts() {
-        wp_enqueue_style( $this->name, plugins_url( '/assets/css/front.css', CXP ), '', $this->version, 'all' );
+        $min = defined( 'CXP_DEBUG' ) && CXP_DEBUG ? '.min' : '';
 
-        wp_enqueue_script( $this->name, plugins_url( '/assets/js/front.js', CXP ), array( 'jquery' ), $this->version, true );
+        wp_enqueue_style( $this->name, plugins_url( "/assets/css/front{$min}.css", CXP ), '', $this->version, 'all' );
+
+        wp_enqueue_script( $this->name, plugins_url( "/assets/js/front{$min}.js", CXP ), array( 'jquery' ), $this->version, true );
     }
 
     /**

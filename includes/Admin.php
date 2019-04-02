@@ -31,9 +31,11 @@ class Admin {
      * Enqueue JavaScripts and stylesheets
      */
     public function enqueue_scripts() {
-        wp_enqueue_style( $this->name, plugins_url( '/assets/css/admin.css', CXP ), '', $this->version, 'all' );
+        $min = defined( 'CXP_DEBUG' ) && CXP_DEBUG ? '.min' : '';
+        
+        wp_enqueue_style( $this->name, plugins_url( "/assets/css/admin{$min}.css", CXP ), '', $this->version, 'all' );
 
-        wp_enqueue_script( $this->name, plugins_url( '/assets/js/admin.js', CXP ), array( 'jquery' ), $this->version, true );
+        wp_enqueue_script( $this->name, plugins_url( "/assets/js/admin{$min}.js", CXP ), array( 'jquery' ), $this->version, true );
     }
 
     /**
