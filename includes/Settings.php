@@ -15,10 +15,10 @@ class Settings {
     public function init() {
         
         $settings = array(
-            'id'            => 'cx-settings',
-            'label'         => __( 'CX Settings' ),
-            'title'         => __( 'CX Settings API' ),
-            'header'        => __( 'CX Settings API by codexpert' ),
+            'id'            => 'cx-plugin',
+            'label'         => __( 'CX_Plugin', 'cx-plugin' ),
+            'title'         => __( 'CX_Plugin', 'cx-plugin' ),
+            'header'        => __( 'CX_Plugin', 'cx-plugin' ),
             'priority'      => 60,
             // 'parent'     => 'woocommerce',
             'capability'    => 'manage_options',

@@ -98,8 +98,8 @@ class License {
 
 	public function inline_form( $links ) {
 		$key = $this->basename;
-		$links[] = '<a href="#" id="plugin_' . $key . '" class="cb-updater" data-plugin="' . $key . '">Update</a><span class="show-update-msg"></span>';
-		
+		// $links[] = '<a href="#" id="plugin_' . $key . '" class="cb-updater" data-plugin="' . $key . '">Update</a><span class="show-update-msg"></span>';
+		$links[] = '<a href="' . admin_url( 'admin.php?page=cx-plugin' ) . '">' . __( 'Settings', 'cx-plugin' ) . '</a>';
 		$links[] = $this->activator_form();
 
 		return $links;
