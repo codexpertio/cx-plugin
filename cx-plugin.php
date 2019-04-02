@@ -1,10 +1,10 @@
 <?php
 /*
 Plugin Name: CX_Plugin
-Description: Plugin boilerplate
+Description: CX_Plugin by codexpert
 Plugin URI: https://codexpert.io
-Author: Nazmul Ahsan
-Author URI: https://nazmulahsan.me
+Author: codexpert
+Author URI: https://codexpert.io
 Version: 1.0
 Text Domain: cx-plugin
 Domain Path: /languages
