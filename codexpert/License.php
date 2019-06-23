@@ -171,10 +171,11 @@ class License {
 		$data = json_decode( file_get_contents( $api ) );
 
 		// something is wrong
-		if( $data->result == 'error' ) {
-			delete_option( $this->basename );
-		}
-		elseif( isset( $data->status ) && in_array( $data->status,  array( 'expired', 'blocked' ) ) ) {
+		// if( $data->result == 'error' ) {
+		// 		delete_option( $this->basename );
+		// }
+		// else
+		if( isset( $data->status ) && in_array( $data->status,  array( 'expired', 'blocked' ) ) ) {
 			delete_option( $this->basename );
 			update_option( "{$this->basename}-status", $data->status );
 		}
