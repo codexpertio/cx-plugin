@@ -4,7 +4,7 @@
  * All Update facing functions
  */
 
-namespace codexpert\Remote;
+namespace codexpert\Product;
 
 /**
  * if accessed directly, exit.
