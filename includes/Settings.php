@@ -263,7 +263,13 @@ class Settings {
                             'multiple'  =>  true, // true|false
                             'chosen'    =>  true
                         ),
-                    )
+                    ),
+                ),
+                array(
+                    'id'        => 'cx-plugin_license',
+                    'label'     => 'License',
+                    'icon'      => 'dashicons-admin-network',
+                    'fields'    => array(),
                 ),
             ),
         );
