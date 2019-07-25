@@ -121,6 +121,7 @@ class Plugin {
 		$admin = ( isset( $admin ) && ! is_null( $admin ) ) ? $admin : new Admin( $this->slug, $this->version );
 		add_action( 'admin_head', array( $admin, 'head' ) );
 		add_action( 'admin_enqueue_scripts', array( $admin, 'enqueue_scripts' ) );
+		add_action( 'cx-settings-before-form', array( $admin, 'license_form' ) );
 
 		// ajax hooks
 		$ajax = ( isset( $ajax ) && ! is_null( $ajax ) ) ? $ajax : new AJAX( $this->slug, $this->version );
