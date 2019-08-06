@@ -113,21 +113,21 @@ class Plugin {
 		add_action( 'plugins_loaded', array( $this, 'i18n' ) );
 
 		// front hooks
-		$front = ( isset( $front ) && ! is_null( $front ) ) ? $front : new Front( $this->slug, $this->version );
+		$front = ( isset( $front ) && ! is_null( $front ) ) ? $front : new Front( $this->plugin );
 		add_action( 'wp_head', array( $front, 'head' ) );
 		add_action( 'wp_enqueue_scripts', array( $front, 'enqueue_scripts' ) );
 
 		// admin hooks
-		$admin = ( isset( $admin ) && ! is_null( $admin ) ) ? $admin : new Admin( $this->slug, $this->version );
+		$admin = ( isset( $admin ) && ! is_null( $admin ) ) ? $admin : new Admin( $this->plugin );
 		add_action( 'admin_head', array( $admin, 'head' ) );
 		add_action( 'admin_enqueue_scripts', array( $admin, 'enqueue_scripts' ) );
 		add_action( 'cx-settings-before-form', array( $admin, 'license_form' ) );
 
 		// ajax hooks
-		$ajax = ( isset( $ajax ) && ! is_null( $ajax ) ) ? $ajax : new AJAX( $this->slug, $this->version );
+		$ajax = ( isset( $ajax ) && ! is_null( $ajax ) ) ? $ajax : new AJAX( $this->plugin );
 
 		// settings hooks
-		$settings = ( isset( $settings ) && ! is_null( $settings ) ) ? $settings : new Settings( $this->slug, $this->version );
+		$settings = ( isset( $settings ) && ! is_null( $settings ) ) ? $settings : new Settings( $this->plugin );
 		add_action( 'init', array( $settings, 'init' ) );
 
 		

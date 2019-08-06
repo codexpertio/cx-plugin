@@ -22,9 +22,10 @@ class AJAX {
     /**
      * Constructor function
      */
-    public function __construct( $name, $version ) {
-        $this->name = $name;
-        $this->version = $version;
+    public function __construct( $plugin ) {
+        $this->slug = $plugin['TextDomain'];
+        $this->name = $plugin['Name'];
+        $this->version = $plugin['Version'];
     }
 
 }

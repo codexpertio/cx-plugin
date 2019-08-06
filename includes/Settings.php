@@ -11,14 +11,23 @@ namespace codexpert\CX_Plugin;
  * @author Nazmul Ahsan <n.mukto@gmail.com>
  */
 class Settings {
+
+    /**
+     * Constructor function
+     */
+    public function __construct( $plugin ) {
+        $this->slug = $plugin['TextDomain'];
+        $this->name = $plugin['Name'];
+        $this->version = $plugin['Version'];
+    }
     
     public function init() {
         
         $settings = array(
-            'id'            => 'cx-plugin',
-            'label'         => __( 'CX_Plugin', 'cx-plugin' ),
-            'title'         => __( 'CX_Plugin', 'cx-plugin' ),
-            'header'        => __( 'CX_Plugin', 'cx-plugin' ),
+            'id'            => $this->slug,
+            'label'         => $this->name,
+            'title'         => $this->name,
+            'header'        => $this->name,
             'priority'      => 60,
             // 'parent'     => 'woocommerce',
             'capability'    => 'manage_options',

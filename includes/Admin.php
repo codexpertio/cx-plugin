@@ -23,9 +23,10 @@ class Admin {
     /**
      * Constructor function
      */
-    public function __construct( $name, $version ) {
-        $this->name = $name;
-        $this->version = $version;
+    public function __construct( $plugin ) {
+        $this->slug = $plugin['TextDomain'];
+        $this->name = $plugin['Name'];
+        $this->version = $plugin['Version'];
     }
     
     /**
@@ -34,9 +35,9 @@ class Admin {
     public function enqueue_scripts() {
         $min = defined( 'CXP_DEBUG' ) && CXP_DEBUG ? '.min' : '';
         
-        wp_enqueue_style( $this->name, plugins_url( "/assets/css/admin{$min}.css", CXP ), '', $this->version, 'all' );
+        wp_enqueue_style( $this->slug, plugins_url( "/assets/css/admin{$min}.css", CXP ), '', $this->version, 'all' );
 
-        wp_enqueue_script( $this->name, plugins_url( "/assets/js/admin{$min}.js", CXP ), array( 'jquery' ), $this->version, true );
+        wp_enqueue_script( $this->slug, plugins_url( "/assets/js/admin{$min}.js", CXP ), array( 'jquery' ), $this->version, true );
     }
 
     /**
