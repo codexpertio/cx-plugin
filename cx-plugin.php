@@ -58,9 +58,6 @@ class Plugin {
 		}
 		$this->plugin = get_plugin_data( CXP );
 
-		$this->slug = $this->plugin['TextDomain'];
-		$this->name = $this->plugin['Name'];
-		$this->version = $this->plugin['Version'];
 		$this->server = 'http://codexpert.wp';
 	}
 
@@ -112,30 +109,55 @@ class Plugin {
 		// i18n
 		add_action( 'plugins_loaded', array( $this, 'i18n' ) );
 
-		// front hooks
-		$front = ( isset( $front ) && ! is_null( $front ) ) ? $front : new Front( $this->plugin );
-		add_action( 'wp_head', array( $front, 'head' ) );
-		add_action( 'wp_enqueue_scripts', array( $front, 'enqueue_scripts' ) );
+		/**
+		 * Front facing hooks
+		 *
+		 * To add an action, use $front->action()
+		 * To apply a filter, use $front->filter()
+		 */
+		$front = new Front( $this->plugin );
+		$front->action( 'wp_head', 'head' );
+		$front->action( 'wp_enqueue_scripts', 'enqueue_scripts' );
 
-		// admin hooks
-		$admin = ( isset( $admin ) && ! is_null( $admin ) ) ? $admin : new Admin( $this->plugin );
-		add_action( 'admin_head', array( $admin, 'head' ) );
-		add_action( 'admin_enqueue_scripts', array( $admin, 'enqueue_scripts' ) );
-		add_action( 'cx-settings-before-form', array( $admin, 'license_form' ) );
+		/**
+		 * Admin facing hooks
+		 *
+		 * To add an action, use $admin->action()
+		 * To apply a filter, use $admin->filter()
+		 */
+		$admin = new Admin( $this->plugin );
+		$admin->action( 'admin_head', 'head' );
+		$admin->action( 'admin_enqueue_scripts', 'enqueue_scripts' );
+		$admin->action( 'cx-settings-before-form', 'license_form' );
 
-		// ajax hooks
-		$ajax = ( isset( $ajax ) && ! is_null( $ajax ) ) ? $ajax : new AJAX( $this->plugin );
+		/**
+		 * Settings related hooks
+		 *
+		 * To add an action, use $settings->action()
+		 * To apply a filter, use $settings->filter()
+		 */
+		$settings = new Settings( $this->plugin );
+		$settings->action( 'init', 'init' );
 
-		// settings hooks
-		$settings = ( isset( $settings ) && ! is_null( $settings ) ) ? $settings : new Settings( $this->plugin );
-		add_action( 'init', array( $settings, 'init' ) );
+		/**
+		 * AJAX facing hooks
+		 *
+		 * To add a hook for logged in users, use $ajax->priv()
+		 * To add a hook for non-logged in users, use $ajax->nopriv()
+		 */
+		$ajax = new AJAX( $this->plugin );
 
-		
+		/**
+		 * Shortcode hooks
+		 *
+		 * To enable a shortcode, use $shortcode->register()
+		 */
+		$shortcode = new Shortcode( $this->plugin );
+
 		// Product related classes
-		$survey = ( isset( $survey ) && ! is_null( $survey ) ) ? $survey : new Survey( CXP, $this->server );
-		$license = ( isset( $license ) && ! is_null( $license ) ) ? $license : new License( CXP, $this->server );
-		$update = ( isset( $update ) && ! is_null( $update ) ) ? $update : new Update( CXP, $this->server );
-
+		$survey = new Survey( CXP, $this->server );
+		$license = new License( CXP, $this->server );
+		$update = new Update( CXP, $this->server );
 	}
 
 	/**

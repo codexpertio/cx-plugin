@@ -10,7 +10,7 @@ namespace codexpert\CX_Plugin;
  * @subpackage Settings
  * @author Nazmul Ahsan <n.mukto@gmail.com>
  */
-class Settings {
+class Settings extends Hooks {
 
     /**
      * Constructor function

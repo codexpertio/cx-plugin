@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage Front
  * @author Nazmul Ahsan <n.mukto@gmail.com>
  */
-class Front {
+class Front extends Hooks {
 
     /**
      * Constructor function

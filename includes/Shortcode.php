@@ -1,10 +1,9 @@
 <?php
 /**
- * All admin facing functions
+ * All Shortcode facing functions
  */
 
 namespace codexpert\CX_Plugin;
-use codexpert\Product\License;
 
 /**
  * if accessed directly, exit.
@@ -15,10 +14,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * @package Plugin
- * @subpackage Admin
+ * @subpackage Shortcode
  * @author Nazmul Ahsan <n.mukto@gmail.com>
  */
-class Admin extends Hooks {
+class Shortcode extends Hooks {
 
     /**
      * Constructor function
