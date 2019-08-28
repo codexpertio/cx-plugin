@@ -57,6 +57,8 @@ class Plugin {
 		    require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 		}
 		$this->plugin = get_plugin_data( CXP );
+		$this->plugin['api_base'] = 'wp';
+		$this->plugin['api_version'] = 2;
 
 		$this->server = 'http://codexpert.wp';
 	}
@@ -153,6 +155,14 @@ class Plugin {
 		 * To enable a shortcode, use $shortcode->register()
 		 */
 		$shortcode = new Shortcode( $this->plugin );
+
+		/**
+		 * API hooks
+		 *
+		 * Custom REST API
+		 */
+		$api = new API( $this->plugin );
+		$api->action( 'rest_api_init', 'register_endpoints' );
 
 		// Product related classes
 		$survey = new Survey( CXP, $this->server );

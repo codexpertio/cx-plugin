@@ -30,8 +30,9 @@ class Hooks {
     
     /**
      * @see register_activation_hook
-     * @uses WPpeople\Admin
-     * @uses WPpeople\Front
+     * @uses codexpert\CX_Plugin\Admin
+     * @uses codexpert\CX_Plugin\Front
+     * @uses codexpert\CX_Plugin\API
      */
     public function activate( $callback ) {
         register_activation_hook( CXP, array( $this, $callback ) );
@@ -39,8 +40,9 @@ class Hooks {
     
     /**
      * @see register_activation_hook
-     * @uses WPpeople\Admin
-     * @uses WPpeople\Front
+     * @uses codexpert\CX_Plugin\Admin
+     * @uses codexpert\CX_Plugin\Front
+     * @uses codexpert\CX_Plugin\API
      */
     public function deactivate( $callback ) {
         register_deactivation_hook( CXP, array( $this, $callback ) );
@@ -48,8 +50,8 @@ class Hooks {
     
     /**
      * @see add_action
-     * @uses WPpeople\WPP_Plugin\Admin
-     * @uses WPpeople\WPP_Plugin\Front
+     * @uses codexpert\CX_Plugin\Admin
+     * @uses codexpert\CX_Plugin\Front
      */
     public function action( $tag, $callback, $num_args = 1, $priority = 10 ) {
         add_action( $tag, array( $this, $callback ), $priority, $num_args );
@@ -57,8 +59,8 @@ class Hooks {
 
     /**
      * @see add_filter
-     * @uses WPpeople\WPP_Plugin\Admin
-     * @uses WPpeople\WPP_Plugin\Front
+     * @uses codexpert\CX_Plugin\Admin
+     * @uses codexpert\CX_Plugin\Front
      */
     public function filter( $tag, $callback, $num_args = 1, $priority = 10 ) {
         add_filter( $tag, array( $this, $callback ), $priority, $num_args );
@@ -66,7 +68,7 @@ class Hooks {
 
     /**
      * @see add_shortcode
-     * @uses WPpeople\WPP_Plugin\Shortcode
+     * @uses codexpert\CX_Plugin\Shortcode
      */
     public function register( $tag, $callback ) {
         add_shortcode( $tag, array( $this, $callback ) );
@@ -74,7 +76,7 @@ class Hooks {
 
     /**
      * @see add_action( 'wp_ajax_..' )
-     * @uses WPpeople\WPP_Plugin\AJAX
+     * @uses codexpert\CX_Plugin\AJAX
      */
     public function priv( $handle, $callback ) {
         $this->action( "wp_ajax_{$handle}", $callback );
@@ -82,7 +84,7 @@ class Hooks {
 
     /**
      * @see add_action( 'wp_ajax_nopriv_..' )
-     * @uses WPpeople\WPP_Plugin\AJAX
+     * @uses codexpert\CX_Plugin\AJAX
      */
     public function nopriv( $handle, $callback ) {
         $this->action( "wp_ajax_nopriv_{$handle}", $callback );
