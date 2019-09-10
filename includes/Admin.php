@@ -33,7 +33,7 @@ class Admin extends Hooks {
      * Enqueue JavaScripts and stylesheets
      */
     public function enqueue_scripts() {
-        $min = defined( 'CXP_DEBUG' ) && CXP_DEBUG ? '.min' : '';
+        $min = defined( 'CXP_DEBUG' ) && CXP_DEBUG ? '' : '.min';
         
         wp_enqueue_style( $this->slug, plugins_url( "/assets/css/admin{$min}.css", CXP ), '', $this->version, 'all' );
 
