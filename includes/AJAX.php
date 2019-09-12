@@ -9,7 +9,7 @@ namespace codexpert\CX_Plugin;
  * if accessed directly, exit.
  */
 if ( ! defined( 'ABSPATH' ) ) {
-    exit;
+	exit;
 }
 
 /**
@@ -19,13 +19,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class AJAX extends Hooks {
 
-    /**
-     * Constructor function
-     */
-    public function __construct( $plugin ) {
-        $this->slug = $plugin['TextDomain'];
-        $this->name = $plugin['Name'];
-        $this->version = $plugin['Version'];
-    }
+	/**
+	 * Constructor function
+	 */
+	public function __construct( $plugin ) {
+		$this->slug = $plugin['TextDomain'];
+		$this->name = $plugin['Name'];
+		$this->version = $plugin['Version'];
+	}
 
 }

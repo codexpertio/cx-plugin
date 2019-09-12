@@ -140,6 +140,7 @@ class Plugin {
 		 */
 		$settings = new Settings( $this->plugin );
 		$settings->action( 'init', 'init' );
+		$settings->action( 'cx-settings-before-form', 'help_content' );
 
 		/**
 		 * AJAX facing hooks
