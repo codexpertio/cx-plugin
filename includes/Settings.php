@@ -291,7 +291,7 @@ class Settings extends Hooks {
 	public function help_content( $section ) {
 		if( 'cx-plugin_help' != $section['id'] ) return;
 
-		echo "If you need further assistance, please contac us!";
+		echo "If you need further assistance, please contact us!";
 	}
 
 	public function license_form( $section ) {
