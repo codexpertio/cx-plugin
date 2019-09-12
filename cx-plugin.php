@@ -130,7 +130,6 @@ class Plugin {
 		$admin = new Admin( $this->plugin );
 		$admin->action( 'admin_head', 'head' );
 		$admin->action( 'admin_enqueue_scripts', 'enqueue_scripts' );
-		$admin->action( 'cx-settings-before-form', 'license_form' );
 
 		/**
 		 * Settings related hooks
@@ -141,6 +140,7 @@ class Plugin {
 		$settings = new Settings( $this->plugin );
 		$settings->action( 'init', 'init' );
 		$settings->action( 'cx-settings-before-form', 'help_content' );
+		$settings->action( 'cx-settings-before-form', 'license_form' );
 
 		/**
 		 * AJAX facing hooks

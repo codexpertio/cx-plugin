@@ -4,7 +4,6 @@
  */
 
 namespace codexpert\CX_Plugin;
-use codexpert\Product\License;
 
 /**
  * if accessed directly, exit.
@@ -45,13 +44,5 @@ class Admin extends Hooks {
 	 */
 	public function head() {
 
-	}
-
-	public function license_form( $section ) {
-		if( $section['id'] != 'cx-plugin_license' ) return;
-
-		$license = new License( CXP );
-		echo $license->activator_form();
-		echo '<p>' . __( 'Please input your license key and click Activate.', 'cx-plugin' ) . '</p>';
 	}
 }

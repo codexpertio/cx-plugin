@@ -4,6 +4,7 @@
  */
 
 namespace codexpert\CX_Plugin;
+use codexpert\Product\License;
 
 /**
  * @package Plugin
@@ -291,5 +292,13 @@ class Settings extends Hooks {
 		if( 'cx-plugin_help' != $section['id'] ) return;
 
 		echo "If you need further assistance, please contac us!";
+	}
+
+	public function license_form( $section ) {
+		if( $section['id'] != 'cx-plugin_license' ) return;
+
+		$license = new License( CXP );
+		echo $license->activator_form();
+		echo '<p>' . __( 'Please input your license key and click Activate.', 'cx-plugin' ) . '</p>';
 	}
 }
