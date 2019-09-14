@@ -46,7 +46,7 @@ class License {
 	public function hooks() {
 		register_activation_hook( $this->file, array( $this, 'activation' ) );
 		register_deactivation_hook( $this->file, array( $this, 'deactivation' ) );
-		add_action( "cron_{$this->basename}", array( $this, 'check' ) );
+		add_action( "cron_{$this->slug}", array( $this, 'check' ) );
 		add_filter( 'plugin_action_links_' . $this->basedir, array( $this, 'inline_form' ) );
 		add_action( 'admin_head', array( $this, 'head' ) );
 		add_action( "wp_ajax_license-activator-{$this->basename}", array( $this, 'verify' ) );
@@ -55,14 +55,14 @@ class License {
 	}
 
 	public function activation() {
-	    if ( !wp_next_scheduled ( "cron_{$this->basename}" ) ) {
+	    if ( !wp_next_scheduled ( "cron_{$this->slug}" ) ) {
 			$interval = apply_filters( 'cx-plugin_cron_interval', 'daily' );
-			wp_schedule_event( time(), $interval, "cron_{$this->basename}" );
+			wp_schedule_event( time(), $interval, "cron_{$this->slug}" );
 	    }
 	}
 
 	public function deactivation() {
-		wp_clear_scheduled_hook( "cron_{$this->basename}" );
+		wp_clear_scheduled_hook( "cron_{$this->slug}" );
 	}
 
 	public function head() {
