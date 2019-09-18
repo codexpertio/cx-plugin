@@ -12,8 +12,7 @@
     },
     "autoload": {
     	"psr-4": {
-    		"codexpert\\CX_Plugin\\" : "includes/",
-            "codexpert\\Product\\" : "product/"
+    		"codexpert\\CX_Plugin\\" : "includes/"
     	}
     }
 }
