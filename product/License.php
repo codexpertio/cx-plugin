@@ -56,7 +56,7 @@ class License {
 
 	public function activation() {
 	    if ( !wp_next_scheduled ( "cron_{$this->slug}" ) ) {
-			$interval = apply_filters( 'cx-plugin_cron_interval', 'daily' );
+			$interval = apply_filters( "{$this->slug}_cron_interval", 'daily' );
 			wp_schedule_event( time(), $interval, "cron_{$this->slug}" );
 	    }
 	}
@@ -100,7 +100,7 @@ class License {
 	public function inline_form( $links ) {
 		$key = $this->basename;
 		// $links[] = '<a href="#" id="plugin_' . $key . '" class="cb-updater" data-plugin="' . $key . '">Update</a><span class="show-update-msg"></span>';
-		$links[] = '<a href="' . admin_url( 'admin.php?page=cx-plugin' ) . '">' . __( 'Settings', 'cx-plugin' ) . '</a>';
+		$links[] = '<a href="' . admin_url( "admin.php?page={$this->slug}" ) . '">' . 'Settings' . '</a>';
 		$links[] = $this->activator_form();
 
 		return $links;
