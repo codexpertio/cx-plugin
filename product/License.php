@@ -99,7 +99,6 @@ class License {
 
 	public function inline_form( $links ) {
 		$key = $this->basename;
-		// $links[] = '<a href="#" id="plugin_' . $key . '" class="cb-updater" data-plugin="' . $key . '">Update</a><span class="show-update-msg"></span>';
 		$links[] = '<a href="' . admin_url( "admin.php?page={$this->slug}" ) . '">' . 'Settings' . '</a>';
 		$links[] = $this->activator_form();
 
@@ -111,7 +110,7 @@ class License {
 		$value = get_option( $key );
 		$html = "
 		<div id='div_{$key}' class='{$this->slug}-activation-div'>
-		    <input type='password' id='{$key}' name='{$key}' value='{$value}' class='key-field' placeholder='Input your license key' >
+		    <input type='text' id='{$key}' name='{$key}' value='{$value}' class='key-field' placeholder='Input your license key' >
 	        <input type='hidden' name='plugin_key' value='{$key}' />
 	        <input type='button' name='activate_license' value='Activate' class='{$key}-btn button-primary' />
 	        <input type='button' name='deactivate_license' value='Deactivate' class='{$key}-btn button' />
