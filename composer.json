@@ -7,7 +7,8 @@
         }
     ],
     "require": {
-            "mukto90/cx-settings-api": "dev-master"
+            "mukto90/cx-settings-api": "dev-master",
+            "mukto90/cx-products-api": "dev-master"
     },
     "autoload": {
     	"psr-4": {
