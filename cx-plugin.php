@@ -69,6 +69,18 @@ class Plugin {
 	public function _compatible() {
 		$_compatible = true;
 
+		if( !file_exists( dirname( CXP ) . '/vendor/autoload.php' ) ) {
+			add_action( 'admin_notices', function() {
+				echo "
+					<div class='notice notice-error'>
+						<p>" . sprintf( __( 'Packages are not installed. Please run <code>composer update</code> in <code>%s</code> directory!', 'pointpress-wc' ), dirname( CXPPWC ) ) . "</p>
+					</div>
+				";
+			} );
+
+			$_compatible = false;
+		}
+
 		if( version_compare( get_bloginfo( 'version' ), $this->required_wp, '<' ) ) {
 			add_action( 'admin_notices', function() {
 				echo "
