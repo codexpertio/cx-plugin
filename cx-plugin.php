@@ -73,7 +73,7 @@ class Plugin {
 			add_action( 'admin_notices', function() {
 				echo "
 					<div class='notice notice-error'>
-						<p>" . sprintf( __( 'Packages are not installed. Please run <code>composer update</code> in <code>%s</code> directory!', 'pointpress-wc' ), dirname( CXPPWC ) ) . "</p>
+						<p>" . sprintf( __( 'Packages are not installed. Please run <code>%s</code> in <code>%s</code> directory!', 'pointpress-wc' ), 'composer update', dirname( CXPPWC ) ) . "</p>
 					</div>
 				";
 			} );
