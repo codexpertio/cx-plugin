@@ -178,10 +178,10 @@ class Plugin {
 		$api->action( 'rest_api_init', 'register_endpoints' );
 
 		// Product related classes
-		$survey = new Survey( CXSLP, $this->server );
-		$license = new License( CXSLP, $this->server );
+		$survey = new Survey( CXP, $this->server );
+		$license = new License( CXP, $this->server );
 		if( $license->_is_active() ) {
-			$update = new Update( CXSLP, $this->server );
+			$update = new Update( CXP, $this->server );
 		}
 	}
 
