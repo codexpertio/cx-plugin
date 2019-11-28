@@ -37,15 +37,15 @@ class Front extends Hooks {
 		wp_enqueue_style( $this->slug, plugins_url( "/assets/css/front{$min}.css", CXP ), '', $this->version, 'all' );
 
 		wp_enqueue_script( $this->slug, plugins_url( "/assets/js/front{$min}.js", CXP ), array( 'jquery' ), $this->version, true );
+		
+		$localized = array(
+			'ajaxurl'	=> admin_url( 'admin-ajax.php' )
+		);
+		wp_localize_script( $this->slug, 'CXP', apply_filters( "{$this->slug}-localized", $localized ) );
 	}
 
 	/**
 	 * Add some script to head
 	 */
-	public function head() {
-		echo '
-		<script>
-			var ajaxurl = "' . admin_url( 'admin-ajax.php' ) . '";
-		</script>';
-	}
+	public function head() {}
 }
