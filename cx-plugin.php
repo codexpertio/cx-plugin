@@ -23,7 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'CXP', __FILE__ );
-define( 'CXP_DEBUG', false );
+define( 'CXP_DEBUG', true );
 
 /**
  * Main class for the plugin
