@@ -150,7 +150,6 @@ class Plugin {
 		 * To apply a filter, use $settings->filter()
 		 */
 		$settings = new Settings( $this->plugin );
-		$settings->action( 'init', 'init' );
 		$settings->action( 'cx-settings-before-form', 'help_content' );
 		$settings->action( 'cx-settings-before-form', 'license_form' );
 

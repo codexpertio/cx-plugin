@@ -20,16 +20,18 @@ class Settings extends Hooks {
 		$this->slug = $plugin['TextDomain'];
 		$this->name = $plugin['Name'];
 		$this->version = $plugin['Version'];
+
+		$this->init_menu();
 	}
 	
-	public function init() {
+	public function init_menu() {
 		
 		$settings = array(
 			'id'            => $this->slug,
 			'label'         => $this->name,
 			'title'         => $this->name,
 			'header'        => $this->name,
-			'priority'      => 60,
+			'priority'      => 10,
 			// 'parent'     => 'woocommerce',
 			'capability'    => 'manage_options',
 			'icon'          => 'dashicons-wordpress', // dashicon or a URL to an image
