@@ -42,7 +42,5 @@ class Admin extends Hooks {
 	/**
 	 * Add some script to head
 	 */
-	public function head() {
-
-	}
+	public function head() {}
 }

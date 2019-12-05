@@ -57,14 +57,12 @@ class Plugin {
 		    require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 		}
 		$this->plugin = get_plugin_data( CXP );
-		$this->plugin['api_base'] = $this->plugin['TextDomain'];
-		$this->plugin['api_version'] = $this->plugin['Version'];
 
 		$this->server = 'https://codexpert.io';
 	}
 
 	/**
-	 * Version compatibility
+	 * Compatibility and dependency
 	 */
 	public function _compatible() {
 		$_compatible = true;

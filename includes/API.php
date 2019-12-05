@@ -23,10 +23,14 @@ class API extends Hooks {
 	 * Constructor function
 	 */
 	public function __construct( $plugin ) {
+
+		$this->slug = $plugin['TextDomain'];
+		$this->name = $plugin['Name'];
 		$this->version = $plugin['Version'];
-		$this->api_base = $plugin['api_base'];
-		$this->api_version = $plugin['api_version'];
-		$this->namespace = "{$this->api_base}/v{$this->api_version}";
+
+		$this->api_base = $plugin['TextDomain'];
+		$this->api_version = $plugin['Version'];
+		$this->namespace = "{$this->slug}/v{$this->version}";
 	}
 
 	public function register_endpoints() {
@@ -41,6 +45,5 @@ class API extends Hooks {
 
 	public function some_callback( $request ) {
 		$parameters = $request->get_params();
-
 	}
 }
