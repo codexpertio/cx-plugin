@@ -23,6 +23,19 @@ class Settings extends Hooks {
 
 		$this->init_menu();
 	}
+
+	public function add_admin_bar( $admin_bar ) {
+		if( is_admin() ) return;
+
+		$admin_bar->add_menu( array(
+			'id'    => $this->slug,
+			'title' => $this->name,
+			'href'  => add_query_arg( 'page', $this->slug, admin_url( 'admin.php' ) ),
+			'meta'  => array(
+				'title' => $this->name,            
+			),
+		) );
+	}
 	
 	public function init_menu() {
 		
