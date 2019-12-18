@@ -50,7 +50,7 @@ class Settings extends Hooks {
 			'icon'          => 'dashicons-wordpress', // dashicon or a URL to an image
 			'position'      => 25,
 			'sections'      => array(
-				array(
+			'basic-settings'	=> 	array(
 					'id'        => 'basic-settings',
 					'label'     => 'Basic Settings',
 					'icon'      => 'dashicons-admin-tools',
@@ -283,14 +283,14 @@ class Settings extends Hooks {
 						),
 					)
 				),
-				array(
+				'cx-plugin_help'	=> array(
 					'id'        => 'cx-plugin_help',
 					'label'     => __( 'Help', 'cx-plugin' ),
 					'icon'      => 'dashicons-sos',
 					'hide_form'	=> true,
 					'fields'    => array(),
 				),
-				array(
+				'cx-plugin_license'	=> array(
 					'id'        => 'cx-plugin_license',
 					'label'     => __( 'License', 'cx-plugin' ),
 					'icon'      => 'dashicons-admin-network',
