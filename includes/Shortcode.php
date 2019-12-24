@@ -19,13 +19,16 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Shortcode extends Hooks {
 
+    public $plugin;
+
     /**
      * Constructor function
      */
     public function __construct( $plugin ) {
-        $this->slug = $plugin['TextDomain'];
-        $this->name = $plugin['Name'];
-        $this->version = $plugin['Version'];
+        $this->plugin = $plugin;
+        $this->slug = $this->plugin['TextDomain'];
+        $this->name = $this->plugin['Name'];
+        $this->version = $this->plugin['Version'];
     }
     
     /**
@@ -42,15 +45,5 @@ class Shortcode extends Hooks {
     /**
      * Add some script to head
      */
-    public function head() {
-
-    }
-
-    public function license_form( $section ) {
-        if( $section['id'] != 'cx-plugin_license' ) return;
-
-        $license = new License( CXP );
-        echo $license->activator_form();
-        echo '<p>' . __( 'Please input your license key and click Activate.', 'cx-plugin' ) . '</p>';
-    }
+    public function head() {}
 }

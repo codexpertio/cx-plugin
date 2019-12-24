@@ -19,13 +19,16 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Hooks {
 
+	public $plugin;
+
 	/**
 	 * Constructor function
 	 */
 	public function __construct( $plugin ) {
-		$this->name = $plugin['Name'];
-		$this->slug = $plugin['TextDomain'];
-		$this->version = $plugin['Version'];
+		$this->plugin = $plugin;
+		$this->slug = $this->plugin['TextDomain'];
+		$this->name = $this->plugin['Name'];
+		$this->version = $this->plugin['Version'];
 	}
 	
 	/**

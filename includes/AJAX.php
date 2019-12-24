@@ -19,13 +19,16 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class AJAX extends Hooks {
 
+	public $plugin;
+
 	/**
 	 * Constructor function
 	 */
 	public function __construct( $plugin ) {
-		$this->slug = $plugin['TextDomain'];
-		$this->name = $plugin['Name'];
-		$this->version = $plugin['Version'];
+		$this->plugin = $plugin;
+		$this->slug = $this->plugin['TextDomain'];
+		$this->name = $this->plugin['Name'];
+		$this->version = $this->plugin['Version'];
 	}
 
 }

@@ -59,6 +59,9 @@ class Plugin {
 		$this->plugin = get_plugin_data( CXP );
 
 		$this->server = 'https://codexpert.io';
+
+		$this->plugin['File'] = CXP;
+		$this->plugin['Server'] = $this->server;
 	}
 
 	/**
@@ -176,10 +179,10 @@ class Plugin {
 		$api->action( 'rest_api_init', 'register_endpoints' );
 
 		// Product related classes
-		$survey = new Survey( CXP, $this->server );
-		$license = new License( CXP, $this->server );
+		$survey = new Survey( $this->plugin );
+		$license = new License( $this->plugin );
 		if( $license->_is_active() ) {
-			$update = new Update( CXP, $this->server );
+			$update = new Update( $this->plugin );
 		}
 	}
 

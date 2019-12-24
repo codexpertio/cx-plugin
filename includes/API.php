@@ -19,17 +19,19 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class API extends Hooks {
 
+	public $plugin;
+
 	/**
 	 * Constructor function
 	 */
 	public function __construct( $plugin ) {
+		$this->plugin = $plugin;
+		$this->slug = $this->plugin['TextDomain'];
+		$this->name = $this->plugin['Name'];
+		$this->version = $this->plugin['Version'];
 
-		$this->slug = $plugin['TextDomain'];
-		$this->name = $plugin['Name'];
-		$this->version = $plugin['Version'];
-
-		$this->api_base = $plugin['TextDomain'];
-		$this->api_version = $plugin['Version'];
+		$this->api_base = $this->plugin['TextDomain'];
+		$this->api_version = $this->plugin['Version'];
 		$this->namespace = "{$this->slug}/v{$this->version}";
 	}
 

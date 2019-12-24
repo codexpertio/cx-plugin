@@ -13,13 +13,16 @@ use codexpert\Product\License;
  */
 class Settings extends Hooks {
 
+	public $plugin;
+
 	/**
 	 * Constructor function
 	 */
 	public function __construct( $plugin ) {
-		$this->slug = $plugin['TextDomain'];
-		$this->name = $plugin['Name'];
-		$this->version = $plugin['Version'];
+		$this->plugin = $plugin;
+		$this->slug = $this->plugin['TextDomain'];
+		$this->name = $this->plugin['Name'];
+		$this->version = $this->plugin['Version'];
 
 		$this->init_menu();
 	}
@@ -50,10 +53,12 @@ class Settings extends Hooks {
 			'icon'          => 'dashicons-wordpress', // dashicon or a URL to an image
 			'position'      => 25,
 			'sections'      => array(
-			'basic-settings'	=> 	array(
+				'basic-settings'	=> 	array(
 					'id'        => 'basic-settings',
 					'label'     => 'Basic Settings',
 					'icon'      => 'dashicons-admin-tools',
+					'color'		=> '#4c3f93',
+					'sticky'	=> true,
 					'fields'    => array(
 						array(
 							'id'        =>  'sample_text',
@@ -287,6 +292,7 @@ class Settings extends Hooks {
 					'id'        => 'cx-plugin_help',
 					'label'     => __( 'Help', 'cx-plugin' ),
 					'icon'      => 'dashicons-sos',
+					'color'		=> '#d30c5c',
 					'hide_form'	=> true,
 					'fields'    => array(),
 				),
@@ -294,6 +300,7 @@ class Settings extends Hooks {
 					'id'        => 'cx-plugin_license',
 					'label'     => __( 'License', 'cx-plugin' ),
 					'icon'      => 'dashicons-admin-network',
+					'color'		=> '#0b8a07',
 					'hide_form'	=> true,
 					'fields'    => array(),
 				),
@@ -312,7 +319,7 @@ class Settings extends Hooks {
 	public function license_form( $section ) {
 		if( $section['id'] != 'cx-plugin_license' ) return;
 
-		$license = new License( CXP );
+		$license = new License( $this->plugin );
 		echo $license->activator_form();
 		echo '<p>' . __( 'Please input your license key and click Activate.', 'cx-plugin' ) . '</p>';
 	}
