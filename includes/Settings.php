@@ -321,6 +321,7 @@ class Settings extends Hooks {
 
 		$license = new License( $this->plugin );
 		echo $license->activator_form();
-		echo '<p>' . __( 'Please input your license key and click Activate.', 'cx-plugin' ) . '</p>';
+		
+		printf( __( 'If you need further assistance, please <a href="%s" target="_blank">contact us</a>!', 'rmc-login' ), 'https://codexpert.io' );
 	}
 }
