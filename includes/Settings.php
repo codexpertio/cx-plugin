@@ -53,9 +53,9 @@ class Settings extends Hooks {
 			'icon'          => 'dashicons-wordpress', // dashicon or a URL to an image
 			'position'      => 25,
 			'sections'      => array(
-				'basic-settings'	=> 	array(
-					'id'        => 'basic-settings',
-					'label'     => 'Basic Settings',
+				'cx-plugin_basic'	=> 	array(
+					'id'        => 'cx-plugin_basic',
+					'label'     => __( 'Basic Settings', 'cx-plugin' ),
 					'icon'      => 'dashicons-admin-tools',
 					'color'		=> '#4c3f93',
 					'sticky'	=> true,
