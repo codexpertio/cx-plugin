@@ -57,7 +57,7 @@ class Hooks {
 	 * @uses codexpert\CX_Plugin\Front
 	 */
 	public function action( $tag, $callback, $num_args = 1, $priority = 10 ) {
-		add_action( $tag, array( $this, $callback ), $priority, $num_args );
+		add_action( $tag, array( $this, $callback ), $num_args, $priority );
 	}
 
 	/**
@@ -66,7 +66,7 @@ class Hooks {
 	 * @uses codexpert\CX_Plugin\Front
 	 */
 	public function filter( $tag, $callback, $num_args = 1, $priority = 10 ) {
-		add_filter( $tag, array( $this, $callback ), $priority, $num_args );
+		add_filter( $tag, array( $this, $callback ), $num_args, $priority );
 	}
 
 	/**
