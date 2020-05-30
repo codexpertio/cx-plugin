@@ -43,7 +43,7 @@ class Plugin {
 	public function __construct() {
 		self::define();
 		
-		if( !$this->_compatible() ) return;
+		if( !$this->_ready() ) return;
 
 		self::includes();
 		self::hooks();
@@ -67,8 +67,8 @@ class Plugin {
 	/**
 	 * Compatibility and dependency
 	 */
-	public function _compatible() {
-		$_compatible = true;
+	public function _ready() {
+		$_ready = true;
 
 		if( !file_exists( dirname( CXP ) . '/vendor/autoload.php' ) ) {
 			add_action( 'admin_notices', function() {
@@ -79,7 +79,7 @@ class Plugin {
 				";
 			} );
 
-			$_compatible = false;
+			$_ready = false;
 		}
 
 		if( version_compare( get_bloginfo( 'version' ), $this->required_wp, '<' ) ) {
@@ -91,7 +91,7 @@ class Plugin {
 				";
 			} );
 
-			$_compatible = false;
+			$_ready = false;
 		}
 
 		if( version_compare( PHP_VERSION, $this->required_php, '<' ) ) {
@@ -103,10 +103,10 @@ class Plugin {
 				";
 			} );
 
-			$_compatible = false;
+			$_ready = false;
 		}
 
-		return $_compatible;
+		return $_ready;
 	}
 
 	/**
@@ -143,6 +143,7 @@ class Plugin {
 		$admin = new Admin( $this->plugin );
 		$admin->action( 'admin_head', 'head' );
 		$admin->action( 'admin_enqueue_scripts', 'enqueue_scripts' );
+		$admin->filter( 'plugins_api_result', 'set_download_link', 3, 10 );
 
 		/**
 		 * Settings related hooks
@@ -181,9 +182,7 @@ class Plugin {
 		// Product related classes
 		$survey = new Survey( $this->plugin );
 		$license = new License( $this->plugin );
-		if( $license->_is_active() ) {
-			$update = new Update( $this->plugin );
-		}
+		$update = new Update( $this->plugin );
 	}
 
 	/**
