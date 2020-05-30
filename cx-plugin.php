@@ -6,7 +6,7 @@ Plugin URI: https://codexpert.io
 Author: codexpert
 Author URI: https://codexpert.io
 Version: 1.0
-Text Domain: cx-plugin
+Text Domain: woolementor-pro
 Domain Path: /languages
 */
 
@@ -143,7 +143,6 @@ class Plugin {
 		$admin = new Admin( $this->plugin );
 		$admin->action( 'admin_head', 'head' );
 		$admin->action( 'admin_enqueue_scripts', 'enqueue_scripts' );
-		$admin->filter( 'plugins_api_result', 'set_download_link', 3, 10 );
 
 		/**
 		 * Settings related hooks

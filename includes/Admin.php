@@ -46,18 +46,4 @@ class Admin extends Hooks {
 	 * Add some script to head
 	 */
 	public function head() {}
-
-	/**
-	 * Set download_link for the pro package
-	 */
-	public function set_download_link( $res, $action, $args ) {
-
-		$basename = "{$this->slug}-{$this->slug}-php";
-
-		if( get_option( $basename ) == '' ) {
-			$res->download_link = false;
-		}
-
-		return $res;
-	}
 }
