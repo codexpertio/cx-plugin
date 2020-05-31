@@ -14,13 +14,13 @@ endif;
 
 if( ! function_exists( 'cx_get_posts' ) ) :
 function cx_get_posts( $post_type = 'post', $limit = -1 ) {
-	$arg = array(
+	$arg = [
 		'post_type'         => $post_type,
 		'posts_per_page'    => $limit
-		);
+	];
 	$p = new WP_Query( $arg );
 
-	$posts = array( '' => __( '- Choose a post -', 'cx-plugin' ) );
+	$posts = [ '' => __( '- Choose a post -', 'cx-plugin' ) ];
 
 	foreach( $p->posts as $post ) :
 		$posts[ $post->ID ] = $post->post_title;

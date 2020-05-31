@@ -114,7 +114,6 @@ class Plugin {
 	 */
 	public function includes(){
 		require_once dirname( CXP ) . '/vendor/autoload.php';
-		require_once dirname( CXP ) . '/includes/functions.php';
 	}
 
 	/**

@@ -38,7 +38,7 @@ class API extends Hooks {
 	public function register_endpoints() {
 		register_rest_route( $this->namespace, '/some-slug/', array(
 			'methods'   => 'GET',
-			'callback'  => array( $this, 'some_callback' ),
+			'callback'  => [ $this, 'some_callback' ],
 			'permission_callback' => function( $request ) {
 				return is_user_logged_in();
 			}

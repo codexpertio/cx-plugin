@@ -39,7 +39,7 @@ class Admin extends Hooks {
 		
 		wp_enqueue_style( $this->slug, plugins_url( "/assets/css/admin{$min}.css", CXP ), '', $this->version, 'all' );
 
-		wp_enqueue_script( $this->slug, plugins_url( "/assets/js/admin{$min}.js", CXP ), array( 'jquery' ), $this->version, true );
+		wp_enqueue_script( $this->slug, plugins_url( "/assets/js/admin{$min}.js", CXP ), [ 'jquery' ], $this->version, true );
 	}
 
 	/**
