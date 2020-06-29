@@ -45,7 +45,7 @@ endif;
 
 if( !function_exists( 'cx_plugin_get_template' ) ) :
 /**
- * Includes a template file resides in /templates diretory
+ * Includes a template file resides in /views diretory
  *
  * It'll look into /cx-plugin directory of your active theme
  * first. if not found, default template will be used.
@@ -55,7 +55,7 @@ if( !function_exists( 'cx_plugin_get_template' ) ) :
  * @param string $sub_dir sub-directory under base directory
  * @param array $fields fields of the form
  */
-function cx_plugin_get_template( $slug, $base = 'templates', $args = null ) {
+function cx_plugin_get_template( $slug, $base = 'views', $args = null ) {
 
 	// templates can be placed in this directory
 	$override_template_dir = apply_filters( 'cx_plugin_template_override_dir', get_stylesheet_directory() . '/cx-plugin/', $slug, $base, $args );
@@ -83,5 +83,30 @@ function cx_plugin_get_template( $slug, $base = 'templates', $args = null ) {
 	else {
 		return __( 'Template not found!', 'cx-plugin' );
 	}
+}
+endif;
+
+
+/**
+ * Generates some action links of a plugin
+ *
+ * @since 1.0
+ */
+if( !function_exists( 'cx_plugin_action_link' ) ) :
+function cx_plugin_action_link( $plugin, $action = '' ) {
+
+	$exploded	= explode( '/', $plugin );
+	$slug		= $exploded[0];
+
+	$links = [
+		'install'		=> wp_nonce_url( admin_url( "update.php?action=install-plugin&plugin={$slug}" ), "install-plugin_{$slug}" ),
+		'update'		=> wp_nonce_url( admin_url( "update.php?action=upgrade-plugin&plugin={$plugin}" ), "upgrade-plugin_{$plugin}" ),
+		'activate'		=> wp_nonce_url( admin_url( "plugins.php?action=activate&plugin={$plugin}&plugin_status=all&paged=1&s" ), "activate-plugin_{$plugin}" ),
+		'deactivate'	=> wp_nonce_url( admin_url( "plugins.php?action=deactivate&plugin={$plugin}&plugin_status=all&paged=1&s" ), "deactivate-plugin_{$plugin}" ),
+	];
+
+	if( $action != '' && array_key_exists( $action, $links ) ) return $links[ $action ];
+
+	return $links;
 }
 endif;

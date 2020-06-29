@@ -23,8 +23,6 @@ class Settings extends Hooks {
 		$this->slug = $this->plugin['TextDomain'];
 		$this->name = $this->plugin['Name'];
 		$this->version = $this->plugin['Version'];
-
-		$this->init_menu();
 	}
 
 	public function add_admin_bar( $admin_bar ) {
@@ -48,7 +46,7 @@ class Settings extends Hooks {
 			'title'         => $this->name,
 			'header'        => $this->name,
 			'priority'      => 10,
-			// 'parent'     => 'woocommerce',
+			'parent'     => 'woocommerce',
 			'capability'    => 'manage_options',
 			'icon'          => 'dashicons-wordpress', // dashicon or a URL to an image
 			'position'      => 25,
@@ -364,6 +362,32 @@ class Settings extends Hooks {
 		if( 'cx-plugin_help' != $section['id'] ) return;
 
 		_e( 'If you need further assistance, please contact us!', 'cx-plugin' );
+
+
+		/**
+		 * Config
+		 */
+		$config = [
+			'per_page'		=> 10,
+			'columns'		=> [
+				'visit'				=> __( 'Visit #', 'wooffiliate' ),
+				'order_id'			=> __( 'Order #', 'wooffiliate' ),
+				'products'			=> __( 'Products', 'wooffiliate' ),
+				'order_total'		=> __( 'Order Total', 'wooffiliate' ),
+				'commission'		=> __( 'Commission', 'wooffiliate' ),
+				'payment_status'	=> __( 'Payment Status', 'wooffiliate' ),
+				'time'				=> __( 'Time', 'wooffiliate' ),
+			],
+			'sortable'		=> [ 'visit', 'order_id', 'products', 'commission', 'payment_status', 'time' ],
+			'orderby'		=> 'time',
+			'order'			=> 'desc',
+			'data'			=> [],
+		];
+
+		$table = new List_Table( $config );
+		$table->prepare_items();
+		$table->search_box( 'Search', 'search' );
+		$table->display();
 	}
 	
 	public function license_form( $section ) {

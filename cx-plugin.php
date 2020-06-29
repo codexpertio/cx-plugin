@@ -23,6 +23,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 define( 'CXP', __FILE__ );
+define( 'CXP_DIR', dirname( CXP ) );
 define( 'CXP_DEBUG', true );
 
 /**
@@ -68,6 +69,11 @@ class Plugin {
 	 * Compatibility and dependency
 	 */
 	public function _ready() {
+		
+		if( !function_exists( 'cx_plugin_action_link' ) ) {
+			require_once CXP_DIR . '/includes/functions.php';
+		}
+
 		$_ready = true;
 
 		if( !file_exists( dirname( CXP ) . '/vendor/autoload.php' ) ) {
@@ -150,6 +156,7 @@ class Plugin {
 		 * To apply a filter, use $settings->filter()
 		 */
 		$settings = new Settings( $this->plugin );
+		$settings->action( 'plugins_loaded', 'init_menu' );
 		$settings->action( 'admin_bar_menu', 'add_admin_bar', 70 );
 		$settings->action( 'cx-settings-before-form', 'help_content' );
 		$settings->action( 'cx-settings-before-form', 'license_form' );
