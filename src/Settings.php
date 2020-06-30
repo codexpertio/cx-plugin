@@ -227,7 +227,6 @@ class Settings extends \codexpert\Base {
 					'label'     => __( 'Advanced Settings', 'cx-plugin' ),
 					'icon'      => 'dashicons-admin-generic',
 					'color'		=> '#d30c5c',
-					'sticky'	=> true,
 					'fields'    => [
 						'sample_select2' => [
 							'id'      =>  'sample_select2',
