@@ -154,8 +154,7 @@ class Plugin {
 		$settings = new Settings( $this->plugin );
 		$settings->action( 'plugins_loaded', 'init_menu' );
 		$settings->action( 'admin_bar_menu', 'add_admin_bar', 70 );
-		$settings->action( 'cx-settings-before-form', 'help_content' );
-		$settings->action( 'cx-settings-before-form', 'license_form' );
+		$settings->action( 'cx-settings-before-form', 'tab_content' );
 
 		/**
 		 * AJAX facing hooks

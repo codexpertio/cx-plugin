@@ -225,7 +225,7 @@ class Settings extends \codexpert\Base {
 				'cx-plugin_advanced'	=> [
 					'id'        => 'cx-plugin_advanced',
 					'label'     => __( 'Advanced Settings', 'cx-plugin' ),
-					'icon'      => 'dashicons-admin-tools',
+					'icon'      => 'dashicons-admin-generic',
 					'color'		=> '#d30c5c',
 					'sticky'	=> true,
 					'fields'    => [
@@ -347,7 +347,7 @@ class Settings extends \codexpert\Base {
 				'cx-plugin_table' => [
 					'id'        => 'cx-plugin_table',
 					'label'     => __( 'Table', 'cx-plugin' ),
-					'icon'      => 'dashicons-sos',
+					'icon'      => 'dashicons-editor-table',
 					'color'		=> '#e828ee',
 					'hide_form'	=> true,
 					'fields'    => [],
@@ -366,16 +366,12 @@ class Settings extends \codexpert\Base {
 		new \CX_Settings_API( $settings );
 	}
 	
-	public function help_content( $section ) {
+	public function tab_content( $section ) {
 		if( 'cx-plugin_help' == $section['id'] ) {
-			_e( 'If you need further assistance, please contact us!', 'cx-plugin' );
+			printf( __( 'If you need further assistance, please <a href="%s" target="_blank">reach out to us</a>!', 'cx-plugin' ), 'https://codexpert.io' );
 		}
 
 		elseif( 'cx-plugin_table' == $section['id'] ) {
-
-			/**
-			 * Config
-			 */
 			$config = [
 				'per_page'		=> 10,
 				'columns'		=> [
@@ -417,14 +413,13 @@ class Settings extends \codexpert\Base {
 			$table->search_box( 'Search', 'search' );
 			$table->display();
 		}
-	}
-	
-	public function license_form( $section ) {
-		if( $section['id'] != 'cx-plugin_license' ) return;
 
-		$license = new License( $this->plugin );
-		echo $license->activator_form();
-		
-		printf( __( 'If you need further assistance, please <a href="%s" target="_blank">contact us</a>!', 'cx-plugin' ), 'https://codexpert.io' );
+		elseif( 'cx-plugin_license' == $section['id'] ) {
+
+			$license = new License( $this->plugin );
+			echo $license->activator_form();
+			
+			printf( __( 'If you need further assistance, please <a href="%s" target="_blank">reach out to us</a>!', 'cx-plugin' ), 'https://codexpert.io' );
+		}
 	}
 }
