@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage API
  * @author Nazmul Ahsan <n.mukto@gmail.com>
  */
-class API extends Hooks {
+class API extends \codexpert\Base {
 
 	public $plugin;
 

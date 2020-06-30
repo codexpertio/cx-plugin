@@ -69,10 +69,6 @@ class Plugin {
 	 * Compatibility and dependency
 	 */
 	public function _ready() {
-		
-		if( !function_exists( 'cx_plugin_action_link' ) ) {
-			require_once CXP_DIR . '/includes/functions.php';
-		}
 
 		$_ready = true;
 
@@ -80,7 +76,7 @@ class Plugin {
 			add_action( 'admin_notices', function() {
 				echo "
 					<div class='notice notice-error'>
-						<p>" . sprintf( __( 'Packages are not installed. Please run <code>%s</code> in <code>%s</code> directory!', 'pointpress-wc' ), 'composer update', dirname( CXP ) ) . "</p>
+						<p>" . sprintf( __( 'Packages are not installed. Please run <code>%s</code> in the <code>%s</code> directory!', 'cx-plugin' ), 'composer update', dirname( CXP ) ) . "</p>
 					</div>
 				";
 			} );

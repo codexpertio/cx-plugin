@@ -11,7 +11,7 @@ use codexpert\Product\License;
  * @subpackage Settings
  * @author Nazmul Ahsan <n.mukto@gmail.com>
  */
-class Settings extends Hooks {
+class Settings extends \codexpert\Base {
 
 	public $plugin;
 
@@ -46,7 +46,7 @@ class Settings extends Hooks {
 			'title'         => $this->name,
 			'header'        => $this->name,
 			'priority'      => 10,
-			'parent'     => 'woocommerce',
+			// 'parent'     => 'woocommerce',
 			'capability'    => 'manage_options',
 			'icon'          => 'dashicons-wordpress', // dashicon or a URL to an image
 			'position'      => 25,
@@ -344,6 +344,14 @@ class Settings extends Hooks {
 					'hide_form'	=> true,
 					'fields'    => [],
 				],
+				'cx-plugin_table' => [
+					'id'        => 'cx-plugin_table',
+					'label'     => __( 'Table', 'cx-plugin' ),
+					'icon'      => 'dashicons-sos',
+					'color'		=> '#e828ee',
+					'hide_form'	=> true,
+					'fields'    => [],
+				],
 				'cx-plugin_license' => [
 					'id'        => 'cx-plugin_license',
 					'label'     => __( 'License', 'cx-plugin' ),
@@ -359,35 +367,56 @@ class Settings extends Hooks {
 	}
 	
 	public function help_content( $section ) {
-		if( 'cx-plugin_help' != $section['id'] ) return;
+		if( 'cx-plugin_help' == $section['id'] ) {
+			_e( 'If you need further assistance, please contact us!', 'cx-plugin' );
+		}
 
-		_e( 'If you need further assistance, please contact us!', 'cx-plugin' );
+		elseif( 'cx-plugin_table' == $section['id'] ) {
 
+			/**
+			 * Config
+			 */
+			$config = [
+				'per_page'		=> 10,
+				'columns'		=> [
+					'visit'				=> __( 'Visit #', 'wooffiliate' ),
+					'order_id'			=> __( 'Order #', 'wooffiliate' ),
+					'products'			=> __( 'Products', 'wooffiliate' ),
+					'order_total'		=> __( 'Order Total', 'wooffiliate' ),
+					'commission'		=> __( 'Commission', 'wooffiliate' ),
+					'payment_status'	=> __( 'Payment Status', 'wooffiliate' ),
+					'time'				=> __( 'Time', 'wooffiliate' ),
+				],
+				'sortable'		=> [ 'visit', 'order_id', 'products', 'commission', 'payment_status', 'time' ],
+				'orderby'		=> 'time',
+				'order'			=> 'desc',
+				'data'			=> [
+					[
+						'visit'				=> 12,
+						'order_id'			=> 345,
+						'products'			=> 'Abc',
+						'order_total'		=> '$678',
+						'commission'		=> '$98',
+						'payment_status'	=> 'unpaid',
+						'time'				=> '2020-06-29',
+					],
+					[
+						'visit'				=> 34,
+						'order_id'			=> 567,
+						'products'			=> 'Xyz',
+						'order_total'		=> '$178',
+						'commission'		=> '$18',
+						'payment_status'	=> 'paid',
+						'time'				=> '2020-05-29',
+					]
+				],
+			];
 
-		/**
-		 * Config
-		 */
-		$config = [
-			'per_page'		=> 10,
-			'columns'		=> [
-				'visit'				=> __( 'Visit #', 'wooffiliate' ),
-				'order_id'			=> __( 'Order #', 'wooffiliate' ),
-				'products'			=> __( 'Products', 'wooffiliate' ),
-				'order_total'		=> __( 'Order Total', 'wooffiliate' ),
-				'commission'		=> __( 'Commission', 'wooffiliate' ),
-				'payment_status'	=> __( 'Payment Status', 'wooffiliate' ),
-				'time'				=> __( 'Time', 'wooffiliate' ),
-			],
-			'sortable'		=> [ 'visit', 'order_id', 'products', 'commission', 'payment_status', 'time' ],
-			'orderby'		=> 'time',
-			'order'			=> 'desc',
-			'data'			=> [],
-		];
-
-		$table = new List_Table( $config );
-		$table->prepare_items();
-		$table->search_box( 'Search', 'search' );
-		$table->display();
+			$table = new \codexpert\List_Table( $config );
+			$table->prepare_items();
+			$table->search_box( 'Search', 'search' );
+			$table->display();
+		}
 	}
 	
 	public function license_form( $section ) {

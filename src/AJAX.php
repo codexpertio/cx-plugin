@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage AJAX
  * @author Nazmul Ahsan <n.mukto@gmail.com>
  */
-class AJAX extends Hooks {
+class AJAX extends \codexpert\Base {
 
 	public $plugin;
 

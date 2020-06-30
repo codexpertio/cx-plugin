@@ -1,7 +1,17 @@
 <?php
 
-namespace codexpert\CX_Plugin;
+namespace codexpert;
 
+/**
+ * if accessed directly, exit.
+ */
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
+/**
+ * Include required files and fix pagination
+ */
 if ( !class_exists( 'WP_List_Table' ) && !is_admin() ) {
     require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
     require_once( ABSPATH . 'wp-admin/includes/screen.php' );
@@ -50,12 +60,7 @@ class List_Table extends \WP_List_Table {
 
         $data = $this->table_data();
 
-        $timestamp = [];
-        foreach ( $data as $value ) {
-            $timestamp[] = strtotime( $value['time'] );
-        }
-        
-        usort( $timestamp, [ &$this, 'sort_data' ] );
+        usort( $data, [ &$this, 'sort_data' ] );
 
         $per_page       = isset( $this->config['per_page'] ) ? $this->config['per_page'] : 10;
         $current_page   = $this->get_pagenum();

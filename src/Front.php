@@ -1,6 +1,6 @@
 <?php
 /**
- * All admin facing functions
+ * All public facing functions
  */
 
 namespace codexpert\CX_Plugin;
@@ -14,10 +14,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * @package Plugin
- * @subpackage Admin
+ * @subpackage Front
  * @author Nazmul Ahsan <n.mukto@gmail.com>
  */
-class Admin extends Hooks {
+class Front extends \codexpert\Base {
 
 	public $plugin;
 
@@ -36,10 +36,15 @@ class Admin extends Hooks {
 	 */
 	public function enqueue_scripts() {
 		$min = defined( 'CXP_DEBUG' ) && CXP_DEBUG ? '' : '.min';
-		
-		wp_enqueue_style( $this->slug, plugins_url( "/assets/css/admin{$min}.css", CXP ), '', $this->version, 'all' );
 
-		wp_enqueue_script( $this->slug, plugins_url( "/assets/js/admin{$min}.js", CXP ), [ 'jquery' ], $this->version, true );
+		wp_enqueue_style( $this->slug, plugins_url( "/assets/css/front{$min}.css", CXP ), '', $this->version, 'all' );
+
+		wp_enqueue_script( $this->slug, plugins_url( "/assets/js/front{$min}.js", CXP ), [ 'jquery' ], $this->version, true );
+		
+		$localized = [
+			'ajaxurl'	=> admin_url( 'admin-ajax.php' )
+		];
+		wp_localize_script( $this->slug, 'CXP', apply_filters( "{$this->slug}-localized", $localized ) );
 	}
 
 	/**

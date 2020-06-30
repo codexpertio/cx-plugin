@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage Shortcode
  * @author Nazmul Ahsan <n.mukto@gmail.com>
  */
-class Shortcode extends Hooks {
+class Shortcode extends \codexpert\Base {
 
     public $plugin;
 
