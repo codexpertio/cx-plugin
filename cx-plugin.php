@@ -42,22 +42,13 @@ class Plugin {
 	public $required_wp = '4.0';
 
 	public function __construct() {
-		self::includes();
-		
 		self::define();
 		
 		if( !$this->_ready() ) return;
 
+		self::includes();
+		
 		self::hooks();
-	}
-
-	/**
-	 * Includes files
-	 */
-	public function includes() {
-		if( file_exists( dirname( CXP ) . '/vendor/autoload.php' ) ) {
-			require_once dirname( CXP ) . '/vendor/autoload.php';
-		}
 	}
 
 	/**
@@ -65,7 +56,11 @@ class Plugin {
 	 */
 	public function define() {
 
-		$this->plugin = cx_plugin_get_plugin_data( CXP );
+		if( !function_exists( 'get_plugin_data' ) ) {
+		    require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+		}
+
+		$this->plugin = get_plugin_data( CXP );
 
 		$this->server = 'https://codexpert.io';
 
@@ -144,11 +139,18 @@ class Plugin {
 	}
 
 	/**
+	 * Includes files
+	 */
+	public function includes() {
+		require_once dirname( CXP ) . '/vendor/autoload.php';
+	}
+
+	/**
 	 * Hooks
 	 */
 	public function hooks(){
 		// i18n
-		add_action( 'plugins_loaded', array( $this, 'i18n' ) );
+		add_action( 'plugins_loaded', [ $this, 'i18n' ] );
 
 		/**
 		 * Front facing hooks
@@ -214,7 +216,7 @@ class Plugin {
 	 * Internationalization
 	 */
 	public function i18n() {
-		load_plugin_textdomain( 'cx-plugin', false, dirname( plugin_basename( CXP ) ) . '/languages/' );
+		load_plugin_textdomain( 'cx-plugin', false, CXP_DIR . '/languages/' );
 	}
 
 	/**
