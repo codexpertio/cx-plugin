@@ -87,7 +87,6 @@ function cx_plugin_get_template( $slug, $base = 'views', $args = null ) {
 }
 endif;
 
-
 /**
  * Generates some action links of a plugin
  *
@@ -109,5 +108,21 @@ function cx_plugin_action_link( $plugin, $action = '' ) {
 	if( $action != '' && array_key_exists( $action, $links ) ) return $links[ $action ];
 
 	return $links;
+}
+endif;
+
+/**
+ * Gets plugin data
+ *
+ * @since 1.0
+ */
+if( !function_exists( 'cx_plugin_get_plugin_data' ) ) :
+function cx_plugin_get_plugin_data( $plugin_file ) {
+
+	if( !function_exists( 'get_plugin_data' ) ) {
+	    require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+	}
+
+	return get_plugin_data( $plugin_file );
 }
 endif;

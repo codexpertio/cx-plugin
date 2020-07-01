@@ -42,22 +42,28 @@ class Plugin {
 	public $required_wp = '4.0';
 
 	public function __construct() {
+		self::includes();
+		
 		self::define();
 		
 		if( !$this->_ready() ) return;
 
-		self::includes();
 		self::hooks();
+	}
+
+	/**
+	 * Includes files
+	 */
+	public function includes(){
+		require_once dirname( CXP ) . '/vendor/autoload.php';
 	}
 
 	/**
 	 * Define constants
 	 */
-	public function define(){
-		if( !function_exists( 'get_plugin_data' ) ) {
-		    require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-		}
-		$this->plugin = get_plugin_data( CXP );
+	public function define() {
+
+		$this->plugin = cx_plugin_get_plugin_data( CXP );
 
 		$this->server = 'https://codexpert.io';
 
@@ -108,14 +114,31 @@ class Plugin {
 			$_ready = false;
 		}
 
-		return $_ready;
-	}
+		/**
+		 * WooCommerce needs to be installed and activated
+		 *
+		 * @since 1.0
+		 */
+		if( !in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+			add_action( 'admin_notices', function() {
+				$plugin = 'woocommerce/woocommerce.php';
+				$installed_plugins = get_plugins();
+				$action_links = cx_plugin_action_link( $plugin );
 
-	/**
-	 * Includes files
-	 */
-	public function includes(){
-		require_once dirname( CXP ) . '/vendor/autoload.php';
+				$button_text = array_key_exists( $plugin, $installed_plugins ) ? __( 'activate', 'cx-plugin' ) : __( 'install', 'cx-plugin' );
+				$action_link = array_key_exists( $plugin, $installed_plugins ) ? $action_links['activate'] : $action_links['install'];
+			
+				echo "
+					<div class='notice notice-error'>
+						<p>" . sprintf( __( '<strong>WooCommerce</strong> needs to be activated. Please <a href="%s">%s</a> it now.', 'cx-plugin' ), $action_link, $button_text ) . "</p>
+					</div>
+				";
+			} );
+
+			$_ready = false;
+		}
+
+		return $_ready;
 	}
 
 	/**

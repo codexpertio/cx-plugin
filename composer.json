@@ -16,6 +16,7 @@
     	"psr-4": {
     		"codexpert\\" : "libs/",
             "codexpert\\CX_Plugin\\" : "src/"
-    	}
+    	},
+        "files": [ "helpers/functions.php", "helpers/options.php" ]
     }
 }
