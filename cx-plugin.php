@@ -54,8 +54,10 @@ class Plugin {
 	/**
 	 * Includes files
 	 */
-	public function includes(){
-		require_once dirname( CXP ) . '/vendor/autoload.php';
+	public function includes() {
+		if( file_exists( dirname( CXP ) . '/vendor/autoload.php' ) ) {
+			require_once dirname( CXP ) . '/vendor/autoload.php';
+		}
 	}
 
 	/**
