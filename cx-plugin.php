@@ -67,8 +67,6 @@ class Plugin {
 	 * Hooks
 	 */
 	public function hook() {
-		// i18n
-
 		/**
 		 * Front facing hooks
 		 *

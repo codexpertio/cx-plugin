@@ -1,9 +1,9 @@
 <?php
 /**
- * All API facing functions
+ * All REST API related functions
  */
-
 namespace codexpert\CX_Plugin;
+use codexpert\Base;
 
 /**
  * if accessed directly, exit.
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage API
  * @author Nazmul Ahsan <n.mukto@gmail.com>
  */
-class API extends \codexpert\Base {
+class API extends Base {
 
 	public $plugin;
 
@@ -27,22 +27,19 @@ class API extends \codexpert\Base {
 	public function __construct( $plugin ) {
 		$this->plugin = $plugin;
 		$this->slug = $this->plugin['TextDomain'];
-		$this->name = $this->plugin['Name'];
 		$this->version = $this->plugin['Version'];
 
-		$this->api_base = $this->plugin['TextDomain'];
-		$this->api_version = $this->plugin['Version'];
 		$this->namespace = "{$this->slug}/v{$this->version}";
 	}
 
 	public function register_endpoints() {
-		register_rest_route( $this->namespace, '/some-slug/', array(
+		register_rest_route( $this->namespace, '/some-slug/', [
 			'methods'   => 'GET',
 			'callback'  => [ $this, 'some_callback' ],
 			'permission_callback' => function( $request ) {
 				return is_user_logged_in();
 			}
-		) );
+		] );
 	}
 
 	public function some_callback( $request ) {

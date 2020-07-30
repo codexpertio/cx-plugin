@@ -2,8 +2,8 @@
 /**
  * All public facing functions
  */
-
 namespace codexpert\CX_Plugin;
+use codexpert\Base;
 
 /**
  * if accessed directly, exit.
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage Front
  * @author Nazmul Ahsan <n.mukto@gmail.com>
  */
-class Front extends \codexpert\Base {
+class Front extends Base {
 
 	public $plugin;
 

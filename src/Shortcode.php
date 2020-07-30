@@ -1,9 +1,9 @@
 <?php
 /**
- * All Shortcode facing functions
+ * All Shortcode related functions
  */
-
 namespace codexpert\CX_Plugin;
+use codexpert\Base;
 
 /**
  * if accessed directly, exit.
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage Shortcode
  * @author Nazmul Ahsan <n.mukto@gmail.com>
  */
-class Shortcode extends \codexpert\Base {
+class Shortcode extends Base {
 
     public $plugin;
 

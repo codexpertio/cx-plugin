@@ -1,9 +1,10 @@
 <?php
 /**
- * All settings facing functions
+ * All settings related functions
  */
-
 namespace codexpert\CX_Plugin;
+use codexpert\Base;
+use codexpert\List_Table;
 use codexpert\Product\License;
 
 /**
@@ -11,7 +12,7 @@ use codexpert\Product\License;
  * @subpackage Settings
  * @author Nazmul Ahsan <n.mukto@gmail.com>
  */
-class Settings extends \codexpert\Base {
+class Settings extends Base {
 
 	public $plugin;
 
@@ -407,18 +408,15 @@ class Settings extends \codexpert\Base {
 				],
 			];
 
-			$table = new \codexpert\List_Table( $config );
+			$table = new List_Table( $config );
 			$table->prepare_items();
 			$table->search_box( 'Search', 'search' );
 			$table->display();
 		}
 
 		elseif( 'cx-plugin_license' == $section['id'] ) {
-
 			$license = new License( $this->plugin );
 			echo $license->activator_form();
-			
-			printf( __( 'If you need further assistance, please <a href="%s" target="_blank">reach out to us</a>!', 'cx-plugin' ), 'https://codexpert.io' );
 		}
 	}
 }

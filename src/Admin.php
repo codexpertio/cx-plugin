@@ -2,8 +2,8 @@
 /**
  * All admin facing functions
  */
-
 namespace codexpert\CX_Plugin;
+use codexpert\Base;
 
 /**
  * if accessed directly, exit.
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage Admin
  * @author Nazmul Ahsan <n.mukto@gmail.com>
  */
-class Admin extends \codexpert\Base {
+class Admin extends Base {
 
 	public $plugin;
 
