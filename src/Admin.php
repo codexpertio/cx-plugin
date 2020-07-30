@@ -58,7 +58,7 @@ class Admin extends Base {
 		
 		if( version_compare( get_bloginfo( 'version' ), $this->plugin['min_wp'], '<' ) ) {
 			echo "
-				<div class='notice notice-error'>
+				<div class='notice cx-notice notice-error'>
 					<p>" . sprintf( __( '<strong>%s</strong> requires <i>WordPress version %s</i> or higher. You have <i>version %s</i> installed.', 'cx-plugin' ), $this->name, $this->plugin['min_wp'], get_bloginfo( 'version' ) ) . "</p>
 				</div>
 			";
@@ -66,7 +66,7 @@ class Admin extends Base {
 
 		if( version_compare( PHP_VERSION, $this->plugin['min_php'], '<' ) ) {
 			echo "
-				<div class='notice notice-error'>
+				<div class='notice cx-notice notice-error'>
 					<p>" . sprintf( __( '<strong>%s</strong> requires <i>PHP version %s</i> or higher. You have <i>version %s</i> installed.', 'cx-plugin' ), $this->name, $this->plugin['min_php'], PHP_VERSION ) . "</p>
 				</div>
 			";
@@ -87,7 +87,7 @@ class Admin extends Base {
 				$action_link = array_key_exists( $plugin, $installed_plugins ) ? $action_links['activate'] : $action_links['install'];
 			
 				echo "
-					<div class='notice notice-error'>
+					<div class='notice cx-notice notice-error'>
 						<p>" . sprintf( __( '<strong>%s</strong> needs to be activated. Please <a href="%s">%s</a> it now.', 'cx-plugin' ), $name, $action_link, $button_text ) . "</p>
 					</div>
 				";
