@@ -375,7 +375,6 @@ class Settings extends Base {
 			$config = [
 				'per_page'		=> 10,
 				'columns'		=> [
-					'visit'				=> __( 'Visit #', 'wooffiliate' ),
 					'order_id'			=> __( 'Order #', 'wooffiliate' ),
 					'products'			=> __( 'Products', 'wooffiliate' ),
 					'order_total'		=> __( 'Order Total', 'wooffiliate' ),
@@ -388,23 +387,29 @@ class Settings extends Base {
 				'order'			=> 'desc',
 				'data'			=> [
 					[
-						'visit'				=> 12,
 						'order_id'			=> 345,
 						'products'			=> 'Abc',
 						'order_total'		=> '$678',
 						'commission'		=> '$98',
-						'payment_status'	=> 'unpaid',
+						'payment_status'	=> 'Unpaid',
 						'time'				=> '2020-06-29',
 					],
 					[
-						'visit'				=> 34,
 						'order_id'			=> 567,
 						'products'			=> 'Xyz',
 						'order_total'		=> '$178',
 						'commission'		=> '$18',
-						'payment_status'	=> 'paid',
-						'time'				=> '2020-05-29',
-					]
+						'payment_status'	=> 'Paid',
+						'time'				=> '2020-05-26',
+					],
+					[
+						'order_id'			=> 451,
+						'products'			=> 'Mno',
+						'order_total'		=> '$124',
+						'commission'		=> '$12',
+						'payment_status'	=> 'Paid',
+						'time'				=> '2020-07-01',
+					],
 				],
 			];
 

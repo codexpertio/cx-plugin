@@ -1,14 +1,24 @@
 <?php
-/*
-Plugin Name: CX_Plugin
-Description: CX_Plugin by codexpert
-Plugin URI: https://codexpert.io
-Author: codexpert
-Author URI: https://codexpert.io
-Version: 1.0
-Text Domain: cx-plugin
-Domain Path: /languages
-*/
+/**
+ * Plugin Name: CX_Plugin
+ * Description: CX_Plugin by codexpert
+ * Plugin URI: https://codexpert.io
+ * Author: codexpert
+ * Author URI: https://codexpert.io
+ * Version: 1.0
+ * Text Domain: cx-plugin
+ * Domain Path: /languages
+ *
+ * Woolementor is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * any later version.
+ *
+ * Woolementor is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ */
 
 namespace codexpert\CX_Plugin;
 use codexpert\Product\License;
@@ -47,7 +57,7 @@ class Plugin {
 	}
 
 	/**
-	 * Define varibles and constants
+	 * Define variables and constants
 	 */
 	public function define() {
 		// constants
