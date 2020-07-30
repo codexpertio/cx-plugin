@@ -17,6 +17,6 @@
     		"codexpert\\" : "libs/",
             "codexpert\\CX_Plugin\\" : "src/"
     	},
-        "files": [ "helpers/functions.php", "helpers/options.php" ]
+        "files": [ "helpers/functions.php", "helpers/options.php", "../../../wp-admin/includes/plugin.php" ]
     }
 }

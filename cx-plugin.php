@@ -22,9 +22,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'CXP', __FILE__ );
-define( 'CXP_DIR', dirname( CXP ) );
-define( 'CXP_DEBUG', true );
 
 /**
  * Main class for the plugin
@@ -34,123 +31,43 @@ define( 'CXP_DEBUG', true );
 class Plugin {
 	
 	public static $_instance;
-	public $slug;
-	public $name;
-	public $version;
-	public $server;
-	public $required_php = '5.6';
-	public $required_wp = '4.0';
 
 	public function __construct() {
-		self::define();
-		
-		if( !$this->_ready() ) return;
-
 		self::includes();
-		
+		self::define();
 		self::hooks();
-	}
-
-	/**
-	 * Define constants
-	 */
-	public function define() {
-
-		if( !function_exists( 'get_plugin_data' ) ) {
-		    require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
-		}
-
-		$this->plugin = get_plugin_data( CXP );
-
-		$this->server = 'https://codexpert.io';
-
-		$this->plugin['File'] = CXP;
-		$this->plugin['Server'] = $this->server;
-	}
-
-	/**
-	 * Compatibility and dependency
-	 */
-	public function _ready() {
-
-		$_ready = true;
-
-		if( !file_exists( dirname( CXP ) . '/vendor/autoload.php' ) ) {
-			add_action( 'admin_notices', function() {
-				echo "
-					<div class='notice notice-error'>
-						<p>" . sprintf( __( 'Packages are not installed. Please run <code>%s</code> in the <code>%s</code> directory!', 'cx-plugin' ), 'composer update', dirname( CXP ) ) . "</p>
-					</div>
-				";
-			} );
-
-			$_ready = false;
-		}
-
-		if( version_compare( get_bloginfo( 'version' ), $this->required_wp, '<' ) ) {
-			add_action( 'admin_notices', function() {
-				echo "
-					<div class='notice notice-error'>
-						<p>" . sprintf( __( '<strong>%s</strong> requires <i>WordPress version %s</i> or higher. You have <i>version %s</i> installed.', 'cx-plugin' ), $this->name, $this->required_wp, get_bloginfo( 'version' ) ) . "</p>
-					</div>
-				";
-			} );
-
-			$_ready = false;
-		}
-
-		if( version_compare( PHP_VERSION, $this->required_php, '<' ) ) {
-			add_action( 'admin_notices', function() {
-				echo "
-					<div class='notice notice-error'>
-						<p>" . sprintf( __( '<strong>%s</strong> requires <i>PHP version %s</i> or higher. You have <i>version %s</i> installed.', 'cx-plugin' ), $this->name, $this->required_php, PHP_VERSION ) . "</p>
-					</div>
-				";
-			} );
-
-			$_ready = false;
-		}
-
-		/**
-		 * WooCommerce needs to be installed and activated
-		 *
-		 * @since 1.0
-		 */
-		if( !in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
-			add_action( 'admin_notices', function() {
-				$plugin = 'woocommerce/woocommerce.php';
-				$installed_plugins = get_plugins();
-				$action_links = cx_plugin_action_link( $plugin );
-
-				$button_text = array_key_exists( $plugin, $installed_plugins ) ? __( 'activate', 'cx-plugin' ) : __( 'install', 'cx-plugin' );
-				$action_link = array_key_exists( $plugin, $installed_plugins ) ? $action_links['activate'] : $action_links['install'];
-			
-				echo "
-					<div class='notice notice-error'>
-						<p>" . sprintf( __( '<strong>WooCommerce</strong> needs to be activated. Please <a href="%s">%s</a> it now.', 'cx-plugin' ), $action_link, $button_text ) . "</p>
-					</div>
-				";
-			} );
-
-			$_ready = false;
-		}
-
-		return $_ready;
 	}
 
 	/**
 	 * Includes files
 	 */
 	public function includes() {
-		require_once dirname( CXP ) . '/vendor/autoload.php';
+		require_once dirname( __FILE__ ) . '/vendor/autoload.php';
+	}
+
+	/**
+	 * Define varibles and constants
+	 */
+	public function define() {
+		// constants
+		define( 'CXP', __FILE__ );
+		define( 'CXP_DIR', dirname( CXP ) );
+		define( 'CXP_DEBUG', true );
+
+		// plugin data
+		$this->plugin					= get_plugin_data( CXP );
+		$this->plugin['File']			= CXP;
+		$this->plugin['Server']			= 'https://my.codexpert.io';
+		$this->plugin['min_php']		= '5.6';
+		$this->plugin['min_wp']			= '4.0';
+		$this->plugin['dependencies']	= [ 'woocommerce/woocommerce.php' => 'WooCommerce' ];
 	}
 
 	/**
 	 * Hooks
 	 */
-	public function hooks(){
+	public function hooks() {
 		// i18n
-		add_action( 'plugins_loaded', [ $this, 'i18n' ] );
 
 		/**
 		 * Front facing hooks
@@ -169,8 +86,10 @@ class Plugin {
 		 * To apply a filter, use $admin->filter()
 		 */
 		$admin = new Admin( $this->plugin );
+		$admin->action( 'plugins_loaded', 'i18n' );
 		$admin->action( 'admin_head', 'head' );
 		$admin->action( 'admin_enqueue_scripts', 'enqueue_scripts' );
+		$admin->action( 'admin_notices', 'admin_notices' );
 
 		/**
 		 * Settings related hooks
@@ -210,13 +129,6 @@ class Plugin {
 		$survey = new Survey( $this->plugin );
 		$license = new License( $this->plugin );
 		$update = new Update( $this->plugin );
-	}
-
-	/**
-	 * Internationalization
-	 */
-	public function i18n() {
-		load_plugin_textdomain( 'cx-plugin', false, CXP_DIR . '/languages/' );
 	}
 
 	/**
