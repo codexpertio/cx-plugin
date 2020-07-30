@@ -33,15 +33,15 @@ class Plugin {
 	public static $_instance;
 
 	public function __construct() {
-		self::includes();
+		self::include();
 		self::define();
-		self::hooks();
+		self::hook();
 	}
 
 	/**
 	 * Includes files
 	 */
-	public function includes() {
+	public function include() {
 		require_once dirname( __FILE__ ) . '/vendor/autoload.php';
 	}
 
@@ -66,7 +66,7 @@ class Plugin {
 	/**
 	 * Hooks
 	 */
-	public function hooks() {
+	public function hook() {
 		// i18n
 
 		/**
