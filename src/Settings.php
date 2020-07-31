@@ -375,12 +375,12 @@ class Settings extends Base {
 			$config = [
 				'per_page'		=> 10,
 				'columns'		=> [
-					'order_id'			=> __( 'Order #', 'wooffiliate' ),
-					'products'			=> __( 'Products', 'wooffiliate' ),
-					'order_total'		=> __( 'Order Total', 'wooffiliate' ),
-					'commission'		=> __( 'Commission', 'wooffiliate' ),
-					'payment_status'	=> __( 'Payment Status', 'wooffiliate' ),
-					'time'				=> __( 'Time', 'wooffiliate' ),
+					'order_id'			=> __( 'Order #', 'cx-plugin' ),
+					'products'			=> __( 'Products', 'cx-plugin' ),
+					'order_total'		=> __( 'Order Total', 'cx-plugin' ),
+					'commission'		=> __( 'Commission', 'cx-plugin' ),
+					'payment_status'	=> __( 'Payment Status', 'cx-plugin' ),
+					'time'				=> __( 'Time', 'cx-plugin' ),
 				],
 				'sortable'		=> [ 'visit', 'order_id', 'products', 'commission', 'payment_status', 'time' ],
 				'orderby'		=> 'time',
