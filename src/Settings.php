@@ -229,38 +229,6 @@ class Settings extends Base {
 					'icon'      => 'dashicons-admin-generic',
 					'color'		=> '#d30c5c',
 					'fields'    => [
-						'sample_select2' => [
-							'id'      =>  'sample_select2',
-							'label'     =>  __( 'Select with Select2', 'cx-plugin' ),
-							'type'      =>  'select',
-							'desc'      =>  __( 'jQuery Select2 plugin enabled. <a href="https://select2.org/" target="_blank">[See more]</a>', 'cx-plugin' ),
-							// 'class'     =>  '',
-							'options'   => [
-								'option_1'  => 'Option One',
-								'option_2'  => 'Option Two',
-								'option_3'  => 'Option Three',
-							],
-							'default'   =>  'option_2',
-							'disabled'  =>  false, // true|false
-							'multiple'  =>  false, // true|false
-							'select2'   =>  true
-						],
-						'sample_multiselect2' => [
-							'id'      =>  'sample_multiselect2',
-							'label'     =>  __( 'Multi-select with Select2', 'cx-plugin' ),
-							'type'      =>  'select',
-							'desc'      =>  __( 'jQuery Select2 plugin enabled. <a href="https://select2.org/" target="_blank">[See more]</a>', 'cx-plugin' ),
-							// 'class'     =>  '',
-							'options'   => [
-								'option_1'  => 'Option One',
-								'option_2'  => 'Option Two',
-								'option_3'  => 'Option Three',
-							],
-							'default'   =>  [ 'option_2', 'option_3' ],
-							'disabled'  =>  false, // true|false
-							'multiple'  =>  true, // true|false
-							'select2'   =>  true
-						],
 						'sample_select3' => [
 							'id'      =>  'sample_select3',
 							'label'     =>  __( 'Select with Chosen', 'cx-plugin' ),
@@ -292,6 +260,38 @@ class Settings extends Base {
 							'disabled'  =>  false, // true|false
 							'multiple'  =>  true, // true|false
 							'chosen'    =>  true
+						],
+						'sample_select2' => [
+							'id'      =>  'sample_select2',
+							'label'     =>  __( 'Select with Select2', 'cx-plugin' ),
+							'type'      =>  'select',
+							'desc'      =>  __( 'jQuery Select2 plugin enabled. <a href="https://select2.org/" target="_blank">[See more]</a>', 'cx-plugin' ),
+							// 'class'     =>  '',
+							'options'   => [
+								'option_1'  => 'Option One',
+								'option_2'  => 'Option Two',
+								'option_3'  => 'Option Three',
+							],
+							'default'   =>  'option_2',
+							'disabled'  =>  false, // true|false
+							'multiple'  =>  false, // true|false
+							'select2'   =>  true
+						],
+						'sample_multiselect2' => [
+							'id'      =>  'sample_multiselect2',
+							'label'     =>  __( 'Multi-select with Select2', 'cx-plugin' ),
+							'type'      =>  'select',
+							'desc'      =>  __( 'jQuery Select2 plugin enabled. <a href="https://select2.org/" target="_blank">[See more]</a>', 'cx-plugin' ),
+							// 'class'     =>  '',
+							'options'   => [
+								'option_1'  => 'Option One',
+								'option_2'  => 'Option Two',
+								'option_3'  => 'Option Three',
+							],
+							'default'   =>  [ 'option_2', 'option_3' ],
+							'disabled'  =>  false, // true|false
+							'multiple'  =>  true, // true|false
+							'select2'   =>  true
 						],
 						'sample_group' => [
 							'id'      =>  'sample_group',
@@ -344,19 +344,19 @@ class Settings extends Base {
 					'hide_form'	=> true,
 					'fields'    => [],
 				],
-				'cx-plugin_license' => [
-					'id'        => 'cx-plugin_license',
-					'label'     => __( 'License', 'cx-plugin' ),
-					'icon'      => 'dashicons-admin-network',
-					'color'		=> '#e828ee',
-					'hide_form'	=> true,
-					'fields'    => [],
-				],
 				'cx-plugin_help' => [
 					'id'        => 'cx-plugin_help',
 					'label'     => __( 'Help', 'cx-plugin' ),
 					'icon'      => 'dashicons-sos',
 					'color'		=> '#0b8a07',
+					'hide_form'	=> true,
+					'fields'    => [],
+				],
+				'cx-plugin_license' => [
+					'id'        => 'cx-plugin_license',
+					'label'     => __( 'License', 'cx-plugin' ),
+					'icon'      => 'dashicons-admin-network',
+					'color'		=> '#e828ee',
 					'hide_form'	=> true,
 					'fields'    => [],
 				],
