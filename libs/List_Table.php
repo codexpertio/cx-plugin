@@ -115,6 +115,15 @@ class List_Table extends \WP_List_Table {
     }
 
     /**
+     * Get the table views
+     *
+     * @return Array
+     */
+    protected function get_views() {
+        return isset( $this->config['views'] ) ? $this->config['views'] : [];
+    }
+
+    /**
      * Get the table data
      *
      * @return Array
