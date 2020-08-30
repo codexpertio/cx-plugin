@@ -33,7 +33,7 @@ class API extends Base {
 	}
 
 	public function register_endpoints() {
-		register_rest_route( $this->namespace, '/some-slug/', [
+		register_rest_route( $this->namespace, '/cx-plugin/', [
 			'methods'   => 'GET',
 			'callback'  => [ $this, 'some_callback' ],
 			'permission_callback' => function( $request ) {
