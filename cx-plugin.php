@@ -32,7 +32,6 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-
 /**
  * Main class for the plugin
  * @package Plugin
