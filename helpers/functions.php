@@ -1,7 +1,7 @@
 <?php
 
-if( ! function_exists( 'pri' ) ) :
-function pri( $data ) {
+if( ! function_exists( 'cx_plugin_pri' ) ) :
+function cx_plugin_pri( $data ) {
 	echo '<pre>';
 	if( is_object( $data ) || is_array( $data ) ) {
 		print_r( $data );
@@ -13,8 +13,8 @@ function pri( $data ) {
 }
 endif;
 
-if( ! function_exists( 'cx_get_posts' ) ) :
-function cx_get_posts( $post_type = 'post', $limit = -1 ) {
+if( ! function_exists( 'cx_plugin_get_posts' ) ) :
+function cx_plugin_get_posts( $post_type = 'post', $limit = -1 ) {
 	$arg = [
 		'post_type'         => $post_type,
 		'posts_per_page'    => $limit
@@ -27,12 +27,12 @@ function cx_get_posts( $post_type = 'post', $limit = -1 ) {
 		$posts[ $post->ID ] = $post->post_title;
 	endforeach;
 
-	return apply_filters( 'cx_get_posts', $posts, $post_type, $limit );
+	return apply_filters( 'cx_plugin_get_posts', $posts, $post_type, $limit );
 }
 endif;
 
-if( ! function_exists( 'cx_get_option' ) ) :
-function cx_get_option( $key, $section, $default = '' ) {
+if( ! function_exists( 'cx_plugin_get_option' ) ) :
+function cx_plugin_get_option( $key, $section, $default = '' ) {
 
 	$options = get_option( $key );
 
@@ -66,6 +66,7 @@ function cx_plugin_get_template( $slug, $base = 'views', $args = null ) {
 
 	// full path of a template file in plugin directory
 	$plugin_template_path =  $plugin_template_dir . $slug . '.php';
+	
 	// full path of a template file in override directory
 	$override_template_path =  $override_template_dir . $slug . '.php';
 
