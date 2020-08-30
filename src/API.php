@@ -33,11 +33,11 @@ class API extends Base {
 	}
 
 	public function register_endpoints() {
-		register_rest_route( $this->namespace, '/cx-plugin/', [
+		register_rest_route( $this->namespace, '/some-slug/', [
 			'methods'   => 'GET',
 			'callback'  => [ $this, 'some_callback' ],
 			'permission_callback' => function( $request ) {
-				// return is_user_logged_in();
+				return is_user_logged_in();
 				return 1 == 1;
 			}
 		] );
