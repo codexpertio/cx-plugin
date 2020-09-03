@@ -70,7 +70,7 @@ class Plugin {
 		$this->plugin['Server']			= 'https://my.codexpert.io';
 		$this->plugin['min_php']		= '5.6';
 		$this->plugin['min_wp']			= '4.0';
-		$this->plugin['dependencies']	= [ 'woocommerce/woocommerce.php' => 'WooCommerce' ];
+		$this->plugin['depends']		= [ 'woocommerce/woocommerce.php' => 'WooCommerce' ];
 	}
 
 	/**

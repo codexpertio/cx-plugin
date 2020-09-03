@@ -79,7 +79,7 @@ class Admin extends Base {
 		 */
 		$installed_plugins = get_plugins();
 		$active_plugins = apply_filters( 'active_plugins', get_option( 'active_plugins' ) );
-		foreach ( $this->plugin['dependencies'] as $plugin => $name ) {
+		foreach ( $this->plugin['depends'] as $plugin => $name ) {
 			if( !in_array( $plugin, apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 
 				$action_links = cx_plugin_action_link( $plugin );
