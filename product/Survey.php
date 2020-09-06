@@ -131,7 +131,7 @@ class Survey extends Base {
 			jQuery(document).ready(function($){
 				// survey
 			    $(document).on('click', '.is-dismissible.<?php echo $this->slug; ?>-survey-notice .notice-dismiss, .<?php echo $this->slug; ?>-survey', function(e){
-			        $(this).prop('disabled', true)
+			        $(this).prop('disabled', true);
 			        $.ajax({
 			            url: ajaxurl,
 			            data: { 'action' : '<?php echo $this->slug; ?>_survey', 'participate' : $(this).data('participate') },
