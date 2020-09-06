@@ -37,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @package Plugin
  * @author Nazmul Ahsan <n.mukto@gmail.com>
  */
-class Plugin {
+final class Plugin {
 	
 	public static $_instance;
 

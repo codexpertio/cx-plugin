@@ -8,6 +8,11 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+/**
+ * @package Plugin
+ * @subpackage Settings
+ * @author Nazmul Ahsan <n.mukto@gmail.com>
+ */
 class Settings extends Base {
 	
 	public function __construct( $args = array() ) {
