@@ -26,7 +26,7 @@ class Update extends Base {
 		$this->slug = $this->plugin['TextDomain'];
 		$this->server = $this->plugin['Server'];
 
-		$update = \Puc_v4_Factory::buildUpdateChecker(
+		$update = \Puc_v4p5_Factory::buildUpdateChecker(
 			"{$this->server}/wp-products/?action=get_metadata&slug={$this->slug}", $this->plugin['File'], $this->slug
 		);
 
