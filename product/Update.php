@@ -19,7 +19,11 @@ class Update extends Base {
 
 	public function __construct( $plugin ) {
 
-		require_once dirname( __FILE__ ) . '/update/plugin-update-checker.php';
+		require dirname(__FILE__) . '/update/Factory.php';
+		require dirname(__FILE__) . '/update/Autoloader.php';
+		new \Puc_v4p5_Autoloader();
+
+		\Puc_v4p5_Factory::addVersion( 'Plugin_UpdateChecker', 'Puc_v4p5_Plugin_UpdateChecker', '4.5' );
 
 		$this->plugin = $plugin;
 		
