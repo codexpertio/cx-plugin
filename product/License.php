@@ -119,7 +119,7 @@ class License extends Base {
 	}
 
 	public function enqueue_scripts() {
-		wp_enqueue_style( "{$this->plugin['TextDomain']}-license", plugins_url( 'assets/css/license.css', __FILE__ ), [], $this->plugin['Version'] );
+		wp_enqueue_style( 'codexpert-product-license', plugins_url( 'assets/css/license.css', __FILE__ ), [], $this->plugin['Version'] );
 	}
 
 	public function activator_form() {

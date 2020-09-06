@@ -148,7 +148,7 @@ class Survey extends Base {
 	}
 
 	public function enqueue_scripts() {
-		wp_enqueue_style( "{$this->plugin['TextDomain']}-survey", plugins_url( 'assets/css/survey.css', __FILE__ ), [], $this->plugin['Version'] );
+		wp_enqueue_style( 'codexpert-product-survey', plugins_url( 'assets/css/survey.css', __FILE__ ), [], $this->plugin['Version'] );
 	}
 
     /**

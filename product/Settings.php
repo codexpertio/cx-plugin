@@ -81,8 +81,8 @@ class Settings extends Base {
 			wp_enqueue_script( 'chosen' );
 		}
 
-		wp_enqueue_style( "{$this->config['id']}-settings", plugins_url( 'assets/css/settings.css', __FILE__ ), [], $this->plugin['Version'] );
-		wp_enqueue_script( "{$this->config['id']}-settings", plugins_url( 'assets/js/settings.js', __FILE__ ), [ 'jquery' ], $this->plugin['Version'], true );
+		wp_enqueue_style( 'codexpert-product-settings', plugins_url( 'assets/css/settings.css', __FILE__ ), [], $this->plugin['Version'] );
+		wp_enqueue_script( 'codexpert-product-settings', plugins_url( 'assets/js/settings.js', __FILE__ ), [ 'jquery' ], $this->plugin['Version'], true );
 	}
 
 	public function callback_admin_menu() {
