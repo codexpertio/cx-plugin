@@ -31,7 +31,7 @@ class License extends Base {
 		$this->activator_path	= $activator_path == '' ? "admin.php?page={$this->slug}#{$this->slug}_license" : $activator_path;
 		$this->activator_url	= admin_url( "{$this->activator_path}" );
 
-		$this->hooks();
+		self::hooks();
 	}
 
 	public function hooks() {
