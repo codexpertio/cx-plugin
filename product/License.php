@@ -49,7 +49,6 @@ class License extends Base {
 		$this->deactivate( 'deactivation' );
 		$this->filter( 'cron_schedules', 'cron_schedules' );
 		$this->action( "cron_{$this->slug}", 'check' );
-		$this->action( 'admin_head', 'head' );
 		$this->action( 'admin_enqueue_scripts', 'enqueue_scripts', 99 );
 		$this->action( 'admin_notices', 'admin_notice' );
 		$this->priv( "license-activator-{$this->basename}", 'verify' );
@@ -82,42 +81,6 @@ class License extends Base {
 		return $schedules;
 	}
 
-	public function head() {
-		?>
-		<script>
-			jQuery(function($){
-				$('.<?php echo $this->basename; ?>-btn').click(function(e){
-				    e.preventDefault()
-				    var dis = $(this)
-				    var btn = dis.val()
-				    $(this).val('Please wait..')
-				    var par = $(this).parent()
-				    var key = $('input.key-field', par).val()
-				    var plugin = $('input[name="plugin_key"]', par).val()
-				    var operation = dis.attr('name')
-				    $.ajax({
-				        url: ajaxurl,
-				        type: 'POST',
-				        dataType: 'JSON',
-				        data: { 'action' : 'license-activator-<?php echo $this->basename; ?>', 'operation' : operation, 'plugin' : plugin, 'key' : key, 'product_ref' : '<?php echo $this->plugin['Name'];?>' },
-				        success:function(ret){
-				        	console.log(ret)
-				            dis.val(btn)
-				            if(ret.status == 1) {
-				            	$('#license-notice-<?php echo $this->slug; ?>').hide()
-					            setTimeout(function(e){
-					            	location.reload()
-					            },2000)
-				            }
-				            $(".<?php echo $this->slug; ?>-message", par).html(ret.message)
-				        }
-				    })
-				})
-			})
-		</script>
-		<?php
-	}
-
 	public function enqueue_scripts() {
 		wp_enqueue_style( 'codexpert-product-license', plugins_url( 'assets/css/license.css', __FILE__ ), [], $this->plugin['Version'] );
 	}
@@ -133,8 +96,8 @@ class License extends Base {
 		<div id='div_{$key}' class='{$this->slug}-activation-div'>
 		    <input type='{$_type}' id='{$key}' name='{$key}' value='{$value}' class='key-field' placeholder='" . __( 'Input your license key', 'codexpert' ) . "' {$_disabled} >
 	        <input type='hidden' name='plugin_key' value='{$key}' />
-	        <input type='button' name='activate_license' value='" . __( 'Activate', 'codexpert' ) . "' class='{$key}-btn button-primary' />
-	        <input type='button' name='deactivate_license' value='" . __( 'Deactivate', 'codexpert' ) . "' class='{$key}-btn button' />
+	        <input type='button' name='activate_license' value='" . __( 'Activate', 'codexpert' ) . "' class='{$key}-btn cx-license-btn button-primary' data-slug='{$this->slug}' data-basename='{$key}' data-name='{$this->plugin['Name']}' />
+	        <input type='button' name='deactivate_license' value='" . __( 'Deactivate', 'codexpert' ) . "' class='{$key}-btn cx-license-btn button' data-slug='{$this->slug}' data-basename='{$key}' data-name='{$this->plugin['Name']}' />
 	        <span class='{$this->slug}-message'></span>
 		</div>
 		";
