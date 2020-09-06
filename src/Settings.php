@@ -10,7 +10,7 @@ use codexpert\product\License;
 /**
  * @package Plugin
  * @subpackage Settings
- * @author Nazmul Ahsan <n.mukto@gmail.com>
+ * @author codexpert <hello@codexpert.io>
  */
 class Settings extends Base {
 

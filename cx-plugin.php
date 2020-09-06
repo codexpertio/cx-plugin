@@ -35,7 +35,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Main class for the plugin
  * @package Plugin
- * @author Nazmul Ahsan <n.mukto@gmail.com>
+ * @author codexpert <hello@codexpert.io>
  */
 final class Plugin {
 	

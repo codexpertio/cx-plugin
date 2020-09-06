@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * @package Plugin
  * @subpackage Update
- * @author Nazmul Ahsan <n.mukto@gmail.com>
+ * @author codexpert <hello@codexpert.io>
  */
 class Update extends Base {
 	
