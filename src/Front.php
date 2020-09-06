@@ -3,7 +3,7 @@
  * All public facing functions
  */
 namespace codexpert\CX_Plugin;
-use codexpert\Base;
+use codexpert\product\Base;
 
 /**
  * if accessed directly, exit.

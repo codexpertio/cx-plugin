@@ -21,9 +21,9 @@
  */
 
 namespace codexpert\CX_Plugin;
-use codexpert\Product\License;
-use codexpert\Product\Survey;
-use codexpert\Product\Update;
+use codexpert\product\License;
+use codexpert\product\Survey;
+use codexpert\product\Update;
 
 /**
  * if accessed directly, exit.

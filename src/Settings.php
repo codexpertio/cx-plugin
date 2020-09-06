@@ -3,9 +3,9 @@
  * All settings related functions
  */
 namespace codexpert\CX_Plugin;
-use codexpert\Base;
-use codexpert\List_Table;
-use codexpert\Product\License;
+use codexpert\product\Base;
+use codexpert\product\List_Table;
+use codexpert\product\License;
 
 /**
  * @package Plugin
@@ -363,7 +363,7 @@ class Settings extends Base {
 			],
 		];
 
-		new \CX_Settings_API( $settings );
+		new \codexpert\product\Settings( $settings );
 	}
 	
 	public function tab_content( $section ) {

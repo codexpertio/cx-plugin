@@ -1,6 +1,6 @@
 <?php
 
-namespace codexpert;
+namespace codexpert\product;
 
 /**
  * if accessed directly, exit.

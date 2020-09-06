@@ -6,17 +6,13 @@
             "email": "n.mukto@gmail.com"
         }
     ],
-    "require": {
-            "mukto90/cx-settings-api": "dev-master",
-            "mukto90/cx-license-api": "dev-master",
-            "mukto90/cx-survey-api": "dev-master",
-            "mukto90/cx-update-api": "dev-master"
-    },
+    "require": {},
     "autoload": {
-    	"psr-4": {
-    		"codexpert\\" : "libs/",
+        "psr-4": {
+            "codexpert\\" : "libs/",
+            "codexpert\\product\\" : "product/",
             "codexpert\\CX_Plugin\\" : "src/"
-    	},
+        },
         "files": [ "helpers/functions.php", "helpers/options.php" ]
     }
 }
