@@ -28,9 +28,9 @@ class Update extends Base {
 		$this->plugin	= $plugin;
 		
 		$this->slug		= $this->plugin['TextDomain'];
-		$this->server	= $this->plugin['Server'];
+		$this->server	= $this->plugin['server'];
 
-		$update = \Puc_v4p5_Factory::buildUpdateChecker( "{$this->server}/wp-products/?action=get_metadata&slug={$this->slug}", $this->plugin['File'], $this->slug );
+		$update = \Puc_v4p5_Factory::buildUpdateChecker( "{$this->server}/wp-products/?action=get_metadata&slug={$this->slug}", $this->plugin['file'], $this->slug );
 
 		$this->filter( 'plugins_api_result', 'set_download_link', 10, 3 );
 	}

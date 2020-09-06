@@ -66,8 +66,8 @@ class Plugin {
 
 		// plugin data
 		$this->plugin					= get_plugin_data( CXP );
-		$this->plugin['File']			= CXP;
-		$this->plugin['Server']			= 'https://my.codexpert.io';
+		$this->plugin['file']			= CXP;
+		$this->plugin['server']			= 'https://my.codexpert.io';
 		$this->plugin['min_php']		= '5.6';
 		$this->plugin['min_wp']			= '4.0';
 		$this->plugin['depends']		= [ 'woocommerce/woocommerce.php' => 'WooCommerce' ];
@@ -134,9 +134,9 @@ class Plugin {
 		$api->action( 'rest_api_init', 'register_endpoints' );
 
 		// Product related classes
-		$survey = new Survey( $this->plugin );
-		$license = new License( $this->plugin );
-		$update = new Update( $this->plugin );
+		$survey		= new Survey( $this->plugin );
+		$license	= new License( $this->plugin );
+		$update		= new Update( $this->plugin );
 	}
 
 	/**

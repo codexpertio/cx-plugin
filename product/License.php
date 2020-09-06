@@ -20,11 +20,11 @@ class License extends Base {
 	public function __construct( $plugin, $activator_path = '', $secret_key = '580cc082161006.41870101' ) {
 		$this->plugin 			= $plugin;
 
-		$this->license_server 	= $this->plugin['Server'];
+		$this->license_server 	= $this->plugin['server'];
 		$this->secret_key 		= $secret_key;
 
 		$this->slug 			= $this->plugin['TextDomain'];
-		$this->basename 		= str_replace( array( '/', '.' ), array( '-', '-' ), plugin_basename( $this->plugin['File'] ) );
+		$this->basename 		= str_replace( array( '/', '.' ), array( '-', '-' ), plugin_basename( $this->plugin['file'] ) );
 		
 		$this->icon 			= isset( $this->plugin['icon'] ) ? $this->plugin['icon'] : '<span class="dashicons dashicons-admin-network"></span>';
 		

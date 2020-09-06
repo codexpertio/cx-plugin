@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage Base
  * @author Nazmul Ahsan <n.mukto@gmail.com>
  */
-class Base {
+abstract class Base {
 
 	public $plugin;
 
@@ -28,14 +28,14 @@ class Base {
 	 * @see register_activation_hook
 	 */
 	public function activate( $callback ) {
-		register_activation_hook( $this->plugin['File'], [ $this, $callback ] );
+		register_activation_hook( $this->plugin['file'], [ $this, $callback ] );
 	}
 	
 	/**
 	 * @see register_activation_hook
 	 */
 	public function deactivate( $callback ) {
-		register_deactivation_hook( $this->plugin['File'], [ $this, $callback ] );
+		register_deactivation_hook( $this->plugin['file'], [ $this, $callback ] );
 	}
 	
 	/**

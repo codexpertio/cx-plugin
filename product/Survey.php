@@ -27,7 +27,7 @@ class Survey extends Base {
 
 		$this->plugin 	= $plugin;
 
-		$this->server 	= $this->plugin['Server'];
+		$this->server 	= $this->plugin['server'];
 		$this->slug 	= $this->plugin['TextDomain'];
 		$this->name = $this->plugin['Name'];
 		$this->api_url = "{$this->server}/wp-json/codexpert-lead/v1.0/";
