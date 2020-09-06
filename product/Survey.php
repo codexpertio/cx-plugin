@@ -43,6 +43,7 @@ class Survey extends Base {
 		$this->activate( 'activation' );
 		$this->deactivate( 'deactivation' );
 		$this->action( 'admin_head', 'head' );
+		$this->action( 'admin_enqueue_scripts', 'enqueue_scripts', 99 );
 		$this->action( 'admin_notices', 'admin_notices' );
 		$this->priv( "{$this->slug}_survey", 'survey' );
 	}
@@ -126,9 +127,6 @@ class Survey extends Base {
 	public function head() {
         if( get_option( "{$this->slug}_survey" ) != 1 ) :
 		?>
-		<style>
-			.notice.cx-notice{border:1px solid #f1f1f1;padding:20px}.notice .cx-notice-content h3{padding:0;margin:0;display:inline-block}p.cx-notice-btn-wrapper{margin:0}.cx-notice-btn-wrapper .cx-notice-btn{display:inline-block;padding:.75em;background-color:#4c3f93;transition:.4s;border-color:#4c3f93;outline:none}.cx-notice-btn-wrapper .cx-notice-btn:hover{background-color:#554D82}
-		</style>
 		<script>
 			jQuery(document).ready(function($){
 				// survey
@@ -147,6 +145,10 @@ class Survey extends Base {
 		</script>
 		<?php
         endif;
+	}
+
+	public function enqueue_scripts() {
+		wp_enqueue_style( "{$this->plugin['TextDomain']}-survey", plugins_url( 'assets/css/survey.css', __FILE__ ), [], $this->plugin['Version'] );
 	}
 
     /**

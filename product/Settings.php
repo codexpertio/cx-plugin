@@ -24,7 +24,7 @@ class Settings extends Base {
 
 	public function hooks() {
 		$this->action( 'admin_head', 'callback_head', 99 );
-		$this->action( 'admin_enqueue_scripts', 'callback_enqueue_scripts', 99 );
+		$this->action( 'admin_enqueue_scripts', 'enqueue_scripts', 99 );
 		$this->action( 'admin_menu', 'callback_admin_menu', $this->config['priority'] );
 		$this->priv( 'cx-settings', 'callback_save_settings' );
 		$this->priv( 'cx-reset', 'callback_reset_settings' );
@@ -58,7 +58,7 @@ class Settings extends Base {
 		<?php
 	}
 
-	public function callback_enqueue_scripts() {
+	public function enqueue_scripts() {
 		if( strpos( get_current_screen()->id, $this->config['id'] ) == false ) return;
 
 		wp_enqueue_media();

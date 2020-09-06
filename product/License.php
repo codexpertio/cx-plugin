@@ -50,6 +50,7 @@ class License extends Base {
 		$this->filter( 'cron_schedules', 'cron_schedules' );
 		$this->action( "cron_{$this->slug}", 'check' );
 		$this->action( 'admin_head', 'head' );
+		$this->action( 'admin_enqueue_scripts', 'enqueue_scripts', 99 );
 		$this->action( 'admin_notices', 'admin_notice' );
 		$this->priv( "license-activator-{$this->basename}", 'verify' );
 	}
@@ -83,9 +84,6 @@ class License extends Base {
 
 	public function head() {
 		?>
-		<style>
-			.notice.cx-notice{padding:20px}.notice.cx-notice .cx-notice-inner{display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-align:center;-webkit-align-items:center;-ms-flex-align:center;align-items:center}.notice.cx-notice .cx-notice-icon{font-size:20px}.notice.cx-notice .cx-notice-content{padding:0 20px}.notice.cx-notice p{padding:0;margin:0}.notice.cx-notice .cx-notice-action{text-align:center;display:-webkit-box;display:-webkit-flex;display:-ms-flexbox;display:flex;-webkit-box-orient:vertical;-webkit-box-direction:normal;-webkit-flex-direction:column;-ms-flex-direction:column;flex-direction:column;margin-left:auto}.notice.cx-notice .cx-notice-action .cx-button{background-color:#d30c5c;color:#fff;border-color:#7c1337;-webkit-box-shadow:0 1px 0 #7c1337;box-shadow:0 1px 0 #7c1337;padding:5px 30px;height:auto;line-height:20px;text-transform:capitalize;font-size:13px;text-decoration:none;transition-duration:.3s;border-radius:3px;border:none;outline:none}.notice.cx-notice .cx-notice-action .cx-button:hover{background-color:#a0124a}.cx-logo-wrapper{display:inline-block;padding:.75em;background-image:-webkit-linear-gradient(225deg,#ef295a,#434363);background-image:-o-linear-gradient(225deg,#ef295a,#434363);background-image:linear-gradient(-135deg,#ef295a,#434363);-webkit-border-radius:7.5%;border-radius:7.5%;line-height:1}.cx-logo-wrapper span.dashicons{color:#fff;font-size:1em}@media only screen and (min-width :320px){.notice.cx-notice .cx-notice-inner{display:block;text-align:center}.notice.cx-notice .cx-notice-content{padding:0;margin-top:10px}.notice.cx-notice .cx-notice-action{display:block;margin-top:10px}}@media only screen and (min-width :768px){.notice.cx-notice .cx-notice-inner{display:flex;text-align:left}.notice.cx-notice .cx-notice-content{padding:0 20px;margin-top:0}.notice.cx-notice .cx-notice-action{display:flex;margin-top:0}}
-		</style>
 		<script>
 			jQuery(function($){
 				$('.<?php echo $this->basename; ?>-btn').click(function(e){
@@ -118,6 +116,10 @@ class License extends Base {
 			})
 		</script>
 		<?php
+	}
+
+	public function enqueue_scripts() {
+		wp_enqueue_style( "{$this->plugin['TextDomain']}-license", plugins_url( 'assets/css/license.css', __FILE__ ), [], $this->plugin['Version'] );
 	}
 
 	public function activator_form() {
