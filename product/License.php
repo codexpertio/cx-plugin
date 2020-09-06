@@ -18,18 +18,18 @@ class License extends Base {
 	public $plugin;
 
 	public function __construct( $plugin, $activator_path = '', $secret_key = '580cc082161006.41870101' ) {
-		$this->plugin 	= $plugin;
+		$this->plugin 			= $plugin;
 
 		$this->license_server 	= $this->plugin['Server'];
 		$this->secret_key 		= $secret_key;
 
-		$this->slug 	= $this->plugin['TextDomain'];
-		$this->basename = str_replace( array( '/', '.' ), array( '-', '-' ), plugin_basename( $this->plugin['File'] ) );
+		$this->slug 			= $this->plugin['TextDomain'];
+		$this->basename 		= str_replace( array( '/', '.' ), array( '-', '-' ), plugin_basename( $this->plugin['File'] ) );
 		
-		$this->icon 	= isset( $this->plugin['icon'] ) ? $this->plugin['icon'] : '<span class="dashicons dashicons-admin-network"></span>';
+		$this->icon 			= isset( $this->plugin['icon'] ) ? $this->plugin['icon'] : '<span class="dashicons dashicons-admin-network"></span>';
 		
-		$this->activator_path = $activator_path == '' ? "admin.php?page={$this->slug}#{$this->slug}_license" : $activator_path;
-		$this->activator_url = admin_url( "{$this->activator_path}" );
+		$this->activator_path	= $activator_path == '' ? "admin.php?page={$this->slug}#{$this->slug}_license" : $activator_path;
+		$this->activator_url	= admin_url( "{$this->activator_path}" );
 
 		$this->hooks();
 	}
@@ -50,8 +50,8 @@ class License extends Base {
 		$this->filter( 'cron_schedules', 'cron_schedules' );
 		$this->action( "cron_{$this->slug}", 'check' );
 		$this->action( 'admin_head', 'head' );
-		$this->action( "wp_ajax_license-activator-{$this->basename}", 'verify' );
 		$this->action( 'admin_notices', 'admin_notice' );
+		$this->priv( "license-activator-{$this->basename}", 'verify' );
 	}
 
 	public function activation() {

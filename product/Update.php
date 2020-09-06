@@ -30,7 +30,6 @@ class Update extends Base {
 			"{$this->server}/wp-products/?action=get_metadata&slug={$this->slug}", $this->plugin['File'], $this->slug
 		);
 
-
 		$this->filter( 'plugins_api_result', 'set_download_link', 10, 3 );
 	}
 

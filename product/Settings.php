@@ -21,8 +21,8 @@ class Settings extends Base {
 		$this->action( 'admin_head', 'callback_head', 99 );
 		$this->action( 'admin_enqueue_scripts', 'callback_enqueue_scripts', 99 );
 		$this->action( 'admin_menu', 'callback_admin_menu', $this->config['priority'] );
-		$this->action( 'wp_ajax_cx-settings', 'callback_save_settings' );
-		$this->action( 'wp_ajax_cx-reset', 'callback_reset_settings' );
+		$this->priv( 'cx-settings', 'callback_save_settings' );
+		$this->priv( 'cx-reset', 'callback_reset_settings' );
 	}
 
 	public function callback_head() {

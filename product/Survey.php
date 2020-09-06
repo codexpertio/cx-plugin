@@ -44,7 +44,7 @@ class Survey extends Base {
 		$this->deactivate( 'deactivation' );
 		$this->action( 'admin_head', 'head' );
 		$this->action( 'admin_notices', 'admin_notices' );
-		$this->action( "wp_ajax_{$this->slug}_survey", 'survey' );
+		$this->priv( "{$this->slug}_survey", 'survey' );
 	}
 
 	/**
