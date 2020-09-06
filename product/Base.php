@@ -41,15 +41,15 @@ abstract class Base {
 	/**
 	 * @see add_action
 	 */
-	public function action( $tag, $callback, $priority = 10, $num_args = 1 ) {
-		add_action( $tag, [ $this, $callback ], $priority, $num_args );
+	public function action( $tag, $callback, $priority = 10, $accepted_args = 1 ) {
+		add_action( $tag, [ $this, $callback ], $priority, $accepted_args );
 	}
 
 	/**
 	 * @see add_filter
 	 */
-	public function filter( $tag, $callback, $priority = 10, $num_args = 1 ) {
-		add_filter( $tag, [ $this, $callback ], $priority, $num_args );
+	public function filter( $tag, $callback, $priority = 10, $accepted_args = 1 ) {
+		add_filter( $tag, [ $this, $callback ], $priority, $accepted_args );
 	}
 
 	/**
