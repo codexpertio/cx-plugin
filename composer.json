@@ -7,7 +7,7 @@
         }
     ],
     "require": {
-        "codexpert/product": "v1.0"
+        "codexpert/product": "dev-master"
     },
     "autoload": {
         "psr-4": {
