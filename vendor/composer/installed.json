@@ -6,18 +6,18 @@
         "source": {
             "type": "git",
             "url": "https://bitbucket.org/codexpertio/codexpert-product.git",
-            "reference": "57775285974c513356c3cb36456b99b78e148685"
+            "reference": "bcc888c9a8d77740622d4eeadbdf2911a19defa9"
         },
         "dist": {
             "type": "zip",
-            "url": "https://bitbucket.org/codexpertio/codexpert-product/get/57775285974c513356c3cb36456b99b78e148685.zip",
-            "reference": "57775285974c513356c3cb36456b99b78e148685",
+            "url": "https://bitbucket.org/codexpertio/codexpert-product/get/bcc888c9a8d77740622d4eeadbdf2911a19defa9.zip",
+            "reference": "bcc888c9a8d77740622d4eeadbdf2911a19defa9",
             "shasum": ""
         },
         "require": {
             "php": ">=5.3.0"
         },
-        "time": "2020-09-07T08:34:48+00:00",
+        "time": "2020-09-07T09:28:16+00:00",
         "type": "library",
         "installation-source": "source",
         "autoload": {
