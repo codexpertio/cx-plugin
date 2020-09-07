@@ -6,11 +6,11 @@
             "email": "hello@codexpert.io"
         }
     ],
-    "require": {},
+    "require": {
+        "codexpert/product": "v1.0"
+    },
     "autoload": {
         "psr-4": {
-            "codexpert\\" : "libs/",
-            "codexpert\\product\\" : "product/",
             "codexpert\\CX_Plugin\\" : "src/"
         },
         "files": [ "helpers/functions.php", "helpers/options.php" ]
