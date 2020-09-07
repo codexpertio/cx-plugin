@@ -21,16 +21,14 @@ class Update extends Base {
 
 		require dirname( __FILE__ ) . '/update/Factory.php';
 		require dirname( __FILE__ ) . '/update/Autoloader.php';
-		new \Puc_v4p5_Autoloader();
-
-		\Puc_v4p5_Factory::addVersion( 'Plugin_UpdateChecker', 'Puc_v4p5_Plugin_UpdateChecker', '4.5' );
 
 		$this->plugin	= $plugin;
-		
 		$this->slug		= $this->plugin['TextDomain'];
 		$this->server	= $this->plugin['server'];
 
-		$update = \Puc_v4p5_Factory::buildUpdateChecker( "{$this->server}/wp-products/?action=get_metadata&slug={$this->slug}", $this->plugin['file'], $this->slug );
+		new \Puc_v4p5_Autoloader();
+		\Puc_v4p5_Factory::addVersion( 'Plugin_UpdateChecker', 'Puc_v4p5_Plugin_UpdateChecker', '4.5' );
+		\Puc_v4p5_Factory::buildUpdateChecker( "{$this->server}/wp-products/?action=get_metadata&slug={$this->slug}", $this->plugin['file'], $this->slug );
 
 		$this->filter( 'plugins_api_result', 'set_download_link', 10, 3 );
 	}
