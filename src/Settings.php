@@ -20,10 +20,10 @@ class Settings extends Base {
 	 * Constructor function
 	 */
 	public function __construct( $plugin ) {
-		$this->plugin = $plugin;
-		$this->slug = $this->plugin['TextDomain'];
-		$this->name = $this->plugin['Name'];
-		$this->version = $this->plugin['Version'];
+		$this->plugin	= $plugin;
+		$this->slug		= $this->plugin['TextDomain'];
+		$this->name		= $this->plugin['Name'];
+		$this->version	= $this->plugin['Version'];
 	}
 
 	public function add_admin_bar( $admin_bar ) {
@@ -95,7 +95,7 @@ class Settings extends Base {
 							'type'      =>  'url',
 							'desc'      =>  __( 'This is a url field.', 'cx-plugin' ),
 							// 'class'     =>  '',
-							'default'   =>  'http://johndoe.com',
+							'default'   =>  'https://johndoe.com',
 							'readonly'  =>  false, // true|false
 							'disabled'  =>  false, // true|false
 						],

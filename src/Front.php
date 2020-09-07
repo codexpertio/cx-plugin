@@ -25,10 +25,10 @@ class Front extends Base {
 	 * Constructor function
 	 */
 	public function __construct( $plugin ) {
-		$this->plugin = $plugin;
-		$this->slug = $this->plugin['TextDomain'];
-		$this->name = $this->plugin['Name'];
-		$this->version = $this->plugin['Version'];
+		$this->plugin	= $plugin;
+		$this->slug		= $this->plugin['TextDomain'];
+		$this->name		= $this->plugin['Name'];
+		$this->version	= $this->plugin['Version'];
 	}
 	
 	/**
@@ -46,9 +46,4 @@ class Front extends Base {
 		];
 		wp_localize_script( $this->slug, 'CXP', apply_filters( "{$this->slug}-localized", $localized ) );
 	}
-
-	/**
-	 * Add some script to head
-	 */
-	public function head() {}
 }

@@ -58,7 +58,6 @@ class List_Table extends \WP_List_Table {
         $sortable       = $this->get_sortable_columns();
 
         $data           = $this->table_data();
-
         usort( $data, [ &$this, 'sort_data' ] );
 
         $per_page       = isset( $this->config['per_page'] ) ? $this->config['per_page'] : 10;

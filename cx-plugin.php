@@ -85,7 +85,6 @@ final class Plugin {
 		 * To apply a filter, use $front->filter()
 		 */
 		$front = new Front( $this->plugin );
-		$front->action( 'wp_head', 'head' );
 		$front->action( 'wp_enqueue_scripts', 'enqueue_scripts' );
 
 		/**
@@ -96,7 +95,6 @@ final class Plugin {
 		 */
 		$admin = new Admin( $this->plugin );
 		$admin->action( 'plugins_loaded', 'i18n' );
-		$admin->action( 'admin_head', 'head' );
 		$admin->action( 'admin_enqueue_scripts', 'enqueue_scripts' );
 		$admin->action( 'admin_notices', 'admin_notices' );
 

@@ -25,10 +25,10 @@ class Admin extends Base {
 	 * Constructor function
 	 */
 	public function __construct( $plugin ) {
-		$this->plugin = $plugin;
-		$this->slug = $this->plugin['TextDomain'];
-		$this->name = $this->plugin['Name'];
-		$this->version = $this->plugin['Version'];
+		$this->plugin	= $plugin;
+		$this->slug		= $this->plugin['TextDomain'];
+		$this->name		= $this->plugin['Name'];
+		$this->version	= $this->plugin['Version'];
 	}
 
 	/**
@@ -37,11 +37,6 @@ class Admin extends Base {
 	public function i18n() {
 		load_plugin_textdomain( 'cx-plugin', false, CXP_DIR . '/languages/' );
 	}
-
-	/**
-	 * Add some script to head
-	 */
-	public function head() {}
 	
 	/**
 	 * Enqueue JavaScripts and stylesheets

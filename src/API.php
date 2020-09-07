@@ -25,11 +25,11 @@ class API extends Base {
 	 * Constructor function
 	 */
 	public function __construct( $plugin ) {
-		$this->plugin = $plugin;
-		$this->slug = $this->plugin['TextDomain'];
-		$this->version = $this->plugin['Version'];
+		$this->plugin		= $plugin;
+		$this->slug			= $this->plugin['TextDomain'];
+		$this->version		= $this->plugin['Version'];
 
-		$this->namespace = "{$this->slug}/v{$this->version}";
+		$this->namespace	= apply_filters( "{$this->slug}_rest_route_namespace", "{$this->slug}/v{$this->version}" );
 	}
 
 	public function register_endpoints() {

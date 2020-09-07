@@ -25,10 +25,10 @@ class Shortcode extends Base {
      * Constructor function
      */
     public function __construct( $plugin ) {
-        $this->plugin = $plugin;
-        $this->slug = $this->plugin['TextDomain'];
-        $this->name = $this->plugin['Name'];
-        $this->version = $this->plugin['Version'];
+        $this->plugin   = $plugin;
+        $this->slug     = $this->plugin['TextDomain'];
+        $this->name     = $this->plugin['Name'];
+        $this->version  = $this->plugin['Version'];
     }
     
     /**
