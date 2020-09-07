@@ -42,7 +42,6 @@ class Survey extends Base {
 	public function hooks(){
 		$this->activate( 'activation' );
 		$this->deactivate( 'deactivation' );
-		$this->action( 'admin_head', 'head' );
 		$this->action( 'admin_enqueue_scripts', 'enqueue_scripts', 99 );
 		$this->action( 'admin_notices', 'admin_notices' );
 		$this->priv( "{$this->slug}_survey", 'survey' );
@@ -124,31 +123,9 @@ class Survey extends Base {
 		endif;
 	}
 
-	public function head() {
-        if( get_option( "{$this->slug}_survey" ) != 1 ) :
-		?>
-		<script>
-			jQuery(document).ready(function($){
-				// survey
-			    $(document).on('click', '.is-dismissible.<?php echo $this->slug; ?>-survey-notice .notice-dismiss, .<?php echo $this->slug; ?>-survey', function(e){
-			        $(this).prop('disabled', true);
-			        $.ajax({
-			            url: ajaxurl,
-			            data: { 'action' : '<?php echo $this->slug; ?>_survey', 'participate' : $(this).data('participate') },
-			            type: 'POST',
-			            success: function(ret) {
-			                $('.<?php echo $this->slug; ?>-survey-notice').slideToggle(500)
-			            }
-			        })
-			    })
-			})
-		</script>
-		<?php
-        endif;
-	}
-
 	public function enqueue_scripts() {
 		wp_enqueue_style( 'codexpert-product-survey', plugins_url( 'assets/css/survey.css', __FILE__ ), [], $this->plugin['Version'] );
+		wp_enqueue_script( 'codexpert-product-survey', plugins_url( 'assets/js/survey.js', __FILE__ ), [ 'jquery' ], $this->plugin['Version'], true );
 	}
 
     /**
@@ -158,7 +135,7 @@ class Survey extends Base {
     public function admin_notices() {
         if( get_option( "{$this->slug}_survey" ) != 1 ) :
         ?>
-        <div class="notice notice-success is-dismissible <?php echo $this->slug; ?>-survey-notice survey-notice cx-notice">
+        <div id="<?php echo $this->slug; ?>-survey-notice" class="notice notice-success is-dismissible cx-survey-notice cx-notice" data-slug="<?php echo $this->slug; ?>">
 
         	<img style="float: left;height: 105px; margin-right: 10px" src="https://static.codexpert.io/img/survey.png" />
             <div class="cx-notice-content">
@@ -166,7 +143,7 @@ class Survey extends Base {
                 <?php echo $this->get_message(); ?>
             </div>
             <p class="cx-notice-btn-wrapper">
-                <button class="button button-primary button-hero cx-notice-btn <?php echo $this->slug; ?>-survey" data-participate="1">
+                <button class="button button-primary button-hero cx-notice-btn" data-participate="1">
                 	<?php echo $this->get_button_text(); ?>
                 </button>
             </p>
