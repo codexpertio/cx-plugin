@@ -218,9 +218,7 @@ class License extends Base {
 					</div>
 					<div class="cx-notice-content">
 						<strong><?php printf( __( 'Welcome to %s', 'codexpert' ), $this->plugin['Name'] ); ?></strong>
-						<?php 
-							printf( __( '<p>The license for <strong>%1$s</strong> is about to expire in %2$d days! Please renew to get uninterrupted service!</p>', 'codexpert' ), $this->plugin['Name'], $day_left );
-						?>
+						<?php printf( __( '<p>The license for <strong>%1$s</strong> is about to expire in %2$d days! Please renew to get uninterrupted service!</p>', 'codexpert' ), $this->plugin['Name'], $day_left ); ?>
 					</div>
 					<div class="cx-notice-action">
 						<?php echo "<a href='{$this->license_server}' class='cx-button' target='_blank'>" . __( 'Renew Now', 'codexpert' ) . '</a>'; ?>
