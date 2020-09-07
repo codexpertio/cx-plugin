@@ -83,6 +83,7 @@ class License extends Base {
 
 	public function enqueue_scripts() {
 		wp_enqueue_style( 'codexpert-product-license', plugins_url( 'assets/css/license.css', __FILE__ ), [], $this->plugin['Version'] );
+		wp_enqueue_script( 'codexpert-product-license', plugins_url( 'assets/js/license.js', __FILE__ ), [ 'jquery' ], $this->plugin['Version'], true );
 	}
 
 	public function activator_form() {
