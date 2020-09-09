@@ -24,7 +24,6 @@ namespace codexpert\CX_Plugin;
 use codexpert\product\License;
 use codexpert\product\Survey;
 use codexpert\product\Update;
-use codexpert\product\Assets;
 
 /**
  * if accessed directly, exit.
