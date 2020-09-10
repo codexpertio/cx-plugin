@@ -4,6 +4,7 @@
  */
 namespace codexpert\CX_Plugin;
 use codexpert\product\Base;
+use codexpert\product\Metabox;
 
 /**
  * if accessed directly, exit.
@@ -36,6 +37,33 @@ class Admin extends Base {
 	 */
 	public function i18n() {
 		load_plugin_textdomain( 'cx-plugin', false, CXP_DIR . '/languages/' );
+	}
+
+	/**
+	 * Adds a sample meta box
+	 */
+	public function add_meta_boxes() {
+		$args = [
+		    'id'			=> 'sample_meta_id',
+		    'label'			=> __( 'Sample Meta Box', 'cx-plugin' ),
+		    'post_type'		=> [ 'post', 'page' ],
+		    'context'		=> 'side', // side|normal|advanced
+		    'priority'		=> 'high', // high|low
+		    'hook_priority'	=>  10,
+		    'fields'		=>  [
+		        'sample_text' => [
+		            'name'		=> 'sample_text',
+		            'label'		=> __( 'Text Field', 'cx-plugin' ),
+		            'type'		=> 'text',
+		            'desc'		=> __( 'This is a text field.', 'cx-plugin' ),
+		            'class'		=> 'cx-meta-field',
+		            'default'	=> 'Hello World!',
+		            'readonly'	=> false, // true|false
+		            'disabled'	=> false, // true|false
+		        ],
+		    ]
+		];
+		MetaBox::init( $args );
 	}
 	
 	/**
