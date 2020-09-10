@@ -4,7 +4,7 @@
  */
 namespace codexpert\CX_Plugin;
 use codexpert\product\Base;
-use codexpert\product\List_Table;
+use codexpert\product\Table;
 use codexpert\product\License;
 
 /**
@@ -396,7 +396,7 @@ class Settings extends Base {
 			];
 
 			
-			$table = new List_Table( $config );
+			$table = new Table( $config );
 			$table->prepare_items();
 			// $table->search_box( 'Search', 'search' );
 			$table->display();
