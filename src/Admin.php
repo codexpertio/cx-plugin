@@ -63,7 +63,7 @@ class Admin extends Base {
 		        ],
 		    ]
 		];
-		MetaBox::init( $args );
+		MetaBox::render( $args );
 	}
 	
 	/**
