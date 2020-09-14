@@ -43,40 +43,72 @@ class Admin extends Base {
 	 * Adds a sample meta box
 	 */
 	public function add_meta_boxes() {
-		$args = [
-		    'id'			=> 'sample_meta_id',
-		    'label'			=> __( 'Sample Meta Box', 'cx-plugin' ),
-		    'post_type'		=> [ 'post', 'page' ],
-		    'context'		=> 'side', // side|normal|advanced
-		    'priority'		=> 'high', // high|low
-		    'hook_priority'	=>  10,
-		    'fields'		=>  [
-		        'sample_text' => [
-		            'name'		=> 'sample_text',
-		            'label'		=> __( 'Text Field', 'cx-plugin' ),
-		            'type'		=> 'text',
-		            'desc'		=> __( 'This is a text field.', 'cx-plugin' ),
-		            'class'		=> 'cx-meta-field',
-		            'default'	=> 'Hello World!',
-		            'readonly'	=> false, // true|false
-		            'disabled'	=> false, // true|false
-		        ],
-		        'sample_select' => [
-		            'name'		=> 'sample_select',
-		            'label'		=> __( 'Select Field', 'cx-plugin' ),
-		            'type'		=> 'select',
-		            'desc'		=> __( 'This is a select field.', 'cx-plugin' ),
-		            'class'		=> 'cx-meta-field',
-		            'options'	=> [
-		            	'no'	=> __( 'No', 'cx-plugin' ),
-		            	'yes'	=> __( 'Yes', 'cx-plugin' ),
-		            ],
-		            'multiple'	=> true,
-		            'chosen'	=> true,
-		        ],
-		    ]
+		$metabox = [
+			'id'            => $this->slug,
+			'label'         => $this->name,
+			'title'         => $this->name,
+			'header'        => $this->name,
+			'priority'      => 10,
+			'post_type'     => 'post',
+			'context'     => 'normal',
+			'box_priority'	=> 'high',
+			// 'parent'     => 'woocommerce',
+			'capability'    => 'manage_options',
+			'icon'          => 'dashicons-wordpress', // dashicon or a URL to an image
+			'position'      => 25,
+			'sections'      => [
+				'cx-plugin_basic'	=> [
+					'id'        => 'cx-plugin_basic',
+					'label'     => __( 'Basic Settings', 'cx-plugin' ),
+					'icon'      => 'dashicons-admin-tools',
+					'color'		=> '#4c3f93',
+					'sticky'	=> true,
+					'fields'    => [
+						'sample_text' => [
+							'id'        =>  'sample_text',
+							'label'     =>  __( 'Text Field', 'cx-plugin' ),
+							'type'      =>  'text',
+							'desc'      =>  __( 'This is a text field.', 'cx-plugin' ),
+							// 'class'     =>  '',
+							'default'   =>  'Hello World!',
+							'readonly'  =>  false, // true|false
+							'disabled'  =>  false, // true|false
+						],
+						'test' => [
+							'id'        =>  'test',
+							'label'     =>  __( 'Test', 'cx-plugin' ),
+							'type'      =>  'text',
+							'desc'      =>  __( 'This is a text field.', 'cx-plugin' ),
+							// 'class'     =>  '',
+							'default'   =>  'Hello World!',
+							'readonly'  =>  false, // true|false
+							'disabled'  =>  false, // true|false
+						],
+					]
+				],
+				'cx-plugin_basic2'	=> [
+					'id'        => 'cx-plugin_basic2',
+					'label'     => __( 'Basic 2', 'cx-plugin' ),
+					'icon'      => 'dashicons-admin-site',
+					'color'		=> '#ff7788',
+					'sticky'	=> true,
+					'fields'    => [
+						'sample_text2' => [
+							'id'        =>  'sample_text2',
+							'label'     =>  __( 'Text Field2', 'cx-plugin' ),
+							'type'      =>  'text',
+							'desc'      =>  __( 'This is a text field.', 'cx-plugin' ),
+							// 'class'     =>  '',
+							'default'   =>  'Hello World!',
+							'readonly'  =>  false, // true|false
+							'disabled'  =>  false, // true|false
+						],
+					]
+				],
+			]
 		];
-		MetaBox::render( $args );
+
+		new \codexpert\product\Metabox( $metabox );
 	}
 	
 	/**
