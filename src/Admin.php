@@ -61,6 +61,19 @@ class Admin extends Base {
 		            'readonly'	=> false, // true|false
 		            'disabled'	=> false, // true|false
 		        ],
+		        'sample_select' => [
+		            'name'		=> 'sample_select',
+		            'label'		=> __( 'Select Field', 'cx-plugin' ),
+		            'type'		=> 'select',
+		            'desc'		=> __( 'This is a select field.', 'cx-plugin' ),
+		            'class'		=> 'cx-meta-field',
+		            'options'	=> [
+		            	'no'	=> __( 'No', 'cx-plugin' ),
+		            	'yes'	=> __( 'Yes', 'cx-plugin' ),
+		            ],
+		            'multiple'	=> true,
+		            'chosen'	=> true,
+		        ],
 		    ]
 		];
 		MetaBox::render( $args );
