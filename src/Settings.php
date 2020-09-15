@@ -46,11 +46,11 @@ class Settings extends Base {
 			'label'         => $this->name,
 			'title'         => $this->name,
 			'header'        => $this->name,
-			'priority'      => 10,
 			// 'parent'     => 'woocommerce',
-			'capability'    => 'manage_options',
-			'icon'          => 'dashicons-wordpress', // dashicon or a URL to an image
-			'position'      => 25,
+			// 'priority'   => 10,
+			// 'capability' => 'manage_options',
+			// 'icon'       => 'dashicons-wordpress',
+			// 'position'   => 25,
 			'sections'      => [
 				'cx-plugin_basic'	=> [
 					'id'        => 'cx-plugin_basic',
