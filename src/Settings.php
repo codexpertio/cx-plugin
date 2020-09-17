@@ -364,6 +364,23 @@ class Settings extends Base {
 								],
 							],
 						],
+						'sample_conditional' => [
+							'id'      =>  'sample_conditional',
+							'label'     =>  __( 'Conditional Field', 'cx-plugin' ),
+							'type'      =>  'select',
+							'options'   => [
+								'option_1'  => 'Option One',
+								'option_2'  => 'Option Two',
+								'option_3'  => 'Option Three',
+							],
+							'desc'      =>  __( 'Shows up if the third option in the  \'Field Group\' above is set as \'Option Two\'', 'cx-plugin' ),
+							'default'   =>  'option_2',
+							'condition'	=> [
+								'key'		=> 'sample_group_select3',
+								'value'		=> 'option_2',
+								'compare'	=> '==',
+							]
+						]
 					]
 				],
 				'cx-plugin_table' => [
