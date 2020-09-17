@@ -217,7 +217,6 @@ class Admin extends Base {
 							'disabled'  =>  false, // true|false
 							'default'   => '15:45',
 						],
-
 						'sample_color' => [
 							'id'      =>  'sample_color',
 							'label'     =>  __( 'Color Field', 'cx-plugin' ),
