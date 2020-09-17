@@ -189,6 +189,36 @@ class Settings extends Base {
 							'disabled'  =>  false, // true|false
 							'default'   => 'on'
 						],
+						'sample_range' => [
+							'id'      =>  'sample_range',
+							'label'     =>  __( 'Range Field', 'cx-plugin' ),
+							'type'      =>  'range',
+							'desc'      =>  __( 'This is a range field.', 'cx-plugin' ),
+							// 'class'     =>  '',
+							'disabled'  =>  false, // true|false
+							'min'		=> 0,
+							'max'		=> 16,
+							'step'		=> 2,
+							'default'   => 4,
+						],
+						'sample_date' => [
+							'id'      =>  'sample_date',
+							'label'     =>  __( 'Date Field', 'cx-plugin' ),
+							'type'      =>  'date',
+							'desc'      =>  __( 'This is a date field.', 'cx-plugin' ),
+							// 'class'     =>  '',
+							'disabled'  =>  false, // true|false
+							'default'   => '1971-12-16',
+						],
+						'sample_time' => [
+							'id'      =>  'sample_time',
+							'label'     =>  __( 'Time Field', 'cx-plugin' ),
+							'type'      =>  'time',
+							'desc'      =>  __( 'This is a time field.', 'cx-plugin' ),
+							// 'class'     =>  '',
+							'disabled'  =>  false, // true|false
+							'default'   => '15:45',
+						],
 						'sample_color' => [
 							'id'      =>  'sample_color',
 							'label'     =>  __( 'Color Field', 'cx-plugin' ),
