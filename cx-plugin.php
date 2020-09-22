@@ -94,7 +94,7 @@ final class Plugin {
 		 */
 		$admin = new Admin( $this->plugin );
 		$admin->action( 'plugins_loaded', 'i18n' );
-		$admin->action( 'plugins_loaded', 'add_meta_boxes' );
+		$admin->action( 'admin_init', 'add_meta_boxes' );
 		$admin->action( 'admin_enqueue_scripts', 'enqueue_scripts' );
 		$admin->action( 'admin_notices', 'admin_notices' );
 
