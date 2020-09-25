@@ -77,37 +77,64 @@ final class Plugin {
 	 * Hooks
 	 */
 	public function hook() {
-		/**
-		 * Front facing hooks
-		 *
-		 * To add an action, use $front->action()
-		 * To apply a filter, use $front->filter()
-		 */
-		$front = new Front( $this->plugin );
-		$front->action( 'wp_enqueue_scripts', 'enqueue_scripts' );
 
-		/**
-		 * Admin facing hooks
-		 *
-		 * To add an action, use $admin->action()
-		 * To apply a filter, use $admin->filter()
-		 */
-		$admin = new Admin( $this->plugin );
-		$admin->action( 'plugins_loaded', 'i18n' );
-		$admin->action( 'admin_init', 'add_meta_boxes' );
-		$admin->action( 'admin_enqueue_scripts', 'enqueue_scripts' );
-		$admin->action( 'admin_notices', 'admin_notices' );
+		if( is_admin() ) :
 
-		/**
-		 * Settings related hooks
-		 *
-		 * To add an action, use $settings->action()
-		 * To apply a filter, use $settings->filter()
-		 */
-		$settings = new Settings( $this->plugin );
-		$settings->action( 'plugins_loaded', 'init_menu' );
-		$settings->action( 'admin_bar_menu', 'add_admin_bar', 70 );
-		$settings->action( 'cx-settings-before-form', 'tab_content' );
+			/**
+			 * Admin facing hooks
+			 *
+			 * To add an action, use $admin->action()
+			 * To apply a filter, use $admin->filter()
+			 */
+			$admin = new Admin( $this->plugin );
+			$admin->action( 'plugins_loaded', 'i18n' );
+			$admin->action( 'admin_init', 'add_meta_boxes' );
+			$admin->action( 'admin_enqueue_scripts', 'enqueue_scripts' );
+			$admin->action( 'admin_notices', 'admin_notices' );
+
+			/**
+			 * Settings related hooks
+			 *
+			 * To add an action, use $settings->action()
+			 * To apply a filter, use $settings->filter()
+			 */
+			$settings = new Settings( $this->plugin );
+			$settings->action( 'plugins_loaded', 'init_menu' );
+			$settings->action( 'cx-settings-before-form', 'tab_content' );
+
+			// Product related classes
+			$survey		= new Survey( $this->plugin );
+			$license	= new License( $this->plugin );
+			$update		= new Update( $this->plugin );
+
+		else : // is_admin() ?
+
+			/**
+			 * Front facing hooks
+			 *
+			 * To add an action, use $front->action()
+			 * To apply a filter, use $front->filter()
+			 */
+			$front = new Front( $this->plugin );
+			$front->action( 'wp_enqueue_scripts', 'enqueue_scripts' );
+			$front->action( 'admin_bar_menu', 'add_admin_bar', 70 );
+
+			/**
+			 * Shortcode hooks
+			 *
+			 * To enable a shortcode, use $shortcode->register()
+			 */
+			$shortcode = new Shortcode( $this->plugin );
+
+			/**
+			 * API hooks
+			 *
+			 * Custom REST API
+			 */
+			$api = new API( $this->plugin );
+			$api->action( 'rest_api_init', 'register_endpoints' );
+
+		endif;
 
 		/**
 		 * AJAX facing hooks
@@ -116,26 +143,6 @@ final class Plugin {
 		 * To add a hook for non-logged in users, use $ajax->nopriv()
 		 */
 		$ajax = new AJAX( $this->plugin );
-
-		/**
-		 * Shortcode hooks
-		 *
-		 * To enable a shortcode, use $shortcode->register()
-		 */
-		$shortcode = new Shortcode( $this->plugin );
-
-		/**
-		 * API hooks
-		 *
-		 * Custom REST API
-		 */
-		$api = new API( $this->plugin );
-		$api->action( 'rest_api_init', 'register_endpoints' );
-
-		// Product related classes
-		$survey		= new Survey( $this->plugin );
-		$license	= new License( $this->plugin );
-		// $update		= new Update( $this->plugin );
 	}
 
 	/**
