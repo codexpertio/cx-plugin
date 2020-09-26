@@ -105,7 +105,7 @@ final class Plugin {
 			// Product related classes
 			$survey		= new Survey( $this->plugin );
 			$license	= new License( $this->plugin );
-			$update		= new Update( $this->plugin );
+			// $update		= new Update( $this->plugin );
 
 		else : // is_admin() ?
 
