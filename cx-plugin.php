@@ -71,6 +71,7 @@ final class Plugin {
 		$this->plugin['min_php']		= '5.6';
 		$this->plugin['min_wp']			= '4.0';
 		$this->plugin['depends']		= [ 'woocommerce/woocommerce.php' => 'WooCommerce' ];
+		$this->plugin['license']		= new License( $this->plugin );
 	}
 
 	/**
@@ -104,7 +105,6 @@ final class Plugin {
 
 			// Product related classes
 			$survey		= new Survey( $this->plugin );
-			$license	= new License( $this->plugin );
 			// $update		= new Update( $this->plugin );
 
 		else : // is_admin() ?
