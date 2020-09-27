@@ -437,8 +437,7 @@ class Settings extends Base {
 		}
 
 		elseif( 'cx-plugin_license' == $section['id'] ) {
-			$license = new License( $this->plugin );
-			echo $license->activator_form();
+			echo $this->plugin['license']->activator_form();
 		}
 	}
 }
