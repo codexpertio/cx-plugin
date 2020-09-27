@@ -430,18 +430,18 @@ class Settings extends Base {
 				'bulk_actions'	=> [
 					'delete'=> [
 						'label'		=> __( 'Delete', 'cx-plugin' ),
-						'action'	=> [ $this, 'delete' ]
+						'action'	=> [ $this, 'callback_delete' ]
 					],
 					'draft'	=> [
 						'label'		=> __( 'Draft', 'cx-plugin' ),
-						'action'	=> [ $this, 'draft' ]
+						'action'	=> [ $this, 'callback_draft' ]
 					]
 				],
 			];
 
-			
 			$table = new Table( $config );
 			echo '<form method="post">';
+			$table->process_bulk_action();
 			$table->prepare_items();
 			$table->search_box( 'Search', 'search' );
 			$table->display();
@@ -451,5 +451,13 @@ class Settings extends Base {
 		elseif( 'cx-plugin_license' == $section['id'] ) {
 			echo $this->plugin['license']->activator_form();
 		}
+	}
+
+	public function callback_delete() {
+		cx_plugin_pri( $_REQUEST );
+	}
+
+	public function callback_draft() {
+		cx_plugin_pri( $_REQUEST );
 	}
 }
