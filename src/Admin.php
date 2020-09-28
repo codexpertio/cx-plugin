@@ -423,6 +423,7 @@ class Admin extends Base {
 		 */
 		$installed_plugins = get_plugins();
 		$active_plugins = apply_filters( 'active_plugins', get_option( 'active_plugins' ) );
+		if( isset( $this->plugin['depends'] ) && is_array( $this->plugin['depends'] ) ) :
 		foreach ( $this->plugin['depends'] as $plugin => $name ) {
 			if( !in_array( $plugin, apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
 
@@ -437,5 +438,6 @@ class Admin extends Base {
 				";
 			}
 		}
+		endif;
 	}
 }
