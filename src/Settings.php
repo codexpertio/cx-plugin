@@ -428,20 +428,13 @@ class Settings extends Base {
 					[ 'id' => 109, 'products' => 'Rio', 'order_total' => '$211', 'commission' => '$11', 'payment_status' => 'Unpaid', 'time' => '2020-08-12' ],
 				],
 				'bulk_actions'	=> [
-					'delete'=> [
-						'label'		=> __( 'Delete', 'cx-plugin' ),
-						'action'	=> [ $this, 'callback_delete' ]
-					],
-					'draft'	=> [
-						'label'		=> __( 'Draft', 'cx-plugin' ),
-						'action'	=> [ $this, 'callback_draft' ]
-					]
+					'delete'	=> __( 'Delete', 'cx-plugin' ),
+					'draft'		=> __( 'Draft', 'cx-plugin' ),
 				],
 			];
 
 			$table = new Table( $config );
 			echo '<form method="post">';
-			$table->process_bulk_action();
 			$table->prepare_items();
 			$table->search_box( 'Search', 'search' );
 			$table->display();
@@ -451,13 +444,5 @@ class Settings extends Base {
 		elseif( 'cx-plugin_license' == $section['id'] ) {
 			echo $this->plugin['license']->activator_form();
 		}
-	}
-
-	public function callback_delete() {
-		cx_plugin_pri( $_REQUEST );
-	}
-
-	public function callback_draft() {
-		cx_plugin_pri( $_REQUEST );
 	}
 }
