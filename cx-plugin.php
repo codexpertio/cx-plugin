@@ -102,6 +102,7 @@ final class Plugin {
 			$settings = new Settings( $this->plugin );
 			$settings->action( 'plugins_loaded', 'init_menu' );
 			$settings->action( 'cx-settings-before-form', 'tab_content' );
+			$settings->filter( 'plugin_action_links_' . plugin_basename( CXP ), 'add_action_links' );
 
 			// Product related classes
 			$survey		= new Survey( $this->plugin );

@@ -445,4 +445,10 @@ class Settings extends Base {
 			echo $this->plugin['license']->activator_form();
 		}
 	}
+
+	public function add_action_links( $links ) {
+		$links[] = sprintf( '<a href="%1$s">%2$s</a>', admin_url( "admin.php?page={$this->slug}" ), __( 'Settings', 'cx-plugin' ) );
+
+		return $links;
+	}
 }
