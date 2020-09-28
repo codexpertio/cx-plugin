@@ -448,6 +448,7 @@ class Settings extends Base {
 
 	public function add_action_links( $links ) {
 		$links[] = sprintf( '<a href="%1$s">%2$s</a>', admin_url( "admin.php?page={$this->slug}" ), __( 'Settings', 'cx-plugin' ) );
+		$links[] = sprintf( '<a href="%1$s" target="_blank">%2$s</a>', 'https://codexpert.io', __( 'Help', 'cx-plugin' ) );
 
 		return $links;
 	}
