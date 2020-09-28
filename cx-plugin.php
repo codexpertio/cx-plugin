@@ -66,6 +66,7 @@ final class Plugin {
 
 		// plugin data
 		$this->plugin				= get_plugin_data( CXP );
+		$this->plugin['basename']	= plugin_basename( CXP );
 		$this->plugin['file']		= CXP;
 		$this->plugin['server']		= 'https://my.codexpert.io';
 		$this->plugin['min_php']	= '5.6';
@@ -102,7 +103,7 @@ final class Plugin {
 			$settings = new Settings( $this->plugin );
 			$settings->action( 'plugins_loaded', 'init_menu' );
 			$settings->action( 'cx-settings-before-form', 'tab_content' );
-			$settings->filter( 'plugin_action_links_' . plugin_basename( CXP ), 'add_action_links' );
+			$settings->filter( "plugin_action_links_{$this->plugin['basename']}", 'add_action_links' );
 
 			// Product related classes
 			$survey		= new Survey( $this->plugin );
