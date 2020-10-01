@@ -127,6 +127,7 @@ final class Plugin {
 			 * To enable a shortcode, use $shortcode->register()
 			 */
 			$shortcode = new Shortcode( $this->plugin );
+			$shortcode->register( 'my-shortcode', 'my_shortcode' );
 
 			/**
 			 * API hooks

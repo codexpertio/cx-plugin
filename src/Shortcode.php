@@ -30,4 +30,8 @@ class Shortcode extends Base {
         $this->name     = $this->plugin['Name'];
         $this->version  = $this->plugin['Version'];
     }
+
+    public function my_shortcode() {
+        return __( 'My Shortcode', 'cx-plugin' );
+    }
 }
