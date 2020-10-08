@@ -52,7 +52,6 @@ final class Plugin {
 	 */
 	public function include() {
 		require_once( dirname( __FILE__ ) . '/vendor/autoload.php' );
-		require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 	}
 
 	/**
