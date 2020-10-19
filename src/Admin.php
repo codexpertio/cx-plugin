@@ -4,6 +4,7 @@
  */
 namespace codexpert\CX_Plugin;
 use codexpert\product\Base;
+use codexpert\product\Wizard;
 use codexpert\product\Metabox;
 
 /**

@@ -82,6 +82,15 @@ final class Plugin {
 		if( is_admin() ) :
 
 			/**
+			 * Setup wizard facing hooks
+			 *
+			 * To add an action, use $admin->action()
+			 * To apply a filter, use $admin->filter()
+			 */
+			$wizard = new Wizard( $this->plugin );
+			$wizard->action( 'plugins_loaded', 'run' );
+
+			/**
 			 * Admin facing hooks
 			 *
 			 * To add an action, use $admin->action()
