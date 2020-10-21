@@ -61,7 +61,7 @@ class Wizard extends Base {
 				'label'		=> __( 'Four' ),
 				'content'	=> __( 'This is Step-4 of the setup wizard! Added as a string!', 'cx-plugin' ),
 				'action'	=> [ $this, 'save_three' ],
-				'redirect'	=> admin_url()
+				'redirect'	=> add_query_arg( [ 'page' => "{$this->slug}" ], admin_url() )
 			],
 		];
 
