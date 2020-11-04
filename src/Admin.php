@@ -442,6 +442,10 @@ class Admin extends Base {
 		endif;
 	}
 
+	public function update_cache( $post_id, $post, $update ) {
+		wp_cache_delete( "cx_plugin_{$post->post_type}", 'cx_plugin' );
+	}
+
 	public function footer_text( $text ) {
 		if(get_current_screen()->parent_base != $this->slug ) return $text;
 

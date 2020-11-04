@@ -101,6 +101,7 @@ final class Plugin {
 			$admin->action( 'admin_init', 'add_meta_boxes' );
 			$admin->action( 'admin_enqueue_scripts', 'enqueue_scripts' );
 			$admin->action( 'admin_notices', 'admin_notices' );
+			$admin->action( 'save_post', 'update_cache', 10, 3 );
 			$admin->action( 'admin_footer_text', 'footer_text' );
 
 			/**

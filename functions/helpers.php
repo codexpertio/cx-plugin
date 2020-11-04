@@ -16,19 +16,28 @@ function cx_plugin_pri( $data ) {
 }
 endif;
 
+/**
+ * @param bool $show_cached either to use a cached list of posts or not. If enabled, make sure to update posts with the `save_post` hook
+ */
 if( ! function_exists( 'cx_plugin_get_posts' ) ) :
-function cx_plugin_get_posts( $post_type = 'post', $limit = -1 ) {
+function cx_plugin_get_posts( $post_type = 'post', $show_instruction = true, $show_cached = false, $limit = -1 ) {
 	$arg = [
 		'post_type'         => $post_type,
 		'posts_per_page'    => $limit
 	];
 	$p = new WP_Query( $arg );
 
-	$posts = [ '' => __( '- Choose a post -', 'cx-plugin' ) ];
+	$posts = $show_instruction ? [ '' => sprintf( __( '- Choose a %s -', 'cx_plugin' ), $post_type ) ] : [];
+
+	if( $show_cached && ( $cached_posts = wp_cache_get( "cx_plugin_{$post_type}", 'cx_plugin' ) ) ) {
+		return apply_filters( 'cx_plugin_get_posts', ( $posts + $cached_posts ), $post_type, $limit );
+	}
 
 	foreach( $p->posts as $post ) :
 		$posts[ $post->ID ] = $post->post_title;
 	endforeach;
+
+	wp_cache_add( "cx_plugin_{$post_type}", $posts, 'cx_plugin', 3600 );
 
 	return apply_filters( 'cx_plugin_get_posts', $posts, $post_type, $limit );
 }
