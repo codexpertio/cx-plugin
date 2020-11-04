@@ -20,7 +20,7 @@ endif;
  * @param bool $show_cached either to use a cached list of posts or not. If enabled, make sure to wp_cache_delete() with the `save_post` hook
  */
 if( ! function_exists( 'cx_plugin_get_posts' ) ) :
-function cx_plugin_get_posts( $args = [], $show_instruction = true, $show_cached = false ) {
+function cx_plugin_get_posts( $args = [], $show_heading = true, $show_cached = false ) {
 
 	$defaults = [
 		'post_type'         => 'post',
@@ -47,7 +47,7 @@ function cx_plugin_get_posts( $args = [], $show_instruction = true, $show_cached
 		wp_cache_add( "cx_plugin_{$_args['post_type']}", $posts, 'cx_plugin', 3600 );
 	}
 
-	$posts = $show_instruction ? [ '' => sprintf( __( '- Choose a %s -', 'cx_plugin' ), $_args['post_type'] ) ] + $posts : $posts;
+	$posts = $show_heading ? [ '' => sprintf( __( '- Choose a %s -', 'cx_plugin' ), $_args['post_type'] ) ] + $posts : $posts;
 
 	return apply_filters( 'cx_plugin_get_posts', $posts, $_args );
 }
