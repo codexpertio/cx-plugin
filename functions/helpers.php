@@ -20,7 +20,7 @@ endif;
  * @param bool $show_cached either to use a cached list of posts or not. If enabled, make sure to wp_cache_delete() with the `save_post` hook
  */
 if( ! function_exists( 'cx_plugin_get_posts' ) ) :
-function cx_plugin_get_posts( $args = [], $show_heading = true, $show_cached = false ) {
+function cx_plugin_get_posts( $args = [], $show_heading = true, $show_cached = true ) {
 
 	$defaults = [
 		'post_type'         => 'post',
