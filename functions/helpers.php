@@ -17,29 +17,39 @@ function cx_plugin_pri( $data ) {
 endif;
 
 /**
- * @param bool $show_cached either to use a cached list of posts or not. If enabled, make sure to update posts with the `save_post` hook
+ * @param bool $show_cached either to use a cached list of posts or not. If enabled, make sure to wp_cache_delete() with the `save_post` hook
  */
 if( ! function_exists( 'cx_plugin_get_posts' ) ) :
-function cx_plugin_get_posts( $post_type = 'post', $show_instruction = true, $show_cached = false, $limit = -1 ) {
-	$arg = [
-		'post_type'         => $post_type,
-		'posts_per_page'    => $limit
+function cx_plugin_get_posts( $args = [], $show_instruction = true, $show_cached = false ) {
+
+	$defaults = [
+		'post_type'         => 'post',
+		'posts_per_page'    => -1,
+		'post_status'		=> 'publish'
 	];
-	$p = new WP_Query( $arg );
 
-	$posts = $show_instruction ? [ '' => sprintf( __( '- Choose a %s -', 'cx_plugin' ), $post_type ) ] : [];
+	$_args = wp_parse_args( $args, $defaults );
 
-	if( $show_cached && ( $cached_posts = wp_cache_get( "cx_plugin_{$post_type}", 'cx_plugin' ) ) ) {
-		return apply_filters( 'cx_plugin_get_posts', ( $posts + $cached_posts ), $post_type, $limit );
+	// use cache
+	if( true === $show_cached && ( $cached_posts = wp_cache_get( "cx_plugin_{$_args['post_type']}", 'cx_plugin' ) ) ) {
+		$posts = $cached_posts;
 	}
 
-	foreach( $p->posts as $post ) :
-		$posts[ $post->ID ] = $post->post_title;
-	endforeach;
+	// don't use cache
+	else {
+		$queried = new WP_Query( $_args );
 
-	wp_cache_add( "cx_plugin_{$post_type}", $posts, 'cx_plugin', 3600 );
+		$posts = [];
+		foreach( $queried->posts as $post ) :
+			$posts[ $post->ID ] = $post->post_title;
+		endforeach;
+		
+		wp_cache_add( "cx_plugin_{$_args['post_type']}", $posts, 'cx_plugin', 3600 );
+	}
 
-	return apply_filters( 'cx_plugin_get_posts', $posts, $post_type, $limit );
+	$posts = $show_instruction ? [ '' => sprintf( __( '- Choose a %s -', 'cx_plugin' ), $_args['post_type'] ) ] + $posts : $posts;
+
+	return apply_filters( 'cx_plugin_get_posts', $posts, $_args );
 }
 endif;
 
