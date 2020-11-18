@@ -67,7 +67,8 @@ final class Plugin {
 		$this->plugin				= get_plugin_data( CXP );
 		$this->plugin['basename']	= plugin_basename( CXP );
 		$this->plugin['file']		= CXP;
-		$this->plugin['server']		= apply_filters( 'cx-plugin_server', 'https://my.codexpert.io' );
+		// $this->plugin['server']		= apply_filters( 'cx-plugin_server', 'https://my.codexpert.io' );
+		$this->plugin['server']		= apply_filters( 'cx-plugin_server', 'http://wc.wp' );
 		$this->plugin['min_php']	= '5.6';
 		$this->plugin['min_wp']		= '4.0';
 		$this->plugin['depends']	= [ 'woocommerce/woocommerce.php' => 'WooCommerce' ];

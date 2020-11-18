@@ -30,6 +30,7 @@ class Admin extends Base {
 		$this->plugin	= $plugin;
 		$this->slug		= $this->plugin['TextDomain'];
 		$this->name		= $this->plugin['Name'];
+		$this->server	= $this->plugin['server'];
 		$this->version	= $this->plugin['Version'];
 	}
 
@@ -438,6 +439,21 @@ class Admin extends Base {
 					</div>
 				";
 			}
+		}
+		endif;
+
+		/**
+		 * Remote notices
+		 */
+		$url = "{$this->server}/wp-json/banners/latest?plugin={$this->slug}";
+		$notices = json_decode( wp_remote_retrieve_body( wp_remote_get( $url ) ) );
+
+		if( count( $notices ) > 0 ) :
+		foreach ( $notices as $notice ) {
+			echo "
+			<div id='notice-{$this->slug}-{$notice->id}' class='notice cx-notice cx-plugin-notice is-dismissible' data-id='{$notice->id}'>
+				<a href='{$notice->link}' target='_blank'><img src='{$notice->image}' /></a>
+			</div>";
 		}
 		endif;
 	}

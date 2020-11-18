@@ -1,0 +1,12 @@
+.notice.cx-notice.cx-plugin-notice {
+	padding: 0 0 0 0;
+}
+.cx-plugin-notice a {
+	display: flex;
+}
+.cx-plugin-notice a:focus {
+	box-shadow: 0 0 0 0;
+}
+.cx-plugin-notice img {
+	max-width: 100%;
+}
