@@ -450,10 +450,12 @@ class Admin extends Base {
 
 		if( count( $notices ) > 0 ) :
 		foreach ( $notices as $notice ) {
+			// if( get_option( "_{$this->slug}-notice_{$notice->id}" ) != 1 ) :
 			echo "
 			<div id='notice-{$this->slug}-{$notice->id}' class='notice cx-notice cx-plugin-notice is-dismissible' data-id='{$notice->id}'>
 				<a href='{$notice->link}' target='_blank'><img src='{$notice->image}' /></a>
 			</div>";
+			// endif;
 		}
 		endif;
 	}
