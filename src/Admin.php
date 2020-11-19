@@ -400,66 +400,6 @@ class Admin extends Base {
 		wp_enqueue_script( $this->slug, plugins_url( "/assets/js/admin{$min}.js", CXP ), [ 'jquery' ], $this->version, true );
 	}
 
-	public function admin_notices() {
-		
-		if( version_compare( get_bloginfo( 'version' ), $this->plugin['min_wp'], '<' ) ) {
-			echo "
-				<div class='notice cx-notice notice-error'>
-					<p>" . sprintf( __( '<strong>%s</strong> requires <i>WordPress version %s</i> or higher. You have <i>version %s</i> installed.', 'cx-plugin' ), $this->name, $this->plugin['min_wp'], get_bloginfo( 'version' ) ) . "</p>
-				</div>
-			";
-		}
-
-		if( version_compare( PHP_VERSION, $this->plugin['min_php'], '<' ) ) {
-			echo "
-				<div class='notice cx-notice notice-error'>
-					<p>" . sprintf( __( '<strong>%s</strong> requires <i>PHP version %s</i> or higher. You have <i>version %s</i> installed.', 'cx-plugin' ), $this->name, $this->plugin['min_php'], PHP_VERSION ) . "</p>
-				</div>
-			";
-		}
-
-		/**
-		 * Dependencies
-		 *
-		 * @since 1.0
-		 */
-		$installed_plugins = get_plugins();
-		$active_plugins = apply_filters( 'active_plugins', get_option( 'active_plugins' ) );
-		if( isset( $this->plugin['depends'] ) && is_array( $this->plugin['depends'] ) ) :
-		foreach ( $this->plugin['depends'] as $plugin => $name ) {
-			if( !in_array( $plugin, apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
-
-				$action_links = cx_plugin_action_link( $plugin );
-				$button_text = array_key_exists( $plugin, $installed_plugins ) ? __( 'activate', 'cx-plugin' ) : __( 'install', 'cx-plugin' );
-				$action_link = array_key_exists( $plugin, $installed_plugins ) ? $action_links['activate'] : $action_links['install'];
-			
-				echo "
-					<div class='notice cx-notice notice-error'>
-						<p>" . sprintf( __( '<strong>%s</strong> needs to be activated. Please <a href="%s">%s</a> it now.', 'cx-plugin' ), $name, $action_link, $button_text ) . "</p>
-					</div>
-				";
-			}
-		}
-		endif;
-
-		/**
-		 * Remote notices
-		 */
-		$url = "{$this->server}/wp-json/banners/latest?plugin={$this->slug}";
-		$notices = json_decode( wp_remote_retrieve_body( wp_remote_get( $url ) ) );
-
-		if( count( $notices ) > 0 ) :
-		foreach ( $notices as $notice ) {
-			// if( get_option( "_{$this->slug}-notice_{$notice->id}" ) != 1 ) :
-			echo "
-			<div id='notice-{$this->slug}-{$notice->id}' class='notice cx-notice cx-plugin-notice is-dismissible' data-id='{$notice->id}'>
-				<a href='{$notice->link}' target='_blank'><img src='{$notice->image}' /></a>
-			</div>";
-			// endif;
-		}
-		endif;
-	}
-
 	public function update_cache( $post_id, $post, $update ) {
 		wp_cache_delete( "cx_plugin_{$post->post_type}", 'cx_plugin' );
 	}

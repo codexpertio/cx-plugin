@@ -24,6 +24,7 @@ namespace codexpert\CX_Plugin;
 use codexpert\product\License;
 use codexpert\product\Survey;
 use codexpert\product\Update;
+use codexpert\product\Notice;
 
 /**
  * if accessed directly, exit.
@@ -101,7 +102,6 @@ final class Plugin {
 			$admin->action( 'plugins_loaded', 'i18n' );
 			$admin->action( 'admin_init', 'add_meta_boxes' );
 			$admin->action( 'admin_enqueue_scripts', 'enqueue_scripts' );
-			$admin->action( 'admin_notices', 'admin_notices' );
 			$admin->action( 'save_post', 'update_cache', 10, 3 );
 			$admin->action( 'admin_footer_text', 'footer_text' );
 
@@ -118,9 +118,10 @@ final class Plugin {
 
 			// Product related classes
 			$survey		= new Survey( $this->plugin );
+			$notice		= new Notice( $this->plugin );
 			// $update		= new Update( $this->plugin );
 
-		else : // is_admin() ?
+		else : // !is_admin() ?
 
 			/**
 			 * Front facing hooks
