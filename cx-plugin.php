@@ -119,7 +119,7 @@ final class Plugin {
 			// Product related classes
 			$survey		= new Survey( $this->plugin );
 			$notice		= new Notice( $this->plugin );
-			$update		= new Update( $this->plugin );
+			// $update		= new Update( $this->plugin );
 
 		else : // !is_admin() ?
 
