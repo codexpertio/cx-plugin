@@ -101,6 +101,8 @@ final class Plugin {
 			$admin->action( 'plugins_loaded', 'i18n' );
 			$admin->action( 'admin_init', 'add_meta_boxes' );
 			$admin->action( 'admin_enqueue_scripts', 'enqueue_scripts' );
+			$admin->filter( "plugin_action_links_{$this->plugin['basename']}", 'action_links' );
+			$admin->filter( 'plugin_row_meta', 'plugin_row_meta', 10, 2 );
 			$admin->action( 'save_post', 'update_cache', 10, 3 );
 			$admin->action( 'admin_footer_text', 'footer_text' );
 
@@ -113,7 +115,6 @@ final class Plugin {
 			$settings = new Settings( $this->plugin );
 			$settings->action( 'plugins_loaded', 'init_menu' );
 			$settings->action( 'cx-settings-before-form', 'tab_content' );
-			$settings->filter( "plugin_action_links_{$this->plugin['basename']}", 'add_action_links' );
 
 			// Product related classes
 			$survey		= new Survey( $this->plugin );

@@ -400,6 +400,22 @@ class Admin extends Base {
 		wp_enqueue_script( $this->slug, plugins_url( "/assets/js/admin{$min}.js", CXP ), [ 'jquery' ], $this->version, true );
 	}
 
+	public function action_links( $links ) {
+		$links['settings'] = '<a href="' . add_query_arg( 'page', $this->slug, admin_url( 'admin.php' ) ) . '">' . __( 'Settings', 'cx-plugin' ) . '</a>';
+		
+		return $links;
+	}
+
+	public function plugin_row_meta( $plugin_meta, $plugin_file ) {
+		
+		if ( $this->plugin['basename'] === $plugin_file ) {
+			$plugin_meta['check'] = '<a href="' . add_query_arg( 'cx-recheck', $this->slug, admin_url( 'plugins.php' ) ) . '">' . __( 'Check for update', 'cx-plugin' ) . '</a>';
+			$plugin_meta['help'] = '<a href="https://help.codexpert.io/" target="_blank" class="cx-help">' . __( 'Help', 'cx-plugin' ) . '</a>';
+		}
+
+		return $plugin_meta;
+	}
+
 	public function update_cache( $post_id, $post, $update ) {
 		wp_cache_delete( "cx_plugin_{$post->post_type}", 'cx_plugin' );
 	}
