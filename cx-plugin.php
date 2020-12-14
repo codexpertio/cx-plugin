@@ -89,7 +89,8 @@ final class Plugin {
 			 * To apply a filter, use $admin->filter()
 			 */
 			$wizard = new Wizard( $this->plugin );
-			$wizard->action( 'plugins_loaded', 'run' );
+			$wizard->filter( "plugin_action_links_{$this->plugin['basename']}", 'action_links' );
+			$wizard->action( 'plugins_loaded', 'render' );
 
 			/**
 			 * Admin facing hooks

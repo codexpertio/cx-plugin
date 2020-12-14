@@ -404,8 +404,7 @@ class Admin extends Base {
 		$this->admin_url = admin_url( 'admin.php' );
 
 		$new_links = [
-			'settings'	=> sprintf( '<a href="%1$s">' . __( 'Settings', 'cx-plugin' ) . '</a>', add_query_arg( 'page', $this->slug, $this->admin_url ) ),
-			'wizard'	=> sprintf( '<a href="%1$s">%2$s</a>', add_query_arg( [ 'page' => "{$this->slug}_setup" ], $this->admin_url ), __( 'Setup Wizard', 'cx-plugin' ) )
+			'settings'	=> sprintf( '<a href="%1$s">' . __( 'Settings', 'cx-plugin' ) . '</a>', add_query_arg( 'page', $this->slug, $this->admin_url ) )
 		];
 		
 		return array_merge( $new_links, $links );

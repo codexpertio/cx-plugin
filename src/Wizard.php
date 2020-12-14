@@ -32,7 +32,17 @@ class Wizard extends Base {
 		$this->version	= $this->plugin['Version'];
 	}
 
-	public function run() {
+	public function action_links( $links ) {
+		$this->admin_url = admin_url( 'admin.php' );
+
+		$new_links = [
+			'wizard'	=> sprintf( '<a href="%1$s">%2$s</a>', add_query_arg( [ 'page' => "{$this->slug}_setup" ], $this->admin_url ), __( 'Setup Wizard', 'cx-plugin' ) )
+		];
+		
+		return array_merge( $new_links, $links );
+	}
+
+	public function render() {
 
 		// force setup once
 		if( get_option( "{$this->slug}_setup" ) != 1 ) {
