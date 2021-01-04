@@ -71,6 +71,7 @@ final class Plugin {
 		$this->plugin['server']		= apply_filters( 'cx-plugin_server', 'https://my.codexpert.io' );
 		$this->plugin['min_php']	= '5.6';
 		$this->plugin['min_wp']		= '4.0';
+		$this->plugin['doc_id']		= 1960;
 		$this->plugin['depends']	= [ 'woocommerce/woocommerce.php' => 'WooCommerce' ];
 		$this->plugin['license']	= new License( $this->plugin );
 	}
@@ -99,9 +100,13 @@ final class Plugin {
 			 * To apply a filter, use $admin->filter()
 			 */
 			$admin = new Admin( $this->plugin );
+			$admin->activate( 'install' );
+			$admin->deactivate( 'uninstall' );
 			$admin->action( 'plugins_loaded', 'i18n' );
+			$admin->action( 'wp_dashboard_setup', 'dashboard_widget', 99 );
 			$admin->action( 'admin_init', 'add_meta_boxes' );
 			$admin->action( 'admin_enqueue_scripts', 'enqueue_scripts' );
+			$admin->action( 'cx-plugin_daily', 'daily' );
 			$admin->filter( "plugin_action_links_{$this->plugin['basename']}", 'action_links' );
 			$admin->filter( 'plugin_row_meta', 'plugin_row_meta', 10, 2 );
 			$admin->action( 'save_post', 'update_cache', 10, 3 );

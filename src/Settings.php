@@ -398,6 +398,29 @@ class Settings extends Base {
 	
 	public function tab_content( $section ) {
 		if( 'cx-plugin_help' == $section['id'] ) {
+
+			$docs = get_option( 'cx-plugin-docs-json', [] );
+			
+			if( count( $docs ) > 0 ) :
+			
+			// $docs = array_slice( $docs, 0, 5 );
+			$utm = [ 'utm_source' => 'client-site', 'utm_medium' => 'plugin', 'utm_campaign' => 'faq' ];
+
+			echo '<ul id="cx-docs-wrapper">';
+			
+			foreach ( $docs as $doc ) {
+
+				$post_link = add_query_arg( $utm, $doc['link'] );
+				echo "
+				<li>
+					<a href='{$post_link}' target='_blank'><span aria-hidden='true' class='cx-doc-title-icon dashicons dashicons-external'></span> <span class='cx-doc-title'>{$doc['title']['rendered']}</span></a>
+					" . wpautop( wp_trim_words( $doc['content']['rendered'], 10 ) ) . "
+				</li>";
+			}
+			
+			echo '</ul>';
+			endif; // count( $docs ) > 0
+
 			printf( __( 'If you need further assistance, please <a href="%s" target="_blank">reach out to us</a>!', 'cx-plugin' ), 'https://codexpert.io' );
 		}
 
