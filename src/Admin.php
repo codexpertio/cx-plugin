@@ -62,7 +62,7 @@ class Admin extends Base {
 			update_option( 'cx-plugin_install_time', time() );
 		}
 
-		self::daily();
+		$this->daily();
 	}
 
 	/**
@@ -80,7 +80,7 @@ class Admin extends Base {
 	/**
 	 * Daily events
 	 */
-	public static function daily() {
+	public function daily() {
 		/**
 		 * Sync blog posts from https://codexpert.io
 		 *
