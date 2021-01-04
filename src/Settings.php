@@ -427,7 +427,7 @@ class Settings extends Base {
 
 		    echo "</div>";
 
-			printf( __( 'If you need further assistance, please <a href="%s" target="_blank">reach out to us</a>!', 'cx-plugin' ), 'https://codexpert.io' );
+			printf( __( '<p>If you need further assistance, please <a href="%s" target="_blank">reach out to us!</a></p>', 'cx-plugin' ), add_query_arg( $utm, 'https://codexpert.io/hire/' ) );
 		}
 
 		elseif( 'cx-plugin_table' == $section['id'] ) {
