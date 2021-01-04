@@ -414,7 +414,7 @@ class Settings extends Base {
 				echo "
 				<li>
 					<a href='{$post_link}' target='_blank'><span aria-hidden='true' class='cx-doc-title-icon dashicons dashicons-external'></span> <span class='cx-doc-title'>{$doc['title']['rendered']}</span></a>
-					" . wpautop( wp_trim_words( $doc['content']['rendered'], 10 ) ) . "
+					" . wpautop( wp_trim_words( $doc['content']['rendered'], 20 ) ) . "
 				</li>";
 			}
 			

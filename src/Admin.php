@@ -109,7 +109,7 @@ class Admin extends Base {
 	 * @since 1.0
 	 */
 	public function dashboard_widget() {
-		wp_add_dashboard_widget( 'cx-overview', __( 'Laste From Our Blog', 'cx-plugin' ), [ $this, 'callback_dashboard_widget' ] );
+		wp_add_dashboard_widget( 'cx-overview', __( 'Latest From Our Blog', 'cx-plugin' ), [ $this, 'callback_dashboard_widget' ] );
 
 		// Move our widget to top.
 		global $wp_meta_boxes;
@@ -153,9 +153,14 @@ class Admin extends Base {
 		endif; // count( $posts ) > 0
 
 		$_links = apply_filters( 'cx-overview_links', [
-			'help'	=> [
-				'url'		=> add_query_arg( $utm, 'https://codexpert.io' ),
-				'label'		=> __( 'Help', 'cx-plugin' ),
+			'products'	=> [
+				'url'		=> add_query_arg( $utm, 'https://codexpert.io/products/' ),
+				'label'		=> __( 'Products', 'cx-plugin' ),
+				'target'	=> '_blank',
+			],
+			'hire'	=> [
+				'url'		=> add_query_arg( $utm, 'https://codexpert.io/hire/' ),
+				'label'		=> __( 'Hire Us', 'cx-plugin' ),
 				'target'	=> '_blank',
 			],
 		] );
