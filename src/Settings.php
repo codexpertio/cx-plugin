@@ -399,27 +399,33 @@ class Settings extends Base {
 	public function tab_content( $section ) {
 		if( 'cx-plugin_help' == $section['id'] ) {
 
-			$docs = get_option( 'cx-plugin-docs-json', [] );
-			
-			if( count( $docs ) > 0 ) :
-			
-			// $docs = array_slice( $docs, 0, 5 );
-			$utm = [ 'utm_source' => 'client-site', 'utm_medium' => 'plugin', 'utm_campaign' => 'faq' ];
+			echo "<div id='cx-plugin-helps'>";
 
-			echo '<ul id="cx-docs-wrapper">';
-			
-			foreach ( $docs as $doc ) {
+		    $helps = get_option( 'cx-plugin-docs-json', [] );
+			$utm = [ 'utm_source' => 'dashboard', 'utm_medium' => 'settings', 'utm_campaign' => 'faq' ];
 
-				$post_link = add_query_arg( $utm, $doc['link'] );
-				echo "
-				<li>
-					<a href='{$post_link}' target='_blank'><span aria-hidden='true' class='cx-doc-title-icon dashicons dashicons-external'></span> <span class='cx-doc-title'>{$doc['title']['rendered']}</span></a>
-					" . wpautop( wp_trim_words( $doc['content']['rendered'], 20 ) ) . "
-				</li>";
-			}
-			
-			echo '</ul>';
-			endif; // count( $docs ) > 0
+		    if( is_array( $helps ) ) :
+		    foreach ( $helps as $help ) {
+		    	$help_link = add_query_arg( $utm, $help['link'] );
+		        ?>
+		        <div id='cx-plugin-help-<?php echo $help['id']; ?>' class='cx-plugin-help'>
+		            <h2 class='cx-plugin-help-heading' data-target='#cx-plugin-help-text-<?php echo $help['id']; ?>'>
+		                <a href='<?php echo $help_link; ?>' target='_blank'>
+		                <span class='dashicons dashicons-admin-links'></span></a>
+		                <span class="heading-text"><?php echo $help['title']['rendered']; ?></span>
+		            </h2>
+		            <div id='cx-plugin-help-text-<?php echo $help['id']; ?>' class='cx-plugin-help-text' style='display:none'>
+		                <?php echo wpautop( wp_trim_words( $help['content']['rendered'], 55, " <a class='wl-more' href='{$help_link}' target='_blank'>[more..]</a>" ) ); ?>
+		            </div>
+		        </div>
+		        <?php
+
+		    }
+		    else:
+		        _e( 'Something is wrong! No help found!', 'cx-plugin' );
+		    endif;
+
+		    echo "</div>";
 
 			printf( __( 'If you need further assistance, please <a href="%s" target="_blank">reach out to us</a>!', 'cx-plugin' ), 'https://codexpert.io' );
 		}
