@@ -62,7 +62,7 @@ final class Plugin {
 		// constants
 		define( 'CXP', __FILE__ );
 		define( 'CXP_DIR', dirname( CXP ) );
-		define( 'CXP_DEBUG', true );
+		define( 'CXP_DEBUG', apply_filters( 'cx-plugin_debug', true ) );
 
 		// plugin data
 		$this->plugin				= get_plugin_data( CXP );
