@@ -154,17 +154,6 @@
 #cx_plugin_vidtt_content iframe {
     margin: auto;
 }
-.shop-catalog-help .shop-catalog-help-heading {
-    font-size: 16px;
-    font-weight: 300;
-    cursor: pointer;
-}
-.shop-catalog-help .shop-catalog-help-heading a{
-    text-decoration: none;
-}
-.shop-catalog-help-text p {
-    margin-bottom: 30px;
-}
 /*help tab design end*/
 #cx_plugin_video_content {
 	text-align: center;
