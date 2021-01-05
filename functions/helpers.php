@@ -133,3 +133,24 @@ function cx_plugin_action_link( $plugin, $action = '' ) {
 	return $links;
 }
 endif;
+
+/**
+ * Generates some action help of a plugin
+ *
+ * @since 1.0
+ */
+if( !function_exists( 'cx_plugin_help_tab_link' ) ) :
+function cx_plugin_help_tab_link() {
+
+	$tab_links = [
+		'<li class="cx_plugin_tab_link active" id="sc_faq">'. __( 'FAQ', 'shop-catalog' ) .'</li>',
+		'<li class="cx_plugin_tab_link" id="sc_vidtt">'. __( 'Video Tutorial', 'shop-catalog' ) .'</li>',
+		'<li class="cx_plugin_tab_link" id="sc_support">'. _e( 'Ask Support', 'shop-catalog' ) .'</li>',
+	];
+
+	return apply_filters( 'cx_plugin_help_tab_link', $tab_links );
+}
+endif;
+	
+	
+	

@@ -127,3 +127,60 @@
 	font-size: 16px;
 }
 /*end help tab*/
+
+
+/*help tab design start*/
+.cx_plugin_tab_btns .cx_plugin_help_tablinks {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+.cx_plugin_tab_btns .cx_plugin_help_tablinks .cx_plugin_help_tablink {
+    text-align: center;
+    font-size: 16px;
+    font-weight: 400;
+    border-bottom: 10px solid #ccc !important;
+    padding-bottom: 15px;
+    cursor: pointer;
+}
+.cx_plugin_tab_btns .cx_plugin_help_tablinks .cx_plugin_help_tablink.active {
+    border-color: #c36 !important;
+}
+.cx_plugin_tabcontent {
+    display: none;
+}
+.cx_plugin_tabcontent.active {
+    display: block;
+}
+#cx_plugin_vidtt_content iframe {
+    margin: auto;
+}
+.shop-catalog-help .shop-catalog-help-heading {
+    font-size: 16px;
+    font-weight: 300;
+    cursor: pointer;
+}
+.shop-catalog-help .shop-catalog-help-heading a{
+    text-decoration: none;
+}
+.shop-catalog-help-text p {
+    margin-bottom: 30px;
+}
+/*help tab design end*/
+#cx_plugin_video_content {
+	text-align: center;
+}
+#cx_plugin_support_content #support_btn {
+	background-color: transparent;
+	background-image: linear-gradient(to right, #3B2C73, #E9345F);
+	padding: 8px 40px;
+	border: none;
+	margin-right: 4px;
+	border-radius: 25px;
+	text-decoration: none;
+	color: #fff;
+	display: inline-block;
+	font-size: 16px;
+}
+#cx_plugin_support_content #support_btn_div {
+	text-align: center;
+}
