@@ -135,7 +135,7 @@ class Admin extends Base {
 		if( count( $posts ) > 0 ) :
 		
 		$posts = array_slice( $posts, 0, 5 );
-		$utm = [ 'utm_source' => 'client-site', 'utm_medium' => 'plugin', 'utm_campaign' => 'dashboard-blog' ];
+		$utm = [ 'utm_source' => 'dashboard', 'utm_medium' => 'metabox', 'utm_campaign' => 'blog-post' ];
 
 		echo '<ul id="cx-posts-wrapper">';
 		

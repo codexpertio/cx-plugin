@@ -173,3 +173,7 @@
 #cx_plugin_support_content #support_btn_div {
 	text-align: center;
 }
+#cx-overview li a {
+	font-size: 14px;
+	font-weight: 600;
+}

@@ -429,15 +429,16 @@ class Settings extends Base {
 					$utm = [ 'utm_source' => 'dashboard', 'utm_medium' => 'settings', 'utm_campaign' => 'faq' ];
 				    if( is_array( $helps ) ) :
 				    foreach ( $helps as $help ) {
+				    	$help_link = add_query_arg( $utm, $help['link'] );
 				        ?>
 				        <div id='cx-plugin-help-<?php echo $help['id']; ?>' class='cx-plugin-help'>
 				            <h2 class='cx-plugin-help-heading' data-target='#cx-plugin-help-text-<?php echo $help['id']; ?>'>
-				                <a href='<?php echo $help['link']; ?>' target='_blank'>
+				                <a href='<?php echo $help_link; ?>' target='_blank'>
 				                <span class='dashicons dashicons-admin-links'></span></a>
 				                <span class="heading-text"><?php echo $help['title']['rendered']; ?></span>
 				            </h2>
 				            <div id='cx-plugin-help-text-<?php echo $help['id']; ?>' class='cx-plugin-help-text' style='display:none'>
-				                <?php echo wpautop( wp_trim_words( $help['content']['rendered'], 55, " <a class='sc-more' href='{$help['link']}' target='_blank'>[more..]</a>" ) ); ?>
+				                <?php echo wpautop( wp_trim_words( $help['content']['rendered'], 55, " <a class='sc-more' href='{$help_link}' target='_blank'>[more..]</a>" ) ); ?>
 				            </div>
 				        </div>
 				        <?php
