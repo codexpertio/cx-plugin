@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: CX_Plugin
+ * Plugin Name: CX Plugin
  * Description: CX_Plugin by codexpert
  * Plugin URI: https://codexpert.io
  * Author: codexpert
@@ -21,6 +21,7 @@
  */
 
 namespace codexpert\CX_Plugin;
+use codexpert\product\Deactivator;
 use codexpert\product\License;
 use codexpert\product\Survey;
 use codexpert\product\Update;
@@ -68,7 +69,7 @@ final class Plugin {
 		$this->plugin				= get_plugin_data( CXP );
 		$this->plugin['basename']	= plugin_basename( CXP );
 		$this->plugin['file']		= CXP;
-		$this->plugin['server']		= apply_filters( 'cx-plugin_server', 'https://my.codexpert.io' );
+		$this->plugin['server']		= apply_filters( 'cx-plugin_server', 'http://my.cx' );
 		$this->plugin['min_php']	= '5.6';
 		$this->plugin['min_wp']		= '4.0';
 		$this->plugin['doc_id']		= 1960;
@@ -123,9 +124,10 @@ final class Plugin {
 			$settings->action( 'cx-settings-before-form', 'tab_content' );
 
 			// Product related classes
-			$survey		= new Survey( $this->plugin );
-			$notice		= new Notice( $this->plugin );
-			// $update		= new Update( $this->plugin );
+			$survey				= new Survey( $this->plugin );
+			$notice				= new Notice( $this->plugin );
+			$deactivator		= new Deactivator( $this->plugin );
+			// $update				= new Update( $this->plugin );
 
 		else : // !is_admin() ?
 
