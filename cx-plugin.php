@@ -22,10 +22,10 @@
 
 namespace codexpert\CX_Plugin;
 use codexpert\product\Deactivator;
-use codexpert\product\License;
 use codexpert\product\Survey;
-use codexpert\product\Update;
 use codexpert\product\Notice;
+use pluggable\product\License;
+use pluggable\product\Update;
 
 /**
  * if accessed directly, exit.
@@ -69,7 +69,7 @@ final class Plugin {
 		$this->plugin				= get_plugin_data( CXP );
 		$this->plugin['basename']	= plugin_basename( CXP );
 		$this->plugin['file']		= CXP;
-		$this->plugin['server']		= apply_filters( 'cx-plugin_server', 'http://my.cx' );
+		$this->plugin['server']		= apply_filters( 'cx-plugin_server', 'http://edd.wp' );
 		$this->plugin['min_php']	= '5.6';
 		$this->plugin['min_wp']		= '4.0';
 		$this->plugin['doc_id']		= 1960;
