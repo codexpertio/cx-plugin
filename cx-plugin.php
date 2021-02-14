@@ -128,7 +128,7 @@ final class Plugin {
 			$survey				= new Survey( $this->plugin );
 			$notice				= new Notice( $this->plugin );
 			$deactivator		= new Deactivator( $this->plugin );
-			// $update				= new Update( $this->plugin );
+			$update				= new Update( $this->plugin );
 
 		else : // !is_admin() ?
 
