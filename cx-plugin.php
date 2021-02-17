@@ -5,7 +5,7 @@
  * Plugin URI: https://codexpert.io
  * Author: codexpert
  * Author URI: https://codexpert.io
- * Version: 1.0
+ * Version: 0.1.0
  * Text Domain: cx-plugin
  * Domain Path: /languages
  *
