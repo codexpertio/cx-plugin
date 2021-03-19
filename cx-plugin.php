@@ -44,9 +44,9 @@ final class Plugin {
 	public static $_instance;
 
 	public function __construct() {
-		self::include();
-		self::define();
-		self::hook();
+		$this->include();
+		$this->define();
+		$this->hook();
 	}
 
 	/**
@@ -159,6 +159,13 @@ final class Plugin {
 			$api->action( 'rest_api_init', 'register_endpoints' );
 
 		endif;
+
+		/**
+		 * Common hooks
+		 *
+		 * Executes on both the admin area and front area
+		 */
+		$common = new Common( $this->plugin );
 
 		/**
 		 * AJAX facing hooks
