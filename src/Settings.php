@@ -5,7 +5,6 @@
 namespace codexpert\CX_Plugin;
 use codexpert\product\Base;
 use codexpert\product\Table;
-use codexpert\product\License;
 
 /**
  * @package Plugin

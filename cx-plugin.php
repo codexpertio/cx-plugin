@@ -73,8 +73,11 @@ final class Plugin {
 		$this->plugin['min_php']	= '5.6';
 		$this->plugin['min_wp']		= '4.0';
 		$this->plugin['doc_id']		= 1960;
-		$this->plugin['item_id']	= 11;
 		$this->plugin['depends']	= [ 'woocommerce/woocommerce.php' => 'WooCommerce' ];
+		
+		$this->plugin['item_id']	= 11;
+		$this->plugin['beta']		= true;
+		$this->plugin['updatable']	= true;
 		$this->plugin['license']	= new License( $this->plugin );
 	}
 
@@ -128,7 +131,6 @@ final class Plugin {
 			$survey				= new Survey( $this->plugin );
 			$notice				= new Notice( $this->plugin );
 			$deactivator		= new Deactivator( $this->plugin );
-			$update				= new Update( $this->plugin );
 
 		else : // !is_admin() ?
 

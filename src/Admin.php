@@ -547,7 +547,6 @@ class Admin extends Base {
 	public function plugin_row_meta( $plugin_meta, $plugin_file ) {
 		
 		if ( $this->plugin['basename'] === $plugin_file ) {
-			$plugin_meta['check'] = '<a href="' . add_query_arg( 'cx-recheck', $this->slug, admin_url( 'plugins.php' ) ) . '">' . __( 'Check for update', 'cx-plugin' ) . '</a>';
 			$plugin_meta['help'] = '<a href="https://help.codexpert.io/" target="_blank" class="cx-help">' . __( 'Help', 'cx-plugin' ) . '</a>';
 		}
 
