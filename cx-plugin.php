@@ -75,10 +75,11 @@ final class Plugin {
 		$this->plugin['doc_id']		= 1960;
 		$this->plugin['depends']	= [ 'woocommerce/woocommerce.php' => 'WooCommerce' ];
 		
-		$this->plugin['item_id']	= 11;
-		$this->plugin['beta']		= true;
-		$this->plugin['updatable']	= true;
-		$this->plugin['license']	= new License( $this->plugin );
+		$this->plugin['item_id']		= 11;
+		$this->plugin['beta']			= true;
+		$this->plugin['updatable']		= true;
+		$this->plugin['license_page']	= admin_url( 'edit.php?post_type=download&page=edd-2checkout' );
+		$this->plugin['license']		= new License( $this->plugin );
 	}
 
 	/**
