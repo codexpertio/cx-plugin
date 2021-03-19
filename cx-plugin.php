@@ -25,7 +25,6 @@ use codexpert\product\Deactivator;
 use codexpert\product\Survey;
 use codexpert\product\Notice;
 use pluggable\product\License;
-use pluggable\product\Update;
 
 /**
  * if accessed directly, exit.
