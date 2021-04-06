@@ -362,7 +362,66 @@ class Settings extends Base {
 								'value'		=> 'option_2',
 								'compare'	=> '==',
 							]
-						]
+						],
+						'sample_tabs' => [
+							'id'      => 'sample_tabs',
+							'label'     => __( 'Sample Tabs' ),
+							'type'      => 'tabs',
+							'tabs'     => [
+								'sample_tab1' => [
+									'id'      => 'sample_tab1',
+									'label'     => __( 'First Tab', 'cx-plugin' ),
+									'fields'    => [
+										'sample_tab1_email' => [
+											'id'      => 'sample_tab1_email',
+											'label'     => __( 'Tab Email Field', 'cx-plugin' ),
+											'type'      => 'email',
+											'desc'      => __( 'This is an email field.', 'cx-plugin' ),
+											// 'class'     => '',
+											'default'   => 'john@doe.com',
+											'readonly'  => false, // true|false
+											'disabled'  => false, // true|false
+										],
+										'sample_tab1_url' => [
+											'id'      => 'sample_tab1_url',
+											'label'     => __( 'Tab URL Field', 'cx-plugin' ),
+											'type'      => 'url',
+											'desc'      => __( 'This is a url field.', 'cx-plugin' ),
+											// 'class'     => '',
+											'default'   => 'https://johndoe.com',
+											'readonly'  => false, // true|false
+											'disabled'  => false, // true|false
+										],
+									],
+								],
+								'sample_tab2' => [
+									'id'      => 'sample_tab2',
+									'label'     => __( 'Second Tab', 'cx-plugin' ),
+									'fields'    => [
+										'sample_tab2_text' => [
+											'id'        => 'sample_tab2_text',
+											'label'     => __( 'Tab Text Field', 'cx-plugin' ),
+											'type'      => 'text',
+											'desc'      => __( 'This is a text field.', 'cx-plugin' ),
+											// 'class'     => '',
+											'default'   => 'Hello World!',
+											'readonly'  => false, // true|false
+											'disabled'  => false, // true|false
+										],
+										'sample_tab2_number' => [
+											'id'      => 'sample_tab2_number',
+											'label'     => __( 'Tab Number Field', 'cx-plugin' ),
+											'type'      => 'number',
+											'desc'      => __( 'This is a number field.', 'cx-plugin' ),
+											// 'class'     => '',
+											'default'   => 10,
+											'readonly'  => false, // true|false
+											'disabled'  => false, // true|false
+										],
+									],
+								],
+							],
+						],
 					]
 				],
 				'cx-plugin_table' => [
