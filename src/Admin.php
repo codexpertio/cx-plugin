@@ -50,8 +50,8 @@ class Admin extends Base {
 		/**
 		 * Schedule an event to sync help docs
 		 */
-		if ( !wp_next_scheduled ( 'cx-plugin_daily' )) {
-		    wp_schedule_event( time(), 'daily', 'cx-plugin_daily' );
+		if ( !wp_next_scheduled ( 'codexpert-daily' )) {
+		    wp_schedule_event( time(), 'daily', 'codexpert-daily' );
 		}
 
 		if( !get_option( 'cx-plugin_version' ) ){
@@ -74,7 +74,7 @@ class Admin extends Base {
 		/**
 		 * Remove scheduled hooks
 		 */
-		wp_clear_scheduled_hook( 'cx-plugin_daily' );
+		wp_clear_scheduled_hook( 'codexpert-daily' );
 	}
 
 	/**

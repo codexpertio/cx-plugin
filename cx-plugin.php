@@ -21,10 +21,10 @@
  */
 
 namespace codexpert\CX_Plugin;
-use codexpert\plugin\Deactivator;
 use codexpert\plugin\Survey;
 use codexpert\plugin\Notice;
 use codexpert\plugin\License;
+use codexpert\plugin\Deactivator;
 
 /**
  * if accessed directly, exit.
@@ -77,7 +77,7 @@ final class Plugin {
 		$this->plugin['item_id']		= 11;
 		$this->plugin['beta']			= true;
 		$this->plugin['updatable']		= true;
-		// $this->plugin['license_page']	= admin_url( 'admin.php&page=cx-plugin' );
+		// $this->plugin['license_page']= admin_url( 'admin.php&page=cx-plugin' );
 		$this->plugin['license']		= new License( $this->plugin );
 	}
 
@@ -111,7 +111,7 @@ final class Plugin {
 			$admin->action( 'wp_dashboard_setup', 'dashboard_widget', 99 );
 			$admin->action( 'admin_init', 'add_meta_boxes' );
 			$admin->action( 'admin_enqueue_scripts', 'enqueue_scripts' );
-			$admin->action( 'cx-plugin_daily', 'daily' );
+			$admin->action( 'codexpert-daily', 'daily' );
 			$admin->filter( "plugin_action_links_{$this->plugin['basename']}", 'action_links' );
 			$admin->filter( 'plugin_row_meta', 'plugin_row_meta', 10, 2 );
 			$admin->action( 'save_post', 'update_cache', 10, 3 );
