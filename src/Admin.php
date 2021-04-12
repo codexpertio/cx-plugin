@@ -3,9 +3,9 @@
  * All admin facing functions
  */
 namespace codexpert\CX_Plugin;
-use codexpert\product\Base;
-use codexpert\product\Wizard;
-use codexpert\product\Metabox;
+use codexpert\plugin\Base;
+use codexpert\plugin\Wizard;
+use codexpert\plugin\Metabox;
 
 /**
  * if accessed directly, exit.
@@ -520,7 +520,7 @@ class Admin extends Base {
 			]
 		];
 
-		new \codexpert\product\Metabox( $metabox );
+		new \codexpert\plugin\Metabox( $metabox );
 	}
 	
 	/**

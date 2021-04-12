@@ -3,7 +3,7 @@
  * All common functions to load in both admin and front
  */
 namespace codexpert\CX_Plugin;
-use codexpert\product\Base;
+use codexpert\plugin\Base;
 
 /**
  * if accessed directly, exit.

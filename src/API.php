@@ -3,7 +3,7 @@
  * All REST API related functions
  */
 namespace codexpert\CX_Plugin;
-use codexpert\product\Base;
+use codexpert\plugin\Base;
 
 /**
  * if accessed directly, exit.

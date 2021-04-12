@@ -3,8 +3,8 @@
  * All Wizard related functions
  */
 namespace codexpert\CX_Plugin;
-use codexpert\product\Base;
-use codexpert\product\Setup;
+use codexpert\plugin\Base;
+use codexpert\plugin\Setup;
 
 /**
  * if accessed directly, exit.

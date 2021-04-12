@@ -3,8 +3,8 @@
  * All settings related functions
  */
 namespace codexpert\CX_Plugin;
-use codexpert\product\Base;
-use codexpert\product\Table;
+use codexpert\plugin\Base;
+use codexpert\plugin\Table;
 
 /**
  * @package Plugin
@@ -451,7 +451,7 @@ class Settings extends Base {
 			],
 		];
 
-		new \codexpert\product\Settings( $settings );
+		new \codexpert\plugin\Settings( $settings );
 	}
 	
 	public function tab_content( $section ) {

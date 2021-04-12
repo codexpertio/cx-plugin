@@ -21,10 +21,10 @@
  */
 
 namespace codexpert\CX_Plugin;
-use codexpert\product\Deactivator;
-use codexpert\product\Survey;
-use codexpert\product\Notice;
-use pluggable\product\License;
+use codexpert\plugin\Deactivator;
+use codexpert\plugin\Survey;
+use codexpert\plugin\Notice;
+use codexpert\plugin\License;
 
 /**
  * if accessed directly, exit.
