@@ -44,9 +44,7 @@ class Front extends Base {
 		] );
 	}
 
-	public function head() {
-		cx_plugin_pri(get_option('cx-plugin_advanced'));
-	}
+	public function head() {}
 	
 	/**
 	 * Enqueue JavaScripts and stylesheets
