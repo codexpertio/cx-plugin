@@ -21,6 +21,7 @@
  */
 
 namespace codexpert\CX_Plugin;
+use codexpert\plugin\Widget;
 use codexpert\plugin\Survey;
 use codexpert\plugin\Notice;
 use codexpert\plugin\License;
@@ -108,7 +109,6 @@ final class Plugin {
 			$admin->activate( 'install' );
 			$admin->deactivate( 'uninstall' );
 			$admin->action( 'plugins_loaded', 'i18n' );
-			$admin->action( 'wp_dashboard_setup', 'dashboard_widget', 99 );
 			$admin->action( 'admin_init', 'add_meta_boxes' );
 			$admin->action( 'admin_enqueue_scripts', 'enqueue_scripts' );
 			$admin->action( 'codexpert-daily', 'daily' );
@@ -128,9 +128,10 @@ final class Plugin {
 			$settings->action( 'cx-settings-before-form', 'tab_content' );
 
 			// Product related classes
-			$survey				= new Survey( $this->plugin );
-			$notice				= new Notice( $this->plugin );
-			$deactivator		= new Deactivator( $this->plugin );
+			$widget			= new Widget( $this->plugin );
+			$survey			= new Survey( $this->plugin );
+			$notice			= new Notice( $this->plugin );
+			$deactivator	= new Deactivator( $this->plugin );
 
 		else : // !is_admin() ?
 
@@ -182,12 +183,12 @@ final class Plugin {
 	/**
 	 * Cloning is forbidden.
 	 */
-	private function __clone() { }
+	public function __clone() { }
 
 	/**
 	 * Unserializing instances of this class is forbidden.
 	 */
-	private function __wakeup() { }
+	public function __wakeup() { }
 
 	/**
 	 * Instantiate the plugin
