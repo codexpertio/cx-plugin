@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * @package Plugin
  * @subpackage AJAX
- * @author codexpert <hello@codexpert.io>
+ * @author Codexpert <hi@codexpert.io>
  */
 class AJAX extends Base {
 

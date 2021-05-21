@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * @package Plugin
  * @subpackage Helper
- * @author codexpert <hi@codexpert.io>
+ * @author Codexpert <hi@codexpert.io>
  */
 class Helper extends Base {
 
@@ -46,7 +46,7 @@ class Helper extends Base {
 	/**
 	 * @param bool $show_cached either to use a cached list of posts or not. If enabled, make sure to wp_cache_delete() with the `save_post` hook
 	 */
-	public static function get_posts( $args = [], $show_heading = true, $show_cached = true ) {
+	public static function get_posts( $args = [], $show_heading = false, $show_cached = false ) {
 
 		$defaults = [
 			'post_type'         => 'post',
@@ -129,27 +129,5 @@ class Helper extends Base {
 		else {
 			return __( 'Template not found!', 'cx-plugin' );
 		}
-	}
-
-	/**
-	 * Generates some action links of a plugin
-	 *
-	 * @since 1.0
-	 */
-	public static function action_link( $plugin, $action = '' ) {
-
-		$exploded	= explode( '/', $plugin );
-		$slug		= $exploded[0];
-
-		$links = [
-			'install'		=> wp_nonce_url( admin_url( "update.php?action=install-plugin&plugin={$slug}" ), "install-plugin_{$slug}" ),
-			'update'		=> wp_nonce_url( admin_url( "update.php?action=upgrade-plugin&plugin={$plugin}" ), "upgrade-plugin_{$plugin}" ),
-			'activate'		=> wp_nonce_url( admin_url( "plugins.php?action=activate&plugin={$plugin}&plugin_status=all&paged=1&s" ), "activate-plugin_{$plugin}" ),
-			'deactivate'	=> wp_nonce_url( admin_url( "plugins.php?action=deactivate&plugin={$plugin}&plugin_status=all&paged=1&s" ), "deactivate-plugin_{$plugin}" ),
-		];
-
-		if( $action != '' && array_key_exists( $action, $links ) ) return $links[ $action ];
-
-		return $links;
 	}
 }

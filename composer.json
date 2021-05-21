@@ -2,8 +2,8 @@
     "name": "codexpert/CX_Plugin",
     "authors": [
         {
-            "name": "codexpert",
-            "email": "hello@codexpert.io"
+            "name": "Codexpert",
+            "email": "hi@codexpert.io"
         }
     ],
     "require": {

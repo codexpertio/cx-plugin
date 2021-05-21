@@ -15,7 +15,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * @package Plugin
  * @subpackage Common
- * @author codexpert <hi@codexpert.io>
+ * @author Codexpert <hi@codexpert.io>
  */
 class Common extends Base {
 

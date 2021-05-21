@@ -3,7 +3,7 @@
  * Plugin Name: CX Plugin
  * Description: CX_Plugin by codexpert
  * Plugin URI: https://codexpert.io
- * Author: codexpert
+ * Author: Codexpert
  * Author URI: https://codexpert.io
  * Version: 0.1.0
  * Text Domain: cx-plugin
@@ -37,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * Main class for the plugin
  * @package Plugin
- * @author codexpert <hello@codexpert.io>
+ * @author Codexpert <hi@codexpert.io>
  */
 final class Plugin {
 	
@@ -72,7 +72,7 @@ final class Plugin {
 		$this->plugin['server']		= apply_filters( 'cx-plugin_server', 'https://my.codexpert.io' );
 		$this->plugin['min_php']	= '5.6';
 		$this->plugin['min_wp']		= '4.0';
-		$this->plugin['doc_id']		= 1960;
+		// $this->plugin['doc_id']		= 1960;
 		$this->plugin['depends']	= [ 'woocommerce/woocommerce.php' => 'WooCommerce' ];
 		
 		$this->plugin['item_id']		= 11;

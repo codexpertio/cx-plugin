@@ -9,7 +9,7 @@ use codexpert\plugin\Table;
 /**
  * @package Plugin
  * @subpackage Settings
- * @author codexpert <hello@codexpert.io>
+ * @author Codexpert <hi@codexpert.io>
  */
 class Settings extends Base {
 
