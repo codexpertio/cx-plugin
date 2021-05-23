@@ -151,11 +151,20 @@ class Settings extends Base {
 							'disabled'  => false, // true|false
 							'multiple'  => true, // true|false
 						],
+						'sample_checkbox' => [
+							'id'      => 'sample_checkbox',
+							'label'     => __( 'Checkbox Field', 'cx-plugin' ),
+							'type'      => 'checkbox',
+							'desc'      => __( 'This is a checkbox field.', 'cx-plugin' ),
+							// 'class'     => '',
+							'disabled'  => false, // true|false
+							'default'   => 'on'
+						],
 						'sample_multicheck' => [
 							'id'      => 'sample_multicheck',
-							'label'     => __( 'Multicheck Field', 'cx-plugin' ),
+							'label'     => __( 'Multi-check Field', 'cx-plugin' ),
 							'type'      => 'checkbox',
-							'desc'      => __( 'This is a multicheck field.', 'cx-plugin' ),
+							'desc'      => __( 'This is a multi-check field.', 'cx-plugin' ),
 							// 'class'     => '',
 							'options'   => [
 								'option_1'  => 'Option One',
@@ -166,14 +175,29 @@ class Settings extends Base {
 							'disabled'  => false, // true|false
 							'multiple'  => true, // true|false
 						],
-						'sample_checkbox' => [
-							'id'      => 'sample_checkbox',
-							'label'     => __( 'Checkbox Field', 'cx-plugin' ),
-							'type'      => 'checkbox',
-							'desc'      => __( 'This is a checkbox field.', 'cx-plugin' ),
+						'sample_switch' => [
+							'id'      => 'sample_switch',
+							'label'     => __( 'Switch Field', 'cx-plugin' ),
+							'type'      => 'switch',
+							'desc'      => __( 'This is a switch field.', 'cx-plugin' ),
 							// 'class'     => '',
 							'disabled'  => false, // true|false
 							'default'   => 'on'
+						],
+						'sample_multiswitch' => [
+							'id'      => 'sample_multiswitch',
+							'label'     => __( 'Multi-switch Field', 'cx-plugin' ),
+							'type'      => 'switch',
+							'desc'      => __( 'This is a multi-switch field.', 'cx-plugin' ),
+							// 'class'     => '',
+							'options'   => [
+								'option_1'  => 'Option One',
+								'option_2'  => 'Option Two',
+								'option_3'  => 'Option Three',
+							],
+							'default'   => [ 'option_2' ],
+							'disabled'  => false, // true|false
+							'multiple'  => true, // true|false
 						],
 						'sample_range' => [
 							'id'      => 'sample_range',
