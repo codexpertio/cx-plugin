@@ -78,7 +78,7 @@ final class Plugin {
 		$this->plugin['item_id']		= 11;
 		$this->plugin['beta']			= true;
 		$this->plugin['updatable']		= true;
-		// $this->plugin['license_page']= admin_url( 'admin.php&page=cx-plugin' );
+		// $this->plugin['license_page']= admin_url( 'admin.php?page=cx-plugin' );
 		$this->plugin['license']		= new License( $this->plugin );
 	}
 
