@@ -563,7 +563,7 @@ class Settings extends Base {
 			<div id="cx_plugin_support_content" class="cx_plugin_tabcontent">
 				<p><?php _e( 'Having an issue or got something to say? Feel free to reach out to us! Our award winning support team is always ready to help you.', 'shop-catalog' ); ?></p>
 				<div id="support_btn_div">
-					<a href="https://help.codexpert.io" class="button" id="support_btn" target="_blank"><?php _e( 'Submit a Ticket', 'shop-catalog' ); ?></a>
+					<a href="https://help.codexpert.io/?utm_campaign=help-btn" class="button" id="support_btn" target="_blank"><?php _e( 'Submit a Ticket', 'shop-catalog' ); ?></a>
 				</div>
 			</div>
 			<?php
