@@ -62,7 +62,9 @@ class Admin extends Base {
 			update_option( 'cx-plugin_install_time', time() );
 		}
 
-		$this->daily();
+		if( get_option( 'cx-plugin-docs-json' ) == '' ) {
+			$this->daily();
+		}
 	}
 
 	/**
@@ -86,8 +88,7 @@ class Admin extends Base {
 		 *
 		 * @since 1.0
 		 */
-	    $_docs = "https://help.codexpert.io/wp-json/wp/v2/docs/?parent={$this->plugin['doc_id']}&per_page=20";
-	    if( !is_wp_error( $_docs_data = wp_remote_get( $_docs ) ) ) {
+	    if( isset( $this->plugin['doc_id'] ) && !is_wp_error( $_docs_data = wp_remote_get( "https://help.codexpert.io/wp-json/wp/v2/docs/?parent={$this->plugin['doc_id']}&per_page=20" ) ) ) {
 	        update_option( 'cx-plugin-docs-json', json_decode( $_docs_data['body'], true ) );
 	    }
 	    
