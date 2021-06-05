@@ -439,7 +439,7 @@ class Admin extends Base {
 			]
 		];
 
-		new \codexpert\plugin\Metabox( $metabox );
+		new Metabox( $metabox );
 	}
 	
 	/**
