@@ -4,6 +4,7 @@
  */
 namespace codexpert\CX_Plugin;
 use codexpert\plugin\Base;
+use codexpert\plugin\License;
 
 /**
  * if accessed directly, exit.
@@ -30,6 +31,13 @@ class Helper extends Base {
 		$this->name		= $this->plugin['Name'];
 		$this->server	= $this->plugin['server'];
 		$this->version	= $this->plugin['Version'];
+	}
+
+	public static function license() {
+		global $cx_plugin;
+		
+		$license = new License( $cx_plugin );
+		return $license;
 	}
 
 	public static function pri( $data ) {

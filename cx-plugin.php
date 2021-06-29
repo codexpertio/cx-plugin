@@ -80,6 +80,9 @@ final class Plugin {
 		$this->plugin['updatable']		= true;
 		// $this->plugin['license_page']= admin_url( 'admin.php?page=cx-plugin' );
 		$this->plugin['license']		= new License( $this->plugin );
+
+		global $cx_plugin;
+		$cx_plugin = $this->plugin;
 	}
 
 	/**
