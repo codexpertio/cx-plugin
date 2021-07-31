@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: CX Plugin
- * Description: CX_Plugin by codexpert
+ * Description: CX_Plugin by Codexpert
  * Plugin URI: https://codexpert.io
  * Author: Codexpert
  * Author URI: https://codexpert.io
