@@ -128,7 +128,6 @@ final class Plugin {
 			 */
 			$settings = new Settings( $this->plugin );
 			$settings->action( 'plugins_loaded', 'init_menu' );
-			$settings->action( 'cx-settings-before-form', 'tab_content' );
 
 			// Product related classes
 			$widget			= new Widget( $this->plugin );
