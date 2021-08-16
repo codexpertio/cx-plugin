@@ -42,7 +42,7 @@ class Settings extends Base {
 					'label'     => __( 'Basic Settings', 'cx-plugin' ),
 					'icon'      => 'dashicons-admin-tools',
 					'color'		=> '#4c3f93',
-					'sticky'	=> true,
+					'sticky'	=> false,
 					'fields'    => [
 						'sample_text' => [
 							'id'        => 'sample_text',
