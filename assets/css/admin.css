@@ -166,3 +166,105 @@
 #cx-overview li a {
 	font-size: 14px;
 }
+
+/* more plugins */
+#cxis-more-plugins a {
+	text-decoration: none;
+}
+#cxis-more-plugins a:focus {
+	box-shadow: none;
+}
+.cxis-plugin {
+    padding: 20px;
+    box-shadow: 2px 2px 20px 0px #9e9e9e21;
+    transition: all 0.4s;
+    border: 1px solid #eee;
+}
+.cxis-plugin:hover {
+    box-shadow: 2px 2px 20px 0px #00000032;
+    margin-top: -3px;
+}
+.cxis-thumb {
+    max-height: 160px;
+}
+.cxis-name {
+    text-align: center;
+    font-size: 22px;
+}
+.cxis-url-wrap {
+    text-align: center;
+    margin: 40px 0 10px 0;
+}
+#cxis-custom .cxis-url-wrap {
+    margin-top: 35px;
+}
+.cxis-url {
+    border: 2px solid #fff;
+    background: #f09;
+    color: #fff;
+    padding: 10px 30px;
+    transition: all 0.4s;
+    box-shadow: 0 0 17px 6px #ff00994a;
+}
+.cxis-url:hover {
+    border: 2px solid #f09;
+    background: #fff;
+    color: #f09;
+}
+#cxis-more-plugins {
+	display: grid;
+	gap:  20px;
+}
+.cxis-desc {
+    font-size: 15px;
+}
+@media only screen and (max-width: 600px) {
+	#cxis-more-plugins {
+		display: grid;
+	    grid-template-columns: 1fr;
+	}
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+	#cxis-more-plugins {
+		display: grid;
+	    grid-template-columns: 1fr;
+	}
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+	#cxis-more-plugins {
+		display: grid;
+	    grid-template-columns: 1fr 1fr;
+	}
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+	#cxis-more-plugins {
+		display: grid;
+	    grid-template-columns: 1fr 1fr 1fr;
+	}
+	.cxis-thumb-wrap {
+		margin: 0 60px;
+	}
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+	#cxis-more-plugins {
+		display: grid;
+	    grid-template-columns: 1fr 1fr 1fr;
+	}
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1366px) {
+	#cxis-more-plugins {
+		display: grid;
+	    grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
+}
+/* more plugins ends*/
