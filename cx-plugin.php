@@ -72,7 +72,7 @@ final class Plugin {
 		$this->plugin['server']		= apply_filters( 'cx-plugin_server', 'https://codexpert.io/dashboard' );
 		$this->plugin['min_php']	= '5.6';
 		$this->plugin['min_wp']		= '4.0';
-		// $this->plugin['doc_id']		= 1960;
+		$this->plugin['doc_id']		= 1960;
 		$this->plugin['depends']	= [ 'woocommerce/woocommerce.php' => 'WooCommerce' ];
 		
 		$this->plugin['item_id']		= 11;

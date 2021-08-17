@@ -1,14 +1,5 @@
-.notice.cx-notice.cx-plugin-notice {
-	padding: 0 0 0 0;
-}
-.cx-plugin-notice a {
-	display: flex;
-}
-.cx-plugin-notice a:focus {
-	box-shadow: 0 0 0 0;
-}
-.cx-plugin-notice img {
-	max-width: 100%;
+.cx_plugin_tab_btns {
+    margin-bottom: 20px;
 }
 /*help tab*/
 #cx-plugin-helps{
@@ -127,7 +118,6 @@
 	font-size: 16px;
 }
 /*end help tab*/
-
 
 /*help tab design start*/
 .cx_plugin_tab_btns .cx_plugin_help_tablinks {
