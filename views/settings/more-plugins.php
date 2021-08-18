@@ -1,4 +1,6 @@
 <?php
+global $cx_plugin;
+
 $plugins = [
 	'woolementor'	=> [
 		'name'	=> __( 'Woolementor', 'image-sizes' ),
@@ -22,6 +24,9 @@ $plugins = [
 		'thumb'	=> plugins_url( 'assets/img/share-logins.png', CXP )
 	],
 ];
+
+// exclude this plugin
+unset( $plugins[ $cx_plugin['TextDomain'] ] );
 
 $utm = [
 	'utm_campaign'	=> 'image-sizes',
