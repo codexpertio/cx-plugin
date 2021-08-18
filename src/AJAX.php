@@ -2,8 +2,8 @@
 /**
  * All AJAX related functions
  */
-namespace codexpert\CX_Plugin;
-use codexpert\plugin\Base;
+namespace Codexpert\CX_Plugin;
+use Codexpert\Plugin\Base;
 
 /**
  * if accessed directly, exit.

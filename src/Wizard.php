@@ -2,9 +2,9 @@
 /**
  * All Wizard related functions
  */
-namespace codexpert\CX_Plugin;
-use codexpert\plugin\Base;
-use codexpert\plugin\Setup;
+namespace Codexpert\CX_Plugin;
+use Codexpert\Plugin\Base;
+use Codexpert\Plugin\Setup;
 
 /**
  * if accessed directly, exit.

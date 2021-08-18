@@ -2,8 +2,8 @@
 /**
  * All settings related functions
  */
-namespace codexpert\CX_Plugin;
-use codexpert\plugin\Base;
+namespace Codexpert\CX_Plugin;
+use Codexpert\Plugin\Base;
 
 /**
  * @package Plugin
@@ -503,6 +503,6 @@ class Settings extends Base {
 			],
 		];
 
-		new \codexpert\plugin\Settings( $settings );
+		new \Codexpert\Plugin\Settings( $settings );
 	}
 }

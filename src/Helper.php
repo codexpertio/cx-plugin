@@ -2,9 +2,9 @@
 /**
  * All helpers functions
  */
-namespace codexpert\CX_Plugin;
-use codexpert\plugin\Base;
-use codexpert\plugin\License;
+namespace Codexpert\CX_Plugin;
+use Codexpert\Plugin\Base;
+use Codexpert\Plugin\License;
 
 /**
  * if accessed directly, exit.

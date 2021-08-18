@@ -2,10 +2,10 @@
 /**
  * All admin facing functions
  */
-namespace codexpert\CX_Plugin;
-use codexpert\plugin\Base;
-use codexpert\plugin\Wizard;
-use codexpert\plugin\Metabox;
+namespace Codexpert\CX_Plugin;
+use Codexpert\Plugin\Base;
+use Codexpert\Plugin\Wizard;
+use Codexpert\Plugin\Metabox;
 
 /**
  * if accessed directly, exit.

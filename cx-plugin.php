@@ -20,12 +20,12 @@
  * GNU General Public License for more details.
  */
 
-namespace codexpert\CX_Plugin;
-use codexpert\plugin\Widget;
-use codexpert\plugin\Survey;
-use codexpert\plugin\Notice;
-use codexpert\plugin\License;
-use codexpert\plugin\Deactivator;
+namespace Codexpert\CX_Plugin;
+use Codexpert\Plugin\Widget;
+use Codexpert\Plugin\Survey;
+use Codexpert\Plugin\Notice;
+use Codexpert\Plugin\License;
+use Codexpert\Plugin\Deactivator;
 
 /**
  * if accessed directly, exit.
