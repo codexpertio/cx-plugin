@@ -486,8 +486,8 @@ class Settings extends Base {
 				],
 				'image-more_plugins'	=> [
 					'id'        => 'image-more_plugins',
-					'label'     => __( 'Supercharge', 'image-sizes' ),
-					'icon'      => 'dashicons-superhero',
+					'label'     => __( 'More Plugins', 'image-sizes' ),
+					'icon'      => 'dashicons-admin-plugins',
 					'color'		=> '#ff7600',
 					'hide_form'	=> true,
 					'template'  => CXP_DIR . '/views/settings/more-plugins.php',
