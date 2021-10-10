@@ -63,7 +63,7 @@ class Cron extends Base {
 	public function initial_calls() {
 		
 		// Sync docs for the first time
-		if( get_option( 'cx-plugin-docs-json' ) == '' ) {
+		if( get_option( 'cx-plugin_docs_json' ) == '' ) {
 			$this->daily();
 		}
 	}
@@ -78,7 +78,7 @@ class Cron extends Base {
 		 * @since 1.0
 		 */
 	    if( isset( $this->plugin['doc_id'] ) && !is_wp_error( $_docs_data = wp_remote_get( "https://help.codexpert.io/wp-json/wp/v2/docs/?parent={$this->plugin['doc_id']}&per_page=20" ) ) ) {
-	        update_option( 'cx-plugin-docs-json', json_decode( $_docs_data['body'], true ) );
+	        update_option( 'cx-plugin_docs_json', json_decode( $_docs_data['body'], true ) );
 	    }
 	    
 	}

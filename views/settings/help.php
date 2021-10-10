@@ -26,7 +26,7 @@ echo "</div>";
 	 	<div id='cx-plugin-helps'>
 	    <?php
 
-	    $helps = get_option( 'cx-plugin-docs-json', [] );
+	    $helps = get_option( 'cx-plugin_docs_json', [] );
 		$utm = [ 'utm_source' => 'dashboard', 'utm_medium' => 'settings', 'utm_campaign' => 'faq' ];
 	    if( is_array( $helps ) ) :
 	    foreach ( $helps as $help ) {
