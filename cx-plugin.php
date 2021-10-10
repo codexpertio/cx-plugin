@@ -114,7 +114,6 @@ final class Plugin {
 			$admin->action( 'plugins_loaded', 'i18n' );
 			$admin->action( 'admin_init', 'add_meta_boxes' );
 			$admin->action( 'admin_enqueue_scripts', 'enqueue_scripts' );
-			$admin->action( 'codexpert-daily', 'daily' );
 			$admin->filter( "plugin_action_links_{$this->plugin['basename']}", 'action_links' );
 			$admin->filter( 'plugin_row_meta', 'plugin_row_meta', 10, 2 );
 			$admin->action( 'save_post', 'update_cache', 10, 3 );
@@ -165,6 +164,18 @@ final class Plugin {
 			$api->action( 'rest_api_init', 'register_endpoints' );
 
 		endif;
+
+		/**
+		 * Cron facing hooks
+		 *
+		 * To add a hook for logged in users, use $ajax->priv()
+		 * To add a hook for non-logged in users, use $ajax->nopriv()
+		 */
+		$cron = new Cron( $this->plugin );
+		$cron->activate( 'install' );
+		$cron->deactivate( 'uninstall' );
+		$cron->action( 'codexpert-daily', 'daily' );
+		$cron->action( 'plugins_loaded', 'initial_calls' );
 
 		/**
 		 * Common hooks

@@ -47,51 +47,14 @@ class Admin extends Base {
 	 * @since 1.0
 	 */
 	public function install() {
-		/**
-		 * Schedule an event to sync help docs
-		 */
-		if ( !wp_next_scheduled ( 'codexpert-daily' )) {
-		    wp_schedule_event( time(), 'daily', 'codexpert-daily' );
-		}
 
-		if( !get_option( 'cx-plugin_version' ) ){
+		if( ! get_option( 'cx-plugin_version' ) ){
 			update_option( 'cx-plugin_version', $this->version );
 		}
 		
-		if( !get_option( 'cx-plugin_install_time' ) ){
+		if( ! get_option( 'cx-plugin_install_time' ) ){
 			update_option( 'cx-plugin_install_time', time() );
 		}
-
-		if( get_option( 'cx-plugin-docs-json' ) == '' ) {
-			$this->daily();
-		}
-	}
-
-	/**
-	 * Uninstaller. Runs once when the plugin in deactivated.
-	 *
-	 * @since 1.0
-	 */
-	public function uninstall() {
-		/**
-		 * Remove scheduled hooks
-		 */
-		wp_clear_scheduled_hook( 'codexpert-daily' );
-	}
-
-	/**
-	 * Daily events
-	 */
-	public function daily() {
-		/**
-		 * Sync docs from https://help.codexpert.io
-		 *
-		 * @since 1.0
-		 */
-	    if( isset( $this->plugin['doc_id'] ) && !is_wp_error( $_docs_data = wp_remote_get( "https://help.codexpert.io/wp-json/wp/v2/docs/?parent={$this->plugin['doc_id']}&per_page=20" ) ) ) {
-	        update_option( 'cx-plugin-docs-json', json_decode( $_docs_data['body'], true ) );
-	    }
-	    
 	}
 
 	/**
