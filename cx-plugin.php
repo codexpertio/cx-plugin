@@ -25,6 +25,7 @@ use Codexpert\Plugin\Widget;
 use Codexpert\Plugin\Survey;
 use Codexpert\Plugin\Notice;
 use Codexpert\Plugin\License;
+use Codexpert\Plugin\Feature;
 use Codexpert\Plugin\Deactivator;
 
 /**
@@ -153,6 +154,7 @@ final class Plugin {
 			$survey			= new Survey( $this->plugin );
 			$notice			= new Notice( $this->plugin );
 			$deactivator	= new Deactivator( $this->plugin );
+			$feature		= new Feature( $this->plugin );
 
 		else : // !is_admin() ?
 
