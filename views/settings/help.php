@@ -21,7 +21,6 @@ $buttons 	= [
 $buttons 	= apply_filters( 'cx-plugin_help_btns', $buttons );
 ?>
 
-<h2 class="cx-plugin-help-tab-title"><?php _e( 'Documentation', 'cx_plugin' ) ?></h2>
 <div class="cx-plugin-help-tab">
 	<div class="cx-plugin-documentation">
 		 <div class='wrap'>

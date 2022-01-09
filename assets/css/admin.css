@@ -38,13 +38,6 @@
 }
 
 /*=======new design=======*/
-#cx-plugin_help .cx-subheading{
-	display: none;
-}
-#cx-plugin_help .cx-plugin-help-tab-title {
-	font-size: 26px;
-	margin-top: 30px;
-}
 #cx-plugin_help .cx-plugin-help-tab {
 	display: grid;
 	grid-template-columns: 3fr 1fr;
