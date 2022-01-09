@@ -43,7 +43,7 @@ class Cron extends Base {
 		/**
 		 * Schedule an event to sync help docs
 		 */
-		if ( !wp_next_scheduled ( 'codexpert-daily' )) {
+		if ( ! wp_next_scheduled ( 'codexpert-daily' )) {
 		    wp_schedule_event( time(), 'daily', 'codexpert-daily' );
 		}
 	}
