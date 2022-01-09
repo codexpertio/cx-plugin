@@ -68,4 +68,20 @@
 	background: #4256b2;
 	color: #fff;
 }
+@media only screen and (max-width : 810px) {
+	#cx-plugin_help .cx-plugin-help-tab {
+		grid-template-columns: 4fr 1fr;
+	}
+	#cx-plugin_help .cx-plugin-help-link{
+		width: 150px;
+	}
+}
+@media only screen and (max-width : 420px) {
+	#cx-plugin_help .cx-plugin-help-tab {
+		grid-template-columns: 1fr;
+	}
+	#cx-plugin_help .cx-plugin-help-link{
+		width: 200px;
+	}
+}
 /*end help tab*/
