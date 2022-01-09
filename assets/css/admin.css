@@ -39,8 +39,8 @@
 
 /*=======new design=======*/
 #cx-plugin_help .cx-plugin-help-tab {
-	display: grid;
-	grid-template-columns: 3fr 1fr;
+    display: grid;
+    grid-template-columns: 5fr 1fr;
 }
 #cx-plugin_help .cx-plugin-help-link {
 	display: block;
