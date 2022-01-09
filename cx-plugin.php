@@ -41,16 +41,40 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 final class Plugin {
 	
+	/**
+	 * Plugin instance
+	 * 
+	 * @return Plugin
+	 */
 	public static $_instance;
 
-	public function __construct() {
+	/**
+	 * The constructor method
+	 * 
+	 * @since 0.9
+	 */
+	private function __construct() {
+		/**
+		 * Includes required files
+		 */
 		$this->include();
+
+		/**
+		 * Defines contants
+		 */
 		$this->define();
+
+		/**
+		 * Run actual hooks
+		 */
 		$this->hook();
 	}
 
 	/**
 	 * Includes files
+	 * *
+	 * @uses composer
+	 * @uses psr-4
 	 */
 	public function include() {
 		require_once( dirname( __FILE__ ) . '/vendor/autoload.php' );
