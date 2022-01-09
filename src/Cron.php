@@ -4,8 +4,6 @@
  */
 namespace Codexpert\CX_Plugin;
 use Codexpert\Plugin\Base;
-use Codexpert\Plugin\Wizard;
-use Codexpert\Plugin\Metabox;
 
 /**
  * if accessed directly, exit.
