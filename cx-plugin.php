@@ -41,16 +41,40 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 final class Plugin {
 	
+	/**
+	 * Plugin instance
+	 * 
+	 * @return Plugin
+	 */
 	public static $_instance;
 
-	public function __construct() {
+	/**
+	 * The constructor method
+	 * 
+	 * @since 0.9
+	 */
+	private function __construct() {
+		/**
+		 * Includes required files
+		 */
 		$this->include();
+
+		/**
+		 * Defines contants
+		 */
 		$this->define();
+
+		/**
+		 * Run actual hooks
+		 */
 		$this->hook();
 	}
 
 	/**
 	 * Includes files
+	 * *
+	 * @uses composer
+	 * @uses psr-4
 	 */
 	public function include() {
 		require_once( dirname( __FILE__ ) . '/vendor/autoload.php' );
@@ -58,14 +82,18 @@ final class Plugin {
 
 	/**
 	 * Define variables and constants
+	 * 
+	 * @uses get_plugin_data
+	 * @uses plugin_basename
 	 */
 	public function define() {
+
 		// constants
 		define( 'CXP', __FILE__ );
 		define( 'CXP_DIR', dirname( CXP ) );
 		define( 'CXP_DEBUG', apply_filters( 'cx-plugin_debug', true ) );
 
-		// plugin data
+		// Plugin data
 		$this->plugin				= get_plugin_data( CXP );
 		$this->plugin['basename']	= plugin_basename( CXP );
 		$this->plugin['file']		= CXP;
@@ -75,12 +103,14 @@ final class Plugin {
 		$this->plugin['doc_id']		= 1960;
 		$this->plugin['depends']	= [ 'woocommerce/woocommerce.php' => 'WooCommerce' ];
 		
+		// Pro version info
 		$this->plugin['item_id']		= 11;
 		$this->plugin['beta']			= true;
 		$this->plugin['updatable']		= true;
-		// $this->plugin['license_page']= admin_url( 'admin.php?page=cx-plugin' );
 		$this->plugin['license']		= new License( $this->plugin );
+		$this->plugin['license_page']	= admin_url( 'admin.php?page=cx-plugin' );
 
+		// Set a global variable
 		global $cx_plugin;
 		$cx_plugin = $this->plugin;
 	}

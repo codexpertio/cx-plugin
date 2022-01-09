@@ -32,7 +32,7 @@ class Front extends Base {
 	}
 
 	public function add_admin_bar( $admin_bar ) {
-		if( !current_user_can( 'manage_options' ) ) return;
+		if( ! current_user_can( 'manage_options' ) ) return;
 
 		$admin_bar->add_menu( [
 			'id'    => $this->slug,
