@@ -1,6 +1,3 @@
-.cx_plugin_tab_btns {
-    margin-bottom: 20px;
-}
 /*help tab*/
 #cx-plugin-helps{
 	border: 1px solid #f0f0f0;
@@ -18,8 +15,8 @@
 #cx-plugin-helps .cx-plugin-help-text a{
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
-	background-color: transparent;
-	background-image: linear-gradient(60deg, #4054B2 20%, #f2295b 80%);
+	background-color: #4256b2;
+	/*background-image: linear-gradient(60deg, #4054B2 20%, #f2295b 80%);*/
 	font-size: 18px;
 	text-decoration: none;
 	font-weight: 300;
@@ -39,232 +36,36 @@
 #cx-plugin-helps .cx-plugin-help-text {
 	padding: 8px;
 }
-#cx-plugin_help ul li {
-	border-bottom: 1px solid #ddd;
-	margin-bottom: 15px;
-}
-#cx-plugin_help ul li:last-child {
-	border-bottom: none;
-}
-#cx-plugin_help ul li p {
-	font-size: 14px;
-	margin-top: 5px;
-}
-#cx-plugin_help ul li a {
-	-webkit-background-clip: text;
-	-webkit-text-fill-color: transparent;
-	background-color: transparent;
-	background-image: linear-gradient(60deg, #4054B2 20%, #f2295b 80%);
-	font-size: 20px;
-	text-decoration: none;
-	font-weight: 300;
-}
-#cx-plugin_help ul li p {
-	font-size: 14px;
-}
-.cx-section .wl-more {
-	font-size: 14px !important;
-}
-#cx-plugin_help.cx-section ul{
-	width: 100%;
-	display: inline-block;
-	margin: auto;
-}
-#cx-plugin_help.cx-section ul li.wl_help_tablink {
-	 float: left;
-	 border: none;
-	 outline: none;
-	 cursor: pointer;
-	 padding: 14px 0;
-	 font-size: 17px;
-	 width: 33%;
-	 text-align: center;
-	 border-bottom: 10px solid #ccc;
-}
-#cx-plugin_help.cx-section ul li.wl_help_tablink.active {
-	border-bottom: 10px solid #c36;
-}
-#cx-plugin_help.cx-section ul li#wl_vidtt.wl_help_tablink.active {
-	border-bottom: 10px solid #4054b2;
-}
-#cx-plugin_help.cx-section ul li#wl_support.wl_help_tablink.active {
-	border-bottom: 10px solid #009900;
-}
-#cx-plugin_help.cx-section .tabcontent{
+
+/*=======new design=======*/
+#cx-plugin_help .cx-subheading{
 	display: none;
 }
-#cx-plugin_help.cx-section #wl_vidtt_content.tabcontent{
-	text-align: center;
+#cx-plugin_help .cx-plugin-help-tab-title {
+	font-size: 26px;
+	margin-top: 30px;
 }
-#cx-plugin_help.cx-section .tabcontent.active{
+#cx-plugin_help .cx-plugin-help-tab {
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+}
+#cx-plugin_help .cx-plugin-help-link {
 	display: block;
-}
-#cx-plugin_help.cx-section #wl_support_content.tabcontent p {
-	font-size: 16px
-}
-#cx-plugin_help.cx-section #wl_support_content.tabcontent #support_btn_div {
-	text-align: center;
-}
-#cx-plugin_help.cx-section #wl_support_content.tabcontent #support_btn {
-	background-color: transparent;
-	background-image: linear-gradient(to right, #3B2C73, #E9345F);
-	padding: 15px 40px;
-	border: none;
-	margin-right: 4px;
-	border-radius: 25px;
 	text-decoration: none;
+	background: #fff;
+	text-align: center;
+	width: 200px;
+	margin: 10px 0;
+	padding: 17px;
+	border-radius: 5px;
+	font-size: 17px;
+	color: #4256b2;
+	border: 1px solid #4256b2;
+	margin-bottom: 20px;
+	transition: .4s;
+}
+#cx-plugin_help .cx-plugin-help-link:hover {
+	background: #4256b2;
 	color: #fff;
-	display: inline-block;
-	font-size: 16px;
 }
 /*end help tab*/
-
-/*help tab design start*/
-.cx_plugin_tab_btns .cx_plugin_help_tablinks {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr 1fr;
-}
-.cx_plugin_tab_btns .cx_plugin_help_tablinks .cx_plugin_help_tablink {
-    text-align: center;
-    font-size: 16px;
-    font-weight: 400;
-    border-bottom: 10px solid #ccc !important;
-    padding-bottom: 15px;
-    cursor: pointer;
-}
-.cx_plugin_tab_btns .cx_plugin_help_tablinks .cx_plugin_help_tablink.active {
-    border-color: #c36 !important;
-}
-.cx_plugin_tabcontent {
-    display: none;
-}
-.cx_plugin_tabcontent.active {
-    display: block;
-}
-#cx_plugin_vidtt_content iframe {
-    margin: auto;
-}
-/*help tab design end*/
-#cx_plugin_video_content {
-	text-align: center;
-}
-#cx_plugin_support_content #support_btn {
-	background-color: transparent;
-	background-image: linear-gradient(to right, #3B2C73, #E9345F);
-	padding: 8px 40px;
-	border: none;
-	margin-right: 4px;
-	border-radius: 25px;
-	text-decoration: none;
-	color: #fff;
-	display: inline-block;
-	font-size: 16px;
-}
-#cx_plugin_support_content #support_btn_div {
-	text-align: center;
-}
-#cx-overview li a {
-	font-size: 14px;
-}
-
-/* more plugins */
-#cxis-more-plugins a {
-	text-decoration: none;
-}
-#cxis-more-plugins a:focus {
-	box-shadow: none;
-}
-.cxis-plugin {
-    padding: 20px;
-    box-shadow: 2px 2px 20px 0px #9e9e9e21;
-    transition: all 0.4s;
-    border: 1px solid #eee;
-}
-.cxis-plugin:hover {
-    box-shadow: 2px 2px 20px 0px #00000032;
-    margin-top: -3px;
-}
-.cxis-thumb {
-    max-height: 160px;
-}
-.cxis-name {
-    text-align: center;
-    font-size: 22px;
-}
-.cxis-url-wrap {
-    text-align: center;
-    margin: 40px 0 10px 0;
-}
-#cxis-custom .cxis-url-wrap {
-    margin-top: 35px;
-}
-.cxis-url {
-    border: 2px solid #fff;
-    background: #f09;
-    color: #fff;
-    padding: 10px 30px;
-    transition: all 0.4s;
-    box-shadow: 0 0 17px 6px #ff00994a;
-}
-.cxis-url:hover {
-    border: 2px solid #f09;
-    background: #fff;
-    color: #f09;
-}
-#cxis-more-plugins {
-	display: grid;
-	gap:  20px;
-}
-.cxis-desc {
-    font-size: 15px;
-}
-@media only screen and (max-width: 600px) {
-	#cxis-more-plugins {
-		display: grid;
-	    grid-template-columns: 1fr;
-	}
-}
-
-/* Small devices (portrait tablets and large phones, 600px and up) */
-@media only screen and (min-width: 600px) {
-	#cxis-more-plugins {
-		display: grid;
-	    grid-template-columns: 1fr;
-	}
-}
-
-/* Medium devices (landscape tablets, 768px and up) */
-@media only screen and (min-width: 768px) {
-	#cxis-more-plugins {
-		display: grid;
-	    grid-template-columns: 1fr 1fr;
-	}
-}
-
-/* Large devices (laptops/desktops, 992px and up) */
-@media only screen and (min-width: 992px) {
-	#cxis-more-plugins {
-		display: grid;
-	    grid-template-columns: 1fr 1fr 1fr;
-	}
-	.cxis-thumb-wrap {
-		margin: 0 60px;
-	}
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1200px) {
-	#cxis-more-plugins {
-		display: grid;
-	    grid-template-columns: 1fr 1fr 1fr;
-	}
-}
-
-/* Extra large devices (large laptops and desktops, 1200px and up) */
-@media only screen and (min-width: 1366px) {
-	#cxis-more-plugins {
-		display: grid;
-	    grid-template-columns: 1fr 1fr 1fr 1fr;
-	}
-}
-/* more plugins ends*/
