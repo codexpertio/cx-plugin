@@ -484,14 +484,6 @@ class Settings extends Base {
 					'template'  => CXP_DIR . '/views/settings/help.php',
 					'hide_form'	=> true,
 				],
-				'image-more_plugins'	=> [
-					'id'        => 'image-more_plugins',
-					'label'     => __( 'More Plugins', 'image-sizes' ),
-					'icon'      => 'dashicons-admin-plugins',
-					'color'		=> '#ff7600',
-					'hide_form'	=> true,
-					'template'  => CXP_DIR . '/views/settings/more-plugins.php',
-				],
 				'cx-plugin_license' => [
 					'id'        => 'cx-plugin_license',
 					'label'     => __( 'License', 'cx-plugin' ),
