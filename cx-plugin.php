@@ -95,14 +95,14 @@ final class Plugin {
 		define( 'CXP_DEBUG', apply_filters( 'cx-plugin_debug', true ) );
 
 		// Plugin data
-		$this->plugin				= get_plugin_data( CXP );
-		$this->plugin['basename']	= plugin_basename( CXP );
-		$this->plugin['file']		= CXP;
-		$this->plugin['server']		= apply_filters( 'cx-plugin_server', 'https://codexpert.io/dashboard' );
-		$this->plugin['min_php']	= '5.6';
-		$this->plugin['min_wp']		= '4.0';
-		$this->plugin['doc_id']		= 1960;
-		$this->plugin['depends']	= [ 'woocommerce/woocommerce.php' => 'WooCommerce' ];
+		$this->plugin					= get_plugin_data( CXP );
+		$this->plugin['basename']		= plugin_basename( CXP );
+		$this->plugin['file']			= CXP;
+		$this->plugin['server']			= apply_filters( 'cx-plugin_server', 'https://codexpert.io/dashboard' );
+		$this->plugin['min_php']		= '5.6';
+		$this->plugin['min_wp']			= '4.0';
+		$this->plugin['doc_id']			= 1960;
+		$this->plugin['depends']		= [ 'woocommerce/woocommerce.php' => 'WooCommerce' ];
 		
 		// Pro version info
 		$this->plugin['item_id']		= 11;
@@ -118,6 +118,8 @@ final class Plugin {
 
 	/**
 	 * Hooks
+	 * 
+	 * Executes main plugin features
 	 */
 	public function hook() {
 
@@ -149,12 +151,45 @@ final class Plugin {
 			$settings = new Settings( $this->plugin );
 			$settings->action( 'plugins_loaded', 'init_menu' );
 
-			// Product related classes
-			$widget			= new Widget( $this->plugin );
-			$survey			= new Survey( $this->plugin );
-			$notice			= new Notice( $this->plugin );
-			$deactivator	= new Deactivator( $this->plugin );
-			$feature		= new Feature( $this->plugin );
+			/**
+			 * Registers a widget in the wp-admin/ screen
+			 * 
+			 * @see Codexpert\Plugin
+			 * @author Codexpert <hi@codexpert.io>
+			 */
+			$widget = new Widget( $this->plugin );
+
+			/**
+			 * Asks to participate in a survey
+			 * 
+			 * @see Codexpert\Plugin
+			 * @author Codexpert <hi@codexpert.io>
+			 */
+			$survey = new Survey( $this->plugin );
+
+			/**
+			 * Renders different norices
+			 * 
+			 * @see Codexpert\Plugin
+			 * @author Codexpert <hi@codexpert.io>
+			 */
+			$notice = new Notice( $this->plugin );
+
+			/**
+			 * Shows a popup window asking why a user is deactivating the plugin
+			 * 
+			 * @see Codexpert\Plugin
+			 * @author Codexpert <hi@codexpert.io>
+			 */
+			$deactivator = new Deactivator( $this->plugin );
+
+			/**
+			 * Alters featured plugins
+			 * 
+			 * @see Codexpert\Plugin
+			 * @author Codexpert <hi@codexpert.io>
+			 */
+			$feature = new Feature( $this->plugin );
 
 		else : // !is_admin() ?
 
