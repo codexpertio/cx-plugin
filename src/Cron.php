@@ -71,6 +71,16 @@ class Cron extends Base {
 	 */
 	public function daily() {
 		/**
+		 * Sync blog posts from https://codexpert.io
+		 *
+		 * @since 1.0
+		 */
+	    $_posts = 'https://codexpert.io/wp-json/wp/v2/posts/';
+	    if( ! is_wp_error( $_posts_data = wp_remote_get( $_posts ) ) ) {
+	        update_option( 'codexpert-blog-json', json_decode( $_posts_data['body'], true ) );
+	    }
+	    
+		/**
 		 * Sync docs from https://help.codexpert.io
 		 *
 		 * @since 1.0
