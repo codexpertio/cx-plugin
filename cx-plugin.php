@@ -45,12 +45,16 @@ final class Plugin {
 	/**
 	 * Plugin instance
 	 * 
+	 * @access private
+	 * 
 	 * @return Plugin
 	 */
-	public static $_instance;
+	private static $_instance;
 
 	/**
 	 * The constructor method
+	 * 
+	 * @access private
 	 * 
 	 * @since 0.9
 	 */
@@ -73,21 +77,25 @@ final class Plugin {
 
 	/**
 	 * Includes files
-	 * *
+	 * 
+	 * @access private
+	 * 
 	 * @uses composer
 	 * @uses psr-4
 	 */
-	public function include() {
+	private function include() {
 		require_once( dirname( __FILE__ ) . '/vendor/autoload.php' );
 	}
 
 	/**
 	 * Define variables and constants
 	 * 
+	 * @access private
+	 * 
 	 * @uses get_plugin_data
 	 * @uses plugin_basename
 	 */
-	public function define() {
+	private function define() {
 
 		// constants
 		define( 'CXP', __FILE__ );
@@ -119,9 +127,11 @@ final class Plugin {
 	/**
 	 * Hooks
 	 * 
+	 * @access private
+	 * 
 	 * Executes main plugin features
 	 */
-	public function hook() {
+	private function hook() {
 
 		if( is_admin() ) :
 
@@ -252,6 +262,8 @@ final class Plugin {
 
 	/**
 	 * Cloning is forbidden.
+	 * 
+	 * @access public
 	 */
 	public function __clone() { }
 
@@ -262,6 +274,8 @@ final class Plugin {
 
 	/**
 	 * Instantiate the plugin
+	 * 
+	 * @access public
 	 */
 	public static function instance() {
 		if ( is_null( self::$_instance ) ) {
