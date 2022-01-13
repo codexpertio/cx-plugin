@@ -269,6 +269,8 @@ final class Plugin {
 
 	/**
 	 * Unserializing instances of this class is forbidden.
+	 * 
+	 * @access public
 	 */
 	public function __wakeup() { }
 
