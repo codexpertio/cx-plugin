@@ -5,16 +5,16 @@ $buttons 	= [
 		'url' 	=> 'https://wordpress.org/plugins/cx-plugin/#developers',
 		'label' => __( 'Changelog', 'cx_plugin' ) 
 	],
-	'ideas' 	=> [
-		'url' 	=> 'https://codexpert.io',
+	'community' 	=> [
+		'url' 	=> 'https://facebook.com/groups/codexpert.io',
+		'label' => __( 'Community', 'cx_plugin' ) 
+	],
+	'website' 	=> [
+		'url' 	=> 'https://codexpert.io/',
 		'label' => __( 'Official Website', 'cx_plugin' ) 
 	],
-	'roadmap' 	=> [
-		'url' 	=> 'https://www.facebook.com/codexpert.io',
-		'label' => __( 'Facebook Page', 'cx_plugin' ) 
-	],
 	'support' 	=> [
-		'url' 	=> 'https://help.codexpert.io/?utm_campaign=help-btn',
+		'url' 	=> 'https://help.codexpert.io/',
 		'label' => __( 'Ask Support', 'cx_plugin' ) 
 	],
 ];
@@ -56,7 +56,8 @@ $buttons 	= apply_filters( 'cx-plugin_help_btns', $buttons );
 	<div class="cx-plugin-help-links">
 		<?php 
 		foreach ( $buttons as $key => $button ) {
-			echo "<a target='_blank' href='" . esc_url( $button['url'] ) . "' class='cx-plugin-help-link'>" . esc_html( $button['label'] ) . "</a>";
+			$button_url = add_query_arg( $utm, $button['url'] );
+			echo "<a target='_blank' href='" . esc_url( $button_url ) . "' class='cx-plugin-help-link'>" . esc_html( $button['label'] ) . "</a>";
 		}
 		?>
 	</div>
