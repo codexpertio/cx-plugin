@@ -1,17 +1,17 @@
 <?php
 $base_url 	= cx_plugin_site_url();
 $buttons 	= [
-	'roadmap' 	=> [
-		'url' 	=> "{$base_url}/roadmap",
-		'label' => __( 'Roadmap', 'cx_plugin' ) 
-	],
 	'changelog' => [
-		'url' 	=> "{$base_url}/changelog",
+		'url' 	=> 'https://wordpress.org/plugins/cx-plugin/#developers',
 		'label' => __( 'Changelog', 'cx_plugin' ) 
 	],
 	'ideas' 	=> [
-		'url' 	=> "{$base_url}/ideas",
-		'label' => __( 'Ideas', 'cx_plugin' ) 
+		'url' 	=> 'https://codexpert.io',
+		'label' => __( 'Official Website', 'cx_plugin' ) 
+	],
+	'roadmap' 	=> [
+		'url' 	=> 'https://www.facebook.com/codexpert.io',
+		'label' => __( 'Facebook Page', 'cx_plugin' ) 
 	],
 	'support' 	=> [
 		'url' 	=> 'https://help.codexpert.io/?utm_campaign=help-btn',

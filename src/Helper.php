@@ -86,12 +86,27 @@ class Helper extends Base {
 		return apply_filters( 'cx_plugin_get_posts', $posts, $_args );
 	}
 
-	public static function get_option( $key, $section, $default = '' ) {
+	public static function get_option( $key, $section, $default = '', $repeater = false ) {
 
 		$options = get_option( $key );
 
 		if ( isset( $options[ $section ] ) ) {
-			return $options[ $section ];
+			$option = $options[ $section ];
+
+			if( $repeater === true ) {
+				$_option = [];
+				foreach ( $option as $key => $values ) {
+					$index = 0;
+					foreach ( $values as $value ) {
+						$_option[ $index ][ $key ] = $value;
+						$index++;
+					}
+				}
+
+				return $_option;
+			}
+			
+			return $option;
 		}
 
 		return $default;
