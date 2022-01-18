@@ -4,6 +4,7 @@
  */
 namespace Codexpert\CX_Plugin;
 use Codexpert\Plugin\Base;
+use Codexpert\Plugin\Settings as Settings_API;
 
 /**
  * @package Plugin
@@ -495,6 +496,6 @@ class Settings extends Base {
 			],
 		];
 
-		new \Codexpert\Plugin\Settings( $settings );
+		new Settings_API( $settings );
 	}
 }
