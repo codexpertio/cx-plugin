@@ -47,7 +47,7 @@ final class Plugin {
 	 * 
 	 * @access private
 	 * 
-	 * @return Plugin
+	 * @var Plugin
 	 */
 	private static $_instance;
 
@@ -97,12 +97,21 @@ final class Plugin {
 	 */
 	private function define() {
 
-		// constants
+		/**
+		 * Define some constants
+		 * 
+		 * @since 0.9
+		 */
 		define( 'CXP', __FILE__ );
 		define( 'CXP_DIR', dirname( CXP ) );
 		define( 'CXP_DEBUG', apply_filters( 'cx-plugin_debug', true ) );
 
-		// Plugin data
+		/**
+		 * The plugin data
+		 * 
+		 * @since 0.9
+		 * @var $plugin
+		 */
 		$this->plugin					= get_plugin_data( CXP );
 		$this->plugin['basename']		= plugin_basename( CXP );
 		$this->plugin['file']			= CXP;
@@ -112,14 +121,22 @@ final class Plugin {
 		$this->plugin['doc_id']			= 1960;
 		$this->plugin['depends']		= [ 'woocommerce/woocommerce.php' => 'WooCommerce' ];
 		
-		// Pro version info
+		/**
+		 * Pro version info
+		 * 
+		 * Applicable if this plugin has a pro version
+		 */
 		$this->plugin['item_id']		= 11;
 		$this->plugin['beta']			= true;
 		$this->plugin['updatable']		= true;
 		$this->plugin['license']		= new License( $this->plugin );
 		$this->plugin['license_page']	= admin_url( 'admin.php?page=cx-plugin' );
 
-		// Set a global variable
+		/**
+		 * Set a global variable
+		 * 
+		 * @global $cx_plugin
+		 */
 		global $cx_plugin;
 		$cx_plugin = $this->plugin;
 	}
@@ -130,6 +147,14 @@ final class Plugin {
 	 * @access private
 	 * 
 	 * Executes main plugin features
+	 *
+	 * To add an action, use $instance->action()
+	 * To apply a filter, use $instance->filter()
+	 * To register a shortcode, use $instance->register()
+	 * To add a hook for logged in users, use $instance->priv()
+	 * To add a hook for non-logged in users, use $instance->nopriv()
+	 * 
+	 * @return void
 	 */
 	private function hook() {
 
@@ -137,9 +162,6 @@ final class Plugin {
 
 			/**
 			 * Admin facing hooks
-			 *
-			 * To add an action, use $admin->action()
-			 * To apply a filter, use $admin->filter()
 			 */
 			$admin = new Admin( $this->plugin );
 			$admin->activate( 'install' );
@@ -154,9 +176,6 @@ final class Plugin {
 
 			/**
 			 * Settings related hooks
-			 *
-			 * To add an action, use $settings->action()
-			 * To apply a filter, use $settings->filter()
 			 */
 			$settings = new Settings( $this->plugin );
 			$settings->action( 'plugins_loaded', 'init_menu' );
@@ -164,7 +183,8 @@ final class Plugin {
 			/**
 			 * Registers a widget in the wp-admin/ screen
 			 * 
-			 * @see Codexpert\Plugin
+			 * @package Codexpert\Plugin
+			 * 
 			 * @author Codexpert <hi@codexpert.io>
 			 */
 			$widget = new Widget( $this->plugin );
@@ -172,7 +192,8 @@ final class Plugin {
 			/**
 			 * Asks to participate in a survey
 			 * 
-			 * @see Codexpert\Plugin
+			 * @package Codexpert\Plugin
+			 * 
 			 * @author Codexpert <hi@codexpert.io>
 			 */
 			$survey = new Survey( $this->plugin );
@@ -180,7 +201,8 @@ final class Plugin {
 			/**
 			 * Renders different norices
 			 * 
-			 * @see Codexpert\Plugin
+			 * @package Codexpert\Plugin
+			 * 
 			 * @author Codexpert <hi@codexpert.io>
 			 */
 			$notice = new Notice( $this->plugin );
@@ -188,7 +210,8 @@ final class Plugin {
 			/**
 			 * Shows a popup window asking why a user is deactivating the plugin
 			 * 
-			 * @see Codexpert\Plugin
+			 * @package Codexpert\Plugin
+			 * 
 			 * @author Codexpert <hi@codexpert.io>
 			 */
 			$deactivator = new Deactivator( $this->plugin );
@@ -196,7 +219,8 @@ final class Plugin {
 			/**
 			 * Alters featured plugins
 			 * 
-			 * @see Codexpert\Plugin
+			 * @package Codexpert\Plugin
+			 * 
 			 * @author Codexpert <hi@codexpert.io>
 			 */
 			$feature = new Feature( $this->plugin );
@@ -205,9 +229,6 @@ final class Plugin {
 
 			/**
 			 * Front facing hooks
-			 *
-			 * To add an action, use $front->action()
-			 * To apply a filter, use $front->filter()
 			 */
 			$front = new Front( $this->plugin );
 			$front->action( 'wp_head', 'head' );
@@ -215,17 +236,13 @@ final class Plugin {
 			$front->action( 'admin_bar_menu', 'add_admin_bar', 70 );
 
 			/**
-			 * Shortcode hooks
-			 *
-			 * To enable a shortcode, use $shortcode->register()
+			 * Shortcode related hooks
 			 */
 			$shortcode = new Shortcode( $this->plugin );
 			$shortcode->register( 'my-shortcode', 'my_shortcode' );
 
 			/**
-			 * API hooks
-			 *
-			 * Custom REST API
+			 * Custom REST API related hooks
 			 */
 			$api = new API( $this->plugin );
 			$api->action( 'rest_api_init', 'register_endpoints' );
@@ -234,9 +251,6 @@ final class Plugin {
 
 		/**
 		 * Cron facing hooks
-		 *
-		 * To add a hook for logged in users, use $ajax->priv()
-		 * To add a hook for non-logged in users, use $ajax->nopriv()
 		 */
 		$cron = new Cron( $this->plugin );
 		$cron->activate( 'install' );
@@ -252,10 +266,7 @@ final class Plugin {
 		$common = new Common( $this->plugin );
 
 		/**
-		 * AJAX facing hooks
-		 *
-		 * To add a hook for logged in users, use $ajax->priv()
-		 * To add a hook for non-logged in users, use $ajax->nopriv()
+		 * AJAX related hooks
 		 */
 		$ajax = new AJAX( $this->plugin );
 	}
@@ -278,6 +289,8 @@ final class Plugin {
 	 * Instantiate the plugin
 	 * 
 	 * @access public
+	 * 
+	 * @return $_instance
 	 */
 	public static function instance() {
 		if ( is_null( self::$_instance ) ) {
