@@ -42,7 +42,7 @@ class Settings extends Base {
 					'id'        => 'cx-plugin_basic',
 					'label'     => __( 'Basic Settings', 'cx-plugin' ),
 					'icon'      => 'dashicons-admin-tools',
-					'color'		=> '#4c3f93',
+					// 'color'		=> '#4c3f93',
 					'sticky'	=> false,
 					'fields'    => [
 						'sample_text' => [
@@ -235,7 +235,7 @@ class Settings extends Base {
 							'type'      => 'color',
 							'desc'      => __( 'This is a color field.', 'cx-plugin' ),
 							// 'class'     => '',
-							'default'   => '#f0f'
+							// 'default'   => '#f0f'
 						],
 						'sample_wysiwyg' => [
 							'id'      => 'sample_wysiwyg',
@@ -267,7 +267,7 @@ class Settings extends Base {
 					'id'        => 'cx-plugin_advanced',
 					'label'     => __( 'Advanced Settings', 'cx-plugin' ),
 					'icon'      => 'dashicons-admin-generic',
-					'color'		=> '#d30c5c',
+					// 'color'		=> '#d30c5c',
 					'fields'    => [
 						'sample_select3' => [
 							'id'      => 'sample_select3',
@@ -473,7 +473,7 @@ class Settings extends Base {
 					'id'        => 'cx-plugin_table',
 					'label'     => __( 'Table', 'cx-plugin' ),
 					'icon'      => 'dashicons-editor-table',
-					'color'		=> '#28c9ee',
+					// 'color'		=> '#28c9ee',
 					'hide_form'	=> true,
 					'template'  => CXP_DIR . '/views/settings/table.php',
 				],
@@ -481,7 +481,7 @@ class Settings extends Base {
 					'id'        => 'cx-plugin_help',
 					'label'     => __( 'Help', 'cx-plugin' ),
 					'icon'      => 'dashicons-sos',
-					'color'		=> '#0b8a07',
+					// 'color'		=> '#0b8a07',
 					'template'  => CXP_DIR . '/views/settings/help.php',
 					'hide_form'	=> true,
 				],
@@ -489,7 +489,7 @@ class Settings extends Base {
 					'id'        => 'cx-plugin_license',
 					'label'     => __( 'License', 'cx-plugin' ),
 					'icon'      => 'dashicons-admin-network',
-					'color'		=> '#e828ee',
+					// 'color'		=> '#e828ee',
 					'hide_form'	=> true,
 					'content'   => $this->plugin['license']->activator_form(),
 				],
