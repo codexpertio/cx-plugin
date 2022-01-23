@@ -30,13 +30,14 @@ class Settings extends Base {
 		$settings = [
 			'id'            => $this->slug,
 			'label'         => $this->name,
-			'title'         => $this->name,
+			'title'         => "{$this->name} v{$this->version}",
 			'header'        => $this->name,
 			// 'parent'     => 'woocommerce',
 			// 'priority'   => 10,
 			// 'capability' => 'manage_options',
 			// 'icon'       => 'dashicons-wordpress',
 			// 'position'   => 25,
+			// 'topnav'	=> true,
 			'sections'      => [
 				'cx-plugin_basic'	=> [
 					'id'        => 'cx-plugin_basic',
