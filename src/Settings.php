@@ -492,7 +492,7 @@ class Settings extends Base {
 					'icon'      => 'dashicons-admin-network',
 					// 'color'		=> '#e828ee',
 					'hide_form'	=> true,
-					'content'   => $this->plugin['license']->activator_form(),
+					'content'   => isset( $this->plugin['license'] ) ? $this->plugin['license']->activator_form() : '',
 				],
 			],
 		];

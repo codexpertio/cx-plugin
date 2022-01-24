@@ -17,3 +17,7 @@ function cx_plugin_site_url() {
 	return $url;
 }
 endif;
+
+function get_course( $post = null, $output = OBJECT, $filter = 'raw' ) {
+    return get_post( $post, $output, $filter );
+}
