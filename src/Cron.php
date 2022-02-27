@@ -60,10 +60,14 @@ class Cron extends Base {
 
 	public function initial_calls() {
 		
+		if( 1 == get_option( 'cx-plugin_initial_calls' ) ) return;
+		
 		// Sync docs for the first time
 		if( get_option( 'cx-plugin_docs_json' ) == '' ) {
 			$this->daily();
 		}
+		
+		update_option( 'cx-plugin_initial_calls', 1 );
 	}
 
 	/**
