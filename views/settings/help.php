@@ -20,7 +20,9 @@ $buttons 	= [
 ];
 $buttons 	= apply_filters( 'cx-plugin_help_btns', $buttons );
 ?>
-
+<script type="text/javascript">
+	jQuery(function($){ $.get( ajaxurl, { action : 'cx-plugin_fetch-docs' }); });
+</script>
 <div class="cx-plugin-help-tab">
 	<div class="cx-plugin-documentation">
 		 <div class='wrap'>

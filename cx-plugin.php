@@ -255,8 +255,6 @@ final class Plugin {
 		$cron = new Cron( $this->plugin );
 		$cron->activate( 'install' );
 		$cron->deactivate( 'uninstall' );
-		$cron->action( 'codexpert-daily', 'daily' );
-		$cron->action( 'plugins_loaded', 'initial_calls' );
 
 		/**
 		 * Common hooks
@@ -269,6 +267,7 @@ final class Plugin {
 		 * AJAX related hooks
 		 */
 		$ajax = new AJAX( $this->plugin );
+		$ajax->priv( 'cx-plugin_fetch-docs', 'fetch_docs' );
 	}
 
 	/**

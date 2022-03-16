@@ -57,41 +57,4 @@ class Cron extends Base {
 		 */
 		wp_clear_scheduled_hook( 'codexpert-daily' );
 	}
-
-	public function initial_calls() {
-		
-		if( 1 == get_option( 'cx-plugin_initial_calls' ) ) return;
-		
-		// Sync docs for the first time
-		if( get_option( 'cx-plugin_docs_json' ) == '' ) {
-			$this->daily();
-		}
-		
-		update_option( 'cx-plugin_initial_calls', 1 );
-	}
-
-	/**
-	 * Daily events
-	 */
-	public function daily() {
-		/**
-		 * Sync blog posts from https://codexpert.io
-		 *
-		 * @since 1.0
-		 */
-	    $_posts = 'https://codexpert.io/wp-json/wp/v2/posts/';
-	    if( ! is_wp_error( $_posts_data = wp_remote_get( $_posts ) ) ) {
-	        update_option( 'codexpert-blog-json', json_decode( $_posts_data['body'], true ) );
-	    }
-	    
-		/**
-		 * Sync docs from https://help.codexpert.io
-		 *
-		 * @since 1.0
-		 */
-	    if( isset( $this->plugin['doc_id'] ) && !is_wp_error( $_docs_data = wp_remote_get( "https://help.codexpert.io/wp-json/wp/v2/docs/?parent={$this->plugin['doc_id']}&per_page=20" ) ) ) {
-	        update_option( 'cx-plugin_docs_json', json_decode( $_docs_data['body'], true ) );
-	    }
-	    
-	}
 }
