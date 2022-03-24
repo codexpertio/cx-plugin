@@ -37,6 +37,16 @@
 	padding: 8px;
 }
 
+#cx-row-cx-plugin_tools-report .cx-field-wrap {
+	position: relative;
+}
+#cx-plugin_report-copy {
+    position: absolute;
+    padding: 3px;
+    line-height: 0px;
+    right: 10px;
+    bottom: 20px;
+}
 /*=======new design=======*/
 #cx-plugin_help .cx-plugin-help-tab {
     display: grid;
