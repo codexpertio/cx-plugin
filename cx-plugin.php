@@ -104,6 +104,7 @@ final class Plugin {
 		 */
 		define( 'CXP', __FILE__ );
 		define( 'CXP_DIR', dirname( CXP ) );
+		define( 'CXP_ASSET', plugins_url( 'assets', CXP ) );
 		define( 'CXP_DEBUG', apply_filters( 'cx-plugin_debug', true ) );
 
 		/**
@@ -166,6 +167,7 @@ final class Plugin {
 			$admin = new Admin( $this->plugin );
 			$admin->activate( 'install' );
 			$admin->deactivate( 'uninstall' );
+			$admin->action( 'admin_footer', 'modal' );
 			$admin->action( 'plugins_loaded', 'i18n' );
 			$admin->action( 'admin_init', 'add_meta_boxes' );
 			$admin->action( 'admin_enqueue_scripts', 'enqueue_scripts' );
@@ -232,6 +234,7 @@ final class Plugin {
 			 */
 			$front = new Front( $this->plugin );
 			$front->action( 'wp_head', 'head' );
+			$front->action( 'wp_footer', 'modal' );
 			$front->action( 'wp_enqueue_scripts', 'enqueue_scripts' );
 			$front->action( 'admin_bar_menu', 'add_admin_bar', 70 );
 

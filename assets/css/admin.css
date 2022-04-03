@@ -71,6 +71,22 @@
 	background: #4256b2;
 	color: #fff;
 }
+#cx-plugin-modal {
+    position: fixed;
+    background: #c8c8c859;
+    top: 0;
+    border: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#cx-plugin-modal-loader {
+    position: absolute;
+}
 @media only screen and (max-width : 810px) {
 	#cx-plugin_help .cx-plugin-help-tab {
 		grid-template-columns: 4fr 1fr;

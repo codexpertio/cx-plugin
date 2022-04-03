@@ -443,4 +443,11 @@ class Admin extends Base {
 
 		return sprintf( __( 'If you like <strong>%1$s</strong>, please <a href="%2$s" target="_blank">leave us a %3$s rating</a> on WordPress.org! It\'d motivate and inspire us to make the plugin even better!', 'cx-plugin' ), $this->name, "https://wordpress.org/support/plugin/{$this->slug}/reviews/?filter=5#new-post", '⭐⭐⭐⭐⭐' );
 	}
+
+	public function modal() {
+		echo '
+		<div id="cx-plugin-modal" style="display: none">
+			<img id="cx-plugin-modal-loader" src="'. esc_attr( CXP_ASSET . '/img/loader.gif' ) .'" />
+		</div>';
+	}
 }

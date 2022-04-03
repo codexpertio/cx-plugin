@@ -62,4 +62,11 @@ class Front extends Base {
 		];
 		wp_localize_script( $this->slug, 'CXP', apply_filters( "{$this->slug}-localized", $localized ) );
 	}
+
+	public function modal() {
+		echo '
+		<div id="cx-plugin-modal" style="display: none">
+			<img id="cx-plugin-modal-loader" src="'. esc_attr( CXP_ASSET . '/img/loader.gif' ) .'" />
+		</div>';
+	}
 }
