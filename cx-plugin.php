@@ -166,7 +166,6 @@ final class Plugin {
 			 */
 			$admin = new Admin( $this->plugin );
 			$admin->activate( 'install' );
-			$admin->deactivate( 'uninstall' );
 			$admin->action( 'admin_footer', 'modal' );
 			$admin->action( 'plugins_loaded', 'i18n' );
 			$admin->action( 'admin_init', 'add_meta_boxes' );
