@@ -40,7 +40,7 @@ class Helper extends Base {
 		return $license;
 	}
 
-	public static function pri( $data ) {
+	public static function pri( $data, $hide_adminbar = true ) {
 		echo '<pre>';
 		if( is_object( $data ) || is_array( $data ) ) {
 			print_r( $data );
@@ -49,6 +49,10 @@ class Helper extends Base {
 			var_dump( $data );
 		}
 		echo '</pre>';
+
+		if( $hide_adminbar ) {
+			echo '<style>#adminmenumain{display:none;}</style>';
+		}
 	}
 
 	/**

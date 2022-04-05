@@ -447,7 +447,7 @@ class Admin extends Base {
 	public function modal() {
 		echo '
 		<div id="cx-plugin-modal" style="display: none">
-			<img id="cx-plugin-modal-loader" src="'. esc_attr( CXP_ASSET . '/img/loader.gif' ) .'" />
+			<img id="cx-plugin-modal-loader" src="' . esc_attr( CXP_ASSET . '/img/loader.gif' ) . '" />
 		</div>';
 	}
 }
