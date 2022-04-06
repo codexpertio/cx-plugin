@@ -176,6 +176,13 @@ final class Plugin {
 			$admin->action( 'admin_footer_text', 'footer_text' );
 
 			/**
+			 * The setup wizard
+			 */
+			$wizard = new Wizard( $this->plugin );
+			$wizard->action( 'plugins_loaded', 'render' );
+			$wizard->filter( "plugin_action_links_{$this->plugin['basename']}", 'action_links' );
+
+			/**
 			 * Settings related hooks
 			 */
 			$settings = new Settings( $this->plugin );
