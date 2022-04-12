@@ -486,14 +486,14 @@ class Settings extends Base {
 					'fields'    => [
 						'enable_debug' => [
 							'id'      	=> 'enable_debug',
-							'label'     => __( 'Enable Debug', 'woolementor' ),
+							'label'     => __( 'Enable Debug', 'cx-plugin' ),
 							'type'      => 'switch',
-							'desc'      => __( 'Enable this if you face any CSS or JS related issues.', 'woolementor' ),
+							'desc'      => __( 'Enable this if you face any CSS or JS related issues.', 'cx-plugin' ),
 							'disabled'  => false,
 						],
 						'report' => [
 							'id'      => 'report',
-							'label'     => __( 'Report', 'woolementor' ),
+							'label'     => __( 'Report', 'cx-plugin' ),
 							'type'      => 'textarea',
 							'desc'     	=> '<button id="cx-plugin_report-copy" class="button button-primary"><span class="dashicons dashicons-admin-page"></span></button>',
 							'columns'   => 24,
