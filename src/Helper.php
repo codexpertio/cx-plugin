@@ -50,7 +50,7 @@ class Helper extends Base {
 		}
 		echo '</pre>';
 
-		if( $hide_adminbar ) {
+		if( is_admin() && $hide_adminbar ) {
 			echo '<style>#adminmenumain{display:none;}</style>';
 		}
 	}
