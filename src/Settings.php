@@ -278,6 +278,7 @@ class Settings extends Base {
 					'label'     => __( 'Advanced Settings', 'cx-plugin' ),
 					'icon'      => 'dashicons-admin-generic',
 					// 'color'		=> '#d30c5c',
+					'sticky'	=> false,
 					'fields'    => [
 						'sample_select3' => [
 							'id'      => 'sample_select3',
@@ -483,6 +484,7 @@ class Settings extends Base {
 					'id'        => 'cx-plugin_tools',
 					'label'     => __( 'Tools', 'cx-plugin' ),
 					'icon'      => 'dashicons-hammer',
+					'sticky'	=> false,
 					'fields'    => [
 						'enable_debug' => [
 							'id'      	=> 'enable_debug',
