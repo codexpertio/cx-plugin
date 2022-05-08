@@ -70,7 +70,7 @@ final class Plugin {
 		$this->define();
 
 		/**
-		 * Run actual hooks
+		 * Runs actual hooks
 		 */
 		$this->hook();
 	}
@@ -208,7 +208,7 @@ final class Plugin {
 			$survey = new Survey( $this->plugin );
 
 			/**
-			 * Renders different norices
+			 * Renders different notices
 			 * 
 			 * @package Codexpert\Plugin
 			 * 
