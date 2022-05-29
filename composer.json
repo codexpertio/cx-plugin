@@ -1,5 +1,5 @@
 {
-    "name": "Codexpert/CX_Plugin",
+    "name": "Codexpert/Post_Restricted_By_Author",
     "authors": [
         {
             "name": "Codexpert",
@@ -11,7 +11,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Codexpert\\CX_Plugin\\" : "src/"
+            "Codexpert\\Post_Restricted_By_Author\\" : "src/"
         },
         "files": [ "inc/functions.php" ]
     }
