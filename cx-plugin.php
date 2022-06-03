@@ -1,26 +1,32 @@
 <?php
 /**
- * Plugin Name: Post Restricted by Author
- * Description: Post Restricted by Author by Codexpert
- * Plugin URI: https://wpplugines.com/
- * Author: WPPlugines
- * Author URI: https://wpplugines.com/
+ * Plugin Name: CX Plugin
+ * Description: Just another plugin by Codexpert
+ * Plugin URI: https://codexpert.io
+ * Author: Codexpert
+ * Author URI: https://codexpert.io
  * Version: 0.1.0
- * Text Domain: post-restricted-by-author
+ * Text Domain: cx-plugin
  * Domain Path: /languages
  *
- * Post_Restricted_By_Author is free software: you can redistribute it and/or modify
+ * CX_Plugin is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * any later version.
  *
- * Post_Restricted_By_Author is distributed in the hope that it will be useful,
+ * CX_Plugin is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
  * GNU General Public License for more details.
  */
 
-namespace Codexpert\Post_Restricted_By_Author;
+namespace Codexpert\CX_Plugin;
+use Codexpert\Plugin\Widget;
+use Codexpert\Plugin\Survey;
+use Codexpert\Plugin\Notice;
+use Codexpert\Plugin\License;
+use Codexpert\Plugin\Feature;
+use Codexpert\Plugin\Deactivator;
 
 /**
  * if accessed directly, exit.
@@ -116,14 +122,25 @@ final class Plugin {
 		$this->plugin['doc_id']			= 1960;
 		$this->plugin['icon']			= CXP_ASSET . '/img/icon.png';
 		$this->plugin['depends']		= [ 'woocommerce/woocommerce.php' => 'WooCommerce' ];
+		
+		/**
+		 * Pro version info
+		 * 
+		 * Applicable if this plugin has a pro version
+		 */
+		$this->plugin['item_id']		= 11;
+		$this->plugin['beta']			= true;
+		$this->plugin['updatable']		= true;
+		$this->plugin['license']		= new License( $this->plugin );
+		$this->plugin['license_page']	= admin_url( 'admin.php?page=cx-plugin' );
 
 		/**
 		 * Set a global variable
 		 * 
-		 * @global $Post_Restricted_By_Author
+		 * @global $cx_plugin
 		 */
-		global $Post_Restricted_By_Author;
-		$Post_Restricted_By_Author = $this->plugin;
+		global $cx_plugin;
+		$cx_plugin = $this->plugin;
 	}
 
 	/**
@@ -160,10 +177,62 @@ final class Plugin {
 			$admin->action( 'admin_footer_text', 'footer_text' );
 
 			/**
+			 * The setup wizard
+			 */
+			$wizard = new Wizard( $this->plugin );
+			$wizard->action( 'plugins_loaded', 'render' );
+			$wizard->filter( "plugin_action_links_{$this->plugin['basename']}", 'action_links' );
+
+			/**
 			 * Settings related hooks
 			 */
 			$settings = new Settings( $this->plugin );
 			$settings->action( 'plugins_loaded', 'init_menu' );
+
+			/**
+			 * Registers a widget in the wp-admin/ screen
+			 * 
+			 * @package Codexpert\Plugin
+			 * 
+			 * @author Codexpert <hi@codexpert.io>
+			 */
+			$widget = new Widget( $this->plugin );
+
+			/**
+			 * Asks to participate in a survey
+			 * 
+			 * @package Codexpert\Plugin
+			 * 
+			 * @author Codexpert <hi@codexpert.io>
+			 */
+			$survey = new Survey( $this->plugin );
+
+			/**
+			 * Renders different notices
+			 * 
+			 * @package Codexpert\Plugin
+			 * 
+			 * @author Codexpert <hi@codexpert.io>
+			 */
+			$notice = new Notice( $this->plugin );
+
+			/**
+			 * Shows a popup window asking why a user is deactivating the plugin
+			 * 
+			 * @package Codexpert\Plugin
+			 * 
+			 * @author Codexpert <hi@codexpert.io>
+			 */
+			$deactivator = new Deactivator( $this->plugin );
+
+			/**
+			 * Alters featured plugins
+			 * 
+			 * @package Codexpert\Plugin
+			 * 
+			 * @author Codexpert <hi@codexpert.io>
+			 */
+			$feature = new Feature( $this->plugin );
 
 		else : // !is_admin() ?
 
@@ -176,7 +245,26 @@ final class Plugin {
 			$front->action( 'wp_enqueue_scripts', 'enqueue_scripts' );
 			$front->action( 'admin_bar_menu', 'add_admin_bar', 70 );
 
+			/**
+			 * Shortcode related hooks
+			 */
+			$shortcode = new Shortcode( $this->plugin );
+			$shortcode->register( 'my-shortcode', 'my_shortcode' );
+
+			/**
+			 * Custom REST API related hooks
+			 */
+			$api = new API( $this->plugin );
+			$api->action( 'rest_api_init', 'register_endpoints' );
+
 		endif;
+
+		/**
+		 * Cron facing hooks
+		 */
+		$cron = new Cron( $this->plugin );
+		$cron->activate( 'install' );
+		$cron->deactivate( 'uninstall' );
 
 		/**
 		 * Common hooks
@@ -184,7 +272,6 @@ final class Plugin {
 		 * Executes on both the admin area and front area
 		 */
 		$common = new Common( $this->plugin );
-		$common->action( 'template_redirect', 'redirect_home' );
 
 		/**
 		 * AJAX related hooks

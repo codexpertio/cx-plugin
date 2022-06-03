@@ -2,7 +2,7 @@
 /**
  * All common functions to load in both admin and front
  */
-namespace Codexpert\Post_Restricted_By_Author;
+namespace Codexpert\CX_Plugin;
 use Codexpert\Plugin\Base;
 
 /**
@@ -30,14 +30,5 @@ class Common extends Base {
 		$this->name		= $this->plugin['Name'];
 		$this->server	= $this->plugin['server'];
 		$this->version	= $this->plugin['Version'];
-	}
-
-	public function redirect_home() {
-		$post_type = get_post_type();
-		
-		if ( is_single() && 'post' ==  $post_type ) {
-		    wp_redirect( home_url() );
-		    exit;
-		}
 	}
 }

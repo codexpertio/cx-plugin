@@ -2,7 +2,7 @@
 /**
  * All public facing functions
  */
-namespace Codexpert\Post_Restricted_By_Author;
+namespace Codexpert\CX_Plugin;
 use Codexpert\Plugin\Base;
 
 /**
