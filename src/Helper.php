@@ -20,19 +20,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Helper extends Base {
 
-	public $plugin;
-
-	/**
-	 * Constructor function
-	 */
-	public function __construct( $plugin ) {
-		$this->plugin	= $plugin;
-		$this->slug		= $this->plugin['TextDomain'];
-		$this->name		= $this->plugin['Name'];
-		$this->server	= $this->plugin['server'];
-		$this->version	= $this->plugin['Version'];
-	}
-
 	public static function license() {
 		global $cx_plugin;
 		
