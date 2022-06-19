@@ -20,6 +20,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Helper extends Base {
 
+	public function __construct() {}
+
 	public static function license() {
 		global $cx_plugin;
 		
