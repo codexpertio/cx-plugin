@@ -3,7 +3,7 @@
  * Plugin Name: CX Plugin
  * Description: Just another plugin by Codexpert
  * Plugin URI: https://codexpert.io
- * Author: Codexpert
+ * Author: Codexpert, Inc
  * Author URI: https://codexpert.io
  * Version: 0.1.0
  * Text Domain: cx-plugin
@@ -133,14 +133,6 @@ final class Plugin {
 		$this->plugin['updatable']		= true;
 		$this->plugin['license']		= new License( $this->plugin );
 		$this->plugin['license_page']	= admin_url( 'admin.php?page=cx-plugin' );
-
-		/**
-		 * Set a global variable
-		 * 
-		 * @global $cx_plugin
-		 */
-		global $cx_plugin;
-		$cx_plugin = $this->plugin;
 	}
 
 	/**
@@ -165,7 +157,7 @@ final class Plugin {
 			/**
 			 * Admin facing hooks
 			 */
-			$admin = new Admin( $this->plugin );
+			$admin = new App\Admin( $this->plugin );
 			$admin->activate( 'install' );
 			$admin->action( 'admin_footer', 'modal' );
 			$admin->action( 'plugins_loaded', 'i18n' );
@@ -179,14 +171,14 @@ final class Plugin {
 			/**
 			 * The setup wizard
 			 */
-			$wizard = new Wizard( $this->plugin );
+			$wizard = new App\Wizard( $this->plugin );
 			$wizard->action( 'plugins_loaded', 'render' );
 			$wizard->filter( "plugin_action_links_{$this->plugin['basename']}", 'action_links' );
 
 			/**
 			 * Settings related hooks
 			 */
-			$settings = new Settings( $this->plugin );
+			$settings = new App\Settings( $this->plugin );
 			$settings->action( 'plugins_loaded', 'init_menu' );
 
 			/**
@@ -239,7 +231,7 @@ final class Plugin {
 			/**
 			 * Front facing hooks
 			 */
-			$front = new Front( $this->plugin );
+			$front = new App\Front( $this->plugin );
 			$front->action( 'wp_head', 'head' );
 			$front->action( 'wp_footer', 'modal' );
 			$front->action( 'wp_enqueue_scripts', 'enqueue_scripts' );
@@ -248,13 +240,13 @@ final class Plugin {
 			/**
 			 * Shortcode related hooks
 			 */
-			$shortcode = new Shortcode( $this->plugin );
+			$shortcode = new App\Shortcode( $this->plugin );
 			$shortcode->register( 'my-shortcode', 'my_shortcode' );
 
 			/**
 			 * Custom REST API related hooks
 			 */
-			$api = new API( $this->plugin );
+			$api = new API\Init( $this->plugin );
 			$api->action( 'rest_api_init', 'register_endpoints' );
 
 		endif;
@@ -262,7 +254,7 @@ final class Plugin {
 		/**
 		 * Cron facing hooks
 		 */
-		$cron = new Cron( $this->plugin );
+		$cron = new App\Cron( $this->plugin );
 		$cron->activate( 'install' );
 		$cron->deactivate( 'uninstall' );
 
@@ -271,12 +263,12 @@ final class Plugin {
 		 *
 		 * Executes on both the admin area and front area
 		 */
-		$common = new Common( $this->plugin );
+		$common = new App\Common( $this->plugin );
 
 		/**
 		 * AJAX related hooks
 		 */
-		$ajax = new AJAX( $this->plugin );
+		$ajax = new App\AJAX( $this->plugin );
 		$ajax->priv( 'cx-plugin_fetch-docs', 'fetch_docs' );
 	}
 

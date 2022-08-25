@@ -2,7 +2,7 @@
 /**
  * All REST API related functions
  */
-namespace Codexpert\CX_Plugin;
+namespace Codexpert\CX_Plugin\API;
 use Codexpert\Plugin\Base;
 
 /**
@@ -17,7 +17,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage API
  * @author Codexpert <hi@codexpert.io>
  */
-class API extends Base {
+class Init extends Base {
 
 	public $plugin;
 
@@ -29,7 +29,7 @@ class API extends Base {
 		$this->slug			= $this->plugin['TextDomain'];
 		$this->version		= $this->plugin['Version'];
 
-		$this->namespace	= apply_filters( "{$this->slug}_rest_route_namespace", "{$this->slug}/v{$this->version}" );
+		$this->namespace	= apply_filters( "{$this->slug}_rest_route_namespace", sprintf( '%1$s/v%2$d', $this->slug, $this->version ) );
 	}
 
 	public function register_endpoints() {
