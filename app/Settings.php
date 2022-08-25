@@ -287,8 +287,8 @@ class Settings extends Base {
 							'type'      => 'select',
 							'desc'      => __( 'jQuery Chosen plugin enabled. <a href="https://harvesthq.github.io/chosen/" target="_blank">[See more]</a>', 'cx-plugin' ),
 							// 'class'     => '',
-							'options'   => Helper::get_posts( 'page', false, true ),
-							'default'   => 'option_2',
+							'options'   => Helper::get_posts( [ 'post_type' => 'page' ], false, true ),
+							'default'   => 2,
 							'disabled'  => false, // true|false
 							'multiple'  => false, // true|false
 							'chosen'    => true
