@@ -33,16 +33,13 @@ class Init extends Base {
 	}
 
 	public function register_endpoints() {
-		register_rest_route( $this->namespace, '/some-slug/', [
+
+		register_rest_route( $this->namespace, '/posts/', [
 			'methods'   => 'GET',
-			'callback'  => [ $this, 'some_callback' ],
+			'callback'  => [ new Post, 'list' ],
 			'permission_callback' => function( $request ) {
-				return is_user_logged_in();
+				return true;
 			}
 		] );
-	}
-
-	public function some_callback( $request ) {
-		return $parameters = $request->get_params();
 	}
 }
