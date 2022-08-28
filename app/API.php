@@ -1,9 +1,10 @@
 <?php
 /**
- * All REST API related functions
+ * All common functions to load in both admin and front
  */
-namespace Codexpert\CX_Plugin\API;
+namespace Codexpert\CX_Plugin\App;
 use Codexpert\Plugin\Base;
+use Codexpert\CX_Plugin\API\Post;
 
 /**
  * if accessed directly, exit.
@@ -14,10 +15,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * @package Plugin
- * @subpackage API
+ * @subpackage Common
  * @author Codexpert <hi@codexpert.io>
  */
-class Init extends Base {
+class API extends Base {
 
 	public $plugin;
 

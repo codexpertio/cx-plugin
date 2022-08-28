@@ -246,7 +246,7 @@ final class Plugin {
 			/**
 			 * Custom REST API related hooks
 			 */
-			$api = new API\Init( $this->plugin );
+			$api = new App\API( $this->plugin );
 			$api->action( 'rest_api_init', 'register_endpoints' );
 
 		endif;
