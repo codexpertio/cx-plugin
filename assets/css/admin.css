@@ -16,7 +16,6 @@
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
 	background-color: #4256b2;
-	/*background-image: linear-gradient(60deg, #4054B2 20%, #f2295b 80%);*/
 	font-size: 18px;
 	text-decoration: none;
 	font-weight: 300;
@@ -36,7 +35,6 @@
 #cx-plugin-helps .cx-plugin-help-text {
 	padding: 8px;
 }
-
 #cx-row-cx-plugin_tools-report .cx-field-wrap {
 	position: relative;
 }
@@ -103,4 +101,3 @@
 		width: 200px;
 	}
 }
-/*end help tab*/

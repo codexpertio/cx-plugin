@@ -4,7 +4,7 @@ use Codexpert\Plugin\Table;
 $config = [
 	'per_page'		=> 5,
 	'columns'		=> [
-		'id'			=> __( 'Order #', 'cx-plugin' ),
+		'id'				=> __( 'Order #', 'cx-plugin' ),
 		'products'			=> __( 'Products', 'cx-plugin' ),
 		'order_total'		=> __( 'Order Total', 'cx-plugin' ),
 		'commission'		=> __( 'Commission', 'cx-plugin' ),

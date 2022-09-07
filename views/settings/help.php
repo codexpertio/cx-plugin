@@ -46,10 +46,9 @@ $buttons 	= apply_filters( 'cx-plugin_help_btns', $buttons );
 		            </div>
 		        </div>
 		        <?php
-
 		    }
 		    else:
-		        _e( 'Something is wrong! No help found!', 'cx-plugin' );
+		        echo '<p>' . __( 'Something is wrong! No help found!', 'cx-plugin' ) . '</p>';
 		    endif;
 		    ?>
 		    </div>
