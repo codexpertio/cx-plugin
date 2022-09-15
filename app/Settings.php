@@ -399,6 +399,27 @@ class Settings extends Base {
 								'compare'	=> '==',
 							]
 						],
+						'sample_repeater'	=> [
+							'id'		=> 'sample_repeater',
+							'label'		=> __( 'Sample Repeater' ),
+							'type'		=> 'repeater',
+							'items'		=> [
+								'text_repeat' => [
+									'id'		=> 'text_repeat',
+									'label'		=> __( 'Repeat Text Field', 'cx-plugin' ),
+									'type'		=> 'text',
+									'placeholder'=> __( 'Repeat Text', 'cx-plugin' ),
+									'desc'		=> __( 'This field will be repeated.', 'cx-plugin' ),
+								],
+								'number_repeat' => [
+									'id'		=> 'number_repeat',
+									'label'		=> __( 'Repeat Number Field', 'cx-plugin' ),
+									'type'		=> 'number',
+									'placeholder'=> __( 'Repeat Number', 'cx-plugin' ),
+									'desc'		=> __( 'This field will be repeated.', 'cx-plugin' ),
+								],
+							]
+						],
 						'sample_tabs' => [
 							'id'      => 'sample_tabs',
 							'label'     => __( 'Sample Tabs' ),
@@ -458,27 +479,6 @@ class Settings extends Base {
 								],
 							],
 						],
-						'sample_repeater'	=> [
-							'id'		=> 'sample_repeater',
-							'label'		=> __( 'Sample Repeater' ),
-							'type'		=> 'repeater',
-							'items'		=> [
-								'text_repeat' => [
-									'id'		=> 'text_repeat',
-									'label'		=> __( 'Repeat Text Field', 'cx-plugin' ),
-									'type'		=> 'text',
-									'placeholder'=> __( 'Repeat Text', 'cx-plugin' ),
-									'desc'		=> __( 'This field will be repeated.', 'cx-plugin' ),
-								],
-								'number_repeat' => [
-									'id'		=> 'number_repeat',
-									'label'		=> __( 'Repeat Number Field', 'cx-plugin' ),
-									'type'		=> 'number',
-									'placeholder'=> __( 'Repeat Number', 'cx-plugin' ),
-									'desc'		=> __( 'This field will be repeated.', 'cx-plugin' ),
-								],
-							]
-						]
 					]
 				],
 				'cx-plugin_tools'	=> [
