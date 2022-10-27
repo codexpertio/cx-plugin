@@ -29,7 +29,10 @@ class Helper extends Base {
 		return $license;
 	}
 
-	public static function pri( $data, $hide_adminbar = true ) {
+	public static function pri( $data, $admin_only = true, $hide_adminbar = true ) {
+
+		if( $admin_only && ! current_user_can( 'manage_options' ) ) return;
+
 		echo '<pre>';
 		if( is_object( $data ) || is_array( $data ) ) {
 			print_r( $data );
