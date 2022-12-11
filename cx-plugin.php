@@ -161,7 +161,7 @@ final class Plugin {
 			$admin->activate( 'install' );
 			$admin->action( 'admin_footer', 'modal' );
 			$admin->action( 'plugins_loaded', 'i18n' );
-			$admin->action( 'admin_init', 'add_meta_boxes' );
+			$admin->action( 'admin_menu', 'admin_menu' );
 			$admin->action( 'admin_enqueue_scripts', 'enqueue_scripts' );
 			$admin->filter( "plugin_action_links_{$this->plugin['basename']}", 'action_links' );
 			$admin->filter( 'plugin_row_meta', 'plugin_row_meta', 10, 2 );
