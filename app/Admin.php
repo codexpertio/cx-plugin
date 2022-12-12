@@ -63,12 +63,10 @@ class Admin extends Base {
 		$min = defined( 'CXP_DEBUG' ) && CXP_DEBUG ? '' : '.min';
 		
 		wp_enqueue_style( $this->slug, plugins_url( "/assets/css/admin{$min}.css", CXP ), '', $this->version, 'all' );
-
 		wp_enqueue_script( $this->slug, plugins_url( "/assets/js/admin{$min}.js", CXP ), [ 'jquery' ], $this->version, true );
 
-		
-    wp_enqueue_style( 'cx_plugin-style', plugin_dir_url( CXP ) . 'build/index.css' );
-    wp_enqueue_script( 'cx_plugin-script', plugin_dir_url( CXP ) . 'build/index.js', array( 'wp-element' ), '1.0.0', true );
+	    wp_enqueue_style( "{$this->slug}-react", plugins_url( 'build/index.css', CXP ) );
+	    wp_enqueue_script( "{$this->slug}-react", plugins_url( 'build/index.js', CXP ), [ 'wp-element' ], '1.0.0', true );
 	}
 
 	public function admin_menu() {

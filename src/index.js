@@ -1,10 +1,5 @@
-import App from "./App";
+import Help from "./Help";
 import { render } from '@wordpress/element';
 
-/**
- * Import the stylesheet for the plugin.
- */
-import './style/main.scss';
-
-// Render the App component into the DOM
-render(<App />, document.getElementById('cx-plugin_help'));
+// render help page
+render(<Help />, document.getElementById('cx-plugin_help'));
