@@ -5,9 +5,7 @@ import {routes} from '../data';
 const Footer = () => {
     return (
         <div className='footer'>
-            {routes.map((route, index) => (
-                <Link to={route.path}>{route.label}</Link>
-            ))}
+            
         </div>
      );
 }

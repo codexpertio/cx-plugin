@@ -43,11 +43,12 @@ const Dashboard = () => {
     return (
         <>
             <Header />
+            <h1>Dashboard</h1>
             <div className="cx-plugin-help-tab">
                 <div className="cx-plugin-documentation">
                      <div className="wrap">
                         <div id="cx-plugin-helps">
-                        { ! loading ? postsHtml : 'Still loading..' }
+                        { ! loading ? postsHtml : parse(`<p>Loading..</p>`) }
                         </div>
                     </div>
                 </div>
