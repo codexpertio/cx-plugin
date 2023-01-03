@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import parse from 'html-react-parser';
 import axios from "axios";
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -24,10 +25,10 @@ const Dashboard = () => {
                 <h2 className="cx-plugin-help-heading" data-target={`#cx-plugin-help-text-`+post.id}>
                     <a href={post.link} target="_blank">
                     <span className="dashicons dashicons-admin-links"></span></a>
-                    <span className="heading-text">{post.title.rendered}</span>
+                    <span className="heading-text">{parse(post.title.rendered)}</span>
                 </h2>
                 <div id={`cx-plugin-help-text-`+post.id} className="cx-plugin-help-text">
-                    {post.excerpt.rendered}
+                    {parse(post.excerpt.rendered)}
                 </div>
             </div>
         )
