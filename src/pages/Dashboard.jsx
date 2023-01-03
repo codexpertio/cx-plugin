@@ -9,7 +9,7 @@ const Dashboard = () => {
     const [ posts, setPosts ] = useState([]);
 
     useEffect( () => {
-        axios.get('https://codexpert.io/wp-json/wp/v2/posts').then((res) => {
+        axios.get('https://codexpert.io/wp-json/wp/v2/posts?per_page=3').then((res) => {
             setPosts(res.data);
         });
     }, [] );
