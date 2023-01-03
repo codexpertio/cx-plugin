@@ -42,6 +42,7 @@ const Dashboard = () => {
 
     return (
         <>
+            <Header />
             <div className="cx-plugin-help-tab">
                 <div className="cx-plugin-documentation">
                      <div className="wrap">
@@ -54,6 +55,7 @@ const Dashboard = () => {
                     {buttonsHtml}
                 </div>
             </div>
+            <Footer />
         </>
     );
 };
