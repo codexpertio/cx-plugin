@@ -7,10 +7,12 @@ import { buttons } from '../data';
 const Dashboard = () => {
 
     const [ posts, setPosts ] = useState([]);
+    const [ loading, setLoading ] = useState(true);
 
     useEffect( () => {
         axios.get('https://codexpert.io/wp-json/wp/v2/posts?per_page=3').then((res) => {
             setPosts(res.data);
+            setLoading(false);
         });
     }, [] );
 
@@ -43,7 +45,7 @@ const Dashboard = () => {
                 <div className="cx-plugin-documentation">
                      <div className="wrap">
                         <div id="cx-plugin-helps">
-                        {postsHtml}
+                        { ! loading ? postsHtml : 'Still loading..' }
                         </div>
                     </div>
                 </div>
