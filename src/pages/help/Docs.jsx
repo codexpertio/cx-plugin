@@ -43,7 +43,9 @@ const Docs = () => {
     return (
         <div className="wrap">
             <Header />
+
             <h1>Docs</h1>
+
             <div className="cx-plugin-help-tab">
                 <div className="cx-plugin-documentation">
                      <div className="wrap">
@@ -56,6 +58,7 @@ const Docs = () => {
                     {buttonsHtml}
                 </div>
             </div>
+            
             <Footer />
         </div>
     );

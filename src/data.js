@@ -1,5 +1,6 @@
 import Docs from './pages/help/Docs';
 import Support from './pages/help/Support';
+import Activator from './pages/license/Activator';
 
 export const helpTabs = [
     {
@@ -17,13 +18,8 @@ export const helpTabs = [
 export const licenseTabs = [
     {
         path: '/',
-        label: 'Docs',
-        element: Docs
-    },
-    {
-        path: '/about',
-        label: 'Support',
-        element: Support
+        label: 'Activator',
+        element: Activator
     },
 ];
 
