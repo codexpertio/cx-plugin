@@ -65,7 +65,7 @@ class Admin extends Base {
 		wp_enqueue_style( $this->slug, plugins_url( "/assets/css/admin{$min}.css", CXP ), '', $this->version, 'all' );
 		wp_enqueue_script( $this->slug, plugins_url( "/assets/js/admin{$min}.js", CXP ), [ 'jquery' ], $this->version, true );
 
-	    wp_enqueue_style( "{$this->slug}-react", plugins_url( 'build/index.css', CXP ) );
+	    // wp_enqueue_style( "{$this->slug}-react", plugins_url( 'build/index.css', CXP ) );
 	    wp_enqueue_script( "{$this->slug}-react", plugins_url( 'build/index.js', CXP ), [ 'wp-element' ], '1.0.0', true );
 	}
 
@@ -99,7 +99,7 @@ class Admin extends Base {
 			'manage_options',
 			'cx-plugin-license',
 			function() {
-				echo $this->plugin['license']->activator_form();
+				printf( '<div id="cx-plugin_license"><p>%s</p></div>', __( 'Loading..', 'cx-plugin' ) );
 			}
 		);
 	}
