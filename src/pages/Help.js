@@ -1,13 +1,13 @@
 import { HashRouter, Routes, Route, Link } from 'react-router-dom';
 import React from 'react';
-import { routes } from './data';
+import { helpTabs } from '../data';
 
-const License = () => {
+const Help = () => {
     return (
         <>
             <HashRouter>
                 <Routes>
-                    {routes.map((route, index) => (
+                    {helpTabs.map((route, index) => (
                         <Route
                             key={index}
                             path={route.path}
@@ -20,4 +20,4 @@ const License = () => {
     );
 }
 
-export default License;
+export default Help;

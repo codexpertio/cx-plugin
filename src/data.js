@@ -1,7 +1,7 @@
-import Dashboard from './pages/Dashboard';
-import About from './pages/About';
+import Dashboard from './pages/help/Dashboard';
+import About from './pages/help/About';
 
-export const routes = [
+export const helpTabs = [
     {
         path: '/',
         label: 'Dashboard',
@@ -14,7 +14,7 @@ export const routes = [
     },
 ];
 
-export const buttons = [
+export const externalButtons = [
     {
         id      : 'changelog',
         url     : 'https://wordpress.org/plugins/cx-plugin/#developers',

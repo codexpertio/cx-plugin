@@ -1,5 +1,5 @@
-import Help from "./Help";
-import License from "./License";
+import Help from "./pages/Help";
+import License from "./pages/License";
 import { render } from '@wordpress/element';
 
 // render help page
