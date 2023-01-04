@@ -5,7 +5,7 @@ import Header from '../../components/Header';
 import Footer from '../../components/Footer';
 import { externalButtons } from '../../data';
 
-const Dashboard = () => {
+const Docs = () => {
 
     const [ posts, setPosts ] = useState([]);
     const [ loading, setLoading ] = useState(true);
@@ -43,7 +43,7 @@ const Dashboard = () => {
     return (
         <div className="wrap">
             <Header />
-            <h1>Dashboard</h1>
+            <h1>Docs</h1>
             <div className="cx-plugin-help-tab">
                 <div className="cx-plugin-documentation">
                      <div className="wrap">
@@ -61,4 +61,4 @@ const Dashboard = () => {
     );
 };
 
-export default Dashboard;
+export default Docs;

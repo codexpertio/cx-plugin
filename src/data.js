@@ -1,16 +1,29 @@
-import Dashboard from './pages/help/Dashboard';
-import About from './pages/help/About';
+import Docs from './pages/help/Docs';
+import Support from './pages/help/Support';
 
 export const helpTabs = [
     {
         path: '/',
-        label: 'Dashboard',
-        element: Dashboard
+        label: 'Docs',
+        element: Docs
     },
     {
         path: '/about',
-        label: 'About',
-        element: About
+        label: 'Support',
+        element: Support
+    },
+];
+
+export const licenseTabs = [
+    {
+        path: '/',
+        label: 'Docs',
+        element: Docs
+    },
+    {
+        path: '/about',
+        label: 'Support',
+        element: Support
     },
 ];
 
