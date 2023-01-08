@@ -57,8 +57,9 @@ class Front extends Base {
 		wp_enqueue_script( $this->slug, plugins_url( "/assets/js/front{$min}.js", CXP ), [ 'jquery' ], $this->version, true );
 		
 		$localized = [
-			'ajaxurl'	=> admin_url( 'admin-ajax.php' ),
-			'_wpnonce'	=> wp_create_nonce(),
+			'ajaxurl'		=> admin_url( 'admin-ajax.php' ),
+			'_wpnonce'		=> wp_create_nonce(),
+			'rest_nonce'	=> wp_create_nonce( 'wp_rest' ),
 		];
 		wp_localize_script( $this->slug, 'CXP', apply_filters( "{$this->slug}-localized", $localized ) );
 	}
