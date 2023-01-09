@@ -19,7 +19,8 @@ const Support = () => {
         .get(CXP.api_base + 'cx-plugin/v0/user/meta/get', { params: {
             user_id: 1,
             key: 'anotherAPI',
-            default: 'sdsds'
+            default: 'sdsds',
+            single: true,
         } } )
         .then((res) => {
             console.log(res)

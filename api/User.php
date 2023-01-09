@@ -39,7 +39,7 @@ class User {
     public function get_meta( $request ) {
         $user_id    = $request->get_param( 'user_id' );
         $key        = $request->get_param( 'key' );
-        $single     = $request->get_param( 'single' ) ? : true;
+        $single     = $request->get_param( 'single' );
 
         if( empty( $key ) ) return;
 
