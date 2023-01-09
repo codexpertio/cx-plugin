@@ -67,6 +67,14 @@ class Admin extends Base {
 
 	    // wp_enqueue_style( "{$this->slug}-react", plugins_url( 'build/index.css', CXP ) );
 	    wp_enqueue_script( "{$this->slug}-react", plugins_url( 'build/index.js', CXP ), [ 'wp-element' ], '1.0.0', true );
+
+	    
+	    $localized = [
+	    	'ajaxurl'		=> admin_url( 'admin-ajax.php' ),
+	    	'_wpnonce'		=> wp_create_nonce(),
+	    	'rest_nonce'	=> wp_create_nonce( 'wp_rest' ),
+	    ];
+	    wp_localize_script( $this->slug, 'CXP', apply_filters( "{$this->slug}-localized", $localized ) );
 	}
 
 	public function admin_menu() {
