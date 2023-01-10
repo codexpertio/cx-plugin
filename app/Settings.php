@@ -514,22 +514,6 @@ class Settings extends Base {
 					'hide_form'	=> true,
 					'template'  => CXP_DIR . '/views/settings/table.php',
 				],
-				'cx-plugin_help' => [
-					'id'        => 'cx-plugin_help',
-					'label'     => __( 'Help', 'cx-plugin' ),
-					'icon'      => 'dashicons-sos',
-					// 'color'		=> '#0b8a07',
-					'template'  => CXP_DIR . '/views/settings/help.php',
-					'hide_form'	=> true,
-				],
-				'cx-plugin_license' => [
-					'id'        => 'cx-plugin_license',
-					'label'     => __( 'License', 'cx-plugin' ),
-					'icon'      => 'dashicons-admin-network',
-					// 'color'		=> '#e828ee',
-					'hide_form'	=> true,
-					'content'   => isset( $this->plugin['license'] ) ? $this->plugin['license']->activator_form() : '',
-				],
 			],
 		];
 

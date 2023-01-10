@@ -31,19 +31,6 @@ class Front extends Base {
 		$this->version	= $this->plugin['Version'];
 	}
 
-	public function add_admin_bar( $admin_bar ) {
-		if( ! current_user_can( 'manage_options' ) ) return;
-
-		$admin_bar->add_menu( [
-			'id'    => $this->slug,
-			'title' => $this->name,
-			'href'  => add_query_arg( 'page', $this->slug, admin_url( 'admin.php' ) ),
-			'meta'  => [
-				'title' => $this->name,            
-			],
-		] );
-	}
-
 	public function head() {}
 	
 	/**
