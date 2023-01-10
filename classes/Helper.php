@@ -3,8 +3,6 @@
  * All helpers functions
  */
 namespace Codexpert\CX_Plugin;
-use Codexpert\Plugin\Base;
-use Codexpert\Plugin\License;
 
 /**
  * if accessed directly, exit.
@@ -18,16 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage Helper
  * @author Codexpert <hi@codexpert.io>
  */
-class Helper extends Base {
-
-	public function __construct() {}
-
-	public static function license() {
-		global $cx_plugin;
-		
-		$license = new License( $cx_plugin );
-		return $license;
-	}
+class Helper {
 
 	public static function pri( $data, $admin_only = true, $hide_adminbar = true ) {
 
