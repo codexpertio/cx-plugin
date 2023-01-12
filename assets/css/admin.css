@@ -1,3 +1,26 @@
+#cx-plugin_help .cx-plugin-help-tab {
+    display: grid;
+    grid-template-columns: 5fr 1fr;
+}
+#cx-plugin_help .cx-plugin-help-link {
+    display: block;
+    text-decoration: none;
+    background: #fff;
+    text-align: center;
+    width: 200px;
+    margin: 10px 0;
+    padding: 17px;
+    border-radius: 5px;
+    font-size: 17px;
+    color: #4256b2;
+    border: 1px solid #4256b2;
+    margin-bottom: 20px;
+    transition: .4s;
+}
+#cx-plugin_help .cx-plugin-help-link:hover {
+    background: #4256b2;
+    color: #fff;
+}
 #cx-plugin-modal {
     position: fixed;
     background: #c8c8c859;

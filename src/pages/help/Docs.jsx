@@ -24,8 +24,9 @@ const Docs = () => {
             <div id={`cx-plugin-help-`+post.id} className="cx-plugin-help">
                 <h2 className="cx-plugin-help-heading" data-target={`#cx-plugin-help-text-`+post.id}>
                     <a href={post.link} target="_blank">
-                    <span className="dashicons dashicons-admin-links"></span></a>
-                    <span className="heading-text">{parse(post.title.rendered)}</span>
+                        <span className="dashicons dashicons-admin-links"></span>
+                        <span className="heading-text">{parse(post.title.rendered)}</span>
+                    </a>
                 </h2>
                 <div id={`cx-plugin-help-text-`+post.id} className="cx-plugin-help-text">
                     {parse(post.excerpt.rendered)}
