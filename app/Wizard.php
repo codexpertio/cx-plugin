@@ -95,14 +95,14 @@ class Wizard extends Base {
 	public function save_one() {
 		// save one to DB
 		if( isset( $_POST['date'] ) ) {
-			update_option( 'date', $_POST['date'] );
+			update_option( 'date', $this->sanitize( $_POST['date'] ) );
 		}
 	}
 
 	public function save_two() {
 		// save two to DB
 		if( isset( $_POST['time'] ) ) {
-			update_option( 'time', $_POST['time'] );
+			update_option( 'time', $this->sanitize( $_POST['time'] ) );
 		}
 	}
 

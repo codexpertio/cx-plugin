@@ -20,15 +20,6 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Helper extends Base {
 
-	public function __construct() {}
-
-	public static function license() {
-		global $cx_plugin;
-		
-		$license = new License( $cx_plugin );
-		return $license;
-	}
-
 	public static function pri( $data, $admin_only = true, $hide_adminbar = true ) {
 
 		if( $admin_only && ! current_user_can( 'manage_options' ) ) return;

@@ -8,18 +8,7 @@ let cx_plugin_modal = ( show = true ) => {
 }
 
 jQuery(function($){
-	$('.cx-plugin-help-heading').click(function(e){
-		var $this = $(this);
-		var $target = $this.data('target');
-		$('.cx-plugin-help-text:not('+$target+')').slideUp();
-		if($($target).is(':hidden')){
-			$($target).slideDown();
-		}
-		else {
-			$($target).slideUp();
-		}
-	});
-
+	
 	$('#cx-plugin_report-copy').click(function(e) {
 		e.preventDefault();
 		$('#cx-plugin_tools-report').select();

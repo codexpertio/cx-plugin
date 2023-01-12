@@ -269,7 +269,6 @@ final class Plugin {
 		 * AJAX related hooks
 		 */
 		$ajax = new App\AJAX( $this->plugin );
-		$ajax->priv( 'cx-plugin_fetch-docs', 'fetch_docs' );
 	}
 
 	/**
