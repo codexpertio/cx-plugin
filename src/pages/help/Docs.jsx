@@ -49,10 +49,8 @@ const Docs = () => {
 
             <div className="cx-plugin-help-tab">
                 <div className="cx-plugin-documentation">
-                     <div className="wrap">
-                        <div id="cx-plugin-helps">
-                        { ! loading ? postsHtml : parse(`<p>Loading..</p>`) }
-                        </div>
+                    <div id="cx-plugin-helps">
+                    { ! loading ? postsHtml : parse(`<p>Loading..</p>`) }
                     </div>
                 </div>
                 <div className="cx-plugin-help-links">
