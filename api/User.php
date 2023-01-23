@@ -1,6 +1,5 @@
 <?php
 namespace Codexpert\CX_Plugin\API;
-use Codexpert\CX_Plugin\Helper;
 
 /**
  * if accessed directly, exit.
