@@ -7,7 +7,6 @@ import $ from "jquery";
 
 const Support = () => {
 
-
     const [firstName, setFirstName] = useState('');
 
     const raiseTicket = e => {
@@ -16,10 +15,10 @@ const Support = () => {
         axios.defaults.headers.common['X-WP-Nonce'] = CXP.rest_nonce;
 
         axios
-        .get(CXP.api_base + 'cx-plugin/v0/user/meta/get', { params: {
+        .get(CXP.api_base + 'cx-plugin/v0/option/get', { params: {
             user_id: 1,
-            key: 'anotherAPI',
-            default: 'sdsds',
+            key: 'admin_email',
+            default: 'invalid@email.com',
             single: true,
         } } )
         .then((res) => {
