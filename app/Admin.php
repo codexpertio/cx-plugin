@@ -41,22 +41,6 @@ class Admin extends Base {
 	}
 
 	/**
-	 * Installer. Runs once when the plugin in activated.
-	 *
-	 * @since 1.0
-	 */
-	public function install() {
-
-		if( ! get_option( 'cx-plugin_version' ) ){
-			update_option( 'cx-plugin_version', $this->version );
-		}
-		
-		if( ! get_option( 'cx-plugin_install_time' ) ){
-			update_option( 'cx-plugin_install_time', time() );
-		}
-	}
-
-	/**
 	 * Enqueue JavaScripts and stylesheets
 	 */
 	public function enqueue_scripts() {
@@ -70,6 +54,9 @@ class Admin extends Base {
 
 	    
 	    $localized = [
+	    	'homeurl'		=> get_bloginfo( 'url' ),
+	    	'adminurl'		=> admin_url(),
+	    	'asseturl'		=> CXP_ASSET,
 	    	'ajaxurl'		=> admin_url( 'admin-ajax.php' ),
 	    	'_wpnonce'		=> wp_create_nonce(),
 	    	'api_base'		=> get_rest_url(),

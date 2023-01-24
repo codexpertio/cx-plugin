@@ -31,4 +31,16 @@ class AJAX extends Base {
 		$this->version	= $this->plugin['Version'];
 	}
 
+	public function some_callback() {
+		
+		$response = [
+			'status'	=> 0,
+			'message'	=> __( 'Unauthorized', 'cx-plugin' ),
+		];
+
+		if( ! wp_verify_nonce( $_POST['_wpnonce'] ) ) {
+			wp_send_json( $response );
+		}
+	}
+
 }

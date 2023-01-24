@@ -6,6 +6,8 @@
  * Author: Codexpert, Inc
  * Author URI: https://codexpert.io
  * Version: 0.1.0
+ * Requires at least: 5.9
+ * Requires PHP: 7.4
  * Text Domain: cx-plugin
  * Domain Path: /languages
  *
@@ -117,8 +119,6 @@ final class Plugin {
 		$this->plugin['basename']		= plugin_basename( CXP );
 		$this->plugin['file']			= CXP;
 		$this->plugin['server']			= apply_filters( 'cx-plugin_server', 'https://codexpert.io/dashboard' );
-		$this->plugin['min_php']		= '5.6';
-		$this->plugin['min_wp']			= '4.0';
 		$this->plugin['doc_id']			= 1960;
 		$this->plugin['icon']			= CXP_ASSET . '/img/icon.png';
 		$this->plugin['depends']		= [ 'woocommerce/woocommerce.php' => 'WooCommerce' ];
@@ -158,7 +158,6 @@ final class Plugin {
 			 * Admin facing hooks
 			 */
 			$admin = new App\Admin( $this->plugin );
-			$admin->activate( 'install' );
 			$admin->action( 'admin_footer', 'modal' );
 			$admin->action( 'plugins_loaded', 'i18n' );
 			$admin->action( 'admin_menu', 'admin_menu' );
@@ -182,15 +181,6 @@ final class Plugin {
 			$settings->action( 'plugins_loaded', 'init_menu' );
 
 			/**
-			 * Registers a widget in the wp-admin/ screen
-			 * 
-			 * @package Codexpert\Plugin
-			 * 
-			 * @author Codexpert <hi@codexpert.io>
-			 */
-			$widget = new Widget( $this->plugin );
-
-			/**
 			 * Asks to participate in a survey
 			 * 
 			 * @package Codexpert\Plugin
@@ -198,6 +188,15 @@ final class Plugin {
 			 * @author Codexpert <hi@codexpert.io>
 			 */
 			$survey = new Survey( $this->plugin );
+
+			/**
+			 * Blog posts from Codexpert blog
+			 * 
+			 * @package Codexpert\Plugin
+			 * 
+			 * @author Codexpert <hi@codexpert.io>
+			 */
+			$widget = new Widget( $this->plugin );
 
 			/**
 			 * Renders different notices
@@ -269,6 +268,7 @@ final class Plugin {
 		 * AJAX related hooks
 		 */
 		$ajax = new App\AJAX( $this->plugin );
+		$ajax->priv( 'some-route', 'some_callback' );
 	}
 
 	/**

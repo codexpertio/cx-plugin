@@ -3,6 +3,7 @@ import parse from 'html-react-parser';
 import axios from "axios";
 import Header from '../../components/Header';
 import Footer from '../../components/Footer';
+import Loader from '../../components/Loader';
 import { externalButtons } from '../../data';
 
 const Docs = () => {
@@ -50,7 +51,7 @@ const Docs = () => {
             <div className="cx-plugin-help-tab">
                 <div className="cx-plugin-documentation">
                     <div id="cx-plugin-helps">
-                    { ! loading ? postsHtml : parse(`<p>Loading..</p>`) }
+                    { ! loading ? postsHtml : <Loader /> }
                     </div>
                 </div>
                 <div className="cx-plugin-help-links">
