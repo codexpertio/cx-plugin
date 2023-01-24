@@ -2,6 +2,8 @@ import Docs from './pages/help/Docs';
 import Support from './pages/help/Support';
 import Activator from './pages/license/Activator';
 
+export const devHome = 'https://codexpert.io';
+
 export const helpTabs = [
     {
         path: '/',
