@@ -29,9 +29,7 @@ const Support = () => {
     return (
         <div className="wrap">
             <Header />
-
-            <h1>Support Ticket</h1>
-
+            
             <form onSubmit={raiseTicket} method="post">
                 <p>
                     <input type="text" name="first_name" placeholder="Your Name" onChange={ (e) => setFirstName(e.target.value) } value={firstName} required />

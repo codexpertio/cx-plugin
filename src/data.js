@@ -7,7 +7,7 @@ import Activator from './pages/license/Activator';
 export const helpTabs = [
     {
         path: '/',
-        label: 'Docs',
+        label: 'Documentations',
         element: Docs
     },
     {
