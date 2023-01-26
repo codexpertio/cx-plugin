@@ -1,6 +1,19 @@
 #cx-plugin_help .cx-plugin-help-tab {
     display: grid;
     grid-template-columns: 5fr 1fr;
+    background: #fff;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.cx-plugin-documentation {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.cx-plugin-help-heading a {
+    text-decoration: none;
+}
+.cx-plugin-help-heading a .dashicons {
+    margin-right: 5px;
 }
 #cx-plugin_help .cx-plugin-help-link {
     display: block;
