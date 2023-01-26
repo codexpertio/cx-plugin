@@ -48,7 +48,7 @@ const Docs = () => {
 
             <h1>Docs</h1>
 
-            <div className="cx-plugin-help-tab">
+            <div className="cx-plugin-help-tab cx-shadow">
                 <div className="cx-plugin-documentation">
                     <div id="cx-plugin-helps">
                     { ! loading ? postsHtml : <Loader /> }
