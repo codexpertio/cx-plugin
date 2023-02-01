@@ -12,7 +12,7 @@ const Docs = () => {
     const [ loading, setLoading ] = useState(true);
 
     useEffect( () => {
-        axios.get('https://codexpert.io/wp-json/wp/v2/posts?per_page=3').then((res) => {
+        axios.get('https://codexpert.io/wp-json/wp/v2/posts?per_page=10&_fields[]=id&_fields[]=link&_fields[]=excerpt&_fields[]=title').then((res) => {
             setPosts(res.data);
             setLoading(false);
         });
