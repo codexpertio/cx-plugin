@@ -10,7 +10,7 @@ const Blogs = () => {
 	const [ loading, setLoading ] = useState(true);
 
 	useEffect( () => {
-	    axios.get( devHome + '/wp-json/wp/v2/posts?per_page=10').then((res) => {
+	    axios.get( devHome + '/wp-json/wp/v2/posts?per_page=10&_fields[]=link&_fields[]=title').then((res) => {
 	        setPosts(res.data);
 	        setLoading(false);
 	    });
