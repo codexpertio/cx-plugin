@@ -281,6 +281,21 @@ class Settings extends Base {
 					// 'color'		=> '#d30c5c',
 					'sticky'	=> false,
 					'fields'    => [
+						'sample_select_disabled' => [
+							'id'		=> 'sample_select_disabled',
+							'label'     => __( 'Select with disabled', 'cx-plugin' ),
+							'type'      => 'select',
+							'options'   => [
+								'option_1'	=> __( 'Option 1', 'cx-plugin' ),
+								'option_2'	=> __( 'Option 2', 'cx-plugin' ),
+								'option_3'	=> __( 'Option 3', 'cx-plugin' ),
+								'option_4'	=> __( 'Option 4', 'cx-plugin' ),
+							],
+							'default'   => 'option_3',
+							'disabled'  => [ 'option_2', 'option_4' ], // true|false
+							'multiple'  => false, // true|false
+							'chosen'    => true
+						],
 						'sample_select3' => [
 							'id'      => 'sample_select3',
 							'label'     => __( 'Select with Chosen', 'cx-plugin' ),
