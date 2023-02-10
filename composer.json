@@ -14,6 +14,6 @@
             "Codexpert\\CX_Plugin\\App\\" : "app/",
             "Codexpert\\CX_Plugin\\API\\" : "api/"
         },
-        "files": [ "inc/functions.php" ]
+        "files": []
     }
 }
