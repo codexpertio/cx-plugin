@@ -5,7 +5,7 @@
  * Plugin URI: https://codexpert.io
  * Author: Codexpert, Inc
  * Author URI: https://codexpert.io
- * Version: 0.1.0
+ * Version: 0.9
  * Requires at least: 5.9
  * Requires PHP: 7.4
  * Text Domain: cx-plugin

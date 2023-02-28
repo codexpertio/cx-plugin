@@ -42,7 +42,7 @@ class Admin extends Base {
 
 	public function upgrade() {
 		if( $this->version == get_option( "{$this->slug}_db-version" ) ) return;
-		update_option( "{$this->slug}_db-version", $this->version );
+		update_option( "{$this->slug}_db-version", $this->version, false );
 
 		// upgrader actions
 	}
