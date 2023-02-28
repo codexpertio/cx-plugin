@@ -159,6 +159,7 @@ final class Plugin {
 			 * Admin facing hooks
 			 */
 			$admin = new App\Admin( $this->plugin );
+			$admin->action( 'admin_footer', 'upgrade' );
 			$admin->action( 'admin_footer', 'modal' );
 			$admin->action( 'plugins_loaded', 'i18n' );
 			$admin->action( 'admin_menu', 'admin_menu' );

@@ -40,6 +40,13 @@ class Admin extends Base {
 		load_plugin_textdomain( 'cx-plugin', false, CXP_DIR . '/languages/' );
 	}
 
+	public function upgrade() {
+		if( $this->version == get_option( "{$this->slug}_db-version" ) ) return;
+		update_option( "{$this->slug}_db-version", $this->version );
+
+		// upgrader actions
+	}
+
 	/**
 	 * Enqueue JavaScripts and stylesheets
 	 */
