@@ -26,9 +26,9 @@ namespace Codexpert\CX_Plugin;
 use Codexpert\Plugin\Widget;
 use Codexpert\Plugin\Survey;
 use Codexpert\Plugin\Notice;
-use Codexpert\Plugin\License;
 use Codexpert\Plugin\Feature;
 use Codexpert\Plugin\Deactivator;
+use Pluggable\Plugin\License;
 
 /**
  * if accessed directly, exit.
@@ -119,21 +119,14 @@ final class Plugin {
 		$this->plugin					= get_plugin_data( CXP );
 		$this->plugin['basename']		= plugin_basename( CXP );
 		$this->plugin['file']			= CXP;
-		$this->plugin['server']			= apply_filters( 'cx-plugin_server', 'https://codexpert.io/dashboard' );
 		$this->plugin['doc_id']			= 1960;
 		$this->plugin['icon']			= CXP_ASSET . '/img/icon.png';
-		$this->plugin['depends']		= [ 'woocommerce/woocommerce.php' => 'WooCommerce' ];
+		$this->plugin['depends']		= [ 'woocommerce/woocommerce.php' => __( 'WooCommerce', 'cx-plugin' ) ];
 		
 		/**
-		 * Pro version info
-		 * 
-		 * Applicable if this plugin has a pro version
+		 * The license
 		 */
-		$this->plugin['item_id']		= 11;
-		$this->plugin['beta']			= true;
-		$this->plugin['updatable']		= true;
-		$this->plugin['license']		= new License( $this->plugin );
-		$this->plugin['license_page']	= admin_url( 'admin.php?page=cx-plugin' );
+		$this->plugin['license']		= new License( CXP );
 	}
 
 	/**
