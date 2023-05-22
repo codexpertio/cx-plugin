@@ -120,13 +120,18 @@ final class Plugin {
 		$this->plugin['basename']		= plugin_basename( CXP );
 		$this->plugin['file']			= CXP;
 		$this->plugin['doc_id']			= 1960;
+		$this->plugin['server']			= 'https://my.pluggable.io';
 		$this->plugin['icon']			= CXP_ASSET . '/img/icon.png';
 		$this->plugin['depends']		= [ 'woocommerce/woocommerce.php' => __( 'WooCommerce', 'cx-plugin' ) ];
 		
 		/**
 		 * The license
 		 */
-		$this->plugin['license']		= new License( CXP );
+		$this->plugin['license']	= new License( CXP, [
+			'server'		=> $this->plugin['server'],
+			'redirect'		=> add_query_arg( [ 'page' => $this->plugin['TextDomain'] ], admin_url( 'admin.php' ) ),
+			'hide_notice'	=> false,
+		] );
 	}
 
 	/**

@@ -29,7 +29,6 @@ class Admin extends Base {
 		$this->plugin	= $plugin;
 		$this->slug		= $this->plugin['TextDomain'];
 		$this->name		= $this->plugin['Name'];
-		$this->server	= $this->plugin['server'];
 		$this->version	= $this->plugin['Version'];
 	}
 
