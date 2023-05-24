@@ -27,7 +27,7 @@ use Codexpert\Plugin\Widget;
 use Codexpert\Plugin\Survey;
 use Codexpert\Plugin\Notice;
 use Codexpert\Plugin\Feature;
-use Codexpert\Plugin\Deactivator;
+use Pluggable\Marketing\Deactivator;
 use Pluggable\Plugin\License;
 
 /**
