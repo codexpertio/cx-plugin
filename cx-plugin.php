@@ -214,7 +214,7 @@ final class Plugin {
 			 * 
 			 * @author Codexpert <hi@codexpert.io>
 			 */
-			$deactivator = new Deactivator( $this->plugin );
+			$deactivator = new Deactivator( CXP );
 
 			/**
 			 * Alters featured plugins

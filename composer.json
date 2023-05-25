@@ -8,7 +8,7 @@
     "require": {
         "codexpert/plugin": "dev-master",
         "pluggable/plugin": "^0.98.1",
-        "pluggable/marketing": "^0.1.2"
+        "pluggable/marketing": "^0.2"
     },
     "autoload": {
         "psr-4": {
