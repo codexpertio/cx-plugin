@@ -25,8 +25,8 @@ class Admin extends Base {
 	/**
 	 * Constructor function
 	 */
-	public function __construct( $plugin ) {
-		$this->plugin	= $plugin;
+	public function __construct() {
+		$this->plugin	= CXP;
 		$this->slug		= $this->plugin['TextDomain'];
 		$this->name		= $this->plugin['Name'];
 		$this->version	= $this->plugin['Version'];
@@ -52,11 +52,11 @@ class Admin extends Base {
 	public function enqueue_scripts() {
 		$min = defined( 'CXP_DEBUG' ) && CXP_DEBUG ? '' : '.min';
 		
-		wp_enqueue_style( $this->slug, plugins_url( "/assets/css/admin{$min}.css", CXP ), '', $this->version, 'all' );
-		wp_enqueue_script( $this->slug, plugins_url( "/assets/js/admin{$min}.js", CXP ), [ 'jquery' ], $this->version, true );
+		wp_enqueue_style( $this->slug, plugins_url( "/assets/css/admin{$min}.css", CXP_FILE ), '', $this->version, 'all' );
+		wp_enqueue_script( $this->slug, plugins_url( "/assets/js/admin{$min}.js", CXP_FILE ), [ 'jquery' ], $this->version, true );
 
-	    // wp_enqueue_style( "{$this->slug}-react", plugins_url( 'build/index.css', CXP ) );
-	    wp_enqueue_script( "{$this->slug}-react", plugins_url( 'build/index.js', CXP ), [ 'wp-element' ], '1.0.0', true );
+	    // wp_enqueue_style( "{$this->slug}-react", plugins_url( 'build/index.css', CXP_FILE ) );
+	    wp_enqueue_script( "{$this->slug}-react", plugins_url( 'build/index.js', CXP_FILE ), [ 'wp-element' ], '1.0.0', true );
 
 	    
 	    $localized = [

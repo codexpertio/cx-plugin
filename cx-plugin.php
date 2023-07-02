@@ -45,6 +45,13 @@ if ( ! defined( 'ABSPATH' ) ) {
 final class Plugin {
 	
 	/**
+	 * The Plugin
+	 * 
+	 * @access private
+	 */
+	public static $plugin;
+	
+	/**
 	 * Plugin instance
 	 * 
 	 * @access private
@@ -105,9 +112,9 @@ final class Plugin {
 		 * 
 		 * @since 0.9
 		 */
-		define( 'CXP', __FILE__ );
-		define( 'CXP_DIR', dirname( CXP ) );
-		define( 'CXP_ASSET', plugins_url( 'assets', CXP ) );
+		define( 'CXP_FILE', __FILE__ );
+		define( 'CXP_DIR', dirname( CXP_FILE ) );
+		define( 'CXP_ASSET', plugins_url( 'assets', CXP_FILE ) );
 		define( 'CXP_DEBUG', apply_filters( 'cx-plugin_debug', true ) );
 
 		/**
@@ -116,9 +123,9 @@ final class Plugin {
 		 * @since 0.9
 		 * @var $plugin
 		 */
-		$this->plugin					= get_plugin_data( CXP );
-		$this->plugin['basename']		= plugin_basename( CXP );
-		$this->plugin['file']			= CXP;
+		$this->plugin					= get_plugin_data( CXP_FILE );
+		$this->plugin['basename']		= plugin_basename( CXP_FILE );
+		$this->plugin['file']			= CXP_FILE;
 		$this->plugin['doc_id']			= 1960;
 		$this->plugin['server']			= 'https://my.pluggable.io';
 		$this->plugin['icon']			= CXP_ASSET . '/img/icon.png';
@@ -127,11 +134,14 @@ final class Plugin {
 		/**
 		 * The license
 		 */
-		$this->plugin['license']	= new License( CXP, [
+		$this->plugin['license']	= new License( CXP_FILE, [
 			'server'		=> $this->plugin['server'],
 			'redirect'		=> add_query_arg( [ 'page' => $this->plugin['TextDomain'] ], admin_url( 'admin.php' ) ),
 			'hide_notice'	=> false,
 		] );
+
+		// set plugin data instance
+		define( 'CXP', $this->plugin );
 	}
 
 	/**
@@ -156,7 +166,7 @@ final class Plugin {
 			/**
 			 * Admin facing hooks
 			 */
-			$admin = new App\Admin( $this->plugin );
+			$admin = new App\Admin();
 			$admin->action( 'admin_footer', 'upgrade' );
 			$admin->action( 'admin_footer', 'modal' );
 			$admin->action( 'plugins_loaded', 'i18n' );
@@ -170,14 +180,14 @@ final class Plugin {
 			/**
 			 * The setup wizard
 			 */
-			$wizard = new App\Wizard( $this->plugin );
+			$wizard = new App\Wizard();
 			$wizard->action( 'plugins_loaded', 'render' );
 			$wizard->filter( "plugin_action_links_{$this->plugin['basename']}", 'action_links' );
 
 			/**
 			 * Settings related hooks
 			 */
-			$settings = new App\Settings( $this->plugin );
+			$settings = new App\Settings();
 			$settings->action( 'plugins_loaded', 'init_menu' );
 
 			/**
@@ -214,7 +224,7 @@ final class Plugin {
 			 * 
 			 * @author Codexpert <hi@codexpert.io>
 			 */
-			$deactivator = new Deactivator( $this->plugin );
+			$deactivator = new Deactivator( CXP_FILE, [ 'server' => $this->plugin['server'] ] );
 
 			/**
 			 * Alters featured plugins
@@ -225,12 +235,12 @@ final class Plugin {
 			 */
 			$feature = new Feature( $this->plugin );
 
-		else : // !is_admin() ?
+		else : // ! is_admin() ?
 
 			/**
 			 * Front facing hooks
 			 */
-			$front = new App\Front( $this->plugin );
+			$front = new App\Front();
 			$front->action( 'wp_head', 'head' );
 			$front->action( 'wp_footer', 'modal' );
 			$front->action( 'wp_enqueue_scripts', 'enqueue_scripts' );
@@ -239,13 +249,13 @@ final class Plugin {
 			/**
 			 * Shortcode related hooks
 			 */
-			$shortcode = new App\Shortcode( $this->plugin );
+			$shortcode = new App\Shortcode();
 			$shortcode->register( 'my-shortcode', 'my_shortcode' );
 
 			/**
 			 * Custom REST API related hooks
 			 */
-			$api = new App\API( $this->plugin );
+			$api = new App\API();
 			$api->action( 'rest_api_init', 'register_endpoints' );
 
 		endif;
@@ -253,7 +263,7 @@ final class Plugin {
 		/**
 		 * Cron facing hooks
 		 */
-		$cron = new App\Cron( $this->plugin );
+		$cron = new App\Cron();
 		$cron->activate( 'install' );
 		$cron->deactivate( 'uninstall' );
 
@@ -262,12 +272,12 @@ final class Plugin {
 		 *
 		 * Executes on both the admin area and front area
 		 */
-		$common = new App\Common( $this->plugin );
+		$common = new App\Common();
 
 		/**
 		 * AJAX related hooks
 		 */
-		$ajax = new App\AJAX( $this->plugin );
+		$ajax = new App\AJAX();
 		$ajax->priv( 'some-route', 'some_callback' );
 	}
 
