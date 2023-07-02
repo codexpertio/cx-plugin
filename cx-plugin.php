@@ -27,8 +27,8 @@ use Codexpert\Plugin\Widget;
 use Codexpert\Plugin\Survey;
 use Codexpert\Plugin\Notice;
 use Codexpert\Plugin\Feature;
-use Pluggable\Marketing\Deactivator;
 use Pluggable\Plugin\License;
+use Pluggable\Marketing\Deactivator;
 
 /**
  * if accessed directly, exit.
@@ -68,6 +68,7 @@ final class Plugin {
 	 * @since 0.9
 	 */
 	private function __construct() {
+		
 		/**
 		 * Includes required files
 		 */

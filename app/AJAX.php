@@ -39,7 +39,7 @@ class AJAX extends Base {
 		];
 
 		if( ! wp_verify_nonce( $_POST['_wpnonce'] ) ) {
-			wp_send_json( $response );
+			wp_send_json_success( $response );
 		}
 	}
 

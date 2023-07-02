@@ -27,7 +27,7 @@ class API extends Base {
 	 * Constructor function
 	 */
 	public function __construct() {
-		$this->plugin	= CXP;
+		$this->plugin		= CXP;
 		$this->slug			= $this->plugin['TextDomain'];
 		$this->version		= $this->plugin['Version'];
 
