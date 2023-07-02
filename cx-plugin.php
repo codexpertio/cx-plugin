@@ -49,7 +49,7 @@ final class Plugin {
 	 * 
 	 * @access private
 	 */
-	public static $plugin;
+	private $plugin;
 	
 	/**
 	 * Plugin instance
