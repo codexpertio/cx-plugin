@@ -135,11 +135,7 @@ final class Plugin {
 		/**
 		 * The license
 		 */
-		$this->plugin['license']	= new License( CXP_FILE, [
-			'server'		=> $this->plugin['server'],
-			'redirect'		=> add_query_arg( [ 'page' => $this->plugin['TextDomain'] ], admin_url( 'admin.php' ) ),
-			'hide_notice'	=> false,
-		] );
+		$this->plugin['license']	= new License( CXP_FILE );
 
 		// set plugin data instance
 		define( 'CXP', $this->plugin );
@@ -221,18 +217,18 @@ final class Plugin {
 			/**
 			 * Shows a popup window asking why a user is deactivating the plugin
 			 * 
-			 * @package Codexpert\Plugin
+			 * @package Pluggable\Marketing
 			 * 
-			 * @author Codexpert <hi@codexpert.io>
+			 * @author Pluggable <hi@pluggable.io>
 			 */
-			$deactivator = new Deactivator( CXP_FILE, [ 'server' => $this->plugin['server'] ] );
+			$deactivator = new Deactivator( CXP_FILE );
 
 			/**
 			 * Alters featured plugins
 			 * 
-			 * @package Codexpert\Plugin
+			 * @package Pluggable\Marketing
 			 * 
-			 * @author Codexpert <hi@codexpert.io>
+			 * @author Pluggable <hi@pluggable.io>
 			 */
 			$feature = new Feature( CXP_FILE );
 
