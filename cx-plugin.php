@@ -26,8 +26,8 @@ namespace Codexpert\CX_Plugin;
 use Codexpert\Plugin\Widget;
 use Codexpert\Plugin\Survey;
 use Codexpert\Plugin\Notice;
-use Codexpert\Plugin\Feature;
 use Pluggable\Plugin\License;
+use Pluggable\Marketing\Feature;
 use Pluggable\Marketing\Deactivator;
 
 /**
@@ -234,7 +234,7 @@ final class Plugin {
 			 * 
 			 * @author Codexpert <hi@codexpert.io>
 			 */
-			$feature = new Feature( $this->plugin );
+			$feature = new Feature( CXP_FILE );
 
 		else : // ! is_admin() ?
 
