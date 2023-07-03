@@ -24,9 +24,9 @@
 
 namespace Codexpert\CX_Plugin;
 use Codexpert\Plugin\Widget;
-use Codexpert\Plugin\Survey;
 use Codexpert\Plugin\Notice;
 use Pluggable\Plugin\License;
+use Pluggable\Marketing\Survey;
 use Pluggable\Marketing\Feature;
 use Pluggable\Marketing\Deactivator;
 
@@ -188,15 +188,6 @@ final class Plugin {
 			$settings->action( 'plugins_loaded', 'init_menu' );
 
 			/**
-			 * Asks to participate in a survey
-			 * 
-			 * @package Codexpert\Plugin
-			 * 
-			 * @author Codexpert <hi@codexpert.io>
-			 */
-			$survey = new Survey( $this->plugin );
-
-			/**
 			 * Blog posts from Codexpert blog
 			 * 
 			 * @package Codexpert\Plugin
@@ -213,6 +204,15 @@ final class Plugin {
 			 * @author Codexpert <hi@codexpert.io>
 			 */
 			$notice = new Notice( $this->plugin );
+
+			/**
+			 * Asks to participate in a survey
+			 * 
+			 * @package Pluggable\Marketing
+			 * 
+			 * @author Pluggable <hi@pluggable.io>
+			 */
+			$survey = new Survey( CXP_FILE );
 
 			/**
 			 * Shows a popup window asking why a user is deactivating the plugin
