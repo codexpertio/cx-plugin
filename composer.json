@@ -7,7 +7,7 @@
     ],
     "require": {
         "codexpert/plugin": "dev-master",
-        "pluggable/plugin": "^0.98.1",
+        "pluggable/plugin": "dev-master",
         "pluggable/marketing": "dev-master"
     },
     "autoload": {
