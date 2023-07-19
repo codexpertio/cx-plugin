@@ -1,8 +1,6 @@
 <?php
-/**
- * All common functions to load in both admin and front
- */
 namespace Codexpert\CX_Plugin\App;
+
 use Codexpert\Plugin\Base;
 use Codexpert\CX_Plugin\API\User;
 use Codexpert\CX_Plugin\API\Option;
@@ -31,7 +29,7 @@ class API extends Base {
 		$this->slug			= $this->plugin['TextDomain'];
 		$this->version		= $this->plugin['Version'];
 
-		$this->namespace	= apply_filters( "{$this->slug}_rest_route_namespace", sprintf( '%1$s/v%2$d', $this->slug, $this->version ) );
+		$this->namespace	= apply_filters( "{$this->slug}_rest_route_namespace", sprintf( '%1$s/v%2$d', $this->slug, 1 ) );
 	}
 
 	public function register_endpoints() {
