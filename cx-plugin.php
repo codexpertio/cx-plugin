@@ -23,6 +23,7 @@
  */
 
 namespace Codexpert\CX_Plugin;
+
 use Codexpert\Plugin\Widget;
 use Codexpert\Plugin\Notice;
 use Pluggable\Plugin\License;
@@ -258,11 +259,11 @@ final class Plugin {
 		endif;
 
 		/**
-		 * Cron facing hooks
+		 * The installer
 		 */
-		$cron = new App\Cron();
-		$cron->activate( 'install' );
-		$cron->deactivate( 'uninstall' );
+		$installer = new App\Installer();
+		$installer->activate( 'install' );
+		$installer->deactivate( 'uninstall' );
 
 		/**
 		 * Common hooks

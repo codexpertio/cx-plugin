@@ -1,10 +1,9 @@
 <?php
-/**
- * All public facing functions
- */
 namespace Codexpert\CX_Plugin\App;
+
 use Codexpert\Plugin\Base;
 use Codexpert\CX_Plugin\Helper;
+
 /**
  * if accessed directly, exit.
  */

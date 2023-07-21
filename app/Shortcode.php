@@ -1,8 +1,6 @@
 <?php
-/**
- * All Shortcode related functions
- */
 namespace Codexpert\CX_Plugin\App;
+
 use Codexpert\Plugin\Base;
 
 /**

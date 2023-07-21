@@ -3,7 +3,7 @@ import Help from "./pages/Help";
 import License from "./pages/License";
 import { render } from '@wordpress/element';
 
-if( window.location.pathname.includes('index.php') ) {
+if( window.location.pathname.includes('index.php') || ! window.location.pathname.includes('php') ) {
 	render(<Blogs />, document.getElementById('cx-posts'));
 }
 

@@ -1,8 +1,6 @@
 <?php
-/**
- * All settings related functions
- */
 namespace Codexpert\CX_Plugin\App;
+
 use Codexpert\CX_Plugin\Helper;
 use Codexpert\Plugin\Base;
 use Codexpert\Plugin\Settings as Settings_API;

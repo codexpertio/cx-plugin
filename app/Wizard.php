@@ -1,8 +1,6 @@
 <?php
-/**
- * All Wizard related functions
- */
 namespace Codexpert\CX_Plugin\App;
+
 use Codexpert\Plugin\Base;
 use Codexpert\Plugin\Setup;
 

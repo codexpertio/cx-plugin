@@ -1,8 +1,6 @@
 <?php
-/**
- * All common functions to load in both admin and front
- */
 namespace Codexpert\CX_Plugin\App;
+
 use Codexpert\Plugin\Base;
 use Codexpert\CX_Plugin\API\User;
 use Codexpert\CX_Plugin\API\Option;

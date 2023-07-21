@@ -1,8 +1,6 @@
 <?php
-/**
- * All cron related functions
- */
 namespace Codexpert\CX_Plugin\App;
+
 use Codexpert\Plugin\Base;
 
 /**
@@ -14,10 +12,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 /**
  * @package Plugin
- * @subpackage Cron
+ * @subpackage Installer
  * @author Codexpert <hi@codexpert.io>
  */
-class Cron extends Base {
+class Installer extends Base {
 
 	public $plugin;
 
