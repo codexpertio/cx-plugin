@@ -29,7 +29,7 @@ class API extends Base {
 		$this->slug			= $this->plugin['TextDomain'];
 		$this->version		= $this->plugin['Version'];
 
-		$this->namespace	= apply_filters( "{$this->slug}_rest_route_namespace", sprintf( '%1$s/v%2$d', $this->slug, $this->version ) );
+		$this->namespace	= apply_filters( "{$this->slug}_rest_route_namespace", sprintf( '%1$s/v%2$d', $this->slug, 1 ) );
 	}
 
 	public function register_endpoints() {

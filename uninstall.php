@@ -1,8 +1,4 @@
 <?php
-/**
- * Perform when the plugin is being uninstalled
- */
-
 // If uninstall is not called, exit
 if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
     exit;
