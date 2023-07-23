@@ -1,9 +1,5 @@
 <?php
-/**
- * All helpers functions
- */
 namespace Codexpert\CX_Plugin;
-use Codexpert\Plugin\Base;
 
 /**
  * if accessed directly, exit.
@@ -17,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @subpackage Helper
  * @author Codexpert <hi@codexpert.io>
  */
-class Helper extends Base {
+class Helper {
 
 	public static function pri( $data, $admin_only = true, $hide_adminbar = true ) {
 
