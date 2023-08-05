@@ -195,7 +195,7 @@ final class Plugin {
 			 * 
 			 * @author Codexpert <hi@codexpert.io>
 			 */
-			$widget = new Widget( $this->plugin );
+			$widget = new Widget();
 
 			/**
 			 * Renders different notices
