@@ -116,7 +116,7 @@ final class Plugin {
 		 */
 		define( 'CXP_FILE', __FILE__ );
 		define( 'CXP_DIR', dirname( CXP_FILE ) );
-		define( 'CXP_ASSET', plugins_url( 'assets', CXP_FILE ) );
+		define( 'CXP_ASSETS', plugins_url( 'assets', CXP_FILE ) );
 		define( 'CXP_DEBUG', apply_filters( 'cx-plugin_debug', true ) );
 
 		/**
@@ -130,7 +130,7 @@ final class Plugin {
 		$this->plugin['file']			= CXP_FILE;
 		$this->plugin['doc_id']			= 1960;
 		$this->plugin['server']			= 'https://my.pluggable.io';
-		$this->plugin['icon']			= CXP_ASSET . '/img/icon.png';
+		$this->plugin['icon']			= CXP_ASSETS . '/img/icon.png';
 		$this->plugin['depends']		= [ 'woocommerce/woocommerce.php' => __( 'WooCommerce', 'cx-plugin' ) ];
 		
 		/**
