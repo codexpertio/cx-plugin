@@ -60,7 +60,7 @@ class Admin extends Base {
 	    $localized = [
 	    	'homeurl'		=> get_bloginfo( 'url' ),
 	    	'adminurl'		=> admin_url(),
-	    	'asseturl'		=> CXP_ASSET,
+	    	'asseturl'		=> CXP_ASSETS,
 	    	'ajaxurl'		=> admin_url( 'admin-ajax.php' ),
 	    	'_wpnonce'		=> wp_create_nonce(),
 	    	'api_base'		=> get_rest_url(),
@@ -136,7 +136,7 @@ class Admin extends Base {
 	public function modal() {
 		echo '
 		<div id="cx-plugin-modal" style="display: none">
-			<img id="cx-plugin-modal-loader" src="' . esc_attr( CXP_ASSET . '/img/loader.gif' ) . '" />
+			<img id="cx-plugin-modal-loader" src="' . esc_attr( CXP_ASSETS . '/img/loader.gif' ) . '" />
 		</div>';
 	}
 }
