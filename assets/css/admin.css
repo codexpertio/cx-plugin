@@ -16,9 +16,6 @@
 #cx-plugin_tabs a {
     text-decoration: none;
 }
-
-
-
 #cx-plugin_help .cx-plugin-help-tab {
     display: grid;
     grid-template-columns: 5fr 1fr;

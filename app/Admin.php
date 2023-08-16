@@ -37,13 +37,6 @@ class Admin extends Base {
 		load_plugin_textdomain( 'cx-plugin', false, CXP_DIR . '/languages/' );
 	}
 
-	public function upgrade() {
-		if( $this->version == get_option( "{$this->slug}_db-version" ) ) return;
-		update_option( "{$this->slug}_db-version", $this->version, false );
-
-		// upgrader actions
-	}
-
 	/**
 	 * Enqueue JavaScripts and stylesheets
 	 */
@@ -56,7 +49,6 @@ class Admin extends Base {
 	    // wp_enqueue_style( "{$this->slug}-react", plugins_url( 'build/index.css', CXP_FILE ) );
 	    wp_enqueue_script( "{$this->slug}-react", plugins_url( 'build/index.js', CXP_FILE ), [ 'wp-element' ], '1.0.0', true );
 
-	    
 	    $localized = [
 	    	'homeurl'		=> get_bloginfo( 'url' ),
 	    	'adminurl'		=> admin_url(),
@@ -66,6 +58,7 @@ class Admin extends Base {
 	    	'api_base'		=> get_rest_url(),
 	    	'rest_nonce'	=> wp_create_nonce( 'wp_rest' ),
 	    ];
+	    
 	    wp_localize_script( $this->slug, 'CXP', apply_filters( "{$this->slug}-localized", $localized ) );
 	}
 

@@ -60,6 +60,7 @@ class Front extends Base {
 			'_wpnonce'		=> wp_create_nonce(),
 			'rest_nonce'	=> wp_create_nonce( 'wp_rest' ),
 		];
+		
 		wp_localize_script( $this->slug, 'CXP', apply_filters( "{$this->slug}-localized", $localized ) );
 	}
 

@@ -137,10 +137,12 @@ final class Plugin {
 		/**
 		 * The license
 		 */
-		$this->plugin['license']	= new License( CXP_FILE );
+		$this->plugin['license']		= new License( CXP_FILE );
 
 		// set plugin data instance
-		define( 'CXP', $this->plugin );
+		define( 'CXP', apply_filters( 'cx-plugin_instance', $this->plugin ) );
+
+		do_action( 'cx-plugin_loaded' );
 	}
 
 	/**
@@ -163,10 +165,17 @@ final class Plugin {
 		if( is_admin() ) :
 
 			/**
+			 * The installer
+			 */
+			$installer = new App\Installer();
+			$installer->activate( 'install' );
+			$installer->deactivate( 'uninstall' );
+			$installer->action( 'admin_footer', 'upgrade' );
+
+			/**
 			 * Admin facing hooks
 			 */
 			$admin = new App\Admin();
-			$admin->action( 'admin_footer', 'upgrade' );
 			$admin->action( 'admin_footer', 'modal' );
 			$admin->action( 'plugins_loaded', 'i18n' );
 			$admin->action( 'admin_menu', 'admin_menu' );
@@ -258,13 +267,6 @@ final class Plugin {
 			$api->action( 'rest_api_init', 'register_endpoints' );
 
 		endif;
-
-		/**
-		 * The installer
-		 */
-		$installer = new App\Installer();
-		$installer->activate( 'install' );
-		$installer->deactivate( 'uninstall' );
 
 		/**
 		 * Common hooks
