@@ -6,7 +6,8 @@
  * Author: Codexpert, Inc
  * Author URI: https://codexpert.io
  * Version: 0.9
- * Requires at least: 5.9
+ * Requires at least: 5.0
+ * Tested up to: 6.3
  * Requires PHP: 7.4
  * Text Domain: cx-plugin
  * Domain Path: /languages
