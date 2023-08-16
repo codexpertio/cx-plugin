@@ -14,8 +14,7 @@ jQuery(function($){
 		$('#cx-plugin_tools-report').select();
 
 		try {
-			var successful = document.execCommand('copy');
-			if( successful ){
+			if( document.execCommand('copy') ){
 				$(this).html('<span class="dashicons dashicons-saved"></span>');
 			}
 		} catch (err) {
