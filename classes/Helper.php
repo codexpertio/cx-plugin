@@ -68,6 +68,24 @@ class Helper {
 		return apply_filters( 'cx_plugin_get_posts', $posts, $_args );
 	}
 
+	public static function get_terms( $args = [], $full = false ) {
+
+		$defaults = [
+			'taxonomy'		=> 'category',
+			'hide_empty'	=> false,
+		];
+
+		$args = wp_parse_args( $args, $defaults );
+
+		$terms = get_terms( $args );
+
+		if( false === $full ) {
+			return wp_list_pluck( $terms, 'name', 'term_id' );
+		}
+
+		return $terms;
+	}
+
 	public static function get_option( $key, $section, $default = '', $repeater = false ) {
 
 		$options = get_option( $key );
@@ -111,7 +129,7 @@ class Helper {
 		$overwrite_template_dir = apply_filters( 'cx_plugin_template_overwrite_dir', get_stylesheet_directory() . '/cx-plugin/', $slug, $base, $args );
 		
 		// default template directory
-		$plugin_template_dir = dirname( CXP ) . "/{$base}/";
+		$plugin_template_dir = CXP_DIR . "/{$base}/";
 
 		// full path of a template file in plugin directory
 		$plugin_template_path =  $plugin_template_dir . $slug . '.php';
