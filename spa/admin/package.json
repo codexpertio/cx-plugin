@@ -17,6 +17,7 @@
     "@wordpress/api-fetch": "^6.21.0",
     "axios": "^1.2.1",
     "html-react-parser": "^3.0.6",
-    "react-router-dom": "^6.4.5"
+    "react-router-dom": "^6.4.5",
+    "wp-scripts": "^0.0.1-security"
   }
 }

@@ -1,5 +1,6 @@
-/node_modules
+/spa/*/node_modules
+/spa/*/build
+/spa/*/package-lock.json
 /vendor
-/build
 composer.lock
 package-lock.json

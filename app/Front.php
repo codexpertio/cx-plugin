@@ -54,6 +54,8 @@ class Front extends Base {
 		wp_enqueue_style( $this->slug, plugins_url( "/assets/css/front{$min}.css", CXP_FILE ), '', $this->version, 'all' );
 
 		wp_enqueue_script( $this->slug, plugins_url( "/assets/js/front{$min}.js", CXP_FILE ), [ 'jquery' ], $this->version, true );
+
+		wp_enqueue_script( "{$this->slug}-react", plugins_url( 'spa/front/build/index.js', CXP_FILE ), [ 'wp-element' ], '1.0.0', true );
 		
 		$localized = [
 			'ajaxurl'		=> admin_url( 'admin-ajax.php' ),
