@@ -21,4 +21,4 @@ pipelines:
             - svn commit --message "Deploy v0.9 from Bitbucket" --username $WP_ORG_USERNAME --password $WP_ORG_PASSWORD
             - cd /tmp
             - rm -rf /tmp/wordpress-svn/.git
-            - svn copy https://plugins.svn.wordpress.org/cx-plugin/trunk https://plugins.svn.wordpress.org/cx-plugin/tags/0.9 -m "Create a new tag" --username $WP_ORG_USERNAME --password $WP_ORG_PASSWORD
+            - svn copy https://plugins.svn.wordpress.org/cx-plugin/trunk https://plugins.svn.wordpress.org/cx-plugin/tags/0.9 -m "Create new tag 0.9" --username $WP_ORG_USERNAME --password $WP_ORG_PASSWORD
