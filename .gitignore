@@ -1,6 +1,5 @@
 /spa/*/node_modules
 /spa/*/build
 /spa/*/package-lock.json
-/vendor
 composer.lock
 package-lock.json
