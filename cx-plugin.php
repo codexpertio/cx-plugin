@@ -12,7 +12,6 @@
 
 namespace Codexpert\CX_Plugin;
 use Codexpert\Plugin\Notice;
-use Codexpert\Plugin\Feature;
 
 /**
  * if accessed directly, exit.
@@ -154,16 +153,7 @@ final class Plugin {
 			 */
 			$notice = new Notice( $this->plugin );
 
-			/**
-			 * Alters featured plugins
-			 * 
-			 * @package Codexpert\Plugin
-			 * 
-			 * @author Codexpert <hi@codexpert.io>
-			 */
-			$feature = new Feature( $this->plugin );
-
-		else : // !is_admin() ?
+		else : // ! is_admin() ?
 
 			/**
 			 * Front facing hooks
