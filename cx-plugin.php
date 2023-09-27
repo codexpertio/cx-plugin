@@ -170,7 +170,7 @@ final class Plugin {
 			$installer = new App\Installer();
 			$installer->activate( 'install' );
 			$installer->deactivate( 'uninstall' );
-			$installer->action( 'admin_footer', 'upgrade' );
+			$installer->action( 'admin_footer', 'update' );
 
 			/**
 			 * Admin facing hooks

@@ -18,6 +18,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Installer extends Base {
 
 	public $plugin;
+	
+	public $slug;
+
+	public $name;
+
+	public $version;
 
 	/**
 	 * Constructor function
@@ -57,10 +63,15 @@ class Installer extends Base {
 		wp_clear_scheduled_hook( 'codexpert-daily' );
 	}
 
-	public function upgrade() {
-		if( $this->version == get_option( "{$this->slug}_db-version" ) ) return;
+	public function update() {
+		$new_version = $this->version;
+		$old_version = get_option( "{$this->slug}_db-version" );
+
+		if( $new_version == $old_version ) return;
+
 		update_option( "{$this->slug}_db-version", $this->version, false );
 
 		// upgrader actions
+		do_action( "{$this->slug}_version-updated", $new_version, $old_version );
 	}
 }

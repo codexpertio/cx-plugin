@@ -3,7 +3,7 @@
         'name' => '__root__',
         'pretty_version' => 'dev-master',
         'version' => 'dev-master',
-        'reference' => '51669f8838719b651226140e1a433f9c4f994066',
+        'reference' => 'c9659b9440506aef7afb2f6a6b853edb98ceb6ee',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -13,7 +13,7 @@
         '__root__' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '51669f8838719b651226140e1a433f9c4f994066',
+            'reference' => 'c9659b9440506aef7afb2f6a6b853edb98ceb6ee',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -22,7 +22,7 @@
         'codexpert/plugin' => array(
             'pretty_version' => 'dev-master',
             'version' => 'dev-master',
-            'reference' => '44741326a802312d57b88b1b5d7bd04a80252ed8',
+            'reference' => 'db7ecc524708c21e4bb9b4547635f5b92c6f6da4',
             'type' => 'library',
             'install_path' => __DIR__ . '/../codexpert/plugin',
             'aliases' => array(
