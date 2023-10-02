@@ -18,6 +18,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Shortcode extends Base {
 
     public $plugin;
+    
+    public $slug;
+
+    public $name;
+
+    public $version;
 
     /**
      * Constructor function

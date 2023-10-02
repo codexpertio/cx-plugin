@@ -20,6 +20,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 class API extends Base {
 
 	public $plugin;
+	
+	public $slug;
+
+	public $version;
 
 	/**
 	 * Constructor function

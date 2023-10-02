@@ -19,6 +19,12 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Wizard extends Base {
 
 	public $plugin;
+	
+	public $slug;
+
+	public $name;
+
+	public $version;
 
 	/**
 	 * Constructor function

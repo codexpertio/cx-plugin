@@ -57,18 +57,18 @@
             "source": {
                 "type": "git",
                 "url": "https://bitbucket.org/pluggableio/marketing.git",
-                "reference": "5639605d8cf9d36b32b066ca35b8b79bd23cc118"
+                "reference": "c0fe1d771b07ad77cd78343c16936fdbd70b1247"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://bitbucket.org/pluggableio/marketing/get/5639605d8cf9d36b32b066ca35b8b79bd23cc118.zip",
-                "reference": "5639605d8cf9d36b32b066ca35b8b79bd23cc118",
+                "url": "https://bitbucket.org/pluggableio/marketing/get/c0fe1d771b07ad77cd78343c16936fdbd70b1247.zip",
+                "reference": "c0fe1d771b07ad77cd78343c16936fdbd70b1247",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.0"
             },
-            "time": "2023-10-02T04:54:35+00:00",
+            "time": "2023-10-02T08:32:47+00:00",
             "default-branch": true,
             "type": "library",
             "installation-source": "dist",
@@ -96,7 +96,7 @@
                 "pluggable"
             ],
             "support": {
-                "source": "https://bitbucket.org/pluggableio/marketing/src/5639605d8cf9d36b32b066ca35b8b79bd23cc118/?at=master"
+                "source": "https://bitbucket.org/pluggableio/marketing/src/c0fe1d771b07ad77cd78343c16936fdbd70b1247/?at=master"
             },
             "install-path": "../pluggable/marketing"
         },
