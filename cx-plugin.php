@@ -85,6 +85,11 @@ final class Plugin {
 		 * Runs actual hooks
 		 */
 		$this->hook();
+
+		/**
+		 * Plugin is loaded
+		 */
+		do_action( 'cx-plugin_loaded' );
 	}
 
 	/**
@@ -139,10 +144,10 @@ final class Plugin {
 		 */
 		$this->plugin['license']		= new License( CXP_FILE );
 
-		// set plugin data instance
+		/**
+		 * Set plugin data instance
+		 */
 		define( 'CXP', apply_filters( 'cx-plugin_instance', $this->plugin ) );
-
-		do_action( 'cx-plugin_loaded' );
 	}
 
 	/**

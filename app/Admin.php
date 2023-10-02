@@ -52,7 +52,6 @@ class Admin extends Base {
 		wp_enqueue_style( $this->slug, plugins_url( "/assets/css/admin{$min}.css", CXP_FILE ), '', $this->version, 'all' );
 		wp_enqueue_script( $this->slug, plugins_url( "/assets/js/admin{$min}.js", CXP_FILE ), [ 'jquery' ], $this->version, true );
 
-	    // wp_enqueue_style( "{$this->slug}-react", plugins_url( 'build/index.css', CXP_FILE ) );
 	    wp_enqueue_script( "{$this->slug}-react", plugins_url( 'spa/admin/build/index.js', CXP_FILE ), [ 'wp-element' ], '1.0.0', true );
 
 	    $localized = [
