@@ -46,7 +46,7 @@ class Installer extends Base {
 		 * Schedule an event
 		 */
 		if ( ! wp_next_scheduled( 'codexpert-daily' ) ) {
-		    wp_schedule_event( time(), 'daily', 'codexpert-daily' );
+		    wp_schedule_event( date_i18n( 'U' ), 'daily', 'codexpert-daily' );
 		}
 	}
 
