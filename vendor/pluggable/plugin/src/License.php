@@ -289,7 +289,7 @@ class License {
 			'url'			=> home_url()
 		];
 
-		$response		= wp_remote_post( $this->server, [ 'timeout' => 15, 'sslverify' => false, 'body' => $api_params ] );
+		$response		= wp_remote_get( $this->server, [ 'timeout' => 15, 'sslverify' => false, 'body' => $api_params ] );
 		
 		$license_data	= json_decode( wp_remote_retrieve_body( $response ) );
 

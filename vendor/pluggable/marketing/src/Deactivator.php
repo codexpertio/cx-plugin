@@ -17,6 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Deactivator {
 
+	public $plugin;
+	
 	public $slug;
 	
 	public $name;
@@ -24,6 +26,8 @@ class Deactivator {
 	public $args;
 	
 	public $server;
+	
+	public $basename;
 	
 	public function __construct( $plugin, $args = [] ) {
 

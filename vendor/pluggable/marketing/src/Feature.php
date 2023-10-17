@@ -17,7 +17,13 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Feature {
 	
+	public $plugin;
+	
 	public $slug;
+	
+	public $args;
+	
+	public $server;
 	
 	public $name;
 

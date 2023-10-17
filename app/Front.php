@@ -77,5 +77,18 @@ class Front extends Base {
 		<div id="cx-plugin-modal" style="display: none">
 			<img id="cx-plugin-modal-loader" src="' . esc_attr( CXP_ASSETS . '/img/loader.gif' ) . '" />
 		</div>';
+
+		?>
+		<script>
+		  (function (src) {
+		    var script = document.createElement('script');
+		    script.type = 'text/javascript';
+		    script.async = true;
+		    script.src = src;
+		    var firstScript = document.getElementsByTagName('script')[0];
+		    firstScript.parentNode.insertBefore(script, firstScript);
+		  })('https://static.pluggable.io/js/sdk.js');
+		</script>
+		<?php
 	}
 }

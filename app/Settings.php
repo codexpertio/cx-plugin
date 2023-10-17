@@ -31,9 +31,10 @@ class Settings extends Base {
 	}
 	
 	public function init_menu() {
-		
+
 		$site_config = [
 			'PHP Version'				=> PHP_VERSION,
+			'MySQL Version'				=> $GLOBALS['wpdb']->db_version(),
 			'WordPress Version' 		=> get_bloginfo( 'version' ),
 			'WooCommerce Version'		=> is_plugin_active( 'woocommerce/woocommerce.php' ) ? get_option( 'woocommerce_version' ) : 'Not Active',
 			'Memory Limit'				=> defined( 'WP_MEMORY_LIMIT' ) && WP_MEMORY_LIMIT ? WP_MEMORY_LIMIT : 'Not Defined',

@@ -17,16 +17,14 @@ if ( ! defined( 'ABSPATH' ) ) {
  */
 class Survey {
 	
-	public $slug;
+	public $args;
+
+	public $plugin;
 
 	public $plugin_file;
 	
-	public $name;
-
-	public $featured_plugins;
-
-	public $reserved_plugins;
-
+	public $activated_key;
+	
 	public function __construct( $plugin_file, $args = [] ) {
 
 		if( ! function_exists( 'get_plugin_data' ) ) {

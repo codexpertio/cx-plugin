@@ -401,7 +401,7 @@ class Update {
 	 * Calls the API and, if successfull, returns the object delivered by the API.
 	 *
 	 * @uses get_bloginfo()
-	 * @uses wp_remote_post()
+	 * @uses wp_remote_get()
 	 * @uses is_wp_error()
 	 *
 	 * @param string  $_action The requested action.
@@ -458,7 +458,7 @@ class Update {
 			'beta'       => ! empty( $data['beta'] ),
 		);
 
-		$request    = wp_remote_post( $this->server, array( 'timeout' => 15, 'sslverify' => $verify_ssl, 'body' => $api_params ) );
+		$request    = wp_remote_get( $this->server, array( 'timeout' => 15, 'sslverify' => $verify_ssl, 'body' => $api_params ) );
 
 		if ( ! is_wp_error( $request ) ) {
 			$request = json_decode( wp_remote_retrieve_body( $request ) );
@@ -525,7 +525,7 @@ class Update {
 			);
 
 			$verify_ssl = $this->verify_ssl();
-			$request    = wp_remote_post( $this->server, array( 'timeout' => 15, 'sslverify' => $verify_ssl, 'body' => $api_params ) );
+			$request    = wp_remote_get( $this->server, array( 'timeout' => 15, 'sslverify' => $verify_ssl, 'body' => $api_params ) );
 
 			if ( ! is_wp_error( $request ) ) {
 				$version_info = json_decode( wp_remote_retrieve_body( $request ) );
