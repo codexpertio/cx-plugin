@@ -2,6 +2,7 @@
 namespace Codexpert\CX_Plugin\App;
 
 use Codexpert\Plugin\Base;
+use Codexpert\CX_Plugin\Database;
 
 /**
  * if accessed directly, exit.
@@ -48,6 +49,9 @@ class Installer extends Base {
 		if ( ! wp_next_scheduled( 'codexpert-daily' ) ) {
 		    wp_schedule_event( date_i18n( 'U' ), 'daily', 'codexpert-daily' );
 		}
+
+		$db = new Database;
+		$db->create_tables();
 	}
 
 	/**
