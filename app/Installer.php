@@ -25,6 +25,8 @@ class Installer extends Base {
 	public $name;
 
 	public $version;
+	
+	public $db;
 
 	/**
 	 * Constructor function
@@ -34,6 +36,9 @@ class Installer extends Base {
 		$this->slug		= $this->plugin['TextDomain'];
 		$this->name		= $this->plugin['Name'];
 		$this->version	= $this->plugin['Version'];
+
+		$this->db		= new Database;
+		$this->collate	= $this->db->collate;
 	}
 
 	/**
@@ -50,8 +55,7 @@ class Installer extends Base {
 		    wp_schedule_event( date_i18n( 'U' ), 'daily', 'codexpert-daily' );
 		}
 
-		$db = new Database;
-		$db->create_tables();
+		$this->create_tables();
 	}
 
 	/**
@@ -65,6 +69,19 @@ class Installer extends Base {
 		 * Remove scheduled hooks
 		 */
 		wp_clear_scheduled_hook( 'codexpert-daily' );
+	}
+
+	public function create_tables() {
+
+		/**
+		 * A test table
+		 */
+	    $this->db->exec( "CREATE TABLE `{$this->db->prefix}table` (
+            id smallint NOT NULL AUTO_INCREMENT,
+            name varchar(255),
+            type varchar(63),
+            PRIMARY KEY (id)
+        ) $this->collate;" );
 	}
 
 	public function update() {

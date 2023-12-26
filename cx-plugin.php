@@ -101,6 +101,7 @@ final class Plugin {
 	 * @uses psr-4
 	 */
 	private function include() {
+		require_once( ABSPATH . 'wp-admin/includes/upgrade.php' );
 		require_once( dirname( __FILE__ ) . '/inc/functions.php' );
 		require_once( dirname( __FILE__ ) . '/vendor/autoload.php' );
 	}
